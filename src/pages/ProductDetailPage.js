@@ -10,7 +10,7 @@ import Modal from '../components/productDetail/modalEnquiry/Modal';
 
 export default function ProductDetailPage () {
     return (
-        <div>
+        <div  style={{backgroundColor: "white"}}>
             <Details />
             <ProductDescriptAll />
             <Routes>
