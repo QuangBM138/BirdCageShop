@@ -3,8 +3,8 @@ import './ProductDescription.css'
 
 export default function ProductDescription() {
     return (
-        <section className="text-gray-600 body-font overflow-hidden">
-            <div className="container px-10 py-0 mx-auto">
+        <section className="text-gray-600 body-font overflow-hidden" >
+            <div className="container px-10 pb-10 mx-auto">
         <div className='show_description_border'>
             <p>
                 Nam tempus turpis at metus scelerisque placerat nulla deumantos solicitud felis. Pellentesque diam dolor, elementum etos lobortis des mollis ut risus. Sedcus faucibus an sullamcorper mattis drostique des commodo pharetras loremos.Donec pretium egestas sapien et mollis.

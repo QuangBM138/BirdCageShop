@@ -36,9 +36,9 @@ export default function Details() {
     };
 
     return (
-        <section className="text-gray-600 body-font overflow-hidden">
-            <div className="container px-0 py-24 mx-auto">
-                <div className="lg:w-1/1 mx-auto flex flex-wrap md:mx-10 sm:mx-10">
+        <section className="text-gray-600 body-font overflow-hidden" style={{marginBottom: "-55px"}}>
+            <div className="container px-0 py-24 mx-auto" >
+                <div className="lg:w-1/1 mx-auto flex flex-wrap md:mx-10 sm:mx-10" >
                     <div className="lg:w-1/2 w-full lg:pr-5 lg:py-3 mt-3 lg:mt-0 object-cover" >
                         <ImageGallery
                             thumbnailPosition="bottom"

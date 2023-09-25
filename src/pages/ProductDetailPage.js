@@ -10,16 +10,24 @@ import Modal from '../components/productDetail/modalEnquiry/Modal';
 
 export default function ProductDetailPage () {
     return (
-        <div  style={{backgroundColor: "white"}}>
+        <div>
             <Details />
+            <div style={{backgroundColor: "white"}}>
             <ProductDescriptAll />
+
             <Routes>
                 <Route path='/showdescription' element={<ProductDescription />}></Route>
                 <Route path='/reviews' element={<Reviews />}></Route>
             </Routes>
+            </div>
             <Modal />
+
             <RelatedPro />
-            <RecentlyPro />
+
+           <div style={{backgroundColor: "white"}}>
+             <RecentlyPro />
+            </div>
+           
         </div>
     )
 }

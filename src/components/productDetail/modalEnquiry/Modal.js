@@ -33,7 +33,7 @@ export default function Modal() {
   };
 
   return (
-    <div  style={{marginTop: "75px"}}>
+    <div  style={{marginTop: "25px", marginBottom:"-35px"}}>
       <a className='enquiry_link' onClick={handleClickOpen}>
                 <ContentPasteSearchIcon /> Enquiry about product?
             </a>

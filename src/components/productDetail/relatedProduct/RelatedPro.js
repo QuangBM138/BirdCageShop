@@ -28,9 +28,9 @@ export default function RelatedPro() {
   ];
 
   return (
-    <section className="text-gray-600 body-font overflow-hidden">
-      <div className="container px-4 sm:px-10 py-8 sm:py-18 mx-auto">
-        <h1 className="topic_title text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-4 sm:mb-8 text-center">
+    <section className="text-gray-600 body-font overflow-hidden" >
+      <div className="container px-4 mb-8 sm:px-10 py-6 sm:py-18 mx-auto">
+        <h1 className="topic_title">
           Related products
         </h1>
           <div className="lg:w-1/1 mx-3 flex flex-wrap">
