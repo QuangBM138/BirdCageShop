@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+.category-item {
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.category-list {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    margin: 0 auto;
+    grid-gap: 30px;
+}
+
+.category-img {
+    border-radius: 30px;
+    width: 100%;
+}
+
+.category-box {
+    position: relative;
+}
+
+.category-name {
+    position: absolute;
+    bottom: -5%;
+    padding: 10px 20px;
+    border-radius: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-weight: 500;
+}
+
+
+.category-item:hover {
+    transform: scale(0.9);
+    opacity: 0.8;
+}

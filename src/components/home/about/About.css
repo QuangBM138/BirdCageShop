@@ -1,0 +1,61 @@
+.parallax-about {
+    background-image: url("./background-about.jpg");
+    min-height: 800px;
+    background-attachment: fixed;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: 100px;
+}
+
+.parallax-about::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #8d522c;
+    opacity: 0.5;
+}
+
+.about-us h5 {
+    font-style: italic;
+    margin-top: 20px;
+}
+
+.about-us p {
+    display: inline-block;
+    font-size: 17px;
+    color: #fff;
+    text-wrap: wrap;
+    width: 50%;
+    margin-top: 30px;
+}
+
+.about-us {
+    font-family: "Pacifio", cursive;
+    color: #fff;
+    font-size: 25px;
+    position: absolute;
+    top: 40%;
+    left: 0;
+    padding: 20px;
+    text-align: left;
+}
+
+
+.about-image-container {
+    margin-top: 50px;
+    padding: 20px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.about-image-container img {
+    width: 200px;
+}
+
+.about-image {
+    left: 0;
+    position: absolute;
+
+}
