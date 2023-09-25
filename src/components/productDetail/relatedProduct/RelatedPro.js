@@ -73,7 +73,7 @@ export default function RelatedPro() {
                       </div>
                       <div className="related_cards__overlay__frame">
                         <div className='related_cards__prices'>
-                          <p>$350.00</p>
+                          <h3>$350.00</h3>
                         </div>
                       </div>
                       <div className="related_cards__overlay__frame">
