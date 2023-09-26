@@ -15,7 +15,8 @@
 
 .swiper-button-next,
 .swiper-button-prev {
-    background: #ffc519;
+    /* background: #ffc519; */
+    background: #3373a16b;
     width: 40px !important;
     height: 40px !important;
     border-radius: 30px;
@@ -31,8 +32,8 @@
     height: 12px;
     transform: rotate(45deg);
     position: absolute;
-    border-right: 2px solid;
-    border-top: 2px solid;
+    border-right: 3px solid;
+    border-top: 3px solid;
     font-size: 20px;
     color: #fff;
     left: 10px;
@@ -46,8 +47,8 @@
     height: 12px;
     transform: rotate(225deg);
     position: absolute;
-    border-right: 2px solid;
-    border-top: 2px solid;
+    border-right: 3px solid;
+    border-top: 3px solid;
     font-size: 20px;
     color: #fff;
     right: 10px;

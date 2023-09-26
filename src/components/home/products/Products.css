@@ -86,7 +86,7 @@
 }
 
 .animate {
-    animation: fadeEffect 1.5s ease-in-out;
+    animation: fadeEffect 0.5s ease-in-out;
 }
 
 @keyframes fadeEffect {
@@ -114,6 +114,11 @@
 .swiper-button-prev {
     border: none;
     border-bottom: 4px solid #8d522c;
+}
+
+.next,
+.prev {
+    background: #ffc519;
 }
 
 .next::after {

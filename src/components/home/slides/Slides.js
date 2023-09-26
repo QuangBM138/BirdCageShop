@@ -18,7 +18,7 @@ const slides = [
         slideSrc: "https://images.pexels.com/photos/2640604/pexels-photo-2640604.jpeg?cs=srgb&dl=pexels-david-gonzales-2640604.jpg&fm=jpg"
     },
     {
-        slideSrc: "https://heritagevietnamairlines.cdn.vccloud.vn/wp-content/uploads/2020/05/DSC_2497_compressed-1024x682.jpg"
+        slideSrc: "https://get.pxhere.com/photo/bird-street-town-animal-tourism-trees-buildings-storefronts-birdhouse-captive-neighbourhood-urban-street-bird-cages-cages-birdcages-exotic-birds-594610.jpg"
     }
 
 ]

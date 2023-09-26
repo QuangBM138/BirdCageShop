@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import "./Products.css"
-import Slogan from '../slogan/Slogan'
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+import { Navigation, Pagination, Scrollbar } from 'swiper/modules';
 import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -76,8 +75,11 @@ const bestProducts = [
 export default function Products() {
     const swiper = useSwiper()
     const [typeProduct, setTypeProduct] = useState('new')
-    const [productListByType, setProductListByType] = useState(newProducts)
-    const [transition, setTransition] = useState(false)
+    const [slideBestProductEnd, setSlideBestProductEnd] = useState(false)
+    const [slideBestProductStart, setSlideBestProductStart] = useState(false)
+
+    const [slideNewProductEnd, setSlideNewProductEnd] = useState(false)
+    const [slideNewProductStart, setSlideNewProductStart] = useState(false)
     // useEffect(() => {
     //     setTransition(true)
     //     typeProduct === 'new' ? setProductListByType(newProducts) : setProductListByType(bestProducts)
@@ -119,35 +121,51 @@ export default function Products() {
                     className={typeProduct === 'new' ? 'animate' : ""}
                     modules={[Navigation, Pagination, Scrollbar]}
                     slidesPerView={4}
-                    // navigation
+                    loop={false}
                     spaceBetween={50}
-                    loop={true}
+                    onBeforeInit={(swiper) => {
+                        if (swiper.activeIndex == 0) setSlideNewProductStart(true)
+                    }
+                    }
+                    onSlideChange={(swiper) => {
+                        setSlideNewProductStart(swiper.isBeginning)
+                        setSlideNewProductEnd(swiper.isEnd)
+                    }}
                     style={typeProduct === 'new' ? { display: 'block', paddingBottom: '100px', position: 'relative' } : { display: 'none' }}
                 >
                     {
                         newProducts.map((product, index) =>
-                            <SwiperSlide className={transition ? "animate" : "" + " " + 'product-slide'} key={index}>
+                            <SwiperSlide className="animate product-slide" key={index}>
                                 <div className='product-wrapper'>
                                     <img className='image-product' src={product.image} />
                                     <p className='name-product'>{product.name}</p>
                                 </div>
                             </SwiperSlide>)
                     }
-                    <SwiperButton />
+                    <SwiperButton
+                        isEnd={slideNewProductEnd}
+                        isStart={slideNewProductStart} />
                 </Swiper>
                 {/* best product */}
                 <Swiper
                     className={typeProduct === 'best' ? 'animate' : ""}
                     modules={[Navigation, Pagination, Scrollbar]}
                     slidesPerView={4}
-                    // navigation
+                    loop={false}
                     spaceBetween={50}
                     style={typeProduct === 'best' ? { display: 'block', paddingBottom: '100px', position: 'relative' } : { display: 'none' }}
-                    loop={true}
+                    onReachBeginning={() => setSlideBestProductStart(true)}
+                    onSlideChange={(swiper) => {
+                        setSlideBestProductStart(swiper.isBeginning)
+                        setSlideBestProductEnd(swiper.isEnd)
+                    }}
                 >
                     {
                         bestProducts.map((product, index) =>
-                            <SwiperSlide className={transition ? "animate" : "" + " " + 'product-slide'} key={index}>
+                            <SwiperSlide
+                                className="animate product-slide"
+                                key={index}
+                            >
                                 <div className='product-wrapper'>
                                     <img className='image-product' src={product.image} />
                                     <p className='name-product'>{product.name}</p>
@@ -155,7 +173,10 @@ export default function Products() {
 
                             </SwiperSlide>)
                     }
-                    <SwiperButton />
+                    <SwiperButton
+                        isEnd={slideBestProductEnd}
+                        isStart={slideBestProductStart}
+                    />
                 </Swiper>
             </div>
 

@@ -12,7 +12,7 @@ export default function HomePage() {
             {/* ---------------Slide--------------- */}
             <Slides />
             {/*--------------- Categories--------------- */}
-            <Container maxWidth={false}>
+            <Container maxWidth={"xl"}>
                 <Slogan
                     slogan="“The caged bird sings fearful of the unknown, yet expectant, and its melody is heard on the distant hills, for the caged bird sings freely.” – Maya Angelou"
                     title="Bird Cage - Caring"
@@ -27,7 +27,7 @@ export default function HomePage() {
 
 
             {/*--------------- Products--------------- */}
-            <Container maxWidth={false}>
+            <Container maxWidth={"xl"}>
                 <Slogan
                     slogan="“Some birds are not meant to be kept in cages, that's all. Their feathers are so bright, their voices are so sweet and wild. So you let them go, or when you open their cage to feed them, they somehow fly out to you. ” – King Stephen"
                     title="Choose Your Cage"
