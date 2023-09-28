@@ -1,0 +1,38 @@
+.slogan-category {
+    position: relative;
+    padding: 30px 30px 0 30px;
+}
+
+.slogan-category h3 {
+    font-family: 'Pacifico', cursive;
+    font-size: 35px;
+    /* color: #8d522c; */
+    text-align: center;
+    margin: 5px 0;
+}
+
+.slogan-category h4 {
+    margin: 20px;
+    text-align: center;
+    padding: 30px 30px 0 30px;
+}
+
+h3::before {
+    background-image: url("./birds.png");
+    background-repeat: no-repeat;
+    color: #8d522c;
+    position: absolute;
+    content: "";
+    height: 93px;
+    width: 101px;
+}
+
+.heading-box {
+    position: relative;
+}
+
+.logo {
+    position: absolute;
+    height: 70px;
+    left: 35%;
+}

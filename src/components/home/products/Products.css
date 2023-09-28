@@ -1,0 +1,137 @@
+.image-product {
+    width: 100%;
+
+}
+
+.name-product {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-family: 'Pacifico', cursive;
+    display: none;
+    color: #fff;
+    background: #000;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.product-wrapper {
+    position: relative;
+    transition: 0.5s;
+    cursor: pointer;
+    border: 0.5px solid #e1dddd;
+    padding: 30px;
+}
+
+.product-wrapper::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+    background-color: rgba(70, 70, 70, 0.541);
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s linear;
+
+}
+
+.product-wrapper:hover .name-product {
+    display: block;
+    z-index: 999;
+}
+
+.product-wrapper:hover.product-wrapper::after {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.tab-link {
+    padding: 10px;
+    margin: 20px;
+    border-radius: 30px;
+    border: 1px solid #e1dddd;
+    color: #fff;
+    font-size: 20px;
+    min-width: 100px;
+    height: 40px;
+    background-color: #ffc519;
+    cursor: pointer;
+    opacity: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s;
+    border-bottom: 4px solid #8d522c;
+}
+
+.tab-link:hover {
+    opacity: 0.7;
+    border-bottom: none;
+    background: #8d522c;
+}
+
+.product-slide {
+    transition: 1s;
+}
+
+.animate {
+    animation: fadeEffect 0.5s ease-in-out;
+}
+
+@keyframes fadeEffect {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+
+        opacity: 1;
+    }
+}
+
+
+/* fix button */
+
+.swiper-button-container {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    border: none;
+    border-bottom: 4px solid #8d522c;
+}
+
+.next,
+.prev {
+    background: #ffc519;
+}
+
+.next::after {
+    transform: rotate(-45deg);
+    left: 12px;
+
+}
+
+.prev::after {
+    transform: rotate(135deg);
+    right: 12px;
+}
+
+.slide-product-wrapper {
+    position: relative;
+}
