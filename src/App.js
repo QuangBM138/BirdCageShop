@@ -9,7 +9,7 @@ function App() {
       <Header></Header>
       <HomePage />
       <Footer></Footer>
-
+      {/* <ProductDetailPage /> */}
       {/* <CopyWriter></CopyWriter> */}
     </div>
   );
