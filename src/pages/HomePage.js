@@ -10,9 +10,12 @@ import bird2 from '../components/home/about/bird2-aboutus.png'
 import cage from '../components/home/about/gold_cage.png'
 import { left } from '@popperjs/core'
 import "../components/home/slides/Slide.css"
+import Header from '../components/header/Header'
+import Footer from '../components/footer/Footer'
 export default function HomePage() {
     return (
         <>
+
             <img
                 className='cage'
                 style={{ left: 0 }}
