@@ -5,14 +5,27 @@ import { Container } from '@mui/material'
 import Products from '../components/home/products/Products'
 import Slogan from '../components/home/slogan/Slogan'
 import About from '../components/home/about/About'
-
+import bird1 from '../components/home/about/bird-aboutus.png'
+import bird2 from '../components/home/about/bird2-aboutus.png'
+import cage from '../components/home/about/gold_cage.png'
+import { left } from '@popperjs/core'
+import "../components/home/slides/Slide.css"
 export default function HomePage() {
     return (
         <>
+            <img
+                className='cage'
+                style={{ left: 0 }}
+                src={cage} />
+            <img
+                className='cage'
+                style={{ right: 0 }}
+                src={cage} />
             {/* ---------------Slide--------------- */}
-            <Slides />
+
             {/*--------------- Categories--------------- */}
             <Container maxWidth={"xl"}>
+                <Slides />
                 <Slogan
                     slogan="“The caged bird sings fearful of the unknown, yet expectant, and its melody is heard on the distant hills, for the caged bird sings freely.” – Maya Angelou"
                     title="Bird Cage - Caring"

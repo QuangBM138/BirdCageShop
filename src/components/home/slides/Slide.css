@@ -7,7 +7,7 @@
 
 .image-slide {
     width: 100%;
-    height: 750px;
+    height: 550px;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -60,4 +60,10 @@
 
 .swiper-button-next:hover {
     background: #bf4619;
+}
+
+.cage {
+    position: absolute;
+    width: 200px;
+    height: 200px;
 }
