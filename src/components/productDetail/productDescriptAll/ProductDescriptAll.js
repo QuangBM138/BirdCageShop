@@ -1,12 +1,11 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import './ProductDescriptAll.css'
 import { useState } from 'react';
 import ProductDescription from '../productDescription/ProductDescription';
 import Reviews from '../reviews/Reviews';
 
 export default function ProductDescriptAll() {
-    const [activeButton, setActiveButton] = useState('description');
+  const [activeButton, setActiveButton] = useState('description');
 
   const showDescription = () => {
     setActiveButton('description');
@@ -17,11 +16,11 @@ export default function ProductDescriptAll() {
   };
 
 
-    return (
-        <section className="text-gray-600 body-font overflow-hidden">
-            <div>
-                <div className='prodcu_description_header'>
-                <button
+  return (
+    <section className="text-gray-600 body-font overflow-hidden">
+      <div className='container' style={{ margin: "0 auto" }}>
+        <div className='prodcu_description_header px-10'>
+          <button
             className={`button_design ${activeButton === 'description' ? 'active-button' : ''}`}
             onClick={showDescription}
           >
@@ -33,10 +32,10 @@ export default function ProductDescriptAll() {
           >
             <h3>Reviews</h3>
           </button>
-            </div>
-            {activeButton === 'description' ? <ProductDescription /> : <Reviews />}
         </div>
-        
-        </section>
-    )
+        {activeButton === 'description' ? <ProductDescription /> : <Reviews />}
+      </div>
+
+    </section>
+  )
 }

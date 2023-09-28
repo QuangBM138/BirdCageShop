@@ -46,6 +46,7 @@ export default function Details() {
             setQuantity(quantity - 1);
         }
     };
+
     const handleInputChange = (e) => {
         const inputValue = e.target.value;
         if (inputValue === "") {
@@ -62,8 +63,10 @@ export default function Details() {
         <section className="text-gray-600 body-font overflow-hidden" style={{ marginBottom: "-55px" }}>
             <div className="container px-0 py-24 mx-auto" >
                 <div className="lg:w-1/1 mx-auto flex flex-wrap border border-grey px-6 py-12 md:mx-10 sm:mx-auto mr-8 ml-8" >
-                    <div className="lg:w-1/2 w-full lg:pr-5 lg:py-3 mt-3 lg:mt-0 object-cover" >
+                    <div
+                        className="lg:w-1/2 w-full lg:pr-5 lg:py-3 mt-3 lg:mt-0 object-cover" >
                         <ImageGallery
+                            autoPlay={true}
                             thumbnailPosition="bottom"
                             showPlayButton={false}
                             showNav={true}
@@ -264,9 +267,9 @@ export default function Details() {
                                     <h3>Add to Cart</h3>
                                 </button>
 
-                                <button class='button_design'>
+                                {/* <button class='button_design'>
                                    <h3>Buy it now</h3> 
-                                </button>
+                                </button> */}
                             </div>
                         </div>
                     </div>
