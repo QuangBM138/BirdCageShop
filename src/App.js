@@ -1,6 +1,6 @@
 import Header from "./components/header/Header";
-import CopyWriter from "./footer/CopyWriter";
-import Footer from "./footer/Footer";
+import CopyWriter from "./components/footer/CopyWriter";
+import Footer from "./components/footer/Footer";
 function App() {
   return (
     <div className="App">
