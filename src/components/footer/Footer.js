@@ -1,6 +1,7 @@
 import React from "react";
 import "./Footer.css";
-
+import "./CopyWriter"
+import CopyWriter from "./CopyWriter";
 const Footer = () => {
   return (
     <div className="footer bg-dark section-p" id="footer">
@@ -36,7 +37,9 @@ const Footer = () => {
             </a>
           </li>
         </ul>
+        <CopyWriter />
       </div>
+
     </div>
   );
 };

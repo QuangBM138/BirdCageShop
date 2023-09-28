@@ -21,7 +21,7 @@ const Header = () => {
           </ul>
         </div>
         <div className="right-icons">
-          <input className="input" type="text" placeholder="Search" />
+          {/* <input className="input" type="text" placeholder="Search" /> */}
           <a>
             <i className="fa fa-search"></i>
           </a>

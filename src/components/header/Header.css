@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css');
+
 * {
     padding: 0;
     margin: 0;
@@ -8,65 +9,68 @@
     font-family: 'Pacifico', cursive;
 }
 
-.navbar{
+.navbar {
     background-color: #ffc519;
     padding: 15px 50px;
 }
 
-.header{
-    line-height: 10vh;
-    height: 10vh;
+.header {
+    /* line-height: 10vh;
+    height: 10vh; */
     font-family: 'Pacifico', cursive;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-li{
+li {
     list-style: none;
 }
-a{
+
+a {
     text-decoration: none;
 }
 
-.logo{
+.logo {
     font-size: 30px;
     margin-left: 10px;
 }
-.nav-links{
+
+.nav-links {
     display: flex;
-    justify-content: center;
+
     align-items: center;
     width: 70%;
     margin: 0 auto;
 }
 
-.nav-links li{
-    
+.nav-links li {
+
     font-size: 20px;
     padding: 0 10px;
     margin: 0 10px;
     cursor: pointer;
     text-transform: capitalize;
     text-decoration: none;
-    
+
 }
 
-.nav-links li a{
+.nav-links li a {
     color: white;
     transition: all 0.3s;
 }
-.nav-links li a:hover{
+
+.nav-links li a:hover {
     color: #8d522c;
 }
 
-.hero{
+.hero {
     text-align: center;
     margin-top: 15%;
-    
+
 }
 
-.hero h1{
+.hero h1 {
     font-size: 80px;
     text-align: center;
 }
@@ -76,7 +80,7 @@ a{
     margin-top: -15px;
 }
 
-button{
+button {
     color: white;
     border: none;
     background: none;
@@ -85,21 +89,22 @@ button{
     cursor: pointer;
 }
 
-button:hover{
+button:hover {
     color: #8d522c;
 }
 
-.mobile-menu-icon{
+.mobile-menu-icon {
     display: none;
     font-size: 16px;
 }
 
 
 @media (max-width:768px) {
-    .nav-links{
+    .nav-links {
         display: none;
     }
-    .nav-links-mobile{
+
+    .nav-links-mobile {
         position: absolute;
         display: block;
         list-style: none;
@@ -110,48 +115,52 @@ button:hover{
         width: 100%;
         background-color: white;
     }
+
     ui li {
         padding: 32px;
         width: 100%;
         transition: all 0.2s ease-in-out;
         text-align: center;
     }
-    .mobile-menu-icon{
+
+    .mobile-menu-icon {
         position: absolute;
         display: block;
         right: 20px;
     }
-    
+
 }
 
 .info {
-    flex-grow: 1; 
+    flex-grow: 1;
     display: flex;
-    justify-content: flex-end; 
-    
-  }
-  
-  .right-icons {
+    justify-content: flex-end;
+
+}
+
+.right-icons {
     display: flex;
     align-items: center;
-    
-  }
-  .right-icons a i{
+
+}
+
+.right-icons a i {
     cursor: pointer;
     font-size: 16px;
     color: white;
     transition: all 0.3s;
-  }
+}
 
-  .right-icons a {
-    margin-left: 20px; 
+.right-icons a {
+    margin-left: 20px;
     font-size: 26px;
-  }
-  .right-icons i:hover{
+}
+
+.right-icons i:hover {
     color: #8d522c;
-  }
-  
-.input{
+}
+
+.input {
     border: none;
     margin-top: 10px;
     width: 200px;

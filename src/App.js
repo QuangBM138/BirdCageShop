@@ -6,7 +6,7 @@ function App() {
     <div className="App">
       <Header></Header>
       <Footer></Footer>
-      <CopyWriter></CopyWriter>
+      {/* <CopyWriter></CopyWriter> */}
     </div>
   );
 }
