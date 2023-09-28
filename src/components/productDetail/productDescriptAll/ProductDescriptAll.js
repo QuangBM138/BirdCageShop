@@ -1,16 +1,42 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './ProductDescriptAll.css'
+import { useState } from 'react';
+import ProductDescription from '../productDescription/ProductDescription';
+import Reviews from '../reviews/Reviews';
 
 export default function ProductDescriptAll() {
+    const [activeButton, setActiveButton] = useState('description');
+
+  const showDescription = () => {
+    setActiveButton('description');
+  };
+
+  const showReview = () => {
+    setActiveButton('review');
+  };
+
+
     return (
         <section className="text-gray-600 body-font overflow-hidden">
-            <div className="container pt-8 px-10 py-0 mx-auto">
-            <div className='prodcu_description_header'>
-                <Link to='/showdescription' className='button_design'>Show Description</Link>
-                <Link to='/reviews' className='button_design'>Review</Link>
+            <div>
+                <div className='prodcu_description_header'>
+                <button
+            className={`button_design ${activeButton === 'description' ? 'active-button' : ''}`}
+            onClick={showDescription}
+          >
+            <h3>Show Description</h3>
+          </button>
+          <button
+            className={`button_design ${activeButton === 'review' ? 'active-button' : ''}`}
+            onClick={showReview}
+          >
+            <h3>Reviews</h3>
+          </button>
+            </div>
+            {activeButton === 'description' ? <ProductDescription /> : <Reviews />}
         </div>
-        </div>
+        
         </section>
     )
 }

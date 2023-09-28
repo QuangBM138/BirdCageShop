@@ -1,10 +1,22 @@
 import React, { useState } from 'react';
 import ImageGallery from 'react-image-gallery';
 import "react-image-gallery/styles/css/image-gallery.css";
-import './Details.css';
+
 import { Button } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/navigation';
+import 'swiper/css/thumbs';
+
+import './Details.css';
+
+// import required modules
+import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 
 
 const images = [
@@ -34,16 +46,27 @@ export default function Details() {
             setQuantity(quantity - 1);
         }
     };
-
+    const handleInputChange = (e) => {
+        const inputValue = e.target.value;
+        if (inputValue === "") {
+            // Handle empty input by setting quantity to 1
+            setQuantity(1);
+        } else {
+            const parsedValue = parseInt(inputValue);
+            if (!isNaN(parsedValue) && parsedValue >= 1) {
+                setQuantity(parsedValue);
+            }
+        }
+    };
     return (
-        <section className="text-gray-600 body-font overflow-hidden" style={{marginBottom: "-55px"}}>
+        <section className="text-gray-600 body-font overflow-hidden" style={{ marginBottom: "-55px" }}>
             <div className="container px-0 py-24 mx-auto" >
-                <div className="lg:w-1/1 mx-auto flex flex-wrap md:mx-10 sm:mx-10" >
+                <div className="lg:w-1/1 mx-auto flex flex-wrap border border-grey px-6 py-12 md:mx-10 sm:mx-auto mr-8 ml-8" >
                     <div className="lg:w-1/2 w-full lg:pr-5 lg:py-3 mt-3 lg:mt-0 object-cover" >
                         <ImageGallery
                             thumbnailPosition="bottom"
                             showPlayButton={false}
-                            showNav={false}
+                            showNav={true}
                             slideDuration={200}
                             infinite={true}
                             slideOnThumbnailOver={true}
@@ -52,9 +75,9 @@ export default function Details() {
                             items={images}
                         />
                     </div>
-                    <div class="lg:w-1/2 w-full lg:pl-10 lg:py-2 mt-4 lg:mt-0">
+                    <div class="lg:w-1/2 w-full lg:pl-10 lg:py-2 mt-4 lg:mt-0 ">
                         <h1 class="text-gray-900 text-3xl title-font font-medium mb-1"
-                            style={{ fontSize: "36px", color: "#ffc519" }}
+                            style={{ color: "#ffc519" }}
                         >
                             Cats Formula Food
                         </h1>
@@ -88,53 +111,64 @@ export default function Details() {
                             </div>
                             <div class="flex mt-6">
                                 <h2 class="mr-16" style={{ fontSize: "20px", lineHeight: "30px", color: "black" }}>Color</h2>
-                                <Button
-                                    variant="outlined"
-                                    style={{
-                                        backgroundColor: 'transparent',
-                                        borderColor: '#ffc519',
-                                        color: '#ffc519',
-                                        marginRight: "15px",
-                                        height: "30px"
-                                    }}
-                                >
-                                    <h3 style={{ fontWeight: "bold" }}>haha</h3>
-                                </Button>
-                                <Button
-                                    variant="outlined"
-                                    style={{
-                                        backgroundColor: 'transparent',
-                                        borderColor: 'black',
-                                        color: 'black',
-                                        marginRight: "15px",
-                                        height: "30px"
-                                    }}
-                                >
-                                    <h3 style={{fontFamily:'Poppins', fontWeight: "bold" }}>hihi</h3>
-                                </Button>
-                                <Button
-                                    variant="outlined"
-                                    style={{
-                                        backgroundColor: 'transparent',
-                                        borderColor: 'black',
-                                        color: 'black',
-                                        marginRight: "15px",
-                                        height: "30px"
-                                    }}
-                                >
-                                    <h3 style={{ fontWeight: "bold" }}>huhu</h3>
-                                </Button>
+                                <div class="button_group" style={{ display: "flex", flexWrap: "wrap" }}>
+                                    <Button
+                                        className='button_option'
+                                        variant="outlined"
+                                        style={{
+                                            backgroundColor: 'transparent',
+                                            borderColor: '#ffc519',
+                                            color: '#ffc519',
+                                            marginRight: "10px",
+                                            width: 'fit-content',
+                                            marginBottom: "15px",
+                                            whiteSpace: "nowrap"
+                                        }}
+                                    >
+                                        <h3 style={{ fontWeight: "bold" }}>haha</h3>
+                                    </Button>
+                                    <Button
+                                        className='button_option'
+                                        variant="outlined"
+                                        style={{
+                                            backgroundColor: 'transparent',
+                                            borderColor: '#ffc519',
+                                            color: '#ffc519',
+                                            marginRight: "10px",
+                                            width: "fit-content",
+                                            marginBottom: "15px",
+                                            whiteSpace: "nowrap"
+                                        }}
+                                    >
+                                        <h3 style={{ fontFamily: 'Poppins', fontWeight: "bold" }}>hihi</h3>
+                                    </Button>
+                                    <Button
+                                        className='button_option'
+                                        variant="outlined"
+                                        style={{
+                                            backgroundColor: 'transparent',
+                                            borderColor: '#ffc519',
+                                            color: '#ffc519',
+                                            marginRight: "10px",
+                                            width: "fit-content",
+                                            whiteSpace: "nowrap"
+                                        }}
+                                    >
+                                        <h3 style={{ fontWeight: "bold" }}>huhu</h3>
+                                    </Button>
+                                </div>
                             </div>
                             <div class="flex mt-6">
                                 <h2 class="mr-14" style={{ fontSize: "20px", lineHeight: "30px", color: "black" }}>Brand</h2>
                                 <Button
+                                    className='button_option'
                                     variant="outlined"
                                     style={{
                                         backgroundColor: 'transparent',
                                         borderColor: '#ffc519',
                                         color: '#ffc519',
-                                        marginRight: "15px",
-                                        height: "30px"
+                                        marginRight: "10px",
+                                        width: 'fit-content'
                                     }}
                                 >
                                     <h3 style={{ fontWeight: "bold" }}>Royal Canin</h3>
@@ -144,13 +178,14 @@ export default function Details() {
                             <div class="flex mt-6">
                                 <h2 class="mr-11" style={{ fontSize: "20px", lineHeight: "30px", color: "black" }}>Flavour</h2>
                                 <Button
+                                    className='button_option'
                                     variant="outlined"
                                     style={{
                                         backgroundColor: 'transparent',
                                         borderColor: '#ffc519',
                                         color: '#ffc519',
-                                        marginRight: "15px",
-                                        height: "30px"
+                                        marginRight: "10px",
+                                        width: 'fit-content'
                                     }}
                                 >
                                     <h3 style={{ fontWeight: "bold" }}>Meat</h3>
@@ -158,11 +193,11 @@ export default function Details() {
                             </div>
                             <div class="flex mt-6">
                                 <h2 class="mr-14" style={{ fontSize: "20px", lineHeight: "30px", color: "black" }}>Vendor</h2>
-                                <a href='#' >Pure Pet</a>
+                                <a href='#' style={{ marginTop: "7px" }}>Pure Pet</a>
                             </div>
                             <div class="flex mt-6">
                                 <h2 class="mr-16" style={{ fontSize: "20px", lineHeight: "30px", color: "black" }}>Type</h2>
-                                <a href='#' style={{ marginLeft: "12px" }}>Cats food</a>
+                                <a href='#' style={{ marginLeft: "12px", marginTop: "7px" }}>Cats food</a>
                             </div>
                             <div class="flex mt-6">
                                 <h2 class="mr-16" style={{ fontSize: "20px", lineHeight: "30px", color: "black" }}>Size</h2>
@@ -182,14 +217,16 @@ export default function Details() {
                             </div>
                             <div class="flex mt-6">
                                 <h2 class="mr-8" style={{ fontSize: "20px", lineHeight: "30px", color: "black" }}>Quantity</h2>
-                                <button 
-                                style={{
-                                    width: '40px',
-                                    backgroundColor: 'white',
-                                    border: '1px solid #ccc',
-                                    textAlign: "center"
-                                }}
-                                onClick={decreaseQuantity}>
+                                <button
+                                    style={{
+                                        width: '40px',
+                                        backgroundColor: 'white',
+                                        border: '1px solid #ccc',
+                                        textAlign: "center"
+                                    }}
+                                    onClick={decreaseQuantity}
+                                    type="button"
+                                >
                                     <RemoveIcon />
                                 </button>
                                 <input
@@ -197,32 +234,38 @@ export default function Details() {
                                     min="1"
                                     name="quantity"
                                     value={quantity}
-                                    disabled
+                                    // type="text"
+                                    inputMode="numeric"
                                     className="form-control form-control-sm"
+                                    style={{
+                                        width: '80px',
+                                        backgroundColor: 'white',
+                                        border: '1px solid #ccc',
+                                        textAlign: "center"
+                                    }}
+                                    onChange={handleInputChange}
+                                />
+                                <button
                                     style={{
                                         width: '40px',
                                         backgroundColor: 'white',
                                         border: '1px solid #ccc',
                                         textAlign: "center"
                                     }}
-                                />
-                                <button style={{
-                                        width: '40px',
-                                        backgroundColor: 'white',
-                                        border: '1px solid #ccc',
-                                        textAlign: "center"
-                                    }} 
-                                    onClick={increaseQuantity}>
+                                    onClick={increaseQuantity}
+                                    type="button"
+                                >
                                     <AddIcon />
                                 </button>
                             </div>
+
                             <div class="flex mt-6">
-                                <button className='button_design'>
-                                    Add to Cart
+                                <button class='button_design'>
+                                    <h3>Add to Cart</h3>
                                 </button>
 
-                                <button className='button_design'>
-                                    Buy it now
+                                <button class='button_design'>
+                                   <h3>Buy it now</h3> 
                                 </button>
                             </div>
                         </div>
@@ -230,7 +273,7 @@ export default function Details() {
                 </div>
             </div>
         </section>
-        
+
     )
 }
 

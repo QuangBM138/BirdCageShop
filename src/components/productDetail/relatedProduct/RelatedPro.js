@@ -10,6 +10,7 @@ import './RelatedPro.css';
 
 // import required modules
 import { FreeMode, Pagination } from 'swiper/modules';
+
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 
 
@@ -40,6 +41,7 @@ export default function RelatedPro() {
               pagination={{
                 clickable: true,
               }}
+              
               breakpoints={{
                 // Breakpoint for iPhone 
                 0: {
@@ -68,7 +70,7 @@ export default function RelatedPro() {
                     <div className='related_cards__overlay'>
                       <div className="related_cards__overlay__frame">
                         <div className='related_cards__title'>
-                          <h2>Adult Dogs Pedigree</h2>
+                          <h4 className="h4_related">Adult Dogs Pedigree</h4>
                         </div>
                       </div>
                       <div className="related_cards__overlay__frame">

@@ -12,11 +12,13 @@ export default function RecentlyPro() {
               <div class="rounded-lg h-64 overflow-hidden">
                 <img alt="content" class="object-cover object-center h-full w-full" src="https://www.dogfood.com.my/wp-content/uploads/2022/03/daily-diet-dog-food-1.jpg" />
               </div>
-              <h2 class="recently_cards__title">Buy YouTube Videos</h2>
-              <p class="recently_pro_prices">$350.00</p>
+              <div class="name_price">
+                <h2 class="recently_cards__title">Buy YouTube Videos</h2>
+                <p class="recently_pro_prices">$350.00</p>
+              </div>
               <div class="related_cards__overlay__frame">
                 <button className='button_design'>
-                  Select Options
+                  <h3>Select Options</h3>
                 </button>
 
               </div>
@@ -25,11 +27,13 @@ export default function RecentlyPro() {
               <div class="rounded-lg h-64 overflow-hidden">
                 <img alt="content" class="object-cover object-center h-full w-full" src="https://unisa.edu.au/siteassets/media-centre/images/media-release-images/2023/-pig_500-x-500-resized.jpg" />
               </div>
-              <h2 class="recently_cards__title">The Catalyzer</h2>
-              <p class="recently_pro_prices">$350.00</p>
+              <div class="name_price">
+                <h2 class="recently_cards__title">The Catalyzer</h2>
+                <p class="recently_pro_prices">$350.00</p>
+              </div>
               <div class="related_cards__overlay__frame">
                 <button className='button_design'>
-                  Select Options
+                  <h3>Select Options</h3>
                 </button>
 
               </div>
@@ -38,11 +42,14 @@ export default function RecentlyPro() {
               <div class="rounded-lg h-64 overflow-hidden">
                 <img alt="content" class="object-cover object-center h-full w-full" src="https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187_square.jpg" />
               </div>
-              <h2 class="recently_cards__title">Buy YouTube Videos</h2>
-              <p class="recently_pro_prices">$350.00</p>
+              <div class="name_price">
+                <h2 class="recently_cards__title">Buy YouTube Videos</h2>
+                <p class="recently_pro_prices">$350.00</p>
+              </div>
+
               <div class="related_cards__overlay__frame">
                 <button className='button_design'>
-                  Select Options
+                  <h3>Select Options</h3>
                 </button>
 
               </div>
@@ -51,11 +58,13 @@ export default function RecentlyPro() {
               <div class="rounded-lg h-64 overflow-hidden">
                 <img alt="content" class="object-cover object-center h-full w-full" src="https://i.natgeofe.com/k/75ac774d-e6c7-44fa-b787-d0e20742f797/giant-panda-eating_4x3.jpg" />
               </div>
-              <h2 class="recently_cards__title">The Catalyzer</h2>
-              <p class="recently_pro_prices">$350.00</p>
+              <div class="name_price">
+                <h2 class="recently_cards__title">The Catalyzer</h2>
+                <p class="recently_pro_prices">$350.00</p>
+              </div>
               <div class="related_cards__overlay__frame">
                 <button className='button_design'>
-                  Select Options
+                  <h3>Select Options</h3>
                 </button>
               </div>
             </div>
