@@ -18,7 +18,7 @@ export default function Reviews() {
 
     return (
         <section className="text-gray-600 body-font overflow-hidden" >
-            <div className="container px-0 pb-12 sm:px-10 py-0 sm:py-18 mx-auto">
+            <div className=" px-0 pb-12 sm:px-10 py-0 sm:py-18 mx-auto">
                 <div className='container_showandreview'>
                     <div className='review_header'>
                         <h2 className='h2_ny'>
