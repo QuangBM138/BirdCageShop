@@ -61,7 +61,9 @@ export default function Details() {
     };
     return (
         <section className="text-gray-600 body-font overflow-hidden" style={{ marginBottom: "-55px" }}>
-            <div className="container px-0 py-24 mx-auto" >
+            <div className="container px-0 py-24 mx-auto"
+
+            >
                 <div className="lg:w-1/1 mx-auto flex flex-wrap border border-grey px-6 py-12 md:mx-10 sm:mx-auto mr-8 ml-8" >
                     <div
                         className="lg:w-1/2 w-full lg:pr-5 lg:py-3 mt-3 lg:mt-0 object-cover" >
@@ -275,7 +277,7 @@ export default function Details() {
                     </div>
                 </div>
             </div>
-        </section>
+        </section >
 
     )
 }
