@@ -93,7 +93,7 @@ export default function Products() {
                     style={typeProduct === 'new' ? {
                         color: '#fff',
                         background: '#8d522c',
-                        border: 'none',
+
 
                     } : {}}
                     onClick={() => {
@@ -107,7 +107,7 @@ export default function Products() {
                     style={typeProduct === 'best' ? {
                         color: '#fff',
                         background: '#8d522c',
-                        border: 'none',
+
 
                     } : {}}
                     onClick={() => {

@@ -5,13 +5,8 @@ import { Container } from '@mui/material'
 import Products from '../components/home/products/Products'
 import Slogan from '../components/home/slogan/Slogan'
 import About from '../components/home/about/About'
-import bird1 from '../components/home/about/bird-aboutus.png'
-import bird2 from '../components/home/about/bird2-aboutus.png'
 import cage from '../components/home/about/gold_cage.png'
-import { left } from '@popperjs/core'
 import "../components/home/slides/Slide.css"
-import Header from '../components/header/Header'
-import Footer from '../components/footer/Footer'
 export default function HomePage() {
     return (
         <>
