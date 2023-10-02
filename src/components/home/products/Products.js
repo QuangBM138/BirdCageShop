@@ -8,6 +8,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import 'swiper/css/autoplay';
 import SwiperButton from './SwiperButton';
+import ShoppingBasket from '@mui/icons-material/ShoppingBasket';
 
 const newProducts = [
     {
@@ -138,7 +139,13 @@ export default function Products() {
                             <SwiperSlide className="animate product-slide" key={index}>
                                 <div className='product-wrapper'>
                                     <img className='image-product' src={product.image} />
-                                    <p className='name-product'>{product.name}</p>
+                                    <div className='show-block'>
+                                        <p className='name-product'>{product.name}</p>
+                                        <button className='button-cart'>
+                                            <ShoppingBasket /> Add to Cart
+                                        </button>
+                                    </div>
+
                                 </div>
                             </SwiperSlide>)
                     }
@@ -168,7 +175,12 @@ export default function Products() {
                             >
                                 <div className='product-wrapper'>
                                     <img className='image-product' src={product.image} />
-                                    <p className='name-product'>{product.name}</p>
+                                    <div className='show-block'>
+                                        <p className='name-product'>{product.name}</p>
+                                        <button className='button-cart'>
+                                            <ShoppingBasket /> Add to Cart
+                                        </button>
+                                    </div>
                                 </div>
 
                             </SwiperSlide>)

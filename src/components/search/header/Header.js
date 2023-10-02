@@ -7,11 +7,11 @@ export default function Header() {
         <div className='breadcrumb'>
             <div className='breadcrumb-thumb'></div>
             <Container className='breadcrumb-container' maxWidth={"xl"}>
-                <h1>Your cart</h1>
+                <h1>Collection</h1>
                 <div className='breadcrumb-line'>
                     <Link to="/" style={{ marginRight: "10px" }}>Home</Link>
-                    /Your shopping cart
-
+                    /
+                    tên search
                 </div>
 
 

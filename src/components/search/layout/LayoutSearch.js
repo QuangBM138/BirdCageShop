@@ -3,6 +3,8 @@ import { Layout, Space, Menu, Dropdown, Button, Select } from 'antd';
 import './LayoutSearch.css';
 import ProductList from '../productList/ProductList';
 import BestSeller from '../bestSeller/BestSeller';
+import { default as HeaderSearch } from '../header/Header'
+import "../header/Header.css"
 const { Header, Footer, Sider, Content } = Layout;
 
 const array = ["num1", "num2", "num3", "num4"];
@@ -54,15 +56,18 @@ const App = () => {
 
   return (
     <div>
+      <HeaderSearch />
       <Space
         direction="vertical"
         style={{
           width: '100%',
-          backgroundColor: '#f5f5f5',
+          backgroundColor: '#fff',
         }}
         size={[0, 48]}
       >
-        <Layout className='search_container'>
+        <Layout
+          style={{ background: "#fff" }}
+          className='search_container'>
           <Sider
             breakpoint="lg"
             collapsedWidth="0"

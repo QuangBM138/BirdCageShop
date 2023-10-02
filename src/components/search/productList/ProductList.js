@@ -26,10 +26,19 @@ export default function ProductList() {
 
   return (
     <div>
-      <div className="container-pl px-4 py-8 mx-auto">
-        <div className="flex flex-wrap -m-1">
+      <div
+        style={{ background: "#fff" }}
+        className="container-pl py-8 mx-auto">
+        <div
+          className="grid -m-1 grid-cols-1 2xl:grid-cols-4 md:grid-cols-2 gap-5">
           {images.map((img, index) => (
-            <div className="xl:w-1/4 md:w-1/2 p-4">
+            <div
+              style={{
+                background: "#0000000d",
+                textAlign: "center"
+
+              }}
+              className="_product p-4">
               <div className='product_list_cards'>
                 <img className='product_list_cards_img' src={img} alt={`Slide ${index}`} />
                 <div className='product_list_cards_overlay'>
