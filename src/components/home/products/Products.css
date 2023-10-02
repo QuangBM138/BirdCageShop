@@ -1,6 +1,8 @@
 .image-product {
     width: 100%;
-
+    display: block;
+    height: 300px !important;
+    object-fit: contain !important;
 }
 
 /* 
@@ -22,6 +24,7 @@
 .product-wrapper {
     position: relative;
     transition: 0.5s;
+    width: 100%;
     cursor: pointer;
     border: 0.5px solid #e1dddd;
     padding: 30px;

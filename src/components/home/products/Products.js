@@ -9,70 +9,8 @@ import 'swiper/css/scrollbar';
 import 'swiper/css/autoplay';
 import SwiperButton from './SwiperButton';
 import ShoppingBasket from '@mui/icons-material/ShoppingBasket';
+import { Products_Cage } from '../../../data/Cages';
 
-const newProducts = [
-    {
-        name: 'Cage 1',
-        image: 'https://m.media-amazon.com/images/I/81+otqZcswL.jpg'
-    },
-    {
-        name: 'Cage 2',
-        image: 'https://m.media-amazon.com/images/I/81+otqZcswL.jpg'
-    },
-    {
-        name: 'Cage 3',
-        image: 'https://m.media-amazon.com/images/I/81+otqZcswL.jpg'
-    },
-    {
-        name: 'Cage 4',
-        image: 'https://m.media-amazon.com/images/I/81+otqZcswL.jpg'
-    },
-    {
-        name: 'Cage 5',
-        image: 'https://m.media-amazon.com/images/I/81+otqZcswL.jpg'
-    },
-    {
-        name: 'Cage 6',
-        image: 'https://m.media-amazon.com/images/I/81+otqZcswL.jpg'
-    },
-    ,
-    {
-        name: 'Cage 7',
-        image: 'https://m.media-amazon.com/images/I/81+otqZcswL.jpg'
-    }
-]
-
-const bestProducts = [
-    {
-        name: 'Cage 1',
-        image: 'https://m.media-amazon.com/images/I/81Vvqy6Y2-L._AC_SX679_.jpg/product20_8d6fda60-29ab-4bfb-a3c1-47d515d4a91c.jpg?v=1531469018'
-    },
-    {
-        name: 'Cage 2',
-        image: 'https://m.media-amazon.com/images/I/81Vvqy6Y2-L._AC_SX679_.jpg/product20_8d6fda60-29ab-4bfb-a3c1-47d515d4a91c.jpg?v=1531469018'
-    },
-    {
-        name: 'Cage 3',
-        image: 'https://m.media-amazon.com/images/I/81Vvqy6Y2-L._AC_SX679_.jpg/product20_8d6fda60-29ab-4bfb-a3c1-47d515d4a91c.jpg?v=1531469018'
-    },
-    {
-        name: 'Cage 4',
-        image: 'https://m.media-amazon.com/images/I/81Vvqy6Y2-L._AC_SX679_.jpg'
-    },
-    {
-        name: 'Cage 5',
-        image: 'https://m.media-amazon.com/images/I/81Vvqy6Y2-L._AC_SX679_.jpg'
-    },
-    {
-        name: 'Cage 6',
-        image: 'https://m.media-amazon.com/images/I/81Vvqy6Y2-L._AC_SX679_.jpg'
-    },
-    ,
-    {
-        name: 'Cage 7',
-        image: 'https://m.media-amazon.com/images/I/81Vvqy6Y2-L._AC_SX679_.jpg'
-    }
-]
 export default function Products() {
     const swiper = useSwiper()
     const [typeProduct, setTypeProduct] = useState('new')
@@ -135,10 +73,13 @@ export default function Products() {
                     style={typeProduct === 'new' ? { display: 'block', paddingBottom: '100px', position: 'relative' } : { display: 'none' }}
                 >
                     {
-                        newProducts.map((product, index) =>
+                        Products_Cage.map((product, index) =>
                             <SwiperSlide className="animate product-slide" key={index}>
                                 <div className='product-wrapper'>
-                                    <img className='image-product' src={product.image} />
+                                    {JSON.parse(product.images).map((img, index) => index == 0 && <img
+                                        className='image-product'
+                                        src={img} />)}
+
                                     <div className='show-block'>
                                         <p className='name-product'>{product.name}</p>
                                         <button className='button-cart'>
@@ -168,13 +109,16 @@ export default function Products() {
                     }}
                 >
                     {
-                        bestProducts.map((product, index) =>
+                        Products_Cage.map((product, index) =>
                             <SwiperSlide
                                 className="animate product-slide"
                                 key={index}
                             >
                                 <div className='product-wrapper'>
-                                    <img className='image-product' src={product.image} />
+                                    {JSON.parse(product.images).map((img, index) => index == 0 && <img
+                                        className='image-product'
+                                        src={img} />)}
+
                                     <div className='show-block'>
                                         <p className='name-product'>{product.name}</p>
                                         <button className='button-cart'>

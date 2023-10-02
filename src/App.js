@@ -6,7 +6,8 @@ import { Route, Routes } from "react-router-dom"
 import CartPage from "./pages/CartPage";
 import ProductDetailPage from "./pages/ProductDetailPage"
 import SearchPage from "./pages/SearchPage";
-import { Products } from "./data/Products";
+import { Products_Cage } from "./data/Cages";
+
 
 
 function App() {
@@ -22,14 +23,14 @@ function App() {
   //   console.log(product.images)
   //   return product.images
   // })
-  // console.log(Products)
+  // console.log(Products.length)
   return (
 
     <div className="App" style={{ background: "#fff" }}>
       {/* render image of each cage */}
-
-      {/* {Products.map(pro =>
-        <div>{JSON.parse(pro.images).map(img => <img src={img} />)}</div>
+      {/* 
+      {Products_Cage.map(pro =>
+        <div>{JSON.parse(pro.images).map((img, index) => index == 0 && <img src={img} />)}</div>
       )} */}
       <Header></Header>
       <Routes>

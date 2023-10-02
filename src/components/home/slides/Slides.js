@@ -11,6 +11,8 @@ import 'swiper/css/scrollbar';
 import 'swiper/css/autoplay';
 import "swiper/css/effect-fade";
 import slideImage from "./birdStreet.jpg"
+
+
 const slides = [
     {
         slideSrc: "https://m.media-amazon.com/images/I/71um4L3dM3L.jpg"

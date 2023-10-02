@@ -1,5 +1,4 @@
-
-export const Products = [
+export const Products_Cage = [
     {
         "name": "Prevue Hendryx Triple Roof Cockatiel Cage, Blue and White",
         "price": "74 .",
