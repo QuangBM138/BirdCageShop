@@ -5,24 +5,29 @@ import { Container } from '@mui/material'
 import Products from '../components/home/products/Products'
 import Slogan from '../components/home/slogan/Slogan'
 import About from '../components/home/about/About'
-import cage from '../components/home/about/gold_cage.png'
+import cage1 from '../components/home/about/cage1.png'
+import cage2 from '../components/home/about/cage2.png'
 import "../components/home/slides/Slide.css"
+// import { useStore } from '../components/cart/store/hooks'
 export default function HomePage() {
+    // const [state, dispatch] = useStore()
+    // console.log(state)
     return (
         <>
-
             <img
                 className='cage'
                 style={{ left: 0 }}
-                src={cage} />
+                src={cage1} />
             <img
                 className='cage'
                 style={{ right: 0 }}
-                src={cage} />
+                src={cage2} />
             {/* ---------------Slide--------------- */}
 
             {/*--------------- Categories--------------- */}
-            <Container maxWidth={"xl"}>
+            <Container style={{ position: "relative" }} maxWidth={"xl"}>
+
+
                 <Slides />
                 <Slogan
                     slogan="“The caged bird sings fearful of the unknown, yet expectant, and its melody is heard on the distant hills, for the caged bird sings freely.” – Maya Angelou"

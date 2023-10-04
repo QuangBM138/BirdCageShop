@@ -10,7 +10,8 @@ import 'swiper/css/autoplay';
 import SwiperButton from './SwiperButton';
 import ShoppingBasket from '@mui/icons-material/ShoppingBasket';
 import { Products_Cage } from '../../../data/Cages';
-
+import { useStore } from '../../cart/store/hooks';
+import { actions } from '../../cart/store';
 export default function Products() {
     const swiper = useSwiper()
     const [typeProduct, setTypeProduct] = useState('new')
@@ -19,11 +20,14 @@ export default function Products() {
 
     const [slideNewProductEnd, setSlideNewProductEnd] = useState(false)
     const [slideNewProductStart, setSlideNewProductStart] = useState(false)
-    // useEffect(() => {
-    //     setTransition(true)
-    //     typeProduct === 'new' ? setProductListByType(newProducts) : setProductListByType(bestProducts)
 
-    // }, [typeProduct])
+
+    const [state, dispatch] = useStore()
+
+    const handleAddToCart = index => {
+        dispatch(actions.addToCart(index))
+    }
+    console.log("asdasdadssd", state)
     return (
         <div className='prodcuts-grid'>
             <div className='tabs'>
@@ -82,7 +86,10 @@ export default function Products() {
 
                                     <div className='show-block'>
                                         <p className='name-product'>{product.name}</p>
-                                        <button className='button-cart'>
+                                        <button
+                                            className='button-cart'
+                                            onClick={() => handleAddToCart(index)}
+                                        >
                                             <ShoppingBasket /> Add to Cart
                                         </button>
                                     </div>
@@ -121,7 +128,10 @@ export default function Products() {
 
                                     <div className='show-block'>
                                         <p className='name-product'>{product.name}</p>
-                                        <button className='button-cart'>
+                                        <button
+                                            className='button-cart'
+
+                                        >
                                             <ShoppingBasket /> Add to Cart
                                         </button>
                                     </div>

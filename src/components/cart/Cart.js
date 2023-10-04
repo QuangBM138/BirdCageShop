@@ -2,9 +2,12 @@ import React from 'react'
 import Header from './header/Header'
 import { Container } from '@mui/material'
 import Item from './cartItem/Item.js'
-
+import { useStore } from './store/hooks'
 
 export default function Cart() {
+    const [state, dispatch] = useStore()
+    const { cart } = state
+    console.log(cart.map(item => console.log(item)))
     return (
         <Container>
             <div className=''>
@@ -13,9 +16,12 @@ export default function Cart() {
                         <div className='cart-row-header'>
                             <h2>Products</h2>
                         </div>
-                        <Item />
-                        <Item />
-                        <Item />
+                        {
+                            cart.map(item =>
+                                <Item cart={item} />
+                            )
+                        }
+
                     </div>
                     <div className='cart-section'>
                         <h2
