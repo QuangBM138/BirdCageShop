@@ -1,4 +1,4 @@
-import { ADD_TO_CART, DECREASE_QUANTITY } from './constants'
+import { ADD_TO_CART, DECREASE_QUANTITY, ONCHANGE_QUANTITY } from './constants'
 import { Products_Cage } from '../../../data/Cages'
 const initState = []
 const initial = () => JSON.parse(localStorage.getItem('cart')) || initState
@@ -32,6 +32,18 @@ const reducer = (state, action) => {
                         : item
                 )
 
+
+        }
+        case ONCHANGE_QUANTITY: {
+            const regx = /^[^1-9][^0-9]/g
+            action.payload.value = parseInt(action.payload.value.replace(regx, ''))
+            if (isNaN(action.payload.value)) action.payload.value = 1
+            return state.map(item => item.id === action.payload.id
+                ? {
+                    ...item, cartQuantity: action.payload.value
+                }
+                : item
+            )
 
         }
         default:

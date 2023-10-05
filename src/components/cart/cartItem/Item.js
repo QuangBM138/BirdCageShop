@@ -14,19 +14,10 @@ export default function Item({ cart, dispatch }) {
     const handleDecreaseQuantity = (id) => {
         dispatch(actions.decreaseQuantity(id))
     };
+    const handleOnChangeQuantity = (id, value) => {
+        dispatch(actions.onChangeQuantity({ id: id, value: value }))
+    }
 
-    // const handleInputChange = (e) => {
-    //     const inputValue = e.target.value;
-    //     if (inputValue === "") {
-    //         // Handle empty input by setting quantity to 1
-    //         setQuantity(1);
-    //     } else {
-    //         const parsedValue = parseInt(inputValue);
-    //         if (!isNaN(parsedValue) && parsedValue >= 1) {
-    //             setQuantity(parsedValue);
-    //         }
-    //     }
-    // };
     return (
         <> {
             <div className='cart-row'>
@@ -66,7 +57,7 @@ export default function Item({ cart, dispatch }) {
                             min="1"
                             name="quantity"
                             value={cart.cartQuantity}
-
+                            onChange={(e) => handleOnChangeQuantity(cart.id, e.target.value)}
                             // type="text"
                             inputMode="numeric"
                             className="form-control form-control-sm quantity-input"
