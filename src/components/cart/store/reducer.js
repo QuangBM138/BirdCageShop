@@ -35,9 +35,10 @@ const reducer = (state, action) => {
 
         }
         case ONCHANGE_QUANTITY: {
+            console.log(action.payload.value)
             const regx = /^[^1-9][^0-9]/g
             action.payload.value = parseInt(action.payload.value.replace(regx, ''))
-            if (isNaN(action.payload.value)) action.payload.value = 1
+            if (isNaN(action.payload.value) || action.payload.value == 0) action.payload.value = 1
             return state.map(item => item.id === action.payload.id
                 ? {
                     ...item, cartQuantity: action.payload.value
