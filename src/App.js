@@ -34,7 +34,7 @@ function App() {
       )} */}
       <Header></Header>
       <Routes>
-        <Route path="/detail" element={<ProductDetailPage />}></Route>
+        <Route path="/detail/:index" element={<ProductDetailPage />}></Route>
         <Route path="/" element={<HomePage />}></Route>
         <Route path="/cart" element={<CartPage />}></Route>
         <Route path="/search" element={<SearchPage />}></Route>
