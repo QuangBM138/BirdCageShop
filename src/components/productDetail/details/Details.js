@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Products } from '../../../data/Products';
+import { Products_Cage } from '../../../data/Cages';
 import ImageGallery from 'react-image-gallery';
 import "react-image-gallery/styles/css/image-gallery.css";
 import AddIcon from '@mui/icons-material/Add';
@@ -16,7 +16,7 @@ export default function Details() {
     const { index } = useParams();
 
     const productIndex = parseInt(index, 10); // Parse the index as an integer
-    const product = Products[productIndex]; // Access the product using the index
+    const product = Products_Cage[productIndex]; // Access the product using the index
 
     // Initialize img state as an empty array
     const [img, setImg] = useState([]);
@@ -35,10 +35,10 @@ export default function Details() {
                 .replace(regxCurlyBraces2, ']')
                 .replace(regxCurlyBraces, '[');
 
-          
+
             setImg(JSON.parse(formattedImages));
         }
-    }, [product]); 
+    }, [product]);
 
     if (!product) {
         return <div>Product not found</div>;
@@ -46,39 +46,39 @@ export default function Details() {
 
     const imgArray = img.map((imgSrc, imgIndex) => ({
         original: imgSrc,
-        thumbnail: imgSrc, 
-        description: `Image ${imgIndex + 1}`, 
+        thumbnail: imgSrc,
+        description: `Image ${imgIndex + 1}`,
     }));
 
     //quantity
-   
 
-const increaseQuantity = () => {
-    setQuantity(quantity + 1);
-};
 
-const decreaseQuantity = () => {
-    if (quantity > 1) {
-        setQuantity(quantity - 1);
-    }
-};
+    const increaseQuantity = () => {
+        setQuantity(quantity + 1);
+    };
 
-const handleInputChange = (e) => {
-    const inputValue = e.target.value;
-    if (inputValue === "") {
-        // Handle empty input by setting quantity to 1
-        setQuantity(1);
-    } else {
-        const parsedValue = parseInt(inputValue);
-        if (!isNaN(parsedValue) && parsedValue >= 1) {
-            setQuantity(parsedValue);
+    const decreaseQuantity = () => {
+        if (quantity > 1) {
+            setQuantity(quantity - 1);
         }
-    }
-};
+    };
 
-if (!product) {
-    return <div>Product not found</div>;
-}
+    const handleInputChange = (e) => {
+        const inputValue = e.target.value;
+        if (inputValue === "") {
+            // Handle empty input by setting quantity to 1
+            setQuantity(1);
+        } else {
+            const parsedValue = parseInt(inputValue);
+            if (!isNaN(parsedValue) && parsedValue >= 1) {
+                setQuantity(parsedValue);
+            }
+        }
+    };
+
+    if (!product) {
+        return <div>Product not found</div>;
+    }
 
     return (
         <section className="text-gray-600 body-font overflow-hidden" style={{ marginBottom: "-55px" }}>
@@ -184,7 +184,7 @@ if (!product) {
                                 </button>
 
                                 <button class='button_design'>
-                                   <h3>Buy it now</h3> 
+                                    <h3>Buy it now</h3>
                                 </button>
                             </div>
                         </div>
