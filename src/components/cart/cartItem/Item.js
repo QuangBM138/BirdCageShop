@@ -8,7 +8,7 @@ export default function Item({ cart, dispatch }) {
     // const [state, dispatch] = useStore()
     // const [quantity, setQuantity] = useState(1)
     const handleIncreaseQuantity = (id) => {
-        dispatch(actions.increaseQuantity(id))
+        dispatch(actions.addToCart(id))
     };
 
     const handleDecreaseQuantity = (id) => {

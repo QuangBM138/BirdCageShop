@@ -21,9 +21,18 @@ const reducer = (state, action) => {
             return [...state]
         }
         case INCREASE_QUANTITY: {
+            return state.find(item => item.id === action.payload)
+                ? state.map(item =>
+                    item.id === action.payload
+                        ? {
+                            ...item,
+                            cartQuantity: item.cartQuantity + 1
+                        }
+                        : item
+                )
+                : [...state]
 
 
-            return [...state]
 
         }
         case DECREASE_QUANTITY: {
