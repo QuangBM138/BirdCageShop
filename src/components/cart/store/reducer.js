@@ -1,38 +1,28 @@
 import { ADD_TO_CART } from './constants'
 import { Products_Cage } from '../../../data/Cages'
-const initState = {
-    cart: [],
-    cartTotalQuantity: 0,
-    cartTotalAmount: 0
-}
+const initState = []
+const initial = () => JSON.parse(localStorage.getItem('cart')) || initState
 const reducer = (state, action) => {
     switch (action.type) {
         case ADD_TO_CART: {
-            const cageIndex = state.cart.findIndex(cage => cage.id === action.payload)
+            const cageIndex = state.findIndex(cage => cage.id === action.payload)
             if (cageIndex >= 0) {
-                state.cart[cageIndex].cartQuantity += 1
+                state[cageIndex].cartQuantity += 1
             } else {
-                const cageTemp = {
-                    id: action.payload,
-                    ...Products_Cage[action.payload],
-                    cartQuantity: 1
-                }
-
-                return {
-                    ...initState,
-                    cart: [...state.cart, cageTemp]
-                }
+                return [
+                    ...state,
+                    {
+                        id: action.payload,
+                        ...Products_Cage[action.payload],
+                        cartQuantity: 1
+                    }
+                ]
             }
-            return {
-                ...initState,
-                cart: [...state.cart]
-            }
-
-
+            return [...state]
         }
         default:
             break;
     }
 }
 export default reducer
-export { initState }
+export { initState, initial }

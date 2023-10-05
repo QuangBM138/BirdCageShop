@@ -6,8 +6,8 @@ import { useStore } from './store/hooks'
 
 export default function Cart() {
     const [state, dispatch] = useStore()
-    const { cart } = state
-    console.log(cart.map(item => console.log(item)))
+    const cart = state
+
     return (
         <Container>
             <div className=''>

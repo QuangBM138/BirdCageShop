@@ -1,8 +1,11 @@
 import CartContext from './CartContext'
-import { useReducer } from "react"
-import reducer, { initState } from './reducer'
+import { useEffect, useReducer } from "react"
+import reducer, { initState, initial } from './reducer'
 function CartProvider({ children }) {
-    const [state, dispatch] = useReducer(reducer, initState)
+    const [state, dispatch] = useReducer(reducer, initState, initial)
+    useEffect(() => {
+        localStorage.setItem('cart', JSON.stringify(state))
+    }, [state])
     return (
         <CartContext.Provider value={[state, dispatch]}>
             {children}
