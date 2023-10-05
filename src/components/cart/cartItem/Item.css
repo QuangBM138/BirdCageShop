@@ -3,7 +3,8 @@
     grid-template-columns: 200px 1fr;
     margin-bottom: 30px;
     border: 1px solid #e9e9e9;
-
+    position: relative;
+    border-top-left-radius: 26px;
 }
 
 #checkout:hover {
@@ -67,4 +68,39 @@
 
 .cart-row-header {
     margin-bottom: 30px;
+}
+
+.remove-item {
+    position: absolute;
+    background: #ffc519;
+    color: #fff;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 25px;
+    text-align: center;
+    border-bottom: 4px solid #8d522c;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.5s;
+    cursor: pointer;
+
+}
+
+.remove-item:hover {
+    background: #8d522c;
+
+}
+
+.cart-image {
+    display: block;
+
+}
+
+.cart-image img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
 }

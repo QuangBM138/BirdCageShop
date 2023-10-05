@@ -17,10 +17,15 @@ export default function Item({ cart, dispatch }) {
     const handleOnChangeQuantity = (id, value) => {
         dispatch(actions.onChangeQuantity({ id: id, value: value }))
     }
-
+    const handleDeleteItem = id => {
+        dispatch(actions.onDeleteItem(id))
+    }
     return (
         <> {
             <div className='cart-row'>
+                <span
+                    onClick={() => handleDeleteItem(cart.id)}
+                    className='remove-item'>X</span>
                 <div className='cart-items'>
                     <a className='cart-image'>
                         {JSON.parse(cart.images).map((img, index) => index == 0 && <img src={img} />)}

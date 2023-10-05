@@ -1,4 +1,4 @@
-import { ADD_TO_CART, DECREASE_QUANTITY, ONCHANGE_QUANTITY } from './constants'
+import { ADD_TO_CART, DECREASE_QUANTITY, ONCHANGE_QUANTITY, ONDELETE_ITEM } from './constants'
 import { Products_Cage } from '../../../data/Cages'
 const initState = []
 const initial = () => JSON.parse(localStorage.getItem('cart')) || initState
@@ -46,6 +46,9 @@ const reducer = (state, action) => {
                 : item
             )
 
+        }
+        case ONDELETE_ITEM: {
+            return state.filter(item => item.id != action.payload)
         }
         default:
             break;
