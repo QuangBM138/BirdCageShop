@@ -2,31 +2,31 @@ import React, { useState } from 'react'
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import "./Item.css"
-export default function Item({ cart }) {
-    console.log(cart)
-    const [quantity, setQuantity] = useState(1)
-    const increaseQuantity = () => {
-        setQuantity(quantity + 1);
+import { useStore } from '../store/hooks';
+import { actions } from '../store';
+export default function Item({ cart, dispatch }) {
+    // const [state, dispatch] = useStore()
+    // const [quantity, setQuantity] = useState(1)
+    const handleIncreaseQuantity = (id) => {
+        dispatch(actions.increaseQuantity(id))
     };
 
-    const decreaseQuantity = () => {
-        if (quantity > 1) {
-            setQuantity(quantity - 1);
-        }
+    const handleDecreaseQuantity = (id) => {
+        dispatch(actions.decreaseQuantity(id))
     };
 
-    const handleInputChange = (e) => {
-        const inputValue = e.target.value;
-        if (inputValue === "") {
-            // Handle empty input by setting quantity to 1
-            setQuantity(1);
-        } else {
-            const parsedValue = parseInt(inputValue);
-            if (!isNaN(parsedValue) && parsedValue >= 1) {
-                setQuantity(parsedValue);
-            }
-        }
-    };
+    // const handleInputChange = (e) => {
+    //     const inputValue = e.target.value;
+    //     if (inputValue === "") {
+    //         // Handle empty input by setting quantity to 1
+    //         setQuantity(1);
+    //     } else {
+    //         const parsedValue = parseInt(inputValue);
+    //         if (!isNaN(parsedValue) && parsedValue >= 1) {
+    //             setQuantity(parsedValue);
+    //         }
+    //     }
+    // };
     return (
         <> {
             <div className='cart-row'>
@@ -57,16 +57,16 @@ export default function Item({ cart }) {
                                 borderBottomLeftRadius: "5px",
 
                             }}
-                            onClick={decreaseQuantity}
+                            onClick={() => handleDecreaseQuantity(cart.id)}
                             type="button"
                         >
                             <RemoveIcon />
                         </button>
                         <input
-
                             min="1"
                             name="quantity"
                             value={cart.cartQuantity}
+
                             // type="text"
                             inputMode="numeric"
                             className="form-control form-control-sm quantity-input"
@@ -78,7 +78,7 @@ export default function Item({ cart }) {
                                 textAlign: "center",
 
                             }}
-                            onChange={handleInputChange}
+
                         />
                         <button
                             style={{
@@ -92,7 +92,7 @@ export default function Item({ cart }) {
                                 borderTopRightRadius: "5px",
                                 borderBottomRightRadius: "5px",
                             }}
-                            onClick={increaseQuantity}
+                            onClick={() => handleIncreaseQuantity(cart.id)}
                             type="button"
                         >
                             <AddIcon />

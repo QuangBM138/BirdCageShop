@@ -1,4 +1,4 @@
-import { ADD_TO_CART } from './constants'
+import { ADD_TO_CART, DECREASE_QUANTITY, INCREASE_QUANTITY } from './constants'
 import { Products_Cage } from '../../../data/Cages'
 const initState = []
 const initial = () => JSON.parse(localStorage.getItem('cart')) || initState
@@ -19,6 +19,25 @@ const reducer = (state, action) => {
                 ]
             }
             return [...state]
+        }
+        case INCREASE_QUANTITY: {
+
+
+            return [...state]
+
+        }
+        case DECREASE_QUANTITY: {
+            return state.find(item => item.id === action.payload).cartQuantity === 1 ?
+                state.filter(item => item.id != action.payload)
+                : state.map(item =>
+                    item.id === action.payload
+                        ? {
+                            ...item, cartQuantity: item.cartQuantity - 1
+                        }
+                        : item
+                )
+
+
         }
         default:
             break;
