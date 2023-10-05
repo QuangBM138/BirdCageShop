@@ -12,26 +12,33 @@ import './BestSeller.css';
 // import required modules
 import { Keyboard, Pagination, Navigation } from 'swiper/modules';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
+import { Products } from '../../../data/Products';
+import { Link } from 'react-router-dom';
 
 export default function BestSeller() {
-    const images = [
-        "https://salt.tikicdn.com/cache/w1200/ts/product/c6/eb/aa/17b3a771c675d3eac1619dadbe05b7c7.jpg",
-        "https://www.dogfood.com.my/wp-content/uploads/2022/03/daily-diet-dog-food-1.jpg",
-        "https://www.petfoodchina.com/data/watermark/20210224/6035afdc9ebd9.jpg",
-        "https://catit.ca/wp-content/uploads/2019/07/Chicken-Dinners_product-1_CA_Woocommerce.jpg",
-        "https://images.deliveryhero.io/image/nv/Thailand/Vendor-Ops/09012023/TH-Whiskas-Tuna-Flavour-Cat-Food-3kg-Front-View.jpg",
-        "https://unisa.edu.au/siteassets/media-centre/images/media-release-images/2023/-pig_500-x-500-resized.jpg",
-        "https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187_square.jpg",
-        "https://i.natgeofe.com/k/75ac774d-e6c7-44fa-b787-d0e20742f797/giant-panda-eating_4x3.jpg",
-        "https://salt.tikicdn.com/cache/w1200/ts/product/c6/eb/aa/17b3a771c675d3eac1619dadbe05b7c7.jpg",
-        "https://www.dogfood.com.my/wp-content/uploads/2022/03/daily-diet-dog-food-1.jpg",
-        "https://www.petfoodchina.com/data/watermark/20210224/6035afdc9ebd9.jpg",
-        "https://catit.ca/wp-content/uploads/2019/07/Chicken-Dinners_product-1_CA_Woocommerce.jpg",
-        "https://images.deliveryhero.io/image/nv/Thailand/Vendor-Ops/09012023/TH-Whiskas-Tuna-Flavour-Cat-Food-3kg-Front-View.jpg",
-        "https://unisa.edu.au/siteassets/media-centre/images/media-release-images/2023/-pig_500-x-500-resized.jpg",
-        "https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187_square.jpg",
-        "https://i.natgeofe.com/k/75ac774d-e6c7-44fa-b787-d0e20742f797/giant-panda-eating_4x3.jpg",
-    ];
+    const regx = /:\[\d{3},\d{3}]/g;
+  const regxQuotes = /(\"{|\\|}")/g;
+  const regxCurlyBraces = /(\{)/g;
+  const regxCurlyBraces2 = /(\})/g;
+
+  const newPro = Products.map(product => {
+    console.log(product.images);
+
+    // Replace ':[' and ']' with an empty string
+    product.images = product.images.replace(regx, '');
+
+    // Replace '\"{' and '}' with '[' and ']'
+    product.images = product.images.replace(regxQuotes, '[').replace(regxCurlyBraces2, ']');
+
+    // Replace '{' with '[' and '}' with ']'
+    product.images = product.images.replace(regxCurlyBraces, '[').replace(regxCurlyBraces2, ']');
+
+    console.log(product.images);
+
+    return product;
+  });
+
+  console.log(newPro);
     return (
         <div className='container-bs'>
             <Swiper
@@ -47,19 +54,24 @@ export default function BestSeller() {
                 modules={[Keyboard, Pagination, Navigation]}
                 className="mySwiper"
             >
-                {images.map((img, index) => (
-                    <SwiperSlide>
+              {Products.map((pro, index) =>
+                    <SwiperSlide key={index}>
+                         <Link  to={`/detail/${index}`}>
                         <div className='best_seller'>
-                            <img className='best_seller_img' src={img} alt={`Slide ${index}`} />
+                        <div>
+                  {JSON.parse(pro.images).map(img =>
+                    <img className='best_seller_img' src={img} alt={`Image ${index}`} />
+                  )}
+                </div>
                             <div className='best_seller_overlay'>
                                 <div className="best_seller_overlay_frame">
                                     <div className='best_seller_title'>
-                                        <h4 className="h4_best_seller">Adult Dogs Pedigree</h4>
+                                        <h4 className="h4_best_seller">{pro.name.slice(0,20) + "..."}</h4>
                                     </div>
                                 </div>
                                 <div className="best_seller_overlay_frame">
                                     <div className='best_seller_prices'>
-                                        <h3>$350.00</h3>
+                                        <h3>${pro.price}</h3>
                                     </div>
                                 </div>
                                 <div className="best_seller_overlay_frame">
@@ -69,9 +81,9 @@ export default function BestSeller() {
                                 </div>
                             </div>
                         </div>
-
+                        </Link>
                     </SwiperSlide>
-                ))}
+                 )}
 
             </Swiper>
         </div>

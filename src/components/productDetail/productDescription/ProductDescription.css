@@ -12,6 +12,7 @@ p {
 }
 
 strong {
+    font-family: 'Poppins', sans-serif;
     line-height: 80px;
     font-weight: bold;
 }
