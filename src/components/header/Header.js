@@ -4,9 +4,11 @@ import { FaBars } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
 import { Routes, Route, Link } from "react-router-dom"
 import { Container } from '@mui/material'
+import { useStore } from "../cart/store/hooks";
 const Header = () => {
   const [Mobile, setMobile] = useState(false);
   const [showSearchInput, setShowSearchInput] = useState(false)
+  const [state, dispatch] = useStore()
   return (
     <div className="navbar">
       <div>
@@ -42,8 +44,18 @@ const Header = () => {
           <a>
             <i className="fa fa-user"></i>
           </a>
-          <Link to="/cart">
+          <Link to="/cart" className="cart-icon">
             <i className="fa-solid fa-cart-shopping"></i>
+            <span
+              id="cartCount"
+            >
+              {
+                state.reduce((acc, curr) =>
+                  acc + curr.cartQuantity
+                  , 0
+                )
+              }
+            </span>
           </Link>
 
         </div>
