@@ -47,10 +47,10 @@ body {
     transition: transform 1s;
     position: relative;
     overflow: hidden;
-    /* margin: 0.19rem; */
+    /* margin-bottom: 100px; */
     cursor: pointer;
     /* width: 254px; */
-    width: 100%;
+    width: 290px;
     height: 290px;
     z-index: 0;
     display: flex;
@@ -66,6 +66,7 @@ body {
 .best_seller_img {
     object-fit: cover;
     height: 250px;
+    width: 250px;
 }
 
 .best_seller_overlay {
