@@ -1,7 +1,7 @@
 import React from 'react'
-import UserProfile from '../userProfile/UserProfile'
+import UserProfile from '../components/userProfile/UserProfile'
 import { Route, Routes } from 'react-router-dom'
-import Adress from '../adress/Adress'
+import Adress from '../components/adress/Adress'
 
 export default function UserProfilePage() {
     return (

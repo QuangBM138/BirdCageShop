@@ -41,9 +41,9 @@ const Header = () => {
           <a onClick={() => setShowSearchInput(!showSearchInput)}>
             <i className="fa fa-search"></i>
           </a>
-          <a>
+          <Link to="/user">
             <i className="fa fa-user"></i>
-          </a>
+          </Link>
           <Link to="/cart" className="cart-icon">
             <i className="fa-solid fa-cart-shopping"></i>
             <span
