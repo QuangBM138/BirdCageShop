@@ -1,7 +1,8 @@
 import React from 'react'
 import './Adress.css'
+import { Link } from 'react-router-dom'
 
-export default function Adress() {
+export default function Address() {
     return (
         <div className='adress_container'>
             <div className='user_adress'>
@@ -11,7 +12,7 @@ export default function Adress() {
                     </div>
 
                     <div>
-                        <a href='/' className='return_accD'>Return to Account Detail</a>
+                        <Link to='/user' className='return_accD'>Return to Account Detail</Link>
                     </div>
                 </section>
                 <section className='adress_section_big'>

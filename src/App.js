@@ -7,7 +7,7 @@ import CartPage from "./pages/CartPage";
 import ProductDetailPage from "./pages/ProductDetailPage"
 import SearchPage from "./pages/SearchPage";
 import { Products_Cage } from "./data/Cages";
-import Adress from "./components/adress/Adress";
+import Adress from "./components/address/Address";
 import UserProfile from "./components/userProfile/UserProfile";
 
 

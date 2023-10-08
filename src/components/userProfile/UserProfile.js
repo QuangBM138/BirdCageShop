@@ -11,7 +11,7 @@ export default function UserProfile() {
                 <h4 className='accountD_h4'>Account Details</h4>
                 <h5 className='nameuser_h5'>nhi nguyen</h5>
                 <p className='adress_p'>Vietnam</p>
-                <p className='va_p'><Link to={`/adress`} className='va_a'>View Addresses</Link></p>
+                <p className='va_p'><Link to={`/address`} className='va_a'>View Addresses</Link></p>
 
             </div>
         </div>
