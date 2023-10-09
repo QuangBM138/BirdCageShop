@@ -12,6 +12,7 @@ import ShoppingBasket from '@mui/icons-material/ShoppingBasket';
 import { Products_Cage } from '../../../data/Cages';
 import { useStore } from '../../cart/store/hooks';
 import { actions } from '../../cart/store';
+import { Link } from 'react-router-dom';
 export default function Products() {
     const swiper = useSwiper()
     const [typeProduct, setTypeProduct] = useState('new')
@@ -85,7 +86,10 @@ export default function Products() {
                                         src={img} />)}
 
                                     <div className='show-block'>
-                                        <p className='name-product'>{product.name}</p>
+                                        <Link to={`/detail/${index}`}>
+                                            <p className='name-product'>{product.name}</p>
+                                        </Link>
+
                                         <button
                                             className='button-cart'
                                             onClick={() => handleAddToCart(index)}
