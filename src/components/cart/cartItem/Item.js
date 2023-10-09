@@ -4,6 +4,7 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import "./Item.css"
 import { useStore } from '../store/hooks';
 import { actions } from '../store';
+import Swal from 'sweetalert2'
 export default function Item({ cart, dispatch }) {
     // const [state, dispatch] = useStore()
     // const [quantity, setQuantity] = useState(1)
@@ -20,11 +21,29 @@ export default function Item({ cart, dispatch }) {
     const handleDeleteItem = id => {
         dispatch(actions.onDeleteItem(id))
     }
+
     return (
         <> {
             <div className='cart-row'>
                 <span
-                    onClick={() => handleDeleteItem(cart.id)}
+                    onClick={() => {
+                        Swal.fire({
+                            title: 'Delete product',
+                            text: "Do you want to delete the currently selected product?",
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Yes'
+                        })
+                            .then(
+                                result => {
+                                    if (result.isConfirmed) {
+                                        handleDeleteItem(cart.id)
+                                    }
+                                })
+
+                    }}
                     className='remove-item'>X</span>
                 <div className='cart-items'>
                     <a className='cart-image'>
@@ -53,7 +72,23 @@ export default function Item({ cart, dispatch }) {
                                 borderBottomLeftRadius: "5px",
 
                             }}
-                            onClick={() => handleDecreaseQuantity(cart.id)}
+                            onClick={() => cart.cartQuantity == 1 ?
+                                Swal.fire({
+                                    title: 'Delete product',
+                                    text: "Do you want to delete the currently selected product?",
+                                    icon: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#3085d6',
+                                    cancelButtonColor: '#d33',
+                                    confirmButtonText: 'Yes'
+                                })
+                                    .then(
+                                        result => {
+                                            if (result.isConfirmed) {
+                                                handleDecreaseQuantity(cart.id)
+                                            }
+                                        })
+                                : handleDecreaseQuantity(cart.id)}
                             type="button"
                         >
                             <RemoveIcon />
