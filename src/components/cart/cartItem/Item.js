@@ -8,15 +8,15 @@ import Swal from 'sweetalert2'
 export default function Item({ cart, dispatch }) {
     // const [state, dispatch] = useStore()
     // const [quantity, setQuantity] = useState(1)
-    const handleIncreaseQuantity = (id) => {
-        dispatch(actions.addToCart(id))
+    const handleIncreaseQuantity = (index) => {
+        dispatch(actions.addToCart({ index, quantity: 1 }))
     };
 
     const handleDecreaseQuantity = (id) => {
         dispatch(actions.decreaseQuantity(id))
     };
-    const handleOnChangeQuantity = (id, value) => {
-        dispatch(actions.onChangeQuantity({ id: id, value: value }))
+    const handleOnChangeQuantity = (id) => {
+        dispatch(actions.onChangeQuantity(id))
     }
     const handleDeleteItem = id => {
         dispatch(actions.onDeleteItem(id))
@@ -47,7 +47,9 @@ export default function Item({ cart, dispatch }) {
                     className='remove-item'>X</span>
                 <div className='cart-items'>
                     <a className='cart-image'>
-                        {JSON.parse(cart.images).map((img, index) => index == 0 && <img src={img} />)}
+                        {
+                            JSON.parse(cart.images).map((img, index) => index == 0 && <img src={img} />)
+                        }
                     </a>
                 </div>
                 <div className='product-info'>

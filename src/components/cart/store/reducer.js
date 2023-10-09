@@ -5,17 +5,16 @@ const initial = () => JSON.parse(localStorage.getItem('cart')) || initState
 const reducer = (state, action) => {
     switch (action.type) {
         case ADD_TO_CART: {
-            const cageIndex = state.findIndex(cage => cage.id === action.payload)
-
+            const cageIndex = state.findIndex(cage => cage.id === action.payload.index)
+            console.log(action.payload)
             if (cageIndex >= 0) {
-                state[cageIndex].cartQuantity += 1
+                state[cageIndex].cartQuantity += action.payload.quantity
             } else {
                 return [
                     ...state,
                     {
-                        id: action.payload,
-                        ...Products_Cage[action.payload],
-                        cartQuantity: 1
+                        ...Products_Cage.find(cage => cage.id === action.payload.index),
+                        cartQuantity: action.payload.quantity
                     }
                 ]
             }

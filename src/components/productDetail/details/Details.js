@@ -6,7 +6,8 @@ import ImageGallery from 'react-image-gallery';
 import "react-image-gallery/styles/css/image-gallery.css";
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-
+import { actions } from '../../cart/store';
+import { useStore } from '../../cart/store';
 import './Details.css';
 import DetailSwiper from './DetailSwiper';
 
@@ -15,10 +16,12 @@ export default function Details() {
 
     const [quantity, setQuantity] = useState(1);
     const { index } = useParams();
-
+    const [state, dispatch] = useStore()
     const productIndex = parseInt(index, 10); // Parse the index as an integer
     const product = Products_Cage[productIndex]; // Access the product using the index
-
+    const handleAddToCart = (index, quantity) => {
+        dispatch(actions.addToCart({ index, quantity }))
+    }
     // Initialize img state as an empty array
     const [img, setImg] = useState([]);
 
@@ -80,7 +83,7 @@ export default function Details() {
     if (!product) {
         return <div>Product not found</div>;
     }
-
+    console.log(product.id)
     return (
         <section className="text-gray-600 body-font overflow-hidden" style={{ marginBottom: "-55px" }}>
             <div className="container px-0 py-24 mx-auto my-16">
@@ -168,7 +171,9 @@ export default function Details() {
                                 </button>
                             </div>
                             <div class="flex mt-12">
-                                <button class='button_design'>
+                                <button
+                                    onClick={() => handleAddToCart(product.id, quantity)}
+                                    class='button_design'>
                                     <h3>Add to Cart</h3>
                                 </button>
 

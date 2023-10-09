@@ -25,8 +25,8 @@ export default function Products() {
 
     const [state, dispatch] = useStore()
 
-    const handleAddToCart = index => {
-        dispatch(actions.addToCart(index))
+    const handleAddToCart = (index) => {
+        dispatch(actions.addToCart({ index, quantity: 1 }))
     }
     console.log("asdasdadssd", state)
     return (
