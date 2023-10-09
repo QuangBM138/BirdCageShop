@@ -9,7 +9,8 @@ import SearchPage from "./pages/SearchPage";
 import { Products_Cage } from "./data/Cages";
 import Adress from "./components/address/Address";
 import UserProfile from "./components/userProfile/UserProfile";
-
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 
 function App() {
@@ -26,6 +27,10 @@ function App() {
   //   return product.images
   // })
   // console.log(Products.length)
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
   return (
 
     <div className="App" style={{ background: "#fff" }}>
