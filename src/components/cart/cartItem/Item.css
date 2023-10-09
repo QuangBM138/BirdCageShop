@@ -104,3 +104,35 @@
     height: 200px;
     object-fit: contain;
 }
+
+.cart-empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.cart-empty img {
+    width: 100px;
+}
+
+.cart-empty h4 {
+    font-size: 35px;
+    margin-bottom: 5px;
+}
+
+.button-shopping {
+    color: #fff;
+    background: #ffc519;
+    padding: 10px 14px;
+    border-bottom: 4px solid #8d522c;
+    border-radius: 30px;
+    font-weight: 400;
+    display: block;
+    transition: all 0.5s;
+    margin-top: 10px;
+}
+
+.button-shopping:hover {
+    background: #8d522c;
+}
