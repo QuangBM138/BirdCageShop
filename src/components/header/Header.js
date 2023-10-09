@@ -2,13 +2,27 @@ import React, { useState } from "react";
 import "./Header.css";
 import { FaBars } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
-import { Routes, Route, Link } from "react-router-dom"
+import { Routes, Route, Link, useNavigate } from "react-router-dom"
 import { Container } from '@mui/material'
 import { useStore } from "../cart/store/hooks";
+
+
 const Header = () => {
   const [Mobile, setMobile] = useState(false);
   const [showSearchInput, setShowSearchInput] = useState(false)
-  const [state, dispatch] = useStore()
+  const [state, dispatch] = useStore();
+
+  // handle search input
+  const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearch = () => {
+    const trimmedQuery = searchQuery.trim();
+    const url = `/search?query=${encodeURIComponent(trimmedQuery)}`;
+    navigate(url);
+  };
+
+
   return (
     <div className="navbar">
       <div>
@@ -17,9 +31,14 @@ const Header = () => {
           className="input-search-container"
           maxWidth={"md"}>
 
-          <input className="input" type="text" placeholder="Search" />
-
-          <button>
+          <input
+            className="input"
+            type="text"
+            placeholder="Search"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+          <button onClick={handleSearch}>
             <i className="fa fa-search"></i>
           </button>
 

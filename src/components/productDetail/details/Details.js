@@ -8,6 +8,7 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 
 import './Details.css';
+import DetailSwiper from './DetailSwiper';
 
 
 export default function Details() {
@@ -85,19 +86,7 @@ export default function Details() {
             <div className="container px-0 py-24 mx-auto my-16">
                 <div className="lg:w-1/1 mx-auto flex flex-wrap border border-grey px-6 py-12 md:mx-10 sm:mx-auto mr-8 ml-8">
                     <div className="lg:w-1/2 w-full lg:pr-5 lg:py-3 mt-3 lg:mt-0 object-cover">
-                        <ImageGallery
-                            key={productIndex}
-                            items={imgArray}
-                            autoPlay={true}
-                            thumbnailPosition="bottom"
-                            showPlayButton={false}
-                            showNav={true}
-                            slideDuration={200}
-                            infinite={true}
-                            slideOnThumbnailOver={true}
-                            thumbnailHeight={200}
-                            originalHeight={500}
-                        />
+                        <DetailSwiper />
                     </div>
                     <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-4 lg:mt-0 ">
                         <h1 class="text-gray-900 text-3xl title-font font-medium mb-3"
