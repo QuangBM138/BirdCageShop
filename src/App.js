@@ -27,6 +27,8 @@ function App() {
   //   return product.images
   // })
   // console.log(Products.length)
+
+
   const { pathname } = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0)
