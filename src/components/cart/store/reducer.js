@@ -6,6 +6,7 @@ const reducer = (state, action) => {
     switch (action.type) {
         case ADD_TO_CART: {
             const cageIndex = state.findIndex(cage => cage.id === action.payload)
+
             if (cageIndex >= 0) {
                 state[cageIndex].cartQuantity += 1
             } else {
