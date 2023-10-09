@@ -45,51 +45,6 @@ export default function ProductList() {
 
   return (
     <div>
-      {/* <SearchInput onSearch={handleSearch} /> */}
-      {/* <div
-        style={{ background: "#fff" }}
-        className="container-pl py-8 mx-auto">
-        <div
-          className="grid -m-1 grid-cols-1 2xl:grid-cols-4 md:grid-cols-2 gap-5">
-          {Products_Cage.map((pro, index) =>
-            <div
-              key={index}
-              style={{
-                background: "#0000000d",
-                textAlign: "center"
-              }}
-              className="_product p-4">
-              <Link to={`/detail/${index}`}>
-                <div className='product_list_cards'>
-                  <div>
-                    {JSON.parse(pro.images).map(img =>
-                      <img className='product_list_cards_img' src={img} alt={`Image ${index}`} />
-                    )}
-                  </div>
-                  <div className='product_list_cards_overlay'>
-                    <div className="product_list_cards_overlay_frame">
-                      <div className='product_list_cards_title'>
-                        <h4 className="h4_product_list_cards">{pro.name.slice(0, 30) + "..."}</h4>
-                      </div>
-                    </div>
-                    <div className="product_list_cards_overlay_frame">
-                      <div className='product_list_cards_prices'>
-                        <h3>${pro.price}</h3>
-                      </div>
-                    </div>
-                    <div className="product_list_cards_overlay_frame">
-                      <button className='button_list_design'>
-                        <ShoppingBasketIcon /> Add to Cart
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            </div>
-          )}
-        </div>
-      </div> */}
-
       <div>
         {filteredProducts.length === 0 ? (
           <p>No products found.</p>
@@ -102,13 +57,13 @@ export default function ProductList() {
                 className="grid -m-1 grid-cols-1 2xl:grid-cols-4 md:grid-cols-2 gap-5">
                 {filteredProducts.map((pro, index) => (
                   <div
-                    key={index}
+                    key={pro.id}
                     style={{
                       background: "#0000000d",
                       textAlign: "center"
                     }}
                     className="_product p-4">
-                    <Link to={`/detail/${index}`}>
+                    <Link to={`/detail/${pro.id}`}>
                       <div className='product_list_cards'>
                         <div>
                           {JSON.parse(pro.images).map(img =>

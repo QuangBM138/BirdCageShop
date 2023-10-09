@@ -14,10 +14,9 @@ import DetailSwiper from './DetailSwiper';
 export default function Details() {
 
     const [quantity, setQuantity] = useState(1);
-    const { index } = useParams();
+    const { id } = useParams();
 
-    const productIndex = parseInt(index, 10); // Parse the index as an integer
-    const product = Products_Cage[productIndex]; // Access the product using the index
+    const product = Products_Cage.find((product) => product.id === parseInt(id, 10));
 
     // Initialize img state as an empty array
     const [img, setImg] = useState([]);

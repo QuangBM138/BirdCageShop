@@ -11,10 +11,9 @@ import { useParams } from 'react-router-dom';
 
 export default function DetailSwiper() {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
-  const { index } = useParams();
+  const { id } = useParams();
 
-  const productIndex = parseInt(index, 10);
-  const product = Products_Cage[productIndex];
+  const product = Products_Cage.find((product) => product.id === parseInt(id, 10));
 
   const [img, setImg] = useState([]);
 
