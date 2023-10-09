@@ -98,7 +98,7 @@ export default function Item({ cart, dispatch }) {
 
                     <div className='price'>
                         <span className='cart-total'>Total: </span>
-                        <span className='money'>50000</span>
+                        <span className='money'>{cart.price * cart.cartQuantity}</span>
                     </div>
                 </div>
             </div>

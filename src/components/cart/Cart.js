@@ -49,7 +49,9 @@ export default function Cart() {
                                     marginBottom: "15px"
                                 }}
                             >
-                                900000
+                                {cart.reduce((acc, curr) =>
+                                    acc + curr.price * curr.cartQuantity
+                                    , 0)}
                             </span>
                         </p>
 
