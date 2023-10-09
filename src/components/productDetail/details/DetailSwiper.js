@@ -62,10 +62,10 @@ export default function DetailSwiper() {
         {img.map((imag, index) => (
           <SwiperSlide key={index}>
             <img
-             
+
               src={imag}
               alt={`Image ${index + 1}`}
-              style={{ maxWidth: '300px', maxHeight: '500px' }} // Set your desired maxWidth and maxHeight
+              style={{ maxWidth: '300px', maxHeight: '500px', objectFit: 'contain' }} // Set your desired maxWidth and maxHeight
             />
           </SwiperSlide>
         ))}
