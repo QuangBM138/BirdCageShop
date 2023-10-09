@@ -64,7 +64,7 @@ export default function Products() {
                 <Swiper
                     className={typeProduct === 'new' ? 'animate' : ""}
                     modules={[Navigation, Pagination, Scrollbar]}
-                    slidesPerView={4}
+
                     loop={false}
                     spaceBetween={50}
                     onBeforeInit={(swiper) => {
@@ -76,6 +76,21 @@ export default function Products() {
                         setSlideNewProductEnd(swiper.isEnd)
                     }}
                     style={typeProduct === 'new' ? { display: 'block', paddingBottom: '100px', position: 'relative' } : { display: 'none' }}
+                    breakpoints={{
+                        100: {
+                            slidesPerView: 1
+                        },
+                        550: {
+                            slidesPerView: 2
+                        },
+                        825: {
+                            slidesPerView: 3,
+
+                        },
+                        1500: {
+                            slidesPerView: 4,
+                        }
+                    }}
                 >
                     {
                         Products_Cage.map((product, index) =>
