@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Header.css";
 import { FaBars } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
 import { Routes, Route, Link, useNavigate } from "react-router-dom"
 import { Container } from '@mui/material'
 import { useStore } from "../cart/store/hooks";
+import SearchResults from "../search/searchResult/SearchResult";
+import { Products_Cage } from "../../data/Cages";
 
 
 const Header = () => {
@@ -15,6 +17,8 @@ const Header = () => {
   // handle search input
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+
 
   const handleSearch = () => {
     const trimmedQuery = searchQuery.trim();
@@ -22,6 +26,30 @@ const Header = () => {
     navigate(url);
   };
 
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleSearch();
+      clearSearch();
+    }
+  };
+
+  
+
+  useEffect(() => {
+    if (searchQuery) {
+      const filteredResults = Products_Cage.filter((product) =>
+        product.name.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setSearchResults(filteredResults);
+    } else {
+      setSearchResults([]); 
+    }
+  }, [searchQuery]);
+
+  const clearSearch = () => {
+    setSearchQuery("");
+    setSearchResults([]);
+  };
 
   return (
     <div className="navbar">
@@ -31,19 +59,25 @@ const Header = () => {
           className="input-search-container"
           maxWidth={"md"}>
 
-          <input
+<input
             className="input"
             type="text"
             placeholder="Search"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
+            onKeyDown={handleKeyPress}
           />
+          
+            
           <button onClick={handleSearch}>
             <i className="fa fa-search"></i>
           </button>
-
         </Container>
+        <SearchResults results={searchResults}
+            input={searchQuery}
+            clearSearch={clearSearch}/>
       </div>
+
       <header className="header">
 
         {/* <h3 className="logo">Bird Cage Shop</h3> */}

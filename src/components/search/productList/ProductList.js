@@ -47,7 +47,19 @@ export default function ProductList() {
     <div>
       <div>
         {filteredProducts.length === 0 ? (
-          <p>No products found.</p>
+          <div style={{
+            height: '720px',
+            display: 'flex',
+            justifyContent: 'center',
+            // alignItems: 'center',
+            paddingTop: '50px',
+            fontSize: '24px',
+            color: 'gray',
+            fontStyle: 'italic',
+          }}>
+            No products found.
+          </div>
+          
         ) : (
           <ul>
             <div

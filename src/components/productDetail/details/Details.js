@@ -23,22 +23,21 @@ export default function Details() {
 
     // Format the image data once when the component mounts or when product.images changes
     useEffect(() => {
-        if (product) {
-            const regx = /:\[\d{3},\d{3}]/g;
-            const regxQuotes = /(\"{|\\|}")/g;
-            const regxCurlyBraces = /(\{)/g;
-            const regxCurlyBraces2 = /(\})/g;
-
-            const formattedImages = product.images
-                .replace(regx, '')
-                .replace(regxQuotes, '[')
-                .replace(regxCurlyBraces2, ']')
-                .replace(regxCurlyBraces, '[');
-
-
-            setImg(JSON.parse(formattedImages));
+        if (product && product.images) {
+          const regx = /:\[\d{3},\d{3}]/g;
+          const regxQuotes = /(\"{|\\|}")/g;
+          const regxCurlyBraces = /(\{)/g;
+          const regxCurlyBraces2 = /(\})/g;
+      
+          const formattedImages = product.images
+            .replace(regx, '')
+            .replace(regxQuotes, '[')
+            .replace(regxCurlyBraces2, ']')
+            .replace(regxCurlyBraces, '[');
+      
+          setImg(JSON.parse(formattedImages));
         }
-    }, [product]);
+      }, [product]);
 
     if (!product) {
         return <div>Product not found</div>;
