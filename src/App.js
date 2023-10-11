@@ -2,16 +2,14 @@ import Header from "./components/header/Header";
 import HomePage from "./pages/HomePage";
 import CopyWriter from "./components/footer/CopyWriter";
 import Footer from "./components/footer/Footer";
-import { Route, Routes } from "react-router-dom"
+import { Route, Routes } from "react-router-dom";
 import CartPage from "./pages/CartPage";
-import ProductDetailPage from "./pages/ProductDetailPage"
+import ProductDetailPage from "./pages/ProductDetailPage";
 import SearchPage from "./pages/SearchPage";
 import { Products_Cage } from "./data/Cages";
 import Adress from "./components/address/Address";
 import UserProfile from "./components/userProfile/UserProfile";
-
-
-
+import Payment from "./components/payment/Payment";
 function App() {
   // const regx = /:\[\d{3},\d{3}]/g
   // const [item, setItem] = useState('')
@@ -27,7 +25,6 @@ function App() {
   // })
   // console.log(Products.length)
   return (
-
     <div className="App" style={{ background: "#fff" }}>
       {/* render image of each cage */}
       {/* 
@@ -40,8 +37,9 @@ function App() {
         <Route path="/" element={<HomePage />}></Route>
         <Route path="/cart" element={<CartPage />}></Route>
         <Route path="/search" element={<SearchPage />}></Route>
-        <Route path='/user' element={<UserProfile />}></Route>
-        <Route path='/address' element={<Adress />}></Route>
+        <Route path="/user" element={<UserProfile />}></Route>
+        <Route path="/address" element={<Adress />}></Route>
+        <Route path="/payment" element={<Payment />}></Route>
       </Routes>
 
       <Footer></Footer>
