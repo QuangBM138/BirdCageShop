@@ -23,7 +23,6 @@ export default function Details() {
     }
     // Initialize img state as an empty array
     const [img, setImg] = useState([]);
-
     // Format the image data once when the component mounts or when product.images changes
     useEffect(() => {
         if (product && product.images) {
