@@ -33,7 +33,7 @@ const Header = () => {
     }
   };
 
-  
+
 
   useEffect(() => {
     if (searchQuery) {
@@ -42,7 +42,7 @@ const Header = () => {
       );
       setSearchResults(filteredResults);
     } else {
-      setSearchResults([]); 
+      setSearchResults([]);
     }
   }, [searchQuery]);
 
@@ -59,7 +59,7 @@ const Header = () => {
           className="input-search-container"
           maxWidth={"md"}>
 
-<input
+          <input
             className="input"
             type="text"
             placeholder="Search"
@@ -67,15 +67,15 @@ const Header = () => {
             onChange={(e) => setSearchQuery(e.target.value)}
             onKeyDown={handleKeyPress}
           />
-          
-            
+          <SearchResults results={searchResults}
+            input={searchQuery}
+            clearSearch={clearSearch} />
+
           <button onClick={handleSearch}>
             <i className="fa fa-search"></i>
           </button>
         </Container>
-        <SearchResults results={searchResults}
-            input={searchQuery}
-            clearSearch={clearSearch}/>
+
       </div>
 
       <header className="header">

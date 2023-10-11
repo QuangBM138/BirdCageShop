@@ -30,39 +30,39 @@ export default function SearchResults({ results, input, clearSearch }) {
 
 
   return (
-    <div>
-    {input !== null && results !== null && (
-      <div >
-        {results.length === 0 ? (
-          <div className='search_no_result_box'>
-         <span> </span>
-          </div>
-        ) : (
-          <div className="search_result_box">
-             <Grid container rowSpacing={0} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-            {results.slice(0, 4).map((result) => (
-<Grid item xs={6}>
-  <ListItem>
-  <Link to={`/detail/${result.id}`} onClick={clearSearch}>
-<div className="search_result_box_detail">
-{JSON.parse(result.images).slice(0, 1).map((img, index) =>
-  <img className='search_result_box_image' src={img} alt={`Image ${index}`} />
-)}
-<div class='search_result_box_info'>
-  <div class='search_result_box_name'>{result.name.slice(0,29)}...</div>
-  <div class='search_result_box_price'>$ {result.price}</div>
-</div>
-</div>
-<br></br>
-</Link>
-  </ListItem>
-</Grid>
-            ))}
-            </Grid>
-          </div>
-        )}
-      </div>
-    )}
-  </div>
+    <div style={{ position: "absolute", left: "0", top: "70px" }}>
+      {input !== null && results !== null && (
+        <div >
+          {results.length === 0 ? (
+            <div className='search_no_result_box'>
+              <span> </span>
+            </div>
+          ) : (
+            <div className="search_result_box">
+              <Grid container rowSpacing={0} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+                {results.slice(0, 4).map((result) => (
+                  <Grid item xs={6}>
+                    <ListItem>
+                      <Link to={`/detail/${result.id}`} onClick={clearSearch}>
+                        <div className="search_result_box_detail">
+                          {JSON.parse(result.images).slice(0, 1).map((img, index) =>
+                            <img className='search_result_box_image' src={img} alt={`Image ${index}`} />
+                          )}
+                          <div class='search_result_box_info'>
+                            <div class='search_result_box_name'>{result.name.slice(0, 29)}...</div>
+                            <div class='search_result_box_price'>$ {result.price}</div>
+                          </div>
+                        </div>
+                        <br></br>
+                      </Link>
+                    </ListItem>
+                  </Grid>
+                ))}
+              </Grid>
+            </div>
+          )}
+        </div>
+      )}
+    </div>
   )
 }
