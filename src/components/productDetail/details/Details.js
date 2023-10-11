@@ -16,9 +16,11 @@ export default function Details() {
 
     const [quantity, setQuantity] = useState(1);
     const { id } = useParams();
-
     const product = Products_Cage.find((product) => product.id === parseInt(id, 10));
-
+    const [state, dispatch] = useStore()
+    const handleAddToCart = (index, quantity) => {
+        dispatch(actions.addToCart({ index, quantity }))
+    }
     // Initialize img state as an empty array
     const [img, setImg] = useState([]);
 
