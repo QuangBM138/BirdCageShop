@@ -11,10 +11,9 @@ import { useParams } from 'react-router-dom';
 
 export default function DetailSwiper() {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
-  const { index } = useParams();
+  const { id } = useParams();
 
-  const productIndex = parseInt(index, 10);
-  const product = Products_Cage[productIndex];
+  const product = Products_Cage.find((product) => product.id === parseInt(id, 10));
 
   const [img, setImg] = useState([]);
 
@@ -39,11 +38,6 @@ export default function DetailSwiper() {
     return <div>Product not found</div>;
   }
 
-  const imgArray = img.map((imgSrc, imgIndex) => ({
-    original: imgSrc,
-    thumbnail: imgSrc,
-    description: `Image ${imgIndex + 1}`,
-  }));
 
   return (
     <div>
@@ -59,13 +53,12 @@ export default function DetailSwiper() {
         modules={[FreeMode, Navigation, Thumbs]}
         className="mySwiper2"
       >
-        {img.map((imag, index) => (
+        {img.map((image, index) => (
           <SwiperSlide key={index}>
             <img
-
-              src={imag}
+              src={image}
               alt={`Image ${index + 1}`}
-              style={{ maxWidth: '300px', maxHeight: '500px', objectFit: 'contain' }} // Set your desired maxWidth and maxHeight
+              style={{ maxWidth: '300px', maxHeight: '500px', objectFit: 'contain' }} 
             />
           </SwiperSlide>
         ))}
@@ -80,12 +73,12 @@ export default function DetailSwiper() {
         modules={[FreeMode, Navigation, Thumbs]}
         className="mySwiper3"
       >
-        {img.map((imag, index) => (
+        {img.map((image, index) => (
           <SwiperSlide key={index}>
             <img
-              src={imag}
+              src={image}
               alt={`Image ${index + 1}`}
-              style={{ maxWidth: '100px', maxHeight: '500px' }} // Set your desired maxWidth and maxHeight
+              style={{ maxWidth: '100px', maxHeight: '500px' }}
             />
           </SwiperSlide>
         ))}

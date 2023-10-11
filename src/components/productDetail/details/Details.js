@@ -15,19 +15,16 @@ import DetailSwiper from './DetailSwiper';
 export default function Details() {
 
     const [quantity, setQuantity] = useState(1);
-    const { index } = useParams();
-    const [state, dispatch] = useStore()
-    const productIndex = parseInt(index, 10); // Parse the index as an integer
-    const product = Products_Cage[productIndex]; // Access the product using the index
-    const handleAddToCart = (index, quantity) => {
-        dispatch(actions.addToCart({ index, quantity }))
-    }
+    const { id } = useParams();
+
+    const product = Products_Cage.find((product) => product.id === parseInt(id, 10));
+
     // Initialize img state as an empty array
     const [img, setImg] = useState([]);
 
     // Format the image data once when the component mounts or when product.images changes
     useEffect(() => {
-        if (product) {
+        if (product && product.images) {
             const regx = /:\[\d{3},\d{3}]/g;
             const regxQuotes = /(\"{|\\|}")/g;
             const regxCurlyBraces = /(\{)/g;
@@ -38,7 +35,6 @@ export default function Details() {
                 .replace(regxQuotes, '[')
                 .replace(regxCurlyBraces2, ']')
                 .replace(regxCurlyBraces, '[');
-
 
             setImg(JSON.parse(formattedImages));
         }
