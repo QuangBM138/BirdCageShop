@@ -3,12 +3,13 @@ import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import './ProductList.css';
 import { Products_Cage } from '../../../data/Cages';
 import { Link } from 'react-router-dom';
-
+import { useStore } from '../../cart/store/hooks';
+import { actions } from '../../cart/store';
 import { useLocation } from 'react-router-dom';
 import ShoppingBasket from '@mui/icons-material/ShoppingBasket';
 
 export default function ProductList() {
-
+  const [state, dispatch] = useStore()
   //handle search
   const location = useLocation();
   const searchQuery = new URLSearchParams(location.search).get('query');
@@ -43,6 +44,10 @@ export default function ProductList() {
   console.log(newPro);
 
 
+  const handleAddToCart = (index) => {
+    dispatch(actions.addToCart({ index, quantity: 1 }))
+  }
+
 
   return (
     <div>
@@ -69,46 +74,7 @@ export default function ProductList() {
               <div
                 className="grid -m-1 grid-cols-1 2xl:grid-cols-4 md:grid-cols-2 gap-5">
                 {filteredProducts.map((pro, index) => (
-                  // <div
-                  //   key={pro.id}
-                  //   style={{
-                  //     background: "#0000000d",
-                  //     textAlign: "center",
-                  //     position: 'relative'
-                  //   }}
-                  //   className="_product p-4">
-                  //   <Link to={`/detail/${pro.id}`}>
-                  //     <div className='product_list_cards'>
-                  //       <div>
-                  //         {JSON.parse(pro.images).map(img =>
-                  //           <img className='product_list_cards_img' src={img} alt={`Image ${index}`} />
-                  //         )}
-                  //       </div>
-                  //       <div className='product_list_cards_overlay'></div>
-                  //     </div>
-                  //   </Link>
-
-                  //   <div className="product_list_cards_overlay_frame">
-                  //     <div className='product_list_cards_title'>
-                  //       <h4 className="h4_product_list_cards">{pro.name.slice(0, 30) + "..."}</h4>
-                  //       <div className='product_list_cards_prices'>
-                  //         <h3>${pro.price}</h3>
-                  //       </div>
-                  //       <div className="product_list_cards_overlay_frame">
-                  //         <button className='button_list_design'>
-                  //           <ShoppingBasketIcon /> Add to Cart
-                  //         </button>
-                  //       </div>
-                  //     </div>
-                  //   </div>
-
-
-
-
-                  //   {/* Add more product details here */}
-                  // </div>
                   <div className='product-wrapper'>
-
                     <Link to={`/detail/${pro.id}`}>
                       {JSON.parse(pro.images).map((img, index) => index == 0 && <img
                         className='image-product'
@@ -116,20 +82,21 @@ export default function ProductList() {
                       <div className='overlay-product'></div>
                     </Link>
                     <div className='show-block'>
-                      <Link to={`/detail/${pro.id}`}>
-                        <p className='name-product'>{pro.name}</p>
+                      <Link to={`/detail/${pro.id}`} style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                        <h4 className="h4_product_list_cards name-product">{pro.name.slice(0, 30) + "..."}</h4>
+                        <p className='name-product'>{pro.price}</p>
                       </Link>
-
                       <button
                         className='button-cart'
-                      // onClick={() => (pro.id)}
+                        onClick={() => handleAddToCart(pro.id)}
                       >
-                        <ShoppingBasket /> Add to Cart
+                        <ShoppingBasketIcon /> Add to Cart
                       </button>
 
                     </div>
 
                   </div>
+
                 ))}
               </div>
 
