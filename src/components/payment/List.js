@@ -47,7 +47,7 @@ function List() {
                 </span>
                 <div className="absolute top-0 left-0 overflow-hidden w-[64px] h-[64px] border-i rounded-lg">
                   <img
-                    className="w-full h-full object-fill"
+                    className="w-full h-full object-contain"
                     src={getFirstImgUrl(i?.images)}
                     alt=""
                   />
