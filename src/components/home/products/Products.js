@@ -96,21 +96,23 @@ export default function Products() {
                         Products_Cage.map((product, index) =>
                             <SwiperSlide className="animate product-slide" key={product.id}>
                                 <div className='product-wrapper'>
-                                    {JSON.parse(product.images).map((img, index) => index == 0 && <img
-                                        className='image-product'
-                                        src={img} />)}
-
+                                    <Link to={`/detail/${product.id}`}>
+                                        {JSON.parse(product.images).map((img, index) => index == 0 && <img
+                                            className='image-product'
+                                            src={img} />)}
+                                        <div className='overlay-product'></div>
+                                    </Link>
                                     <div className='show-block'>
                                         <Link to={`/detail/${product.id}`}>
                                             <p className='name-product'>{product.name}</p>
                                         </Link>
-
                                         <button
                                             className='button-cart'
                                             onClick={() => handleAddToCart(product.id)}
                                         >
                                             <ShoppingBasket /> Add to Cart
                                         </button>
+
                                     </div>
 
                                 </div>
@@ -136,26 +138,28 @@ export default function Products() {
                 >
                     {
                         Products_Cage.map((product, index) =>
-                            <SwiperSlide
-                                className="animate product-slide"
-                                key={index}
-                            >
+                            <SwiperSlide className="animate product-slide" key={product.id}>
                                 <div className='product-wrapper'>
-                                    {JSON.parse(product.images).map((img, index) => index == 0 && <img
-                                        className='image-product'
-                                        src={img} />)}
-
+                                    <Link to={`/detail/${product.id}`}>
+                                        {JSON.parse(product.images).map((img, index) => index == 0 && <img
+                                            className='image-product'
+                                            src={img} />)}
+                                        <div className='overlay-product'></div>
+                                    </Link>
                                     <div className='show-block'>
-                                        <p className='name-product'>{product.name}</p>
+                                        <Link to={`/detail/${product.id}`}>
+                                            <p className='name-product'>{product.name}</p>
+                                        </Link>
                                         <button
                                             className='button-cart'
                                             onClick={() => handleAddToCart(product.id)}
                                         >
                                             <ShoppingBasket /> Add to Cart
                                         </button>
-                                    </div>
-                                </div>
 
+                                    </div>
+
+                                </div>
                             </SwiperSlide>)
                     }
                     <SwiperButton
