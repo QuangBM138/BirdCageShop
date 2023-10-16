@@ -22,10 +22,10 @@ export default function Login() {
                         </button>
                     </div >
                     <div className='link_a'>
-                        <Link to={"forgotpassword"} className='a_link'>
+                        <Link to="/forgotpassword" className='a_link'>
                             Forgot Password
                         </Link>
-                        <Link to={`createaccount`} className='a_link'>Create Account</Link>
+                        <Link to="/creataccount" className='a_link'>Create Account</Link>
                         <a className='a_link'>Return store</a>
                     </div>
                 </form>
