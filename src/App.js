@@ -11,6 +11,12 @@ import Adress from "./components/address/Address";
 import UserProfile from "./components/userProfile/UserProfile";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { Route, Routes } from "react-router-dom"
+// import Login from "./components/login/Login";
+import ForgotPassword from "./components/forgotPassword/ForgotPassword";
+import CreateAccount from "./components/createAccount/CreateAccount";
+import LoginPage from "./components/pages/LoginPage";
+
 
 
 import Payment from "./components/payment/Payment";
