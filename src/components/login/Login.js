@@ -25,7 +25,7 @@ export default function Login() {
                         <Link to={"forgotpassword"} className='a_link'>
                             Forgot Password
                         </Link>
-                        <Link to={`creataccount`} className='a_link'>Create Account</Link>
+                        <Link to={`createaccount`} className='a_link'>Create Account</Link>
                         <a className='a_link'>Return store</a>
                     </div>
                 </form>

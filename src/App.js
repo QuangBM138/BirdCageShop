@@ -11,15 +11,15 @@ import Adress from "./components/address/Address";
 import UserProfile from "./components/userProfile/UserProfile";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
-import { Route, Routes } from "react-router-dom"
 // import Login from "./components/login/Login";
 import ForgotPassword from "./components/forgotPassword/ForgotPassword";
 import CreateAccount from "./components/createAccount/CreateAccount";
-import LoginPage from "./components/pages/LoginPage";
+import LoginPage from "./pages/LoginPage";
 
 
 
 import Payment from "./components/payment/Payment";
+import Login from "./components/login/Login";
 function App() {
   // const regx = /:\[\d{3},\d{3}]/g
   // const [item, setItem] = useState('')
@@ -56,6 +56,9 @@ function App() {
         <Route path="/user" element={<UserProfile />}></Route>
         <Route path="/address" element={<Adress />}></Route>
         <Route path="/payment" element={<Payment />}></Route>
+        <Route path="/login" exact element={<Login />}></Route>
+        <Route path="/forgotpassword" element={<ForgotPassword />}></Route>
+        <Route path="/createaccount" element={<CreateAccount />}></Route>
       </Routes>
 
       <Footer></Footer>
