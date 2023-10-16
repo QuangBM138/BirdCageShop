@@ -10,6 +10,9 @@ import { Products_Cage } from "./data/Cages";
 import Adress from "./components/address/Address";
 import UserProfile from "./components/userProfile/UserProfile";
 
+import DetailOrder from "./components/detailOrder/DetailOrder";
+
+
 
 
 function App() {
@@ -38,6 +41,7 @@ function App() {
       <Routes>
         <Route path="/detail/:index" element={<ProductDetailPage />}></Route>
         <Route path="/" element={<HomePage />}></Route>
+        <Route path="/detailorder" element={<DetailOrder />}></Route>
         <Route path="/cart" element={<CartPage />}></Route>
         <Route path="/search" element={<SearchPage />}></Route>
         <Route path='/user' element={<UserProfile />}></Route>
