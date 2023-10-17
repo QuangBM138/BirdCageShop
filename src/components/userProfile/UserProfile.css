@@ -132,6 +132,12 @@
     position: relative;
 }
 
+.img_product_image {
+    object-fit: contain;
+    width: 80px;
+    height: 80px;
+}
+
 .infor_product {
     margin: 0px 12px;
     display: flex;

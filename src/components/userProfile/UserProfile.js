@@ -1,9 +1,55 @@
-import React from 'react'
+// import React from 'react'
+// import { Link } from 'react-router-dom'
+// import './UserProfile.css'
+
+// export default function UserProfile() {
+//     return (
+//         <div className='userprofile_container'>
+//             <h4 className='oh_h4'>Order History</h4>
+//             <p className='noorder_p'>You haven't placed any orders yet.</p>
+//             <div className='account_detail'>
+//                 <h4 className='accountD_h4'>Account Details</h4>
+//                 <h5 className='nameuser_h5'>nhi nguyen</h5>
+//                 <p className='adress_p'>Vietnam</p>
+//                 <p className='va_p'><Link to={`/address`} className='va_a'>View Addresses</Link></p>
+
+//             </div>
+//         </div>
+//     )
+// }
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import './UserProfile.css'
+import { Products_Cage } from '../../data/Cages';
+
 
 
 export default function UserProfile() {
+    const [img, setImg] = useState([]);
+
+    // Format the image data once when the component mounts or when product.images changes
+    useEffect(() => {
+        if (Products_Cage && Products_Cage.images) {
+          const regx = /:\[\d{3},\d{3}]/g;
+          const regxQuotes = /(\"{|\\|}")/g;
+          const regxCurlyBraces = /(\{)/g;
+          const regxCurlyBraces2 = /(\})/g;
+      
+          const formattedImages = Products_Cage.images
+            .replace(regx, '')
+            .replace(regxQuotes, '[')
+            .replace(regxCurlyBraces2, ']')
+            .replace(regxCurlyBraces, '[');
+      
+          setImg(JSON.parse(formattedImages));
+        }
+        
+      }, [Products_Cage]);
+
+
+
+
+
     return (
         <div className='userprofile_container'>
             <h4 className='oh_h4'>Order History</h4>
@@ -32,42 +78,35 @@ export default function UserProfile() {
                         <p>Successful delivery</p>
                     </div>
                     <div className='product_design'>
-                        <div className='product_myorder'>
+                    {Products_Cage.slice(0,2).map((product, index) => (
+                        <Link to={`/detail/${product.id}`}>
+                        <div className='product_myorder' key={product.id}>
+                            
                             <div className='product_detail'>
                                 <div className='img_product'>
-                                    <img src='https://m.media-amazon.com/images/I/81gYKAMky+L._AC_SY879_.jpg'></img>
+                                {JSON.parse(product.images).slice(0,1).map(img =>
+                            <img className='img_product_image' src={img} alt={`Image ${index}`} />
+                          )}
                                 </div>
                                 <div className='infor_product'>
-                                    <p className='product_name'>Prevue Hendryx SP850G/W Clean Life Cockatiel Cage, Green and White</p>
+                                    <p className='product_name'>{product.name}</p>
                                 </div>
                             </div>
                             <div className='product_price'>
                                 <span>
-                                    $50.00
+                                $ {product.price}
                                 </span>
                             </div>
+                           
                         </div>
-                        <div className='product_myorder'>
-                            <div className='product_detail'>
-                                <div className='img_product'>
-                                    <img src='https://m.media-amazon.com/images/I/81gYKAMky+L._AC_SY879_.jpg'></img>
-                                </div>
-                                <div className='infor_product'>
-                                    <p className='product_name'>Prevue Hendryx SP850G/W Clean Life Cockatiel Cage, Green and White</p>
-                                </div>
-                            </div>
-                            <div className='product_price'>
-                                <span>
-                                    $50.00
-                                </span>
-                            </div>
-                        </div>
+                        </Link>
+                        ))}
 
                     </div>
                     <div className='total'>
                         <div className='totalmoney'>
                             <div className='title_totalmoney'>Total:</div>
-                            <div className='price'>$100.00</div>
+                            <div className='price'>$100</div>
                         </div>
                         <div className='button_grp'>
                             <div>
@@ -87,36 +126,27 @@ export default function UserProfile() {
                         <p>Successful delivery</p>
                     </div>
                     <div className='product_design'>
-                        <div className='product_myorder'>
+                    {Products_Cage.slice(7,10).map((product, index) => (
+                         <Link to={`/detail/${product.id}`}>
+                        <div className='product_myorder' key={product.id}>
                             <div className='product_detail'>
                                 <div className='img_product'>
-                                    <img src='https://m.media-amazon.com/images/I/81gYKAMky+L._AC_SY879_.jpg'></img>
+                                {JSON.parse(product.images).slice(0,1).map(img =>
+                            <img className='img_product_image' src={img} alt={`Image ${index}`} />
+                          )}
                                 </div>
                                 <div className='infor_product'>
-                                    <p className='product_name'>Prevue Hendryx SP850G/W Clean Life Cockatiel Cage, Green and White</p>
+                                    <p className='product_name'>{product.name}</p>
                                 </div>
                             </div>
                             <div className='product_price'>
                                 <span>
-                                    $50.00
+                                $ {product.price}
                                 </span>
                             </div>
                         </div>
-                        <div className='product_myorder'>
-                            <div className='product_detail'>
-                                <div className='img_product'>
-                                    <img src='https://m.media-amazon.com/images/I/81gYKAMky+L._AC_SY879_.jpg'></img>
-                                </div>
-                                <div className='infor_product'>
-                                    <p className='product_name'>Prevue Hendryx SP850G/W Clean Life Cockatiel Cage, Green and White</p>
-                                </div>
-                            </div>
-                            <div className='product_price'>
-                                <span>
-                                    $50.00
-                                </span>
-                            </div>
-                        </div>
+                        </Link>
+                        ))}
 
                     </div>
                     <div className='total'>
