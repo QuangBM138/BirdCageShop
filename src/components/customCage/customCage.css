@@ -1,16 +1,27 @@
 .size {
   display: flex;
+  flex-direction: column;
 }
 
-.size_chilren{
-    margin-left: 10px;
+.size_chilren {
+  margin-left: 10px;
+  margin-top: 20px;
+}
+
+.size_chilren span {
+  font-weight: 600;
+  width: 100px;
+
 }
 
 .ip_custom_cage {
   border: 1px solid;
   margin-left: 10px;
 }
+
 .disabled-element {
-  opacity: 0.5; /* Điều chỉnh độ mờ tùy ý */
-  pointer-events: none; /* Để không cho phép tương tác */
+  opacity: 0.5;
+  /* Điều chỉnh độ mờ tùy ý */
+  pointer-events: none;
+  /* Để không cho phép tương tác */
 }

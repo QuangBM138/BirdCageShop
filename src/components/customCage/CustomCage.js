@@ -98,7 +98,7 @@ export default function CustomCage() {
       <div className="size">
         <div>Size:</div>
         <div className="size_chilren">
-          Height
+          <span> Height</span>
           <input
             className="ip_custom_cage"
             value={inputValues.height}
@@ -110,11 +110,11 @@ export default function CustomCage() {
             }
           />
           {errors.height && (
-            <div className="error-message">{errors.height}</div>
+            <div className="error-message" style={{ fontSize: "13px", color: "red" }}>{errors.height}</div>
           )}
         </div>
         <div className="size_chilren">
-          Width
+          <span> Width</span>
           <input
             className="ip_custom_cage"
             type="number"
@@ -125,10 +125,10 @@ export default function CustomCage() {
               handleInputChange("width", parseInt(e.target.value, 10))
             }
           />
-          {errors.width && <div className="error-message">{errors.width}</div>}
+          {errors.width && <div className="error-message" style={{ fontSize: "13px", color: "red" }}>{errors.width}</div>}
         </div>
         <div className="size_chilren">
-          Length
+          <span>Length</span>
           <input
             className="ip_custom_cage"
             type="number"
@@ -140,7 +140,7 @@ export default function CustomCage() {
             }
           />
           {errors.length && (
-            <div className="error-message">{errors.length}</div>
+            <div className="error-message" style={{ fontSize: "13px", color: "red" }}>{errors.length}</div>
           )}
         </div>
       </div>
