@@ -16,6 +16,9 @@ import ForgotPassword from "./components/forgotPassword/ForgotPassword";
 import CreateAccount from "./components/createAccount/CreateAccount";
 import LoginPage from "./pages/LoginPage";
 
+import DetailOrder from "./components/detailOrder/DetailOrder";
+
+
 
 
 import Payment from "./components/payment/Payment";
@@ -51,6 +54,7 @@ function App() {
       <Routes>
         <Route path="/detail/:id" element={<ProductDetailPage />}></Route>
         <Route path="/" element={<HomePage />}></Route>
+        <Route path="/detailorder" element={<DetailOrder />}></Route>
         <Route path="/cart" element={<CartPage />}></Route>
         <Route path="/search" element={<SearchPage />}></Route>
         <Route path="/user" element={<UserProfile />}></Route>
