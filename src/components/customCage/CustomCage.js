@@ -26,7 +26,7 @@ export default function CustomCage() {
     inputValues.width <= 100 &&
     inputValues.length >= 30 &&
     inputValues.length <= 100 &&
-    inputValues.height < inputValues.length;
+    inputValues.width < inputValues.length;
 
   const handleInputChange = (fieldName, value) => {
     const newInputValues = {
