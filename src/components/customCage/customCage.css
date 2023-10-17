@@ -1,0 +1,16 @@
+.size {
+  display: flex;
+}
+
+.size_chilren{
+    margin-left: 10px;
+}
+
+.ip_custom_cage {
+  border: 1px solid;
+  margin-left: 10px;
+}
+.disabled-element {
+  opacity: 0.5; /* Điều chỉnh độ mờ tùy ý */
+  pointer-events: none; /* Để không cho phép tương tác */
+}
