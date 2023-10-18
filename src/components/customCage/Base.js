@@ -6,7 +6,7 @@ import "./customCage.css";
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
-export default function Base({ isDisabled, parentCallback }) {
+export default function Base({ isDisabled, parentCallback, setValidBase }) {
   const [selected, setSelected] = useState("");
   const [inputValue, setInputValue] = useState(1)
   const [isInvalid, setIsInvalid] = useState(false);
@@ -23,7 +23,7 @@ export default function Base({ isDisabled, parentCallback }) {
   };
   const onTrigger = (e) => {
     setSelected(e)
-    parentCallback({ item: e, type: "base" })
+    parentCallback({ item: e, type: "base", quantity: 1 })
   }
   return (
     <div>

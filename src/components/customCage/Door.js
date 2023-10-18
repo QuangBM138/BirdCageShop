@@ -6,9 +6,9 @@ import "./customCage.css";
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
-export default function Door({ isDisabled, parentCallback }) {
+export default function Door({ isDisabled, parentCallback, setValidDoor }) {
   const [selected, setSelected] = useState("");
-  const [inputValue, setInputValue] = useState(1);
+  const [inputValue, setInputValue] = useState("");
   const [isInvalid, setIsInvalid] = useState(false);
 
   const handleInputChange = (e) => {
@@ -18,10 +18,13 @@ export default function Door({ isDisabled, parentCallback }) {
     if (number.test(e.target.value)) {
       setInputValue(e.target.value.replace(removeSpecialChar, "").replace(removeZero, ""))
       // setInputValue(e.target.value);
+      parentCallback({ item: selected, type: "door", quantity: e.target.value })
       if (e.target.value > 4) {
         setIsInvalid(true);
+        setValidDoor(false)
       } else {
         setIsInvalid(false);
+        setValidDoor(true)
       }
       return
     }
@@ -32,7 +35,7 @@ export default function Door({ isDisabled, parentCallback }) {
   };
   const onTrigger = (e) => {
     setSelected(e)
-    parentCallback({ item: e, type: "door" })
+    parentCallback({ item: e, type: "door", quantity: inputValue })
   }
   return (
     <div>
@@ -129,7 +132,7 @@ export default function Door({ isDisabled, parentCallback }) {
         </Listbox>
 
         <input
-          style={{ width: "238px" }}
+          style={{ width: "238px", fontFamily: "Roboto" }}
           className="pl-2 border ml-5 text-[20px] h-9 rounded-md"
           value={inputValue}
           onChange={handleInputChange}

@@ -6,35 +6,34 @@ import { spokesData } from "./DataCage";
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
-export default function Spoke({ isDisabled, min, max, parentCallback }) {
+export default function Spoke({ isDisabled, min, max, parentCallback, setValidSpoke }) {
   const [selected, setSelected] = useState("");
   const [inputValue, setInputValue] = useState("");
   const [isInvalid, setIsInvalid] = useState(false);
   const handleInputChange = (e) => {
-    console.log(e.target.value)
     const removeSpecialChar = /[e\+\-]/g
     const number = /[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$/
     const removeZero = /^0|[\.]/
     if (number.test(e.target.value)) {
       setInputValue(e.target.value.replace(removeSpecialChar, "").replace(removeZero, ""))
+      parentCallback({ item: selected, type: "spoke", quantity: e.target.value })
       // setInputValue(e.target.value);
       if (e.target.value < min || e.target.value > max) {
-
         setIsInvalid(true);
-      } else {
+        setValidSpoke(false)
+      }
+      else {
+        setValidSpoke(true)
         setIsInvalid(false);
       }
       return
     }
     setInputValue('')
-
-
-
-
   };
+
   const onTrigger = (e) => {
     setSelected(e)
-    parentCallback({ item: e, type: "spoke" })
+    parentCallback({ item: e, type: "spoke", quantity: inputValue })
   }
 
   return (
@@ -129,7 +128,7 @@ export default function Spoke({ isDisabled, min, max, parentCallback }) {
                     className="border ml-5 text-[20px] h-9 rounded-md pl-2"
                     placeholder="Quantity"
                     value={inputValue}
-                    style={{ fontFamily: "Roboto" }}
+                    style={{ fontFamily: "Roboto", position: "absolute", top: "0" }}
                     onChange={handleInputChange}
                     type="text"
                   />

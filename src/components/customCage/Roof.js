@@ -6,7 +6,7 @@ import './customCage.css'
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
-export default function Roof({ isDisabled, parentCallback }) {
+export default function Roof({ isDisabled, parentCallback, setValidRoof }) {
   const [selected, setSelected] = useState("");
   const [inputValue, setInputValue] = useState(1);
   const [isInvalid, setIsInvalid] = useState(false);
@@ -17,13 +17,15 @@ export default function Roof({ isDisabled, parentCallback }) {
 
     if (parseInt(value, 10) > 1) {
       setIsInvalid(true);
+      setValidRoof(true)
     } else {
       setIsInvalid(false);
+      setValidRoof(false)
     }
   };
   const onTrigger = (e) => {
     setSelected(e)
-    parentCallback({ item: e, type: "roof" })
+    parentCallback({ item: e, type: "roof", quantity: 1 })
   }
   return (
     <div>

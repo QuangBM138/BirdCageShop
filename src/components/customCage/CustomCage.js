@@ -9,6 +9,8 @@ export default function CustomCage() {
   const [min, setMin] = useState(0)
   const [component, setComponent] = useState([])
   const [max, setMax] = useState(0)
+  const [validDoor, setValidDoor] = useState(false)
+  const [validSpoke, setValidSpoke] = useState(false)
   const [inputValues, setInputValues] = useState({
     height: "",
     width: "",
@@ -30,7 +32,6 @@ export default function CustomCage() {
     inputValues.length >= 30 &&
     inputValues.length <= 100 &&
     inputValues.width < inputValues.length;
-
   const handleInputChange = (fieldName, value) => {
     const newInputValues = {
       ...inputValues,
@@ -123,10 +124,25 @@ export default function CustomCage() {
       })
     })
   }
-  console.log("DOoor", component)
+
+  const handleSubmitOrder = () => {
+    console.log("full component", component)
+    // component []
+    // 
+    if (component && validDoor && validSpoke && isInputValid) {
+      console.log(true)
+      const customCage = {
+        width: inputValues.width,
+        height: inputValues.height,
+        length: inputValues.length,
+        components: component
+      }
+      console.log(customCage)
+    }
+  }
   return (
-    <div className="w-[90%] m-auto mt-10 p-10" style={{ border: "1px solid #ddd", boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px" }}>
-      <h1 style={{ textAlign: "center", marginBottom: "10px" }}>Custom your own bird cage</h1>
+    <div className="w-[80%] m-auto mt-10 p-10" style={{ border: "1px solid #ddd", boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px" }}>
+      <h1 style={{ textAlign: "center", marginBottom: "30px" }}>Custom your own bird cage</h1>
       <div className="size">
         <div>Size:</div>
         <div className="size_chilren">
@@ -190,19 +206,32 @@ export default function CustomCage() {
       <div className="component-container">
         <div>
           <Roof
-            parentCallback={handleCallback} isDisabled={!isInputValid} />
+
+            parentCallback={handleCallback}
+            isDisabled={!isInputValid}
+          />
           <Spoke
+            setValidSpoke={setValidSpoke}
             parentCallback={handleCallback}
             min={min}
             max={max}
-            isDisabled={!isInputValid} />
-          <Door parentCallback={handleCallback} isDisabled={!isInputValid} />
-          <Base parentCallback={handleCallback} isDisabled={!isInputValid} />
+            isDisabled={!isInputValid}
+          />
+          <Door
+            setValidDoor={setValidDoor}
+            parentCallback={handleCallback}
+            isDisabled={!isInputValid}
+          />
+          <Base
+
+            parentCallback={handleCallback}
+            isDisabled={!isInputValid}
+          />
         </div>
-        <button className="order-button">Order</button>
+        <button onClick={handleSubmitOrder} className="order-button">Order</button>
         <div className="component-images">
           {component.map(c =>
-            <div className="component">
+            <div className="component" key={c.type}>
               <span style={{ fontFamily: "Roboto", fontWeight: 500, textTransform: "uppercase", fontSize: "20px", marginBottom: "10px" }}>{c.type}</span>
               <img className="component-image" src={c.item.image} />
             </div>)}
