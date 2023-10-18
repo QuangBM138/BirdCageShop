@@ -1,12 +1,14 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useRef, useState } from "react";
 import Roof from "./Roof";
 import "./customCage.css";
 import Spoke from "./Spoke";
 import Door from "./Door";
 import Base from "./Base";
 
+
 export default function CustomCage() {
   const [min, setMin] = useState(0)
+  const warningOrderSubmit = useRef()
   const [component, setComponent] = useState([])
   const [max, setMax] = useState(0)
   const [validDoor, setValidDoor] = useState(false)
@@ -46,7 +48,7 @@ export default function CustomCage() {
       if (value < 30 || value > 100) {
         setErrors((prevErrors) => ({
           ...prevErrors,
-          [fieldName]: "Giá trị không hợp lệ. Vui lòng nhập từ 30 đến 100.",
+          [fieldName]: "Invalid value. Please enter between 30 and 100.",
         }));
         return
       } else {
@@ -62,12 +64,12 @@ export default function CustomCage() {
       if (value < 30 || value > 100) {
         setErrors((prevErrors) => ({
           ...prevErrors,
-          [fieldName]: "Giá trị không hợp lệ. Vui lòng nhập từ 30 đến 100.",
+          [fieldName]: "Invalid value. Please enter between 30 and 100.",
         }));
       } else if (value >= newInputValues.length) {
         setErrors((prevErrors) => ({
           ...prevErrors,
-          [fieldName]: "Width phải nhỏ hơn Length.",
+          [fieldName]: "Width must be smaller than Length.",
         }));
       } else {
         setErrors((prevErrors) => ({
@@ -80,7 +82,7 @@ export default function CustomCage() {
       if (value < 30 || value > 100) {
         setErrors((prevErrors) => ({
           ...prevErrors,
-          [fieldName]: "Giá trị không hợp lệ. Vui lòng nhập từ 30 đến 100.",
+          [fieldName]: "Invalid value. Please enter between 30 and 100.",
         }));
       } else {
         setErrors((prevErrors) => ({
@@ -90,7 +92,7 @@ export default function CustomCage() {
         if (newInputValues.width >= value) {
           setErrors((prevErrors) => ({
             ...prevErrors,
-            width: "Width phải nhỏ hơn Length.",
+            width: "Width must be smaller than Length.",
           }));
         } else {
           setErrors((prevErrors) => ({
@@ -100,6 +102,7 @@ export default function CustomCage() {
         }
       }
     }
+    warningOrderSubmit.current.innerText = ""
   };
   const handleCallback = (childData) => {
     console.log(childData)
@@ -127,17 +130,19 @@ export default function CustomCage() {
 
   const handleSubmitOrder = () => {
     console.log("full component", component)
-    // component []
-    // 
     if (component && validDoor && validSpoke && isInputValid) {
       console.log(true)
+
       const customCage = {
         width: inputValues.width,
         height: inputValues.height,
         length: inputValues.length,
         components: component
       }
+
       console.log(customCage)
+    } else {
+      warningOrderSubmit.current.innerText = "The order cannot be created because the conditions have not been met"
     }
   }
   return (
@@ -228,7 +233,15 @@ export default function CustomCage() {
             isDisabled={!isInputValid}
           />
         </div>
-        <button onClick={handleSubmitOrder} className="order-button">Order</button>
+        <div style={{ position: "absolute", right: 0, height: "100px", width: "30%" }}>
+          <button onClick={handleSubmitOrder} className="order-button">Order</button>
+          <div
+            ref={warningOrderSubmit}
+            className="error-message error-message-order"
+            style={{ fontSize: "13px", color: "red", position: "absolute", right: "0", bottom: 0 }}
+          >
+          </div>
+        </div>
         <div className="component-images">
           {component.map(c =>
             <div className="component" key={c.type}>
