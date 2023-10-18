@@ -145,20 +145,7 @@ export default function CustomCage() {
             <div className="error-message" style={{ fontSize: "13px", color: "red" }}>{errors.height}</div>
           )}
         </div>
-        <div className="size_chilren">
-          <span> Width</span>
-          <input
-            className="ip_custom_cage"
-            type="number"
-            min={30}
-            max={100}
-            value={inputValues.width}
-            onChange={(e) =>
-              handleInputChange("width", parseInt(e.target.value, 10))
-            }
-          />
-          {errors.width && <div className="error-message" style={{ fontSize: "13px", color: "red" }}>{errors.width}</div>}
-        </div>
+
         <div className="size_chilren">
           <span>Length</span>
           <input
@@ -175,7 +162,20 @@ export default function CustomCage() {
             <div className="error-message" style={{ fontSize: "13px", color: "red" }}>{errors.length}</div>
           )}
         </div>
-
+        <div className="size_chilren">
+          <span> Width</span>
+          <input
+            className="ip_custom_cage"
+            type="number"
+            min={30}
+            max={100}
+            value={inputValues.width}
+            onChange={(e) =>
+              handleInputChange("width", parseInt(e.target.value, 10))
+            }
+          />
+          {errors.width && <div className="error-message" style={{ fontSize: "13px", color: "red" }}>{errors.width}</div>}
+        </div>
         <div className="howToOrder">
           <div className="howToOrder-item" style={{ fontWeight: 700 }}>
             Length, Width, Height (min: 30, max: 100)

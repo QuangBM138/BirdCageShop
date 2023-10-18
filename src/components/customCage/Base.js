@@ -118,7 +118,7 @@ export default function Base({ isDisabled, parentCallback }) {
           )}
         </Listbox>
 
-        <span className="border ml-5 text-[20px] h-9 rounded-md">
+        <span className="ml-5 text-[20px] h-9 rounded-md">
           {inputValue}
         </span>
       </div>
