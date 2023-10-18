@@ -12,14 +12,23 @@ export default function Door({ isDisabled, parentCallback }) {
   const [isInvalid, setIsInvalid] = useState(false);
 
   const handleInputChange = (e) => {
-    const value = e.target.value;
-    setInputValue(value);
-
-    if (parseInt(value, 10) > 4) {
-      setIsInvalid(true);
-    } else {
-      setIsInvalid(false);
+    const removeSpecialChar = /[e\+\-]/g
+    const number = /[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$/
+    const removeZero = /^0|[\.]/
+    if (number.test(e.target.value)) {
+      setInputValue(e.target.value.replace(removeSpecialChar, "").replace(removeZero, ""))
+      // setInputValue(e.target.value);
+      if (e.target.value > 4) {
+        setIsInvalid(true);
+      } else {
+        setIsInvalid(false);
+      }
+      return
     }
+    setInputValue('')
+
+
+
   };
   const onTrigger = (e) => {
     setSelected(e)
@@ -120,11 +129,11 @@ export default function Door({ isDisabled, parentCallback }) {
         </Listbox>
 
         <input
-          className="border ml-5 text-[20px] h-9 rounded-md"
-          placeholder="1"
+          style={{ width: "238px" }}
+          className="pl-2 border ml-5 text-[20px] h-9 rounded-md"
           value={inputValue}
           onChange={handleInputChange}
-          type="number"
+          type="text"
         />
       </div>
     </div>

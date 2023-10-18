@@ -11,18 +11,32 @@ export default function Spoke({ isDisabled, min, max, parentCallback }) {
   const [inputValue, setInputValue] = useState("");
   const [isInvalid, setIsInvalid] = useState(false);
   const handleInputChange = (e) => {
-    const value = e.target.value;
-    setInputValue(value);
-    if (parseInt(value, 10) < min || parseInt(value, 10) > max) {
-      setIsInvalid(true);
-    } else {
-      setIsInvalid(false);
+    console.log(e.target.value)
+    const removeSpecialChar = /[e\+\-]/g
+    const number = /[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$/
+    const removeZero = /^0|[\.]/
+    if (number.test(e.target.value)) {
+      setInputValue(e.target.value.replace(removeSpecialChar, "").replace(removeZero, ""))
+      // setInputValue(e.target.value);
+      if (e.target.value < min || e.target.value > max) {
+
+        setIsInvalid(true);
+      } else {
+        setIsInvalid(false);
+      }
+      return
     }
+    setInputValue('')
+
+
+
+
   };
   const onTrigger = (e) => {
     setSelected(e)
     parentCallback({ item: e, type: "spoke" })
   }
+
   return (
     <div>
       <div>
@@ -112,12 +126,12 @@ export default function Spoke({ isDisabled, min, max, parentCallback }) {
                     </Listbox.Options>
                   </Transition>
                   <input
-                    className="border ml-5 text-[20px] h-9 rounded-md"
+                    className="border ml-5 text-[20px] h-9 rounded-md pl-2"
                     placeholder="Quantity"
                     value={inputValue}
                     style={{ fontFamily: "Roboto" }}
                     onChange={handleInputChange}
-                    type="number"
+                    type="text"
                   />
                   {isInvalid && (
                     <div className="text-red-500 mt-2">Spoke must be in range with min: {min} and max: {max}</div>
