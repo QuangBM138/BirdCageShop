@@ -9,6 +9,7 @@ import SearchPage from "./pages/SearchPage";
 import { Products_Cage } from "./data/Cages";
 import Adress from "./components/address/Address";
 import UserProfile from "./components/userProfile/UserProfile";
+import CustomCage from "./components/customCage/CustomCage";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 // import Login from "./components/login/Login";
@@ -17,7 +18,6 @@ import CreateAccount from "./components/createAccount/CreateAccount";
 import LoginPage from "./pages/LoginPage";
 
 import DetailOrder from "./components/detailOrder/DetailOrder";
-
 
 
 
@@ -38,11 +38,10 @@ function App() {
   // })
   // console.log(Products.length)
 
-
   const { pathname } = useLocation();
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [pathname])
+    window.scrollTo(0, 0);
+  }, [pathname]);
   return (
     <div className="App" style={{ background: "#fff" }}>
       {/* render image of each cage */}
@@ -63,6 +62,7 @@ function App() {
         <Route path="/login" exact element={<Login />}></Route>
         <Route path="/forgotpassword" element={<ForgotPassword />}></Route>
         <Route path="/createaccount" element={<CreateAccount />}></Route>
+        <Route path="/customcage" element={<CustomCage />} />
       </Routes>
 
       <Footer></Footer>

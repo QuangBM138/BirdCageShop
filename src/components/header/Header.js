@@ -87,6 +87,9 @@ const Header = () => {
             <li>
               <Link to="/">Home</Link>
             </li>
+            <li>
+              <Link to="/customcage">Create your own cage</Link>
+            </li>
           </ul>
         </div>
         <div className="right-icons">
