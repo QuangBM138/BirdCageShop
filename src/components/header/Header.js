@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Header.css";
 import { FaBars } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
-import { Routes, Route, Link, useNavigate } from "react-router-dom"
+import { Routes, Route, Link, useNavigate, NavLink } from "react-router-dom"
 import { Container } from '@mui/material'
 import { useStore } from "../cart/store/hooks";
 import SearchResults from "../search/searchResult/SearchResult";
@@ -85,10 +85,10 @@ const Header = () => {
         <div className="info">
           <ul className={Mobile ? "nav-links-mobile" : "nav-links"}>
             <li>
-              <Link to="/">Home</Link>
+              <NavLink className={({ isActive }) => isActive ? "nav-link active" : 'nav-link'} to="/">Home</NavLink>
             </li>
             <li>
-              <Link to="/customcage">Create your own cage</Link>
+              <NavLink className={({ isActive }) => isActive ? "nav-link active" : 'nav-link'} to="/customcage">Create your own cage</NavLink>
             </li>
           </ul>
         </div>
@@ -97,10 +97,10 @@ const Header = () => {
           <a onClick={() => setShowSearchInput(!showSearchInput)}>
             <i className="fa fa-search"></i>
           </a>
-          <Link to="/user">
+          <NavLink className={({ isActive }) => isActive ? "nav-link active" : 'nav-link'} to="/user">
             <i className="fa fa-user"></i>
-          </Link>
-          <Link to="/cart" className="cart-icon">
+          </NavLink>
+          <NavLink className={({ isActive }) => isActive ? "nav-link active" : 'nav-link'} to="/cart">
             <i className="fa-solid fa-cart-shopping"></i>
             <span
               id="cartCount"
@@ -112,7 +112,8 @@ const Header = () => {
                 )
               }
             </span>
-          </Link>
+          </NavLink>
+
 
         </div>
         <div className="nav-bar">
