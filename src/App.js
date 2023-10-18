@@ -49,7 +49,7 @@ function App() {
         <Route path="/user" element={<UserProfile />}></Route>
         <Route path="/address" element={<Adress />}></Route>
         <Route path="/payment" element={<Payment />}></Route>
-        <Route path="/customCage" element={<CustomCage />} />
+        <Route path="/customcage" element={<CustomCage />} />
       </Routes>
 
       <Footer></Footer>
