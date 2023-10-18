@@ -197,7 +197,7 @@ export default function CustomCage() {
             Length, Width, Height (min: 30, max: 100)
           </div>
           <div className="howToOrder-item">Width must be smaller than Length</div>
-          <div className="howToOrder-item">Spoke: min <p className="condition-spoke">{min}</p> max  <p className="condition-spoke">{max}</p></div>
+          <div className="howToOrder-item">Spoke: min <p className="condition-spoke">{isInputValid ? min : 0}</p> max  <p className="condition-spoke">{isInputValid ? max : 0}</p></div>
           <div className="howToOrder-item">Door must be smaller than 4</div>
         </div>
 
