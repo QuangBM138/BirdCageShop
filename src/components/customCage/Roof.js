@@ -6,9 +6,9 @@ import './customCage.css'
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
-export default function Roof({ isDisabled }) {
-  const [selected, setSelected] = useState(roofs[3]);
-  const [inputValue, setInputValue] = useState("");
+export default function Roof({ isDisabled, parentCallback }) {
+  const [selected, setSelected] = useState("");
+  const [inputValue, setInputValue] = useState(1);
   const [isInvalid, setIsInvalid] = useState(false);
 
   const handleInputChange = (e) => {
@@ -21,10 +21,14 @@ export default function Roof({ isDisabled }) {
       setIsInvalid(false);
     }
   };
+  const onTrigger = (e) => {
+    setSelected(e)
+    parentCallback({ item: e, type: "roof" })
+  }
   return (
     <div>
       <div className={`flex mt-3 ${isDisabled ? "disabled-element" : ""}`}>
-        <Listbox value={selected} onChange={setSelected}>
+        <Listbox value={selected} onChange={onTrigger}>
           {({ open }) => (
             <>
               <Listbox.Label className="block text-sm font-medium leading-6 text-gray-900 w-[40px]">
@@ -34,7 +38,7 @@ export default function Roof({ isDisabled }) {
                 <Listbox.Button className="relative w-[200px] cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6">
                   <span className="flex items-center">
                     <img
-                      src={selected.avatar}
+                      src={selected.image}
                       alt=""
                       className="h-5 w-5 flex-shrink-0"
                     />
@@ -73,7 +77,7 @@ export default function Roof({ isDisabled }) {
                           <>
                             <div className="flex items-center">
                               <img
-                                src={roof.avatar}
+                                src={roof.image}
                                 alt=""
                                 className="h-5 w-5 flex-shrink-0"
                               />
@@ -114,13 +118,9 @@ export default function Roof({ isDisabled }) {
           )}
         </Listbox>
 
-        <input
+        <span
           className="border ml-5 text-[20px] h-9 rounded-md"
-          placeholder="1"
-          value={inputValue}
-          onChange={handleInputChange}
-          type="number"
-        />
+        >{inputValue}</span>
       </div>
     </div>
   );

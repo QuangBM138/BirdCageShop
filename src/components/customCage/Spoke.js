@@ -6,26 +6,28 @@ import { spokesData } from "./DataCage";
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
-export default function Spoke({ isDisabled }) {
-  const [selected, setSelected] = useState(spokesData[3]);
+export default function Spoke({ isDisabled, min, max, parentCallback }) {
+  const [selected, setSelected] = useState("");
   const [inputValue, setInputValue] = useState("");
   const [isInvalid, setIsInvalid] = useState(false);
-
   const handleInputChange = (e) => {
     const value = e.target.value;
     setInputValue(value);
-
-    if (parseInt(value, 10) < 30 || parseInt(value, 10) > 100) {
+    if (parseInt(value, 10) < min || parseInt(value, 10) > max) {
       setIsInvalid(true);
     } else {
       setIsInvalid(false);
     }
   };
+  const onTrigger = (e) => {
+    setSelected(e)
+    parentCallback({ item: e, type: "spoke" })
+  }
   return (
     <div>
       <div>
         <div className={`flex mt-3 ${isDisabled ? "disabled-element" : ""}`}>
-          <Listbox value={selected} onChange={setSelected}>
+          <Listbox value={selected} onChange={onTrigger}>
             {({ open }) => (
               <>
                 <Listbox.Label className="block text-sm font-medium leading-6 text-gray-900 w-[40px]">
@@ -35,7 +37,7 @@ export default function Spoke({ isDisabled }) {
                   <Listbox.Button className="relative w-[200px] cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6">
                     <span className="flex items-center">
                       <img
-                        src={selected.avatar}
+                        src={selected.image}
                         alt=""
                         className="h-5 w-5 flex-shrink-0"
                       />
@@ -76,7 +78,7 @@ export default function Spoke({ isDisabled }) {
                             <>
                               <div className="flex items-center">
                                 <img
-                                  src={spoke.avatar}
+                                  src={spoke.image}
                                   alt=""
                                   className="h-5 w-5 flex-shrink-0"
                                 />
@@ -109,23 +111,23 @@ export default function Spoke({ isDisabled }) {
                       ))}
                     </Listbox.Options>
                   </Transition>
+                  <input
+                    className="border ml-5 text-[20px] h-9 rounded-md"
+                    placeholder="Quantity"
+                    value={inputValue}
+                    style={{ fontFamily: "Roboto" }}
+                    onChange={handleInputChange}
+                    type="number"
+                  />
                   {isInvalid && (
-                    <div className="text-red-500 mt-2">Invalid Spoke</div>
+                    <div className="text-red-500 mt-2">Spoke must be in range with min: {min} and max: {max}</div>
                   )}
                 </div>
               </>
             )}
           </Listbox>
 
-          <input
-            className="border ml-5 text-[20px] h-9 rounded-md"
-            placeholder="Spoke"
-            value={inputValue}
-            onChange={handleInputChange}
-            type="number"
-            min={30}
-            max={100}
-          />
+
         </div>
       </div>
     </div>

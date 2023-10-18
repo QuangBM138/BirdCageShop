@@ -1,6 +1,82 @@
 .size {
   display: flex;
   flex-direction: column;
+  position: relative;
+}
+
+.howToOrder {
+  position: absolute;
+  right: 0;
+  border: 1px solid;
+  padding: 20px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  top: 0;
+}
+
+.component-images {
+  display: flex;
+  margin-top: 30px;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.component-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.order-button {
+  position: absolute;
+  right: 20%;
+  top: 10%;
+  margin-top: 10px;
+  background: #ffc519;
+  padding: 5px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  border-bottom: 4px solid #8d522c;
+  transition: all 0.8s;
+  border-radius: 30px !important;
+  color: #fff;
+  width: 100px;
+  height: 50px;
+}
+
+.order-button:hover {
+  background: #8d522c;
+}
+
+.component-image {
+  display: block;
+  width: 100%;
+  object-fit: contain;
+  height: 200px;
+
+  margin: 0 20px;
+
+}
+
+.component {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ddd;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  padding: 10px;
+}
+
+.condition-spoke {
+  font-weight: 600;
+  display: inline;
+  font-size: 25px;
+  color: #8d522c;
+}
+
+.howToOrder-item {
+  font-family: "Roboto";
+  font-size: 20px;
 }
 
 .size_chilren {
