@@ -18,7 +18,7 @@ export default function ProductDescriptAll() {
 
   return (
     <section className="text-gray-600 body-font overflow-hidden">
-      <div className='container' style={{ margin: "0 auto" }}>
+      <div className='container' style={{ margin: "80px auto" }}>
         <div className='prodcu_description_header px-10'>
           <button
             className={`button_design ${activeButton === 'description' ? 'active-button' : ''}`}

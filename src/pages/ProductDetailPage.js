@@ -4,7 +4,10 @@ import ProductDescriptAll from '../components/productDetail/productDescriptAll/P
 import RelatedPro from '../components/productDetail/relatedProduct/RelatedPro';
 import RecentlyPro from '../components/productDetail/recentlyViewed/RecentlyPro';
 
+
+
 export default function ProductDetailPage () {
+
     return (
         <div style={{backgroundColor: "white"}}>
             <Details />
