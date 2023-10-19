@@ -9,11 +9,11 @@ import StarIcon from '@mui/icons-material/Star';
 
 export default function Reviews() {
 
-    const [open, setOpen] = useState(false);
+    // const [open, setOpen] = useState(false);
 
-    const handleClickOpen = () => {
-        setOpen(!open);
-    };
+    // const handleClickOpen = () => {
+    //     setOpen(!open);
+    // };
 
 
     return (
@@ -28,12 +28,12 @@ export default function Reviews() {
                             <span>
                                 Not review yet
                             </span>
-                            <button className='button_design' onClick={handleClickOpen}>
+                            {/* <button className='button_design' onClick={handleClickOpen}>
                                 {open ? 'Close Review' : 'Write a review'}
-                            </button>
+                            </button> */}
                         </div>
                     </div>
-                    {open && (
+                    {/* {open && (
                         <div className='review_body'>
                             <h3 className='h3_war'>
                                 Write a review
@@ -97,7 +97,7 @@ export default function Reviews() {
                                 <a className='sumitreview'>Submit</a>
                             </div>
                         </div>
-                    )}
+                    )} */}
                 </div>
             </div>
         </section>
