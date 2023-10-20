@@ -67,59 +67,6 @@ export default function RelatedPro({ compareParentCallback, listProductCompare }
                 </SwiperSlide>)
             }
           </Swiper>
-          {/* <Swiper
-
-              freeMode={true}
-              pagination={{
-                clickable: true,
-              }}
-              
-              breakpoints={{
-                // Breakpoint for iPhone 
-                0: {
-                  slidesPerView: 1,
-                  spaceBetween: 10,
-                },
-                // Breakpoint for iPad 
-                768: {
-                  slidesPerView: 2,
-                  spaceBetween: 20,
-                },
-                // Breakpoint for Desktop
-                1000: {
-                  slidesPerView: 4,
-                  spaceBetween: 20,
-                },
-              }}
-              modules={[FreeMode, Pagination]}
-              className="mySwiper"
-
-            >
-              {images.map((img, index) => (
-                <SwiperSlide key={index}>
-                  <div className='related_cards'>
-                    <img className='related_cards__img' src={img} alt={`Slide ${index}`} />
-                    <div className='related_cards__overlay'>
-                      <div className="related_cards__overlay__frame">
-                        <div className='related_cards__title'>
-                          <h4 className="h4_related">Adult Dogs Pedigree</h4>
-                        </div>
-                      </div>
-                      <div className="related_cards__overlay__frame">
-                        <div className='related_cards__prices'>
-                          <h3>$350.00</h3>
-                        </div>
-                      </div>
-                      <div className="related_cards__overlay__frame">
-                        <button className='button_design'>
-                          <ShoppingBasketIcon /> Add to Cart
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper> */}
         </div>
       </div>
     </section>
