@@ -12,13 +12,12 @@ import './Details.css';
 import DetailSwiper from './DetailSwiper';
 
 
-export default function Details() {
+export default function Details({ compareParentCallback, listProductCompare }) {
 
     const [quantity, setQuantity] = useState(1);
     const { id } = useParams();
     const product = Products_Cage.find((product) => product.id === parseInt(id, 10));
     const [state, dispatch] = useStore()
-    const [storageListProductCompare, setStorageListProductCompare] = useState(() => JSON.parse(localStorage.getItem('listProductCompare')) ?? [])
 
     const handleAddToCart = (index, quantity) => {
         dispatch(actions.addToCart({ index, quantity }))
@@ -83,25 +82,7 @@ export default function Details() {
         return <div>Product not found</div>;
     }
 
-    const handleAddToCompare = (id) => {
-        setStorageListProductCompare(prev_product => {
-            console.log(storageListProductCompare.find(p => p == id))
-            const newCompareProducts = storageListProductCompare.find(p => p == id)
-                ? storageListProductCompare.filter(p => p != id)
-                :
-                [
-                    ...prev_product,
-                    id
-                ]
-            // const newCompareProducts = [
-            //     ...prev_product,
-            //     id
-            // ]
-            localStorage.setItem("listProductCompare", JSON.stringify(newCompareProducts))
-            return newCompareProducts
-        })
 
-    }
 
     return (
         <section className="text-gray-600 body-font overflow-hidden" style={{ marginBottom: "-55px" }}>
@@ -197,11 +178,11 @@ export default function Details() {
                                 </button>
 
                                 <button
-                                    onClick={() => handleAddToCompare(product.id)}
+                                    onClick={() => compareParentCallback(product.id)}
                                     class='button_design'>
 
-                                    {storageListProductCompare.filter(p => p == product.id).length == 0 ? "Compare" : "Remove"}
-                                    {console.log(storageListProductCompare.filter(p => p == product.id))}
+                                    {listProductCompare.filter(p => p == product.id).length == 0 ? "Compare" : "Remove"}
+                                    {console.log(listProductCompare.filter(p => p == product.id))}
                                 </button>
                             </div>
                         </div>
