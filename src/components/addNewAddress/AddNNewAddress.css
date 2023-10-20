@@ -1,0 +1,150 @@
+.ana_container {
+    margin: 50px;
+    flex: 1 1 0%;
+}
+
+.ada_body .ada_heading {
+    font-size: 19px;
+    line-height: 21px;
+    font-weight: 300;
+    font-family: 'Poppins', sans-serif;
+    margin: 20px 0px 15px;
+}
+
+.ada_body .ada_form {
+    background-color: rgb(255, 255, 255);
+    border-radius: 4px;
+    min-height: 400px;
+    padding: 30px 20px;
+}
+
+.ada_body form {
+    width: 600px;
+}
+
+
+
+.ada_body .input-label {
+    width: 110px;
+
+    min-width: 110px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    color: rgb(51, 51, 51);
+}
+
+.ada_body .form-control {
+    display: flex;
+    flex-wrap: nowrap;
+    -webkit-box-align: center;
+    align-items: center;
+    margin: 0px 0px 15px;
+}
+
+.ada_body .form-control>div {
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0%;
+    position: relative;
+    z-index: 1;
+}
+
+.ada_body .form-control input {
+    flex: 1 1 0%;
+}
+
+.input_ds {
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s, -webkit-box-shadow 0.15s ease-in-out 0s;
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: 4px;
+    height: 34px;
+    padding: 6px 12px;
+    line-height: 34px;
+    outline: none;
+}
+
+.ada_body .form-control textarea {
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: 4px;
+    width: 100%;
+    padding: 6px 12px;
+}
+
+.ada_body .form-control textarea {
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: 4px;
+    width: 100%;
+    padding: 6px 12px;
+}
+
+.form-control textarea {
+    overflow: auto;
+    font-family: 'Poppins', sans-serif;
+    font-size: 100%;
+    line-height: 1.15;
+    margin: 0px;
+}
+
+.kpLnYz {
+    display: flex;
+    margin-right: 15px;
+}
+
+
+.etNXAi {
+    display: inline-block;
+}
+
+.etNXAi input[type="checkbox"] {
+    position: absolute;
+    height: 1px;
+    width: 1px;
+    visibility: hidden;
+    clip: rect(0px, 0px, 0px, 0px);
+    opacity: 0;
+}
+
+
+.label {
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.etNXAi input[type="checkbox"] {
+    position: absolute;
+    height: 1px;
+    width: 1px;
+    visibility: hidden;
+    clip: rect(0px, 0px, 0px, 0px);
+    opacity: 0;
+}
+
+[type="checkbox"] {
+    box-sizing: border-box;
+    padding: 0px;
+}
+
+.etNXAi .checkbox-fake {
+    width: 10px;
+    height: 10px;
+    border: 1px solid rgb(120, 120, 120);
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0px 12px 0px 0px;
+    position: relative;
+    z-index: 1;
+    color: rgb(120, 120, 120);
+}
+
+.ada_body .btn-submit {
+    border: 0px;
+    width: 176px;
+    height: 40px;
+    border-radius: 4px;
+    color: rgb(74, 74, 74);
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffc519;
+    cursor: pointer;
+}
