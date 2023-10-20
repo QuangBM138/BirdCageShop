@@ -7,7 +7,7 @@ export const Products_Cage = [
     size: "Blue & White",
     images:
       '["https://m.media-amazon.com/images/I/91sA18xcmCL._AC_SX355_.jpg","https://m.media-amazon.com/images/I/91sA18xcmCL._AC_SX450_.jpg","https://m.media-amazon.com/images/I/91sA18xcmCL._AC_SX522_.jpg","https://m.media-amazon.com/images/I/91sA18xcmCL._AC_SX569_.jpg","https://m.media-amazon.com/images/I/91sA18xcmCL._AC_SX679_.jpg","https://m.media-amazon.com/images/I/91sA18xcmCL._AC_SX425_.jpg","https://m.media-amazon.com/images/I/91sA18xcmCL._AC_SX466_.jpg"]',
-    id: 0,
+    id: 1,
   },
   {
     name: "Vision M02 Wire Bird Cage, Bird Home for Parakeets, Finches and Canaries, Tall Medium",
@@ -17,7 +17,7 @@ export const Products_Cage = [
     size: "Tall",
     images:
       '["https://m.media-amazon.com/images/I/81rVasA2qbS._AC_SY450_.jpg","https://m.media-amazon.com/images/I/81rVasA2qbS._AC_SX679_.jpg","https://m.media-amazon.com/images/I/81rVasA2qbS._AC_SX466_.jpg","https://m.media-amazon.com/images/I/81rVasA2qbS._AC_SX569_.jpg","https://m.media-amazon.com/images/I/81rVasA2qbS._AC_SX425_.jpg","https://m.media-amazon.com/images/I/81rVasA2qbS._AC_SY355_.jpg","https://m.media-amazon.com/images/I/81rVasA2qbS._AC_SX522_.jpg"]',
-    id: 1,
+    id: 2,
   },
   {
     name: 'Prevue Hendryx Classic Round Bird Cage, Red, SP31999R,1/2"',
@@ -27,7 +27,7 @@ export const Products_Cage = [
     size: null,
     images:
       '["https://m.media-amazon.com/images/I/71lpWgS-yML._AC_SY450_.jpg","https://m.media-amazon.com/images/I/71lpWgS-yML._AC_SX679_.jpg","https://m.media-amazon.com/images/I/71lpWgS-yML._AC_SY355_.jpg","https://m.media-amazon.com/images/I/71lpWgS-yML._AC_SX569_.jpg","https://m.media-amazon.com/images/I/71lpWgS-yML._AC_SX425_.jpg","https://m.media-amazon.com/images/I/71lpWgS-yML._AC_SX522_.jpg","https://m.media-amazon.com/images/I/71lpWgS-yML._AC_SX466_.jpg"]',
-    id: 2,
+    id: 3,
   },
   {
     name: "Prevue Hendryx Naturals Preen & Pacify Coco and Bamboo Bird Toy 62800",
@@ -37,7 +37,7 @@ export const Products_Cage = [
     size: null,
     images:
       '["https://m.media-amazon.com/images/I/61hA5+Gog2L._AC_SY450_.jpg","https://m.media-amazon.com/images/I/61hA5+Gog2L._AC_SX679_.jpg","https://m.media-amazon.com/images/I/61hA5+Gog2L._AC_SX522_.jpg","https://m.media-amazon.com/images/I/61hA5+Gog2L._AC_SX466_.jpg","https://m.media-amazon.com/images/I/61hA5+Gog2L._AC_SX425_.jpg","https://m.media-amazon.com/images/I/61hA5+Gog2L._AC_SY355_.jpg","https://m.media-amazon.com/images/I/61hA5+Gog2L._AC_SX569_.jpg"]',
-    id: 3,
+    id: 4,
   },
   {
     name: "Prevue Pet Products Physical & Mental Bodacious Bites Abacus Bird Toy 60954",
@@ -47,7 +47,7 @@ export const Products_Cage = [
     size: null,
     images:
       '["https://m.media-amazon.com/images/I/61TdQbNqfdL._AC_SY355_.jpg","https://m.media-amazon.com/images/I/61TdQbNqfdL._AC_SX522_.jpg","https://m.media-amazon.com/images/I/61TdQbNqfdL._AC_SX425_.jpg","https://m.media-amazon.com/images/I/61TdQbNqfdL._AC_SX569_.jpg","https://m.media-amazon.com/images/I/61TdQbNqfdL._AC_SX679_.jpg","https://m.media-amazon.com/images/I/61TdQbNqfdL._AC_SX466_.jpg","https://m.media-amazon.com/images/I/61TdQbNqfdL._AC_SY450_.jpg"]',
-    id: 4,
+    id: 5,
   },
   {
     name: "Prevue Hendryx SP850G/W Clean Life Cockatiel Cage, Green and White",
@@ -57,7 +57,7 @@ export const Products_Cage = [
     size: "Green/White",
     images:
       '["https://m.media-amazon.com/images/I/81gYKAMky+L._AC_SY879_.jpg","https://m.media-amazon.com/images/I/81gYKAMky+L._AC_SY355_.jpg","https://m.media-amazon.com/images/I/81gYKAMky+L._AC_SY741_.jpg","https://m.media-amazon.com/images/I/81gYKAMky+L._AC_SY606_.jpg","https://m.media-amazon.com/images/I/81gYKAMky+L._AC_SY679_.jpg","https://m.media-amazon.com/images/I/81gYKAMky+L._AC_SY450_.jpg","https://m.media-amazon.com/images/I/81gYKAMky+L._AC_SY550_.jpg"]',
-    id: 5,
+    id: 6,
   },
   {
     name: 'Prevue Hendryx Clean Life Playtop Cage, White, 1/2" (SP851W/W)',
@@ -67,7 +67,7 @@ export const Products_Cage = [
     size: "White",
     images:
       '["https://m.media-amazon.com/images/I/81xnKwvU0-L._AC_SX679_.jpg","https://m.media-amazon.com/images/I/81xnKwvU0-L._AC_SX522_.jpg","https://m.media-amazon.com/images/I/81xnKwvU0-L._AC_SX425_.jpg","https://m.media-amazon.com/images/I/81xnKwvU0-L._AC_SX466_.jpg","https://m.media-amazon.com/images/I/81xnKwvU0-L._AC_SX569_.jpg","https://m.media-amazon.com/images/I/81xnKwvU0-L._AC_SY355_.jpg","https://m.media-amazon.com/images/I/81xnKwvU0-L._AC_SY450_.jpg"]',
-    id: 6,
+    id: 7,
   },
   {
     name: "Prevue Hendryx Forage & Engage Calypso Creations Fiesta Handbag Bird Toy 62604",
@@ -77,7 +77,7 @@ export const Products_Cage = [
     size: null,
     images:
       '["https://m.media-amazon.com/images/I/71RvLou9EsL._AC_SX679_.jpg","https://m.media-amazon.com/images/I/71RvLou9EsL._AC_SX522_.jpg","https://m.media-amazon.com/images/I/71RvLou9EsL._AC_SY355_.jpg","https://m.media-amazon.com/images/I/71RvLou9EsL._AC_SY450_.jpg","https://m.media-amazon.com/images/I/71RvLou9EsL._AC_SX569_.jpg","https://m.media-amazon.com/images/I/71RvLou9EsL._AC_SX425_.jpg","https://m.media-amazon.com/images/I/71RvLou9EsL._AC_SX466_.jpg"]',
-    id: 7,
+    id: 8,
   },
   {
     name: "Prevue Pet Products Sound & Movement Bodacious Bites Tower Bird Toy 60960",
@@ -87,7 +87,7 @@ export const Products_Cage = [
     size: null,
     images:
       '["https://m.media-amazon.com/images/I/61gVfoes-mL._AC_SY450_.jpg","https://m.media-amazon.com/images/I/61gVfoes-mL._AC_SX425_.jpg","https://m.media-amazon.com/images/I/61gVfoes-mL._AC_SY355_.jpg","https://m.media-amazon.com/images/I/61gVfoes-mL._AC_SX569_.jpg","https://m.media-amazon.com/images/I/61gVfoes-mL._AC_SX466_.jpg","https://m.media-amazon.com/images/I/61gVfoes-mL._AC_SX522_.jpg","https://m.media-amazon.com/images/I/61gVfoes-mL._AC_SX679_.jpg"]',
-    id: 8,
+    id: 9,
   },
   {
     name: 'Prevue Hendryx Casbah Parakeet Cage, Blue and White, 1/2" (SP1620-2)',
@@ -97,7 +97,7 @@ export const Products_Cage = [
     size: "Blue/White",
     images:
       '["https://m.media-amazon.com/images/I/81Qp5vmw6vL._AC_SY450_.jpg","https://m.media-amazon.com/images/I/81Qp5vmw6vL._AC_SY606_.jpg","https://m.media-amazon.com/images/I/81Qp5vmw6vL._AC_SY550_.jpg","https://m.media-amazon.com/images/I/81Qp5vmw6vL._AC_SY355_.jpg","https://m.media-amazon.com/images/I/81Qp5vmw6vL._AC_SY679_.jpg","https://m.media-amazon.com/images/I/81Qp5vmw6vL._AC_SY879_.jpg","https://m.media-amazon.com/images/I/81Qp5vmw6vL._AC_SY741_.jpg"]',
-    id: 9,
+    id: 10,
   },
   {
     name: 'Deco 79 Metal Round Birdcage with Latch Lock Closure and Hanging Hook, Set of 3 21", 18", 14"H, White',
@@ -107,7 +107,7 @@ export const Products_Cage = [
     size: '21", 18", 14"H',
     images:
       '["https://m.media-amazon.com/images/I/71wTxcYdvbL._AC_SX679_.jpg","https://m.media-amazon.com/images/I/71wTxcYdvbL._AC_SX450_.jpg","https://m.media-amazon.com/images/I/71wTxcYdvbL._AC_SX466_.jpg","https://m.media-amazon.com/images/I/71wTxcYdvbL._AC_SX425_.jpg","https://m.media-amazon.com/images/I/71wTxcYdvbL._AC_SX569_.jpg","https://m.media-amazon.com/images/I/71wTxcYdvbL._AC_SX355_.jpg","https://m.media-amazon.com/images/I/71wTxcYdvbL._AC_SX522_.jpg"]',
-    id: 10,
+    id: 11,
   },
   {
     name: "Prevue Pet Products 34511 Dometop Bird Cage, Small, Black Hammertone",
@@ -117,7 +117,7 @@ export const Products_Cage = [
     size: "Black Hammertone",
     images:
       '["https://m.media-amazon.com/images/I/71I7fysxjeL._AC_SX466_.jpg","https://m.media-amazon.com/images/I/71I7fysxjeL._AC_SX569_.jpg","https://m.media-amazon.com/images/I/71I7fysxjeL._AC_SX425_.jpg","https://m.media-amazon.com/images/I/71I7fysxjeL._AC_SX522_.jpg","https://m.media-amazon.com/images/I/71I7fysxjeL._AC_SY355_.jpg","https://m.media-amazon.com/images/I/71I7fysxjeL._AC_SY450_.jpg","https://m.media-amazon.com/images/I/71I7fysxjeL._AC_SX679_.jpg"]',
-    id: 11,
+    id: 12,
   },
   {
     name: 'YML A5924 3/8" Bar Spacing Flat Top Small Bird Cage, Black, 18" x 18"',
@@ -127,7 +127,7 @@ export const Products_Cage = [
     size: '18" x 18"',
     images:
       '["https://m.media-amazon.com/images/I/81uCUN0acTL._AC_SY355_.jpg","https://m.media-amazon.com/images/I/81uCUN0acTL._AC_SX522_.jpg","https://m.media-amazon.com/images/I/81uCUN0acTL._AC_SX569_.jpg","https://m.media-amazon.com/images/I/81uCUN0acTL._AC_SY450_.jpg","https://m.media-amazon.com/images/I/81uCUN0acTL._AC_SX679_.jpg","https://m.media-amazon.com/images/I/81uCUN0acTL._AC_SX425_.jpg","https://m.media-amazon.com/images/I/81uCUN0acTL._AC_SX466_.jpg"]',
-    id: 12,
+    id: 13,
   },
   {
     name: 'Prevue Hendryx SP31999G Classic Round Bird Cage, Green,1/2"',
@@ -137,7 +137,7 @@ export const Products_Cage = [
     size: null,
     images:
       '["https://m.media-amazon.com/images/I/71EJORQ1p-L._AC_SX679_.jpg","https://m.media-amazon.com/images/I/71EJORQ1p-L._AC_SX522_.jpg","https://m.media-amazon.com/images/I/71EJORQ1p-L._AC_SX425_.jpg","https://m.media-amazon.com/images/I/71EJORQ1p-L._AC_SX466_.jpg","https://m.media-amazon.com/images/I/71EJORQ1p-L._AC_SX569_.jpg","https://m.media-amazon.com/images/I/71EJORQ1p-L._AC_SY355_.jpg","https://m.media-amazon.com/images/I/71EJORQ1p-L._AC_SY450_.jpg"]',
-    id: 13,
+    id: 14,
   },
   {
     name: 'Prevue Pet Products Copacabana Bird Cage Lilac SP31998LILAC, Lilac, 3/8"',
@@ -147,7 +147,7 @@ export const Products_Cage = [
     size: "Lilac",
     images:
       '["https://m.media-amazon.com/images/I/81doFvOtiGL._AC_SY355_.jpg","https://m.media-amazon.com/images/I/81doFvOtiGL._AC_SX522_.jpg","https://m.media-amazon.com/images/I/81doFvOtiGL._AC_SX425_.jpg","https://m.media-amazon.com/images/I/81doFvOtiGL._AC_SX569_.jpg","https://m.media-amazon.com/images/I/81doFvOtiGL._AC_SX466_.jpg","https://m.media-amazon.com/images/I/81doFvOtiGL._AC_SY450_.jpg","https://m.media-amazon.com/images/I/81doFvOtiGL._AC_SX679_.jpg"]',
-    id: 14,
+    id: 15,
   },
   {
     name: "Prevue Pet Products Physical & Mental Bodacious Bites Bamboo Shoots Bird Toy 62474",
@@ -157,7 +157,7 @@ export const Products_Cage = [
     size: '18" W x 34" H',
     images:
       '["https://m.media-amazon.com/images/I/71CwKTnrpXL._AC_SY450_.jpg","https://m.media-amazon.com/images/I/71CwKTnrpXL._AC_SX466_.jpg","https://m.media-amazon.com/images/I/71CwKTnrpXL._AC_SX569_.jpg","https://m.media-amazon.com/images/I/71CwKTnrpXL._AC_SX425_.jpg","https://m.media-amazon.com/images/I/71CwKTnrpXL._AC_SY355_.jpg","https://m.media-amazon.com/images/I/71CwKTnrpXL._AC_SX679_.jpg","https://m.media-amazon.com/images/I/71CwKTnrpXL._AC_SX522_.jpg"]',
-    id: 15,
+    id: 16,
   },
   {
     name: 'Prevue Hendryx SP1804TR-2 Triple Roof Bird Cage, Teal and White, 1/2"',
@@ -167,7 +167,7 @@ export const Products_Cage = [
     size: "Teal & White",
     images:
       '["https://m.media-amazon.com/images/I/91zhedB5rAL._AC_SX425_.jpg","https://m.media-amazon.com/images/I/91zhedB5rAL._AC_SX522_.jpg","https://m.media-amazon.com/images/I/91zhedB5rAL._AC_SX450_.jpg","https://m.media-amazon.com/images/I/91zhedB5rAL._AC_SX569_.jpg","https://m.media-amazon.com/images/I/91zhedB5rAL._AC_SX466_.jpg","https://m.media-amazon.com/images/I/91zhedB5rAL._AC_SX679_.jpg","https://m.media-amazon.com/images/I/91zhedB5rAL._AC_SX355_.jpg"]',
-    id: 16,
+    id: 17,
   },
   {
     name: "Prevue Hendryx SP31999Y Classic Round Bird Cage, Yellow",
@@ -177,7 +177,7 @@ export const Products_Cage = [
     size: null,
     images:
       '["https://m.media-amazon.com/images/I/716sA8xSfLL._AC_SX569_.jpg","https://m.media-amazon.com/images/I/716sA8xSfLL._AC_SY450_.jpg","https://m.media-amazon.com/images/I/716sA8xSfLL._AC_SY355_.jpg","https://m.media-amazon.com/images/I/716sA8xSfLL._AC_SX522_.jpg","https://m.media-amazon.com/images/I/716sA8xSfLL._AC_SX679_.jpg","https://m.media-amazon.com/images/I/716sA8xSfLL._AC_SX425_.jpg","https://m.media-amazon.com/images/I/716sA8xSfLL._AC_SX466_.jpg"]',
-    id: 17,
+    id: 18,
   },
   {
     name: 'Prevue Pet Products SP1804-3 Flight Cage, Lilac/White,26" L x 14" W x 22 1/4" H',
@@ -187,7 +187,7 @@ export const Products_Cage = [
     size: "Lilac/White",
     images:
       '["https://m.media-amazon.com/images/I/91otnK2ujFL._SX342_.jpg","https://m.media-amazon.com/images/I/91otnK2ujFL._SX466_.jpg","https://m.media-amazon.com/images/I/91otnK2ujFL._SX425_.jpg","https://m.media-amazon.com/images/I/91otnK2ujFL._SX522_.jpg","https://m.media-amazon.com/images/I/91otnK2ujFL._SX385_.jpg"]',
-    id: 18,
+    id: 19,
   },
   {
     name: "Prevue Flight Bird Cage in Blush Finish (F042)",
@@ -197,7 +197,7 @@ export const Products_Cage = [
     size: "Flight Bird Cage - Blush",
     images:
       '["https://m.media-amazon.com/images/I/81me7WXVnfL._AC_SX466_.jpg","https://m.media-amazon.com/images/I/81me7WXVnfL._AC_SY450_.jpg","https://m.media-amazon.com/images/I/81me7WXVnfL._AC_SX679_.jpg","https://m.media-amazon.com/images/I/81me7WXVnfL._AC_SX522_.jpg","https://m.media-amazon.com/images/I/81me7WXVnfL._AC_SY355_.jpg","https://m.media-amazon.com/images/I/81me7WXVnfL._AC_SX569_.jpg","https://m.media-amazon.com/images/I/81me7WXVnfL._AC_SX425_.jpg"]',
-    id: 19,
+    id: 20,
   },
   {
     name: "YML A1304GRN Round Top Style Small Parakeet Cage, 11 x 9 x 16",
@@ -207,7 +207,7 @@ export const Products_Cage = [
     size: '16.0"L x 9.0"W x 11.0"H',
     images:
       '["https://m.media-amazon.com/images/I/8194vO2o2PL._AC_SY450_.jpg","https://m.media-amazon.com/images/I/8194vO2o2PL._AC_SX679_.jpg","https://m.media-amazon.com/images/I/8194vO2o2PL._AC_SX425_.jpg","https://m.media-amazon.com/images/I/8194vO2o2PL._AC_SX466_.jpg","https://m.media-amazon.com/images/I/8194vO2o2PL._AC_SX522_.jpg","https://m.media-amazon.com/images/I/8194vO2o2PL._AC_SX569_.jpg","https://m.media-amazon.com/images/I/8194vO2o2PL._AC_SY355_.jpg"]',
-    id: 20,
+    id: 21,
   },
   {
     name: 'Prevue Hendryx SP850W/W Clean Life Cockatiel Cage, White,1/2"',
@@ -217,7 +217,7 @@ export const Products_Cage = [
     size: "White",
     images:
       '["https://m.media-amazon.com/images/I/81vsu+UzM6L._AC_SY450_.jpg","https://m.media-amazon.com/images/I/81vsu+UzM6L._AC_SX679_.jpg","https://m.media-amazon.com/images/I/81vsu+UzM6L._AC_SX466_.jpg","https://m.media-amazon.com/images/I/81vsu+UzM6L._AC_SX425_.jpg","https://m.media-amazon.com/images/I/81vsu+UzM6L._AC_SX522_.jpg","https://m.media-amazon.com/images/I/81vsu+UzM6L._AC_SX569_.jpg","https://m.media-amazon.com/images/I/81vsu+UzM6L._AC_SY355_.jpg"]',
-    id: 21,
+    id: 22,
   },
   {
     name: "VEVOR 30 Inch Flight Bird Cage, Stackable Bird Cage Parakeet Cage with Slide-Out Tray and Handle, Small Parrots Birdcage for Cockatiels Budgies Conure Macaw Finch Lovebirds Canaries Pigeons",
@@ -227,7 +227,7 @@ export const Products_Cage = [
     size: null,
     images:
       '["https://m.media-amazon.com/images/I/81f8N5KyPnL._AC_SY450_.jpg","https://m.media-amazon.com/images/I/81f8N5KyPnL._AC_SX679_.jpg","https://m.media-amazon.com/images/I/81f8N5KyPnL._AC_SX522_.jpg","https://m.media-amazon.com/images/I/81f8N5KyPnL._AC_SX425_.jpg","https://m.media-amazon.com/images/I/81f8N5KyPnL._AC_SX569_.jpg","https://m.media-amazon.com/images/I/81f8N5KyPnL._AC_SY355_.jpg","https://m.media-amazon.com/images/I/81f8N5KyPnL._AC_SX466_.jpg"]',
-    id: 22,
+    id: 23,
   },
   {
     name: "PENN-PLAX Cockatiel & Small Parrot Starter Kit with Birdcage, Cover, and Accessories – Great for Cockatiels, Conures, and Small Parrots – Square Dome – White",
@@ -237,7 +237,7 @@ export const Products_Cage = [
     size: "White Square Top",
     images:
       '["https://m.media-amazon.com/images/I/81rSUrOTzoL._AC_SY355_.jpg","https://m.media-amazon.com/images/I/81rSUrOTzoL._AC_SY879_.jpg","https://m.media-amazon.com/images/I/81rSUrOTzoL._AC_SY450_.jpg","https://m.media-amazon.com/images/I/81rSUrOTzoL._AC_SY606_.jpg","https://m.media-amazon.com/images/I/81rSUrOTzoL._AC_SY679_.jpg","https://m.media-amazon.com/images/I/81rSUrOTzoL._AC_SY550_.jpg","https://m.media-amazon.com/images/I/81rSUrOTzoL._AC_SY741_.jpg"]',
-    id: 23,
+    id: 24,
   },
   {
     name: "Prevue Pet Products Clear View Glass Bird Cage Crystal Palace for Small Birds - Black Frame 15.75L x 16W x 20H",
@@ -247,7 +247,7 @@ export const Products_Cage = [
     size: "Black",
     images:
       '["https://m.media-amazon.com/images/I/81bRFMKvpOL._AC_SX466_.jpg","https://m.media-amazon.com/images/I/81bRFMKvpOL._AC_SX425_.jpg","https://m.media-amazon.com/images/I/81bRFMKvpOL._AC_SX522_.jpg","https://m.media-amazon.com/images/I/81bRFMKvpOL._AC_SX679_.jpg","https://m.media-amazon.com/images/I/81bRFMKvpOL._AC_SY450_.jpg","https://m.media-amazon.com/images/I/81bRFMKvpOL._AC_SX569_.jpg","https://m.media-amazon.com/images/I/81bRFMKvpOL._AC_SY355_.jpg"]',
-    id: 24,
+    id: 25,
   },
   {
     name: "PENN-PLAX Small Bird Starter Kit with Birdcage and Accessories – Great for Parakeets, Lovebirds, Parrotlets, Finches, Canaries, and More – Arch Style Cage – White",
@@ -257,7 +257,7 @@ export const Products_Cage = [
     size: null,
     images:
       '["https://m.media-amazon.com/images/I/712J2JbsmVL._AC_SX466_.jpg","https://m.media-amazon.com/images/I/712J2JbsmVL._AC_SY450_.jpg","https://m.media-amazon.com/images/I/712J2JbsmVL._AC_SX569_.jpg","https://m.media-amazon.com/images/I/712J2JbsmVL._AC_SY355_.jpg","https://m.media-amazon.com/images/I/712J2JbsmVL._AC_SX522_.jpg","https://m.media-amazon.com/images/I/712J2JbsmVL._AC_SX425_.jpg","https://m.media-amazon.com/images/I/712J2JbsmVL._AC_SX679_.jpg"]',
-    id: 25,
+    id: 26,
   },
   {
     name: "Prevue Pet Products Beijing Bird Cage, Yellow and Black",
@@ -267,7 +267,7 @@ export const Products_Cage = [
     size: "Yellow/Black",
     images:
       '["https://m.media-amazon.com/images/I/81wpNe1JadL._AC_SY450_.jpg","https://m.media-amazon.com/images/I/81wpNe1JadL._AC_SY606_.jpg","https://m.media-amazon.com/images/I/81wpNe1JadL._AC_SY679_.jpg","https://m.media-amazon.com/images/I/81wpNe1JadL._AC_SY550_.jpg","https://m.media-amazon.com/images/I/81wpNe1JadL._AC_SY741_.jpg","https://m.media-amazon.com/images/I/81wpNe1JadL._AC_SY879_.jpg","https://m.media-amazon.com/images/I/81wpNe1JadL._AC_SY355_.jpg"]',
-    id: 26,
+    id: 27,
   },
   {
     name: "YML A1104BLK Round Top Style Small Parakeet Cage, 11 x 9 x 16",
@@ -277,7 +277,7 @@ export const Products_Cage = [
     size: '11.0"L x 9.0"W x 16.0"H',
     images:
       '["https://m.media-amazon.com/images/I/91T1bPVo7VL._AC_SY741_.jpg","https://m.media-amazon.com/images/I/91T1bPVo7VL._AC_SY450_.jpg","https://m.media-amazon.com/images/I/91T1bPVo7VL._AC_SY355_.jpg","https://m.media-amazon.com/images/I/91T1bPVo7VL._AC_SY679_.jpg","https://m.media-amazon.com/images/I/91T1bPVo7VL._AC_SY550_.jpg","https://m.media-amazon.com/images/I/91T1bPVo7VL._AC_SY606_.jpg","https://m.media-amazon.com/images/I/91T1bPVo7VL._AC_SY879_.jpg"]',
-    id: 27,
+    id: 28,
   },
   {
     name: "Prevue Pet Products South Beach Flat Top Bird Cage, Teal (SP50061)",
@@ -287,7 +287,7 @@ export const Products_Cage = [
     size: null,
     images:
       '["https://m.media-amazon.com/images/I/71QIslUy1CL._AC_SX679_.jpg","https://m.media-amazon.com/images/I/71QIslUy1CL._AC_SX466_.jpg","https://m.media-amazon.com/images/I/71QIslUy1CL._AC_SX425_.jpg","https://m.media-amazon.com/images/I/71QIslUy1CL._AC_SX522_.jpg","https://m.media-amazon.com/images/I/71QIslUy1CL._AC_SY355_.jpg","https://m.media-amazon.com/images/I/71QIslUy1CL._AC_SX569_.jpg","https://m.media-amazon.com/images/I/71QIslUy1CL._AC_SY450_.jpg"]',
-    id: 28,
+    id: 29,
   },
   {
     name: "Little Live Pets - Lil' Bird & Bird Cage, New Light Up Wings with 20 + Sounds, and Reacts to Touch",
@@ -297,7 +297,7 @@ export const Products_Cage = [
     size: "Tiara Twinkles",
     images:
       '["https://m.media-amazon.com/images/I/81TX90wcPIL._AC_SY355_.jpg","https://m.media-amazon.com/images/I/81TX90wcPIL._AC_SX522_.jpg","https://m.media-amazon.com/images/I/81TX90wcPIL._AC_SX425_.jpg","https://m.media-amazon.com/images/I/81TX90wcPIL._AC_SX569_.jpg","https://m.media-amazon.com/images/I/81TX90wcPIL._AC_SY450_.jpg","https://m.media-amazon.com/images/I/81TX90wcPIL._AC_SX679_.jpg","https://m.media-amazon.com/images/I/81TX90wcPIL._AC_SX466_.jpg"]',
-    id: 29,
+    id: 30,
   },
   {
     name: 'Prevue Hendryx Clean Life Playtop Cage, White, 1/2" (SP851W/W)',
@@ -307,7 +307,7 @@ export const Products_Cage = [
     size: "White",
     images:
       '["https://m.media-amazon.com/images/I/81xnKwvU0-L._AC_SX679_.jpg","https://m.media-amazon.com/images/I/81xnKwvU0-L._AC_SX522_.jpg","https://m.media-amazon.com/images/I/81xnKwvU0-L._AC_SX425_.jpg","https://m.media-amazon.com/images/I/81xnKwvU0-L._AC_SX466_.jpg","https://m.media-amazon.com/images/I/81xnKwvU0-L._AC_SX569_.jpg","https://m.media-amazon.com/images/I/81xnKwvU0-L._AC_SY355_.jpg","https://m.media-amazon.com/images/I/81xnKwvU0-L._AC_SY450_.jpg"]',
-    id: 30,
+    id: 31,
   },
   {
     name: "YML Small Breeding Cage, 24 x 16 x 16, White",
@@ -317,7 +317,7 @@ export const Products_Cage = [
     size: '16.0"L x 16.0"W x 24.0"H',
     images:
       '["https://m.media-amazon.com/images/I/81KPPYf1I6L._AC_SX355_.jpg","https://m.media-amazon.com/images/I/81KPPYf1I6L._AC_SX569_.jpg","https://m.media-amazon.com/images/I/81KPPYf1I6L._AC_SX679_.jpg","https://m.media-amazon.com/images/I/81KPPYf1I6L._AC_SX425_.jpg","https://m.media-amazon.com/images/I/81KPPYf1I6L._AC_SX466_.jpg","https://m.media-amazon.com/images/I/81KPPYf1I6L._AC_SX522_.jpg","https://m.media-amazon.com/images/I/81KPPYf1I6L._AC_SX450_.jpg"]',
-    id: 31,
+    id: 32,
   },
   {
     name: 'YML A5944 3/8" Bar Spacing Pagoda Small Bird Cage, White, 18" x 18"',
@@ -327,7 +327,7 @@ export const Products_Cage = [
     size: '18" x 18"',
     images:
       '["https://m.media-amazon.com/images/I/81aeOERD6aL._AC_SY741_.jpg","https://m.media-amazon.com/images/I/81aeOERD6aL._AC_SY355_.jpg","https://m.media-amazon.com/images/I/81aeOERD6aL._AC_SY606_.jpg","https://m.media-amazon.com/images/I/81aeOERD6aL._AC_SY550_.jpg","https://m.media-amazon.com/images/I/81aeOERD6aL._AC_SY679_.jpg","https://m.media-amazon.com/images/I/81aeOERD6aL._AC_SY879_.jpg","https://m.media-amazon.com/images/I/81aeOERD6aL._AC_SY450_.jpg"]',
-    id: 32,
+    id: 33,
   },
   {
     name: 'Prevue Hendryx 91210 Square Roof Bird Cage Kit, White and Purple, 5/8"',
@@ -337,7 +337,7 @@ export const Products_Cage = [
     size: null,
     images:
       '["https://m.media-amazon.com/images/I/91xeih2u67L._AC_SY450_.jpg","https://m.media-amazon.com/images/I/91xeih2u67L._AC_SX679_.jpg","https://m.media-amazon.com/images/I/91xeih2u67L._AC_SX466_.jpg","https://m.media-amazon.com/images/I/91xeih2u67L._AC_SX425_.jpg","https://m.media-amazon.com/images/I/91xeih2u67L._AC_SX522_.jpg","https://m.media-amazon.com/images/I/91xeih2u67L._AC_SX569_.jpg","https://m.media-amazon.com/images/I/91xeih2u67L._AC_SY355_.jpg"]',
-    id: 33,
+    id: 34,
   },
   {
     name: 'YML A1124MWHT Flat Top Small Parakeet Cage, 11" x 8.5" x 14"',
@@ -347,7 +347,7 @@ export const Products_Cage = [
     size: '11.0"L x 8.5"W x 14.0"H',
     images:
       '["https://m.media-amazon.com/images/I/91FbKdIvi6L._AC_SX569_.jpg","https://m.media-amazon.com/images/I/91FbKdIvi6L._AC_SX425_.jpg","https://m.media-amazon.com/images/I/91FbKdIvi6L._AC_SY355_.jpg","https://m.media-amazon.com/images/I/91FbKdIvi6L._AC_SY450_.jpg","https://m.media-amazon.com/images/I/91FbKdIvi6L._AC_SX679_.jpg","https://m.media-amazon.com/images/I/91FbKdIvi6L._AC_SX466_.jpg","https://m.media-amazon.com/images/I/91FbKdIvi6L._AC_SX522_.jpg"]',
-    id: 34,
+    id: 35,
   },
   {
     name: 'Prevue Hendryx 91101 Round Roof Bird Cage Kit, Black, 3/8"',
@@ -357,7 +357,7 @@ export const Products_Cage = [
     size: null,
     images:
       '["https://m.media-amazon.com/images/I/91FrmIEv+ML._AC_SX466_.jpg","https://m.media-amazon.com/images/I/91FrmIEv+ML._AC_SX569_.jpg","https://m.media-amazon.com/images/I/91FrmIEv+ML._AC_SY355_.jpg","https://m.media-amazon.com/images/I/91FrmIEv+ML._AC_SX522_.jpg","https://m.media-amazon.com/images/I/91FrmIEv+ML._AC_SX425_.jpg","https://m.media-amazon.com/images/I/91FrmIEv+ML._AC_SY450_.jpg","https://m.media-amazon.com/images/I/91FrmIEv+ML._AC_SX679_.jpg"]',
-    id: 35,
+    id: 36,
   },
   {
     name: 'YML 6804 3/8" Bar Spacing Tall Shall Top Bird Cage with Stand, 18" x 14"/Small, White',
@@ -367,7 +367,7 @@ export const Products_Cage = [
     size: '18.0"L x 14.0"W x 60.0"H',
     images:
       '["https://m.media-amazon.com/images/I/81PFPgIaIeL._AC_SY450_.jpg","https://m.media-amazon.com/images/I/81PFPgIaIeL._AC_SY550_.jpg","https://m.media-amazon.com/images/I/81PFPgIaIeL._AC_SY679_.jpg","https://m.media-amazon.com/images/I/81PFPgIaIeL._AC_SY355_.jpg","https://m.media-amazon.com/images/I/81PFPgIaIeL._AC_SY606_.jpg","https://m.media-amazon.com/images/I/81PFPgIaIeL._AC_SY879_.jpg","https://m.media-amazon.com/images/I/81PFPgIaIeL._AC_SY741_.jpg"]',
-    id: 36,
+    id: 37,
   },
   {
     name: 'Prevue Hendryx 91321 Square Roof Bird Cage Kit, Black and Green, 5/8"',
@@ -377,7 +377,7 @@ export const Products_Cage = [
     size: null,
     images:
       '["https://m.media-amazon.com/images/I/91a5BAteUOL._AC_SX679_.jpg","https://m.media-amazon.com/images/I/91a5BAteUOL._AC_SY450_.jpg","https://m.media-amazon.com/images/I/91a5BAteUOL._AC_SX425_.jpg","https://m.media-amazon.com/images/I/91a5BAteUOL._AC_SX522_.jpg","https://m.media-amazon.com/images/I/91a5BAteUOL._AC_SX569_.jpg","https://m.media-amazon.com/images/I/91a5BAteUOL._AC_SY355_.jpg","https://m.media-amazon.com/images/I/91a5BAteUOL._AC_SX466_.jpg"]',
-    id: 37,
+    id: 38,
   },
   {
     name: 'Prevue Pet Products F075 Hampton Deluxe Divided Breeder Cage 37.5 x 18 x 20.5"H',
@@ -387,7 +387,7 @@ export const Products_Cage = [
     size: '37.5 x 18 x 20.5"H',
     images:
       '["https://m.media-amazon.com/images/I/91Y8nSP-2IL._AC_SX450_.jpg","https://m.media-amazon.com/images/I/91Y8nSP-2IL._AC_SX425_.jpg","https://m.media-amazon.com/images/I/91Y8nSP-2IL._AC_SX569_.jpg","https://m.media-amazon.com/images/I/91Y8nSP-2IL._AC_SX466_.jpg","https://m.media-amazon.com/images/I/91Y8nSP-2IL._AC_SX355_.jpg","https://m.media-amazon.com/images/I/91Y8nSP-2IL._AC_SX522_.jpg","https://m.media-amazon.com/images/I/91Y8nSP-2IL._AC_SX679_.jpg"]',
-    id: 38,
+    id: 39,
   },
   {
     name: 'YML 5824 3/8" Bar Spacing Square Top Bird Cage with Stand, 18" x 14"/Small, White',
@@ -397,7 +397,7 @@ export const Products_Cage = [
     size: '18.0"L x 14.0"W x 44.0"H',
     images:
       '["https://m.media-amazon.com/images/I/81W+AGnb27L._AC_SY741_.jpg","https://m.media-amazon.com/images/I/81W+AGnb27L._AC_SY550_.jpg","https://m.media-amazon.com/images/I/81W+AGnb27L._AC_SY679_.jpg","https://m.media-amazon.com/images/I/81W+AGnb27L._AC_SY450_.jpg","https://m.media-amazon.com/images/I/81W+AGnb27L._AC_SY879_.jpg","https://m.media-amazon.com/images/I/81W+AGnb27L._AC_SY355_.jpg","https://m.media-amazon.com/images/I/81W+AGnb27L._AC_SY606_.jpg"]',
-    id: 39,
+    id: 40,
   },
   {
     name: 'Prevue Pet Products Travel Carrier for Birds, Black 18.8"L x 14.9"W x 18.0"H',
@@ -407,6 +407,6 @@ export const Products_Cage = [
     size: '18.8"L x 14.9"W x 18.0"H',
     images:
       '["https://m.media-amazon.com/images/I/81cR4gm3+aL._AC_SX569_.jpg","https://m.media-amazon.com/images/I/81cR4gm3+aL._AC_SX425_.jpg","https://m.media-amazon.com/images/I/81cR4gm3+aL._AC_SY355_.jpg","https://m.media-amazon.com/images/I/81cR4gm3+aL._AC_SY450_.jpg","https://m.media-amazon.com/images/I/81cR4gm3+aL._AC_SX679_.jpg","https://m.media-amazon.com/images/I/81cR4gm3+aL._AC_SX466_.jpg","https://m.media-amazon.com/images/I/81cR4gm3+aL._AC_SX522_.jpg"]',
-    id: 40,
+    id: 41,
   },
 ];
