@@ -30,7 +30,7 @@ export default function ManageOrder() {
             <nav class="uk-navbar-container" uk-navbar>
                 <div class="uk-navbar uk-align-center">
                     <ul class="uk-navbar-nav ">
-                        <li class="uk-parent"><a href="">Completed</a></li>
+                        <li class="uk-parent"><a href="" className='active'>Completed</a></li>
                         <li class="uk-parent"><a href="">Pending</a></li>
                         <li class="uk-parent"><a href="">Making Products</a></li>
                         <li class="uk-parent"><a href="">Delivering</a></li>

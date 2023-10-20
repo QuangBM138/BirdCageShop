@@ -95,6 +95,30 @@
     width: 100%;
 }
 
+.uk-navbar-nav a {
+    height: 70px;
+}
+
+.uk-navbar-nav a {
+    margin-right: 60px;
+}
+
+.uk-navbar-nav a:active {
+    background-color: #8d522c;
+    color: white;
+    padding-left: 50px;
+    padding-right: 50px;
+    border-radius: 40px;
+}
+
+.uk-navbar-nav .active {
+    background-color: #8d522c;
+    color: white;
+    padding-left: 50px;
+    padding-right: 50px;
+    border-radius: 40px;
+}
+
 .totalmoney {
     font-size: 17px;
     display: flex;

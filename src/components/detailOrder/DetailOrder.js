@@ -258,7 +258,7 @@ export default function DetailOrder() {
 
                 </table>
 
-                <Link to={`/user`} className='myorder_link'><div><KeyboardBackspaceIcon /> Back</div></Link>
+                <Link to={`/manageorder`} className='myorder_link'><div><KeyboardBackspaceIcon /> Back</div></Link>
             </div>
 
         </div>
