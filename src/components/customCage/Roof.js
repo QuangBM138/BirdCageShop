@@ -2,6 +2,7 @@ import React, { Fragment, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronDownIcon } from "@heroicons/react/20/solid";
 import { roofs } from "./DataCage";
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import './customCage.css'
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -45,6 +46,7 @@ export default function Roof({ isDisabled, parentCallback, setValidRoof }) {
                       className="h-5 w-5 flex-shrink-0"
                     />
                     <span className="ml-3 block truncate">{selected.name}</span>
+                    <span className="ml-3 block truncate">{selected.price}</span>
                   </span>
                   <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
                     <ChevronDownIcon
@@ -90,6 +92,14 @@ export default function Roof({ isDisabled, parentCallback, setValidRoof }) {
                                 )}
                               >
                                 {roof.name}
+                              </span>
+                              <span
+                                className={classNames(
+                                  selected ? "font-semibold" : "font-normal",
+                                  "ml-3 block truncate"
+                                )}
+                              >
+                                {roof.price}
                               </span>
                             </div>
 
