@@ -142,7 +142,7 @@ export default function CustomCage() {
 
       console.log(customCage)
     } else {
-      warningOrderSubmit.current.innerText = "The order cannot be created because the conditions have not been met"
+      warningOrderSubmit.current.innerText = "The order cannot be created."
     }
   }
   return (
@@ -197,15 +197,25 @@ export default function CustomCage() {
           />
           {errors.width && <div className="error-message" style={{ fontSize: "13px", color: "red" }}>{errors.width}</div>}
         </div>
-        <div className="howToOrder">
-          <div className="howToOrder-item" style={{ fontWeight: 700 }}>
-            Length, Width, Height (min: 30, max: 100)
-          </div>
-          <div className="howToOrder-item">Width must be smaller than Length</div>
-          <div className="howToOrder-item">Spoke: min <p className="condition-spoke">{isInputValid ? min : 0}</p> max  <p className="condition-spoke">{isInputValid ? max : 0}</p></div>
-          <div className="howToOrder-item">Door must be smaller than 4</div>
-        </div>
+        <div className="howToOrder-container">
+          <div className="howToOrder">
+            <div className="howToOrder-item" style={{ fontWeight: 700 }}>
+              Length, Width, Height (min: 30, max: 100)
+            </div>
+            <div className="howToOrder-item">Width must be smaller than Length</div>
+            <div className="howToOrder-item">Spoke: min <p className="condition-spoke">{isInputValid ? min : 0}</p> max  <p className="condition-spoke">{isInputValid ? max : 0}</p></div>
+            <div className="howToOrder-item">Door must be smaller than 4</div>
 
+          </div>
+          <div className="order-submit" style={{ position: "absolute", right: 0, height: "100px", width: "30%" }}>
+            <button onClick={handleSubmitOrder} className="order-button">Order</button>
+            <div
+              ref={warningOrderSubmit}
+              className="error-message error-message-order"
+            >
+            </div>
+          </div>
+        </div>
       </div>
 
       <div className="component-container">
@@ -233,15 +243,7 @@ export default function CustomCage() {
             isDisabled={!isInputValid}
           />
         </div>
-        <div style={{ position: "absolute", right: 0, height: "100px", width: "30%" }}>
-          <button onClick={handleSubmitOrder} className="order-button">Order</button>
-          <div
-            ref={warningOrderSubmit}
-            className="error-message error-message-order"
-            style={{ fontSize: "13px", color: "red", position: "absolute", right: "0", bottom: 0 }}
-          >
-          </div>
-        </div>
+
         <div className="component-images">
           {component.map(c =>
             <div className="component" key={c.type}>

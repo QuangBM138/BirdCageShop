@@ -132,7 +132,7 @@ export default function Door({ isDisabled, parentCallback, setValidDoor }) {
         </Listbox>
 
         <input
-          style={{ width: "238px", fontFamily: "Roboto" }}
+          style={{ width: "100px", fontFamily: "Roboto" }}
           className="pl-2 border ml-5 text-[20px] h-9 rounded-md"
           value={inputValue}
           onChange={handleInputChange}

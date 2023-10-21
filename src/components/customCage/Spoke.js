@@ -128,7 +128,7 @@ export default function Spoke({ isDisabled, min, max, parentCallback, setValidSp
                     className="border ml-5 text-[20px] h-9 rounded-md pl-2"
                     placeholder="Quantity"
                     value={inputValue}
-                    style={{ fontFamily: "Roboto", position: "absolute", top: "0" }}
+                    style={{ fontFamily: "Roboto", position: "absolute", top: "0", width: "100px" }}
                     onChange={handleInputChange}
                     type="text"
                   />
