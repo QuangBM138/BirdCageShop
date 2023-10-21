@@ -39,6 +39,13 @@ export default function RelatedPro({ compareParentCallback, listProductCompare }
               Products_Cage.map((product, index) =>
                 <SwiperSlide className="animate product-slide" key={product.id}>
                   <div className='product-wrapper'>
+                    <button
+                      className={listProductCompare.filter(p => p == product.id).length == 0 ? "button-c" : "active" + " " + "button-c"}
+                      onClick={() => compareParentCallback(product.id)}
+
+                    >
+                      {listProductCompare.filter(p => p == product.id).length == 0 ? "Compare" : "Remove"}
+                    </button>
                     <Link to={`/detail/${product.id}`}>
                       {JSON.parse(product.images).map((img, index) => index == 0 && <img
                         className='image-product'
@@ -55,12 +62,7 @@ export default function RelatedPro({ compareParentCallback, listProductCompare }
                       >
                         <ShoppingBasketIcon /> Add to Cart
                       </button>
-                      <button
-                        className='button-cart'
-                        onClick={() => compareParentCallback(product.id)}
-                      >
-                        {listProductCompare.filter(p => p == product.id).length == 0 ? "Compare" : "Remove"}
-                      </button>
+
                     </div>
 
                   </div>
