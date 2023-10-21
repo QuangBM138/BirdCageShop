@@ -104,19 +104,13 @@
 }
 
 .uk-navbar-nav a:active {
-    background-color: #8d522c;
-    color: white;
-    padding-left: 50px;
-    padding-right: 50px;
-    border-radius: 40px;
+    color: #8d522c;
+    border-bottom: 1px solid #8d522c;
 }
 
 .uk-navbar-nav .active {
-    background-color: #8d522c;
-    color: white;
-    padding-left: 50px;
-    padding-right: 50px;
-    border-radius: 40px;
+    color: #8d522c;
+    border-bottom: 1px solid #8d522c;
 }
 
 .totalmoney {
