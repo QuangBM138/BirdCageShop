@@ -1,9 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import './DetailOrder.css'
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import { Button } from '@mui/material';
+import Reviews from '../productDetail/reviews/Reviews';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import StarIcon from '@mui/icons-material/Star';
 export default function DetailOrder() {
+    const [open, setOpen] = useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(!open);
+    };
+
     return (
         <div className='detailorder_container'>
             <div className='detailorder'>
@@ -108,9 +119,82 @@ export default function DetailOrder() {
                                 <p>Prevue Hendryx SP850G/W Clean Life Cockatiel Cage, Green and White</p>
 
 
-                                <Button variant="outlined" href="#outlined-buttons" style={{ color: "#1a1a1a", borderColor: "#1a1a1a", fontSize: "10px" }}>
+                                <Button variant="outlined" href="#outlined-buttons" style={{ color: "#1a1a1a", borderColor: "#1a1a1a", fontSize: "10px", marginRight: "5px" }}>
                                     Repurchase
                                 </Button>
+                                <Button
+
+                                    onClick={handleClickOpen}
+
+                                    variant="outlined" href="#outlined-buttons" style={{ color: "#1a1a1a", borderColor: "#1a1a1a", fontSize: "10px" }}>
+                                    {open ? 'Close Review' : 'Write a review'}
+
+                                </Button>
+                                {open && (
+                                    <div className='review_body'>
+                                        <h3 className='h3_war'>
+                                            Write a review
+                                        </h3>
+                                        <label className='war_name'>
+                                            <h4>
+                                                Name
+                                            </h4>
+                                            <input
+                                                type='text'
+                                                name='name'
+                                                placeholder="Enter your name"
+                                            />
+                                        </label>
+                                        <label className='war_email'>
+                                            <h4>
+                                                Email
+                                            </h4>
+                                            <input
+                                                type='text'
+                                                name='name'
+                                                placeholder="john.smith@example.com"
+                                            />
+                                        </label>
+                                        <div className='war_rating'>
+                                            <h4>Rating <StarIcon /></h4>
+                                            <RadioGroup
+                                                row
+                                                aria-labelledby="demo-row-radio-buttons-group-label"
+                                                name="row-radio-buttons-group"
+                                            >
+                                                <FormControlLabel value="1" control={<Radio />} label="1" />
+                                                <FormControlLabel value="2" control={<Radio />} label="2" />
+                                                <FormControlLabel value="3" control={<Radio />} label="3" />
+                                                <FormControlLabel value="4" control={<Radio />} label="4" />
+                                                <FormControlLabel value="5" control={<Radio />} label="5" />
+                                            </RadioGroup>
+                                        </div>
+
+                                        <label className='war_reviewtitle'>
+                                            <h4>
+                                                Review title
+                                            </h4>
+                                            <input
+                                                type='text'
+                                                name='name'
+                                                placeholder="Give your review a title"
+                                            />
+                                        </label>
+                                        <label className='war_reviewbody'>
+                                            <h4>
+                                                Body of review (1500)
+                                            </h4>
+                                            <textarea
+                                                type='text'
+                                                name='body_review'
+                                                placeholder='Write your comments here'
+                                            />
+                                        </label>
+                                        <div className='a_sumitreview'>
+                                            <a className='sumitreview'>Submit</a>
+                                        </div>
+                                    </div>
+                                )}
                             </td>
                             <td class="uk-text"><p>$50.00</p></td>
                             <td class="uk-text"><p>1</p></td>
@@ -123,8 +207,11 @@ export default function DetailOrder() {
                             <td><img class="uk-preserve-width uk-border-circle" src="https://m.media-amazon.com/images/I/81gYKAMky+L._AC_SY879_.jpg" width="80" height="80" alt="" /></td>
                             <td class="uk-text">
                                 <p>Prevue Hendryx SP850G/W Clean Life Cockatiel Cage, Green and White</p>
-                                <Button variant="outlined" href="#outlined-buttons" style={{ color: "#1a1a1a", borderColor: "#1a1a1a", fontSize: "10px" }}>
+                                <Button variant="outlined" href="#outlined-buttons" style={{ color: "#1a1a1a", borderColor: "#1a1a1a", fontSize: "10px", marginRight: "5px" }}>
                                     Repurchase
+                                </Button>
+                                <Button variant="outlined" href="#outlined-buttons" style={{ color: "#1a1a1a", borderColor: "#1a1a1a", fontSize: "10px" }}>
+                                    Write a review
                                 </Button>
                             </td>
                             <td class="uk-text"><p>$50.00</p></td>
@@ -168,10 +255,12 @@ export default function DetailOrder() {
                             </td>
                         </tr>
                     </tfoot>
+
                 </table>
 
-                <Link to={`/user`} className='myorder_link'><div><KeyboardBackspaceIcon /> Back</div></Link>
+                <Link to={`/manageorder`} className='myorder_link'><div><KeyboardBackspaceIcon /> Back</div></Link>
             </div>
+
         </div>
     )
 }

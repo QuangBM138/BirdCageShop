@@ -29,11 +29,13 @@ h4 {
 }
 
 .review_body {
+    margin-top: 20px;
     background-position: 0px 0px;
     color: #1a1a1a;
     line-height: 28.8px;
     padding: 24px 0px 0px;
-    border-top: 1px solid #d0cbcb86;
+    border: 1px solid #d0cbcb86;
+    padding: 20px;
 }
 
 span {
@@ -43,6 +45,7 @@ span {
 }
 
 .writenew {
+    width: 100%;
     float: right;
     align-items: center;
     margin: 5px !important;
@@ -99,6 +102,7 @@ span {
 }
 
 .war_name input {
+    width: 100%;
     background-color: #ffffff;
     border-radius: 30px;
     font-family: 'Poppins', sans-serif;
@@ -107,11 +111,12 @@ span {
     padding-left: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
-    padding-right: 70%;
+    padding-right: 20px;
     border: 1px solid #e9e9e9;
 }
 
 .war_email {
+    width: 100%;
     background-position: 0px 0px;
     color: #1a1a1a;
     line-height: 28.8px;
@@ -128,6 +133,7 @@ span {
 }
 
 .war_email input {
+    width: 100%;
     background-color: #ffffff;
     border-radius: 30px;
     font-family: 'Poppins', sans-serif;
@@ -136,7 +142,7 @@ span {
     padding-left: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
-    padding-right: 70%;
+    padding-right: 20px;
     border: 1px solid #e9e9e9;
 }
 
@@ -161,7 +167,7 @@ span {
     color: #1a1a1a;
     line-height: 28.8px;
     margin: 0px 0px 15px;
-    padding-right: 80%;
+    padding-right: 20px;
 }
 
 .war_reviewtitle h4 {
@@ -174,6 +180,7 @@ span {
 }
 
 .war_reviewtitle input {
+    width: 100%;
     background-color: #ffffff;
     border-radius: 30px;
     font-family: 'Poppins', sans-serif;
@@ -182,7 +189,7 @@ span {
     padding-left: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
-    padding-right: 70%;
+    padding-right: 20px;
     border: 1px solid #e9e9e9;
 }
 
@@ -203,6 +210,7 @@ span {
 }
 
 .war_reviewbody textarea {
+    width: 100%;
     background-color: #ffffff;
     border-radius: 5px;
     font-family: 'Poppins', sans-serif;
@@ -211,7 +219,7 @@ span {
     padding-left: 20px;
     padding-top: 10px;
     padding-bottom: 30%;
-    padding-right: 75%;
+    padding-right: 20px;
     border: 1px solid #e9e9e9;
 }
 

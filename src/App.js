@@ -18,6 +18,7 @@ import CreateAccount from "./components/createAccount/CreateAccount";
 import LoginPage from "./pages/LoginPage";
 
 import DetailOrder from "./components/detailOrder/DetailOrder";
+import ManageOrder from "./components/manageOrder/ManageOrder";
 
 
 
@@ -53,6 +54,7 @@ function App() {
       <Routes>
         <Route path="/detail/:id" element={<ProductDetailPage />}></Route>
         <Route path="/" element={<HomePage />}></Route>
+        <Route path="/manageorder" element={<ManageOrder />}></Route>
         <Route path="/detailorder" element={<DetailOrder />}></Route>
         <Route path="/cart" element={<CartPage />}></Route>
         <Route path="/search" element={<SearchPage />}></Route>

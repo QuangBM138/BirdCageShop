@@ -6,31 +6,6 @@ import StarIcon from '@mui/icons-material/Star';
 
 
 export default function UserProfile() {
-    const [img, setImg] = useState([]);
-
-    // Format the image data once when the component mounts or when product.images changes
-    // useEffect(() => {
-    //     if (Products_Cage && Products_Cage.images) {
-    //         const regx = /:\[\d{3},\d{3}]/g;
-    //         const regxQuotes = /(\"{|\\|}")/g;
-    //         const regxCurlyBraces = /(\{)/g;
-    //         const regxCurlyBraces2 = /(\})/g;
-
-    //         const formattedImages = Products_Cage.images
-    //             .replace(regx, '')
-    //             .replace(regxQuotes, '[')
-    //             .replace(regxCurlyBraces2, ']')
-    //             .replace(regxCurlyBraces, '[');
-
-    //         setImg(JSON.parse(formattedImages));
-    //     }
-
-    // }, [Products_Cage]);
-
-
-
-
-
     return (
         <div className='userprofile_container'>
             <div className='account_detail'>
