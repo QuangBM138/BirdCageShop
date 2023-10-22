@@ -9,9 +9,10 @@ function Payment() {
       <div className="w-full relative">
         {/* left side */}
         <div className="w-full lg:w-[50%] flex justify-end pt-[30px]">
-          <div className='w-full lg:w-[82%] lg:ml-[40px]'>
+          <div className="w-full lg:w-[82%] lg:ml-[40px]">
             <div className="w-[80%] mx-auto flex items-center justify-between">
               <span className="font-bold text-[24px]">Contact</span>
+
               {/* <p className="text-[#707070] text-[14px] flex items-center">
               <span className="hidden lg:block">Have an account?</span>&nbsp;
               <span className="text-[#1773B0] underline cursor-pointer">
@@ -19,6 +20,7 @@ function Payment() {
               </span>
             </p> */}
             </div>
+
             <input
               className="w-[80%] block px-2 py-3 my-4 rounded-md mx-auto border-input"
               placeholder="Email or mobile phone number"
@@ -33,16 +35,30 @@ function Payment() {
                 placeholder="Last name"
               />
             </div>
-            <input
+            {/* <input
               className="w-[80%] block px-2 py-3 my-4 rounded-md mx-auto border-input"
-              placeholder="Address"
-            />
+              placeholder="123/hồng bàng/quận 9"
+            /> */}
+
+            <div className="w-[80%] my-4 mx-auto flex items-center justify-between">
+              <input
+                className="w-[78%] block px-2 py-3 rounded-md border-input"
+                placeholder="Address"
+                value={"144/4 Ấp 4 xã 4 huyện 4 TP.4"}
+              />
+              <div className="w-[18%] px-2 py-3 rounded-md bg-white flex justify-end">
+                <span className="hover:bg-[#ff3333] block w-full text-center rounded-md bg-[#1773B0] px-2 py-3 text-white cursor-pointer buttonEdit ">
+                  Edit
+                </span>
+              </div>
+            </div>
+
             <div className=" w-[80%] h-[60px] mx-auto mt-5 mb-4">
               <span className="text-[17px] mt-10 mb-4">Shipping method</span>
             </div>
             <div className="w-[80%] mx-auto">
               <div className="w-full h-[50px] flex items-center justify-between px-4 rounded-md bg-[#f0f5ff] border-[1px] border-solid border-[#1773B0]">
-                <span>International Shipping</span>
+                <span>Shipping</span>
                 <span>$20.00</span>
               </div>
             </div>
@@ -51,7 +67,7 @@ function Payment() {
               <p className="text-[#707070] text-[14px]">
                 All transactions are secure and encrypted.
               </p>
-              <div className="w-full border-solid border-[1px] border-[#dedede] rounded-md bg-[#f4f4f4] pb-3">
+              {/* <div className="w-full border-solid border-[1px] border-[#dedede] rounded-md bg-[#f4f4f4] pb-3">
                 <div className="w-full h-[50px] flex items-center justify-between px-4 rounded-md bg-[#f0f5ff] border-[1px] border-solid border-[#1773B0]">
                   <span>Credit card</span>
                   <span className="w-[38px] h-[24px] bg-[#eda024] font-bold text-white text-center leading-[24px] rounded-sm">
@@ -83,9 +99,11 @@ function Payment() {
                     checked
                     className="checkbox-cus w-[20px] h-[20px]"
                   />
-                  <p className="ml-2">Use shipping address as billing address</p>
+                  <p className="ml-2">
+                    Use shipping address as billing address
+                  </p>
                 </div>
-              </div>
+              </div> */}
 
               <div className="hidden lg:block w-full hover:bg-[#ff3333] text-center rounded-md bg-[#1773B0] text-white mt-4 py-4 cursor-pointer button">
                 Pay now
@@ -96,7 +114,7 @@ function Payment() {
 
         {/* right side */}
         <div className="hidden lg:block absolute right-0 top-0 bg-[#f5f5f5] h-[100vh] hide-scroll overflow-y-scroll w-full lg:w-[50%] pt-[30px] border-cus">
-          <div className='w-full'>
+          <div className="w-full">
             <List />
           </div>
         </div>

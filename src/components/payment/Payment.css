@@ -50,3 +50,12 @@
 .hide-scroll::-webkit-scrollbar {
     display: none; /* cho Chrome, Safari, and Opera */
 }
+
+.buttonEdit{
+    background-color: #1773B0;
+    transition: all 0.4s;
+}
+
+.buttonEdit:hover{
+    background-color: #ff3333;
+}
