@@ -64,6 +64,7 @@ function App() {
         <Route path="/user">
           <Route index={true} element={<UserProfile />}></Route>
           <Route index={false} path="manageorder" element={<ManageOrder />}></Route>
+
           <Route index={false} path="address">
             <Route index={true} element={<Address />}></Route>
             <Route index={false} path="editaddress" element={<EditAddress />}></Route>
