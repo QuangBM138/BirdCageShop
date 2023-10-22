@@ -22,7 +22,7 @@ export default function Compare({ listProductCompare, compareParentCallback }) {
             </ul>
             <div className='close-compare'>
                 {/* <Link to={listProductCompare.length < 2 ? "/1231" : ""}>Compare now</Link> */}
-                {listProductCompare.length < 2 ? <h3>Please choose 2 cages</h3> : <a href='#'>Compare now</a>}
+                {listProductCompare.length < 2 ? <h3>Please choose 2 cages</h3> : <Link to={`/compare/${listProductCompare[0]}/${listProductCompare[1]}`}>Compare now</Link>}
 
             </div>
         </div>
