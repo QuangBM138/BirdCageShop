@@ -1,5 +1,5 @@
 import React from 'react'
-
+import "../addNewAddress/AddNNewAddress.css"
 export default function EditAddress() {
     return (
         <div className='ana_container'>

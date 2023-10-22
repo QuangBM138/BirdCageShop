@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import './UserProfile.css'
 import StarIcon from '@mui/icons-material/Star';
 
@@ -17,9 +17,9 @@ export default function UserProfile() {
                         <p>500.000</p>
                     </div>
                 </div>
-                <p className='va_p'><Link to={`/manageorder`} className='va_a'>Manage Order</Link></p>
+                <p className='va_p'><NavLink to="manageorder" className='va_a'>Manage Order</NavLink></p>
 
-                <p className='va_p'><Link to={`/address`} className='va_a'>View Addresses</Link></p>
+                <p className='va_p'><Link to={`address`} className='va_a'>View Addresses</Link></p>
 
             </div>
         </div >
