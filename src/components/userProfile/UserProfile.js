@@ -19,7 +19,7 @@ export default function UserProfile() {
                 </div>
                 <p className='va_p'><Link to={`/manageorder`} className='va_a'>Manage Order</Link></p>
 
-                <p className='va_p'><Link to={`/adress`} className='va_a'>View Addresses</Link></p>
+                <p className='va_p'><Link to={`/address`} className='va_a'>View Addresses</Link></p>
 
             </div>
         </div >
