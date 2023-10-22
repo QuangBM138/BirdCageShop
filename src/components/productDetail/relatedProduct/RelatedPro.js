@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
-import { Products_Cage } from '../../../data/Cages';
+import { Products_Cage } from '../../../data/CagesNewest';
 import './RelatedPro.css';
 
 // import required modules
@@ -37,28 +37,31 @@ export default function RelatedPro({ compareParentCallback, listProductCompare }
           >
             {
               Products_Cage.map((product, index) =>
-                <SwiperSlide className="animate product-slide" key={product.id}>
+                <SwiperSlide className="animate product-slide" key={product._id}>
                   <div className='product-wrapper'>
                     <button
-                      className={listProductCompare.filter(p => p == product.id).length == 0 ? "button-c" : "active" + " " + "button-c"}
-                      onClick={() => compareParentCallback(product.id)}
+                      className={listProductCompare.filter(p => p == product._id).length == 0 ? "button-c" : "active" + " " + "button-c"}
+                      onClick={() => compareParentCallback(product._id)}
 
                     >
-                      {listProductCompare.filter(p => p == product.id).length == 0 ? "Compare" : "Remove"}
+                      {listProductCompare.filter(p => p == product._id).length == 0 ? "Compare" : "Remove"}
                     </button>
-                    <Link to={`/detail/${product.id}`}>
-                      {JSON.parse(product.images).map((img, index) => index == 0 && <img
+                    <Link to={`/detail/${product._id}`}>
+                      {/* {JSON.parse(product.images).map((img, index) => index == 0 &&  */}
+                      <img
                         className='image-product'
-                        src={img} />)}
+                        src={product.imagePath}
+                         />
+                         
                       <div className='overlay-product'></div>
                     </Link>
                     <div className='show-block'>
-                      <Link to={`/detail/${product.id}`}>
+                      <Link to={`/detail/${product._id}`}>
                         <p className='name-product'>{product.name}</p>
                       </Link>
                       <button
                         className='button-cart'
-                        onClick={() => handleAddToCart(product.id)}
+                        onClick={() => handleAddToCart(product._id)}
                       >
                         <ShoppingBasketIcon /> Add to Cart
                       </button>

@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Products_Cage } from '../../../data/Cages';
+import { Products_Cage } from '../../../data/CagesNewest';
 import ImageGallery from 'react-image-gallery';
 import "react-image-gallery/styles/css/image-gallery.css";
 import AddIcon from '@mui/icons-material/Add';
@@ -16,41 +16,19 @@ export default function Details({ compareParentCallback, listProductCompare }) {
 
     const [quantity, setQuantity] = useState(1);
     const { id } = useParams();
-    const product = Products_Cage.find((product) => product.id === parseInt(id, 10));
+    const product = Products_Cage.find((product) => product._id === parseInt(id, 10));
     const [state, dispatch] = useStore()
 
     const handleAddToCart = (index, quantity) => {
         dispatch(actions.addToCart({ index, quantity }))
     }
-    // Initialize img state as an empty array
-    const [img, setImg] = useState([]);
-    // Format the image data once when the component mounts or when product.images changes
-    useEffect(() => {
-        if (product && product.images) {
-            const regx = /:\[\d{3},\d{3}]/g;
-            const regxQuotes = /(\"{|\\|}")/g;
-            const regxCurlyBraces = /(\{)/g;
-            const regxCurlyBraces2 = /(\})/g;
 
-            const formattedImages = product.images
-                .replace(regx, '')
-                .replace(regxQuotes, '[')
-                .replace(regxCurlyBraces2, ']')
-                .replace(regxCurlyBraces, '[');
-
-            setImg(JSON.parse(formattedImages));
-        }
-    }, [product]);
 
     if (!product) {
         return <div>Product not found</div>;
     }
 
-    const imgArray = img.map((imgSrc, imgIndex) => ({
-        original: imgSrc,
-        thumbnail: imgSrc,
-        description: `Image ${imgIndex + 1}`,
-    }));
+
 
     //quantity
 
@@ -90,6 +68,7 @@ export default function Details({ compareParentCallback, listProductCompare }) {
                 <div className="lg:w-1/1 mx-auto flex flex-wrap border border-grey px-6 py-12 md:mx-10 sm:mx-auto mr-8 ml-8">
                     <div className="lg:w-1/2 w-full lg:pr-5 lg:py-3 mt-3 lg:mt-0 object-cover">
                         <DetailSwiper />
+                        {/* <img src={product.imagePath}/> */}
                     </div>
                     <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-4 lg:mt-0 ">
                         <h1 class="text-gray-900 text-3xl title-font font-medium mb-3"
@@ -125,8 +104,16 @@ export default function Details({ compareParentCallback, listProductCompare }) {
                                 <h2 style={{ fontSize: "20px", color: "#ffc519" }}>${product.price}</h2>
                             </div>
                             <div class="flex mt-6">
-                                <h2 class="mr-16" style={{ fontSize: "20px", lineHeight: "30px", color: "black" }}>Size</h2>
-                                <h2 style={{ fontSize: "20px", color: "#ffc519" }}>{product.size}</h2>
+                                <h2 class="mr-16" style={{ fontSize: "20px", lineHeight: "30px", color: "black" }}>Width</h2>
+                                <h2 style={{ fontSize: "20px", color: "#ffc519" }}>{product.width}</h2>
+                            </div>
+                            <div class="flex mt-6">
+                                <h2 class="mr-16" style={{ fontSize: "20px", lineHeight: "30px", color: "black" }}>Length</h2>
+                                <h2 style={{ fontSize: "20px", color: "#ffc519" }}>{product.length}</h2>
+                            </div>
+                            <div class="flex mt-6">
+                                <h2 class="mr-16" style={{ fontSize: "20px", lineHeight: "30px", color: "black" }}>Height</h2>
+                                <h2 style={{ fontSize: "20px", color: "#ffc519" }}>{product.height}</h2>
                             </div>
                             <div class="flex mt-6">
                                 <h2 class="mr-8" style={{ fontSize: "20px", lineHeight: "30px", color: "black" }}>Quantity</h2>
