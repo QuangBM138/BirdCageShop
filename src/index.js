@@ -4,14 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
-
+import { CartProvider } from './components/cart/store';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <BrowserRouter>
+  // <React.StrictMode>
+  <BrowserRouter>
+    <CartProvider>
       <App />
-    </BrowserRouter>
-  </React.StrictMode>
+    </CartProvider>
+  </BrowserRouter>
+  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

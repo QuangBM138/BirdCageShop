@@ -1,0 +1,138 @@
+.cart-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    margin-bottom: 30px;
+    border: 1px solid #e9e9e9;
+    position: relative;
+    border-top-left-radius: 26px;
+}
+
+#checkout:hover {
+    background: #8d522c !important;
+
+}
+
+.cart-total-price {
+    height: 55px;
+}
+
+.cart-table {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 30px;
+}
+
+.cart-title .product-title {
+    font-size: 20px;
+    font-family: 'Pacifico', serif;
+
+}
+
+.cart-title h5 {
+    margin-bottom: 10px;
+}
+
+.product-info {
+    margin: 20px;
+}
+
+.price {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.cart-total {
+    margin-right: 10px;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+
+.price .money {
+    font-weight: 700;
+    font-size: 18px;
+    float: none;
+}
+
+.quantity-box {
+    margin-bottom: 10px;
+    display: flex;
+}
+
+
+.quantity-box button:hover {
+    background: #ffc519 !important;
+    color: #fff;
+}
+
+.cart-row-header {
+    margin-bottom: 30px;
+}
+
+.remove-item {
+    position: absolute;
+    background: #ffc519;
+    color: #fff;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 25px;
+    text-align: center;
+    border-bottom: 4px solid #8d522c;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.5s;
+    cursor: pointer;
+
+}
+
+.remove-item:hover {
+    background: #8d522c;
+
+}
+
+.cart-image {
+    display: block;
+
+}
+
+.cart-image img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+}
+
+.cart-empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.cart-empty img {
+    width: 100px;
+}
+
+.cart-empty h4 {
+    font-size: 35px;
+    margin-bottom: 5px;
+}
+
+.button-shopping {
+    color: #fff;
+    background: #ffc519;
+    padding: 10px 14px;
+    border-bottom: 4px solid #8d522c;
+    border-radius: 30px;
+    font-weight: 400;
+    display: block;
+    transition: all 0.5s;
+    margin-top: 10px;
+}
+
+.button-shopping:hover {
+    background: #8d522c;
+}

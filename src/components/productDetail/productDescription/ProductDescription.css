@@ -1,0 +1,19 @@
+.show_description_border {
+    padding: 30px;
+    border: 1px solid #d0cbcb86;
+    animation: fadeEffect 1s;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+    color: #1a1a1a;
+    font-size: 15px;
+    line-height: 35px;
+}
+
+strong {
+    font-family: 'Poppins', sans-serif;
+    line-height: 80px;
+    font-weight: bold;
+}
+
