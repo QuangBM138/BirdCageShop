@@ -23,6 +23,7 @@ import DetailOrder from "./components/detailOrder/DetailOrder";
 
 import Payment from "./components/payment/Payment";
 import Login from "./components/login/Login";
+import CompareProductsPage from "./pages/CompareProductsPage";
 function App() {
   // const regx = /:\[\d{3},\d{3}]/g
   // const [item, setItem] = useState('')
@@ -62,6 +63,7 @@ function App() {
         <Route path="/login" exact element={<Login />}></Route>
         <Route path="/forgotpassword" element={<ForgotPassword />}></Route>
         <Route path="/createaccount" element={<CreateAccount />}></Route>
+        <Route path="compare/:cageId1/:cageId2" element={<CompareProductsPage />} />
         <Route path="/customcage" element={<CustomCage />} />
       </Routes>
 
