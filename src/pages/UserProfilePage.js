@@ -12,7 +12,7 @@ export default function UserProfilePage() {
                 <Route path='/' element={<UserProfile />}></Route>
                 <Route path='/addnewaddress' element={<AddNewAddress />}></Route>
                 <Route path='/editaddress' element={<EditAddress />}></Route>
-                <Route path='/adress' element={<Adress />}></Route>
+                <Route path='/address' element={<Adress />}></Route>
             </Routes>
         </div>
     )
