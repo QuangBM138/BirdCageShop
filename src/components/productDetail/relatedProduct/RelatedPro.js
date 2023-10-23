@@ -5,90 +5,74 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
-
+import { Products_Cage } from '../../../data/CagesNewest';
 import './RelatedPro.css';
 
 // import required modules
-import { FreeMode, Pagination } from 'swiper/modules';
+import { Navigation, Pagination, Scrollbar } from 'swiper/modules';
 
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
+import { Link } from 'react-router-dom';
+import { useStore } from '../../cart/store';
+import { actions } from '../../cart/store';
 
 
-
-export default function RelatedPro() {
-
-  const images = [
-    "https://salt.tikicdn.com/cache/w1200/ts/product/c6/eb/aa/17b3a771c675d3eac1619dadbe05b7c7.jpg",
-    "https://www.dogfood.com.my/wp-content/uploads/2022/03/daily-diet-dog-food-1.jpg",
-    "https://www.petfoodchina.com/data/watermark/20210224/6035afdc9ebd9.jpg",
-    "https://catit.ca/wp-content/uploads/2019/07/Chicken-Dinners_product-1_CA_Woocommerce.jpg",
-    "https://images.deliveryhero.io/image/nv/Thailand/Vendor-Ops/09012023/TH-Whiskas-Tuna-Flavour-Cat-Food-3kg-Front-View.jpg",
-    "https://unisa.edu.au/siteassets/media-centre/images/media-release-images/2023/-pig_500-x-500-resized.jpg",
-    "https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187_square.jpg",
-    "https://i.natgeofe.com/k/75ac774d-e6c7-44fa-b787-d0e20742f797/giant-panda-eating_4x3.jpg",
-  ];
-
+export default function RelatedPro({ compareParentCallback, listProductCompare }) {
+  const [state, dispatch] = useStore()
+  const handleAddToCart = (index) => {
+    dispatch(actions.addToCart({ index, quantity: 1 }))
+  }
   return (
     <section className="text-gray-600 body-font overflow-hidden" >
       <div className="container px-4 mb-8 sm:px-10 py-6 sm:py-18 mx-auto">
         <h1 className="topic_title">
           Related products
         </h1>
-          <div className="lg:w-1/1 mx-3 flex flex-wrap">
-            <Swiper
+        <div className="lg:w-1/1 mx-3 flex flex-wrap">
+          <Swiper
+            modules={[Navigation, Pagination, Scrollbar]}
+            loop={false}
+            slidesPerView={4}
+            spaceBetween={50}
+          >
+            {
+              Products_Cage.map((product, index) =>
+                <SwiperSlide className="animate product-slide" key={product._id}>
+                  <div className='product-wrapper'>
+                    <button
+                      className={listProductCompare.filter(p => p == product._id).length == 0 ? "button-c" : "active" + " " + "button-c"}
+                      onClick={() => compareParentCallback(product._id)}
 
-              freeMode={true}
-              pagination={{
-                clickable: true,
-              }}
-              
-              breakpoints={{
-                // Breakpoint for iPhone 
-                0: {
-                  slidesPerView: 1,
-                  spaceBetween: 10,
-                },
-                // Breakpoint for iPad 
-                768: {
-                  slidesPerView: 2,
-                  spaceBetween: 20,
-                },
-                // Breakpoint for Desktop
-                1000: {
-                  slidesPerView: 4,
-                  spaceBetween: 20,
-                },
-              }}
-              modules={[FreeMode, Pagination]}
-              className="mySwiper"
+                    >
+                      {listProductCompare.filter(p => p == product._id).length == 0 ? "Compare" : "Remove"}
+                    </button>
+                    <Link to={`/detail/${product._id}`}>
+                      {/* {JSON.parse(product.images).map((img, index) => index == 0 &&  */}
+                      <img
+                        className='image-product'
+                        src={product.imagePath}
+                         />
+                         
+                      <div className='overlay-product'></div>
+                    </Link>
+                    <div className='show-block'>
+                      <Link to={`/detail/${product._id}`}>
+                        <p className='name-product'>{product.name}</p>
+                      </Link>
+                      <button
+                        className='button-cart'
+                        onClick={() => handleAddToCart(product._id)}
+                      >
+                        <ShoppingBasketIcon /> Add to Cart
+                      </button>
 
-            >
-              {images.map((img, index) => (
-                <SwiperSlide key={index}>
-                  <div className='related_cards'>
-                    <img className='related_cards__img' src={img} alt={`Slide ${index}`} />
-                    <div className='related_cards__overlay'>
-                      <div className="related_cards__overlay__frame">
-                        <div className='related_cards__title'>
-                          <h4 className="h4_related">Adult Dogs Pedigree</h4>
-                        </div>
-                      </div>
-                      <div className="related_cards__overlay__frame">
-                        <div className='related_cards__prices'>
-                          <h3>$350.00</h3>
-                        </div>
-                      </div>
-                      <div className="related_cards__overlay__frame">
-                        <button className='button_design'>
-                          <ShoppingBasketIcon /> Add to Cart
-                        </button>
-                      </div>
                     </div>
+
                   </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
+                </SwiperSlide>)
+            }
+          </Swiper>
+        </div>
       </div>
     </section>
   )

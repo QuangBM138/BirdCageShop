@@ -1,246 +1,150 @@
-.userprofile_container {
-    background-position: 0 0;
-    color: #1a1a1a;
-    line-height: 28.8px;
-    margin: 0px 82px;
-    padding: 0px 15px;
+.user_container {
+    padding: 0 1.875rem 0.625rem;
 }
 
-.uk-navbar-nav {
-    align-items: center;
-    margin-left: 30px;
+.user_heading {
+    border-bottom: 0.0625rem solid #efefef;
+    padding: 1.125rem 0;
 }
 
-.oh_h4 {
-    background-position: 0 0;
-    font-family: 'Pacifico';
-    font-size: 40px;
-    line-height: 60px;
-    margin: 30px 0px 15px;
+
+.user_profile {
+    height: 50vh;
 }
 
-.noorder_p {
-    background-position: 0 0;
-    color: #1a1a1a;
-    font-family: 'Poppins', sans-serif;
-    line-height: 28.8px;
-}
-
-.accountD_h4 {
-    background-position: 0 0;
-    color: #1a1a1a;
-    font-family: 'Pacifico';
-    font-size: 40px;
-    line-height: 60px;
-    margin: 30px 0px 15px;
-}
-
-.nameuser_h5 {
-    background-position: 0 0;
-    color: #1a1a1a;
-    font-family: 'Pacifico';
-    font-size: 20px;
-    line-height: 30px;
-    margin: 30px 0px 15px;
-}
-
-.adress_p {
-    background-position: 0 0;
-    color: #1a1a1a;
-    font-family: 'Poppins', sans-serif;
-    line-height: 28.8px;
-    margin: 50px 0px 15px;
-}
-
-.va_p {
-    background-position: 0 0;
-    color: #1a1a1a;
-    font-family: 'Poppins', sans-serif;
-    line-height: 28.8px;
-}
-
-.va_a {
-    background-position: 0 0;
-    color: #1a1a1a;
-    display: inline;
-    font-family: 'Poppins', sans-serif;
-    line-height: 28.8px;
-    text-decoration: none;
-}
-
-.va_a:hover {
-    background-position: 0 0;
-    color: #ffc519;
-    display: inline;
-    font-family: 'Poppins', sans-serif;
-    line-height: 28.8px;
-    text-decoration: none;
-}
-
-.history_order_design {
-    height: auto;
-    overflow: auto;
-    display: flex;
-    flex-direction: column;
-    min-height: calc(100vh - 110px);
-}
-
-.myorder_successful {
-    background: rgb(255, 255, 255);
-    border-radius: 4px;
-    font-size: 13px;
-    margin-bottom: 20px;
-    padding: 16px;
-}
-
-.success_p {
-    border-bottom: 1px solid rgb(235, 235, 240);
-    padding-bottom: 12px;
-    color: rgb(128, 128, 137);
-    font-size: 14px;
+.user_heading {
+    margin: 0;
+    font-size: 1.125rem;
     font-weight: 500;
-    line-height: 20px;
+    line-height: 1.5rem;
+    text-transform: capitalize;
+    color: #1a1a1a;
 }
 
-.product_design {
-    cursor: pointer;
-}
-
-.product_myorder {
+.user_body {
+    padding-top: 1.875rem;
     display: flex;
     flex-direction: row;
-    padding: 16px 0px;
-    border-bottom: 1px solid rgb(235, 235, 240);
-    -webkit-box-pack: justify;
-    justify-content: space-between;
 }
 
-.product_detail {
-    display: flex;
-    margin-left: 20px;
+.user_infor {
+    flex: 1;
+    padding-right: 3.125rem;
 }
 
-.img_product {
-    flex-shrink: 0;
-    width: 80px;
-    height: 80px;
-    border-radius: 4px;
-    border: 0.5px solid rgb(238, 238, 238);
-    background-repeat: no-repeat;
-    background-size: 90%;
-    background-position: center center;
-    position: relative;
+.form_infor {
+    display: block;
+    margin-top: 0em;
 }
 
-.img_product_image {
-    object-fit: contain;
-    width: 80px;
-    height: 80px;
+.imformation {
+    width: 602px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    display: table;
+
+    box-sizing: border-box;
+    text-indent: initial;
+
+    border-color: gray;
 }
 
-.infor_product {
-    margin: 0px 12px;
-    display: flex;
-    flex-direction: column;
+.table_tr {
+    vertical-align: middle;
+    display: table-row;
+    border-color: inherit;
 }
 
-.product_name {
-    margin-bottom: 6px;
+.table_td_1 {
+    padding: 0;
+    text-align: left;
+    color: rgba(85, 85, 85, .8);
+    overflow: hidden;
+    padding-bottom: 30px;
+    white-space: nowrap;
+    min-width: 20%;
+    display: table-cell;
+    vertical-align: inherit;
 }
 
-.product_price {
-    min-width: 120px;
-    -webkit-box-pack: end;
-    justify-content: flex-end;
-    display: flex;
-    margin-right: 20px;
+.table_td_1 label {
+    cursor: default;
 }
 
-.total {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    margin-top: 12px;
-    padding-right: 20px;
-    width: 100%;
+.table_td_2 {
+    box-sizing: border-box;
+    padding-left: 20px;
+    padding-bottom: 30px;
 }
 
-.totalmoney {
-    font-size: 17px;
-    display: flex;
-    margin-bottom: 12px;
-}
-
-.title_totalmoney {
-    font-weight: 300;
-    color: rgb(128, 128, 137);
-    margin-right: 8px;
-}
-
-.price {
-    font-weight: 400;
-    color: rgb(56, 56, 61);
-}
-
-.button_grp {
-    display: flex;
-    -webkit-box-pack: justify;
-    justify-content: space-between;
-}
-
-.button_grp div {
-    padding: 12px 8px;
-    height: 36px;
-    border-radius: 4px;
-    border: 1px solid #1a1a1a;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.4;
-    color: #1a1a1a;
-    display: flex;
-    -webkit-box-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
+.td_div_1 {
     align-items: center;
-    cursor: pointer;
-    margin-left: 8px;
+    display: flex;
 }
 
+.td_div_name {
+    font-size: .875rem;
+    font-family: 'Poppins', sans-serif;
+    color: #1a1a1a;
+    margin-right: 30px;
+}
 
-@media (max-width: 500px) {
-    .oh_h4 {
-        font-size: 20px;
-        line-height: 30px;
-        margin: 30px 0px 15px;
-    }
+.td_div_score {
+    font-family: 'Poppins', sans-serif;
+    padding: 8px;
+    gap: 6px;
+    border-radius: 18px;
+    background: rgb(251, 243, 226);
+    height: 36px;
+}
 
-    .noorder_p {
-        font-size: 10px;
-    }
+.td_div_phone {
+    font-family: 'Poppins', sans-serif;
+}
 
-    .accountD_h4 {
-        font-size: 20px;
-        line-height: 30px;
-        margin: 30px 0px 15px;
-    }
+.td_div_3 {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 
-    .nameuser_h5 {
-        font-size: 10px;
-        line-height: 15px;
-        margin: 30px 0px 15px;
-    }
+}
 
-    .adress_p {
-        font-size: 12px;
-    }
+.td_div_input {
+    padding: 5px;
+    width: 32%;
+    font-family: 'Poppins', sans-serif;
+    border: 1px solid #efefef;
+    border-radius: 20px;
 
+}
 
+.td_div_input_1 {
+    padding: 5px;
+    width: 49%;
+    font-family: 'Poppins', sans-serif;
+    border: 1px solid #efefef;
+    border-radius: 20px;
 
-    .va_a {
-        font-size: 12px;
-    }
+}
 
-    .va_a:hover {
-        font-size: 12px;
-    }
+.td_div_input_2 {
+    padding: 5px;
+    width: 49%;
+    font-family: 'Poppins', sans-serif;
+    border: 1px solid #efefef;
+    border-radius: 20px;
+
+}
+
+.td_link {
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    position: relative;
+    overflow: visible;
+    outline: 0;
+    background: #BF4619;
+    height: 40px;
+    padding: 8px 14px;
+    margin-right: 20px;
+    border-radius: 30px;
 }

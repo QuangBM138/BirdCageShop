@@ -1,0 +1,103 @@
+.compare-container {
+    max-width: 1178px;
+    top: unset;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 999;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    display: block;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, .12);
+    position: fixed;
+    margin: 0 auto;
+    border: 0.5px solid #ffc519;
+}
+
+.list-compare {
+    display: inline-flex;
+    width: calc(100% - 25%);
+    justify-content: center;
+    align-items: center;
+}
+
+.list-compare li {
+    margin: initial;
+    border-left: unset;
+    border-top: unset;
+    border-bottom: unset;
+    border-right: 1px solid #e0e0e0;
+    border-radius: 0;
+    padding: 0;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+
+.clear-icon {
+    cursor: pointer;
+    color: #e0e0e0;
+}
+
+.list-compare a:hover {
+    color: #e0e0e0;
+}
+
+
+.list-compare a {
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    align-items: center;
+    padding: 10px 0 5px;
+    width: unset;
+    cursor: pointer;
+}
+
+.list-compare a img {
+    width: 60px;
+}
+
+.close-compare {
+    width: 25%;
+    padding: 10px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: -webkit-fill-available;
+    position: absolute;
+}
+
+.close-compare a:nth-child(1) {
+    background: #2f80ed;
+    color: #fff;
+
+}
+
+.clear-icon {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.close-compare a {
+    display: block;
+    text-align: center;
+    width: 50%;
+    padding: 12px 0;
+    margin: 0 auto;
+    font-size: 14px;
+
+}
+
+.name-compare-product {
+    width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    padding: 0 0 3px 15px;
+    text-wrap: nowrap;
+}

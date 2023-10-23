@@ -12,33 +12,22 @@ import './BestSeller.css';
 // import required modules
 import { Keyboard, Pagination, Navigation } from 'swiper/modules';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
-import { Products_Cage } from '../../../data/Cages';
+import { Products_Cage } from '../../../data/CagesNewest';
 import { Link } from 'react-router-dom';
+import { useStore } from '../../cart/store';
+import { actions } from '../../cart/store';
+
 
 export default function BestSeller() {
-    const regx = /:\[\d{3},\d{3}]/g;
-    const regxQuotes = /(\"{|\\|}")/g;
-    const regxCurlyBraces = /(\{)/g;
-    const regxCurlyBraces2 = /(\})/g;
+    const [quantity, setQuantity] = useState(1);
 
-    const newPro = Products_Cage.map(product => {
-        console.log(product.images);
+    const [state, dispatch] = useStore();
 
-        // Replace ':[' and ']' with an empty string
-        product.images = product.images.replace(regx, '');
+    const handleAddToCart = (index, quantity) => {
+        dispatch(actions.addToCart({ index, quantity }))
+    }
 
-        // Replace '\"{' and '}' with '[' and ']'
-        product.images = product.images.replace(regxQuotes, '[').replace(regxCurlyBraces2, ']');
 
-        // Replace '{' with '[' and '}' with ']'
-        product.images = product.images.replace(regxCurlyBraces, '[').replace(regxCurlyBraces2, ']');
-
-        console.log(product.images);
-
-        return product;
-    });
-
-    console.log(newPro);
     return (
         <div className='container-bs'>
             <Swiper
@@ -56,13 +45,13 @@ export default function BestSeller() {
             >
                 {Products_Cage.map((pro, index) =>
                     <SwiperSlide key={index}>
-                        <Link to={`/detail/${index}`}>
+                       
                             <div className='best_seller'>
+                            <Link to={`/detail/${pro._id}`}>
                                 <div>
-                                    {JSON.parse(pro.images).map(img =>
-                                        <img className='best_seller_img' src={img} alt={`Image ${index}`} />
-                                    )}
+                                        <img className='best_seller_img' src={pro.imagePath} alt={`Image ${pro.name}`} />
                                 </div>
+                                </Link>
                                 <div className='best_seller_overlay'>
                                     <div className="best_seller_overlay_frame">
                                         <div className='best_seller_title'>
@@ -71,17 +60,19 @@ export default function BestSeller() {
                                     </div>
                                     <div className="best_seller_overlay_frame">
                                         <div className='best_seller_prices'>
-                                            <h3>${pro.price}</h3>
+                                            <p className='price-product'>{pro.price}</p>
                                         </div>
                                     </div>
                                     <div className="best_seller_overlay_frame">
-                                        <button className='button_best_design'>
+                                        <button 
+                                        className='button_best_design'
+                                        onClick={() => handleAddToCart(pro._id, quantity)}>
                                             <ShoppingBasketIcon /> Add to Cart
                                         </button>
                                     </div>
                                 </div>
                             </div>
-                        </Link>
+                        
                     </SwiperSlide>
                 )}
 

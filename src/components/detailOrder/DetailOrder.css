@@ -3,6 +3,8 @@
     background-color: #efefef;
 }
 
+
+
 .detailorder {
     font-size: 13px;
     color: rgb(36, 36, 36);
@@ -288,6 +290,8 @@ a:hover {
     color: #ffc519;
     text-decoration: none;
 }
+
+
 
 .uk-text button:hover {
     color: #ffc519;
