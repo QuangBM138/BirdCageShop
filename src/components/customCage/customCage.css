@@ -107,7 +107,7 @@
 }
 
 .size_chilren {
-  margin-left: 10px;
+  /* margin-left: 10px; */
   margin-top: 20px;
   display: flex;
   align-items: center;
@@ -140,4 +140,5 @@
   font-weight: 600;
   color: red;
   font-size: 18px;
+  margin-top: 10px;
 }

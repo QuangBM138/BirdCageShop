@@ -4,8 +4,7 @@ import "./customCage.css";
 import Spoke from "./Spoke";
 import Door from "./Door";
 import Base from "./Base";
-
-
+import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
 export default function CustomCage() {
   const [min, setMin] = useState(0)
   const warningOrderSubmit = useRef()
@@ -204,12 +203,12 @@ export default function CustomCage() {
         <div className="howToOrder-container">
           <div className="howToOrder">
             <div className="howToOrder-item" style={{ fontWeight: 700 }}>
-              Length, Width, Height (min: 30, max: 100)
+              <DoubleArrowIcon color="warning" fontSize="small" />  Length, Width, Height (min: 30, max: 100)
             </div>
-            <div className="howToOrder-item">Width must be smaller than Length</div>
-            <div className="howToOrder-item">Spoke: min <p className="condition-spoke">{isInputValid ? min : 0}</p> max  <p className="condition-spoke">{isInputValid ? max : 0}</p></div>
-            <div className="howToOrder-item">Door must be smaller than 4</div>
-            <div className="howToOrder-item total-component-item">Total: {total}</div>
+            <div className="howToOrder-item"><DoubleArrowIcon color="warning" fontSize="small" />Width must be smaller than Length</div>
+            <div className="howToOrder-item"><DoubleArrowIcon color="warning" fontSize="small" />Spoke: min <p className="condition-spoke">{isInputValid ? min : 0}</p> max  <p className="condition-spoke">{isInputValid ? max : 0}</p></div>
+            <div className="howToOrder-item"><DoubleArrowIcon color="warning" fontSize="small" />Door must be smaller than 4</div>
+            <div className="howToOrder-item total-component-item">Cost of components: {total}</div>
           </div>
           <div className="order-submit" style={{ position: "absolute", right: 0, height: "100px", width: "30%" }}>
             <button onClick={handleSubmitOrder} className="order-button">Order</button>
