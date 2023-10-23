@@ -6,7 +6,7 @@ import { Routes, Route, Link, useNavigate, NavLink } from "react-router-dom"
 import { Container } from '@mui/material'
 import { useStore } from "../cart/store/hooks";
 import SearchResults from "../search/searchResult/SearchResult";
-import { Products_Cage } from "../../data/Cages";
+import { Products_Cage } from "../../data/CagesNewest";
 
 
 const Header = () => {

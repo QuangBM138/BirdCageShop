@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import './ProductList.css';
-import { Products_Cage } from '../../../data/Cages';
+import { Products_Cage } from '../../../data/CagesNewest';
 import { Link } from 'react-router-dom';
 import { useStore } from '../../cart/store/hooks';
 import { actions } from '../../cart/store';
@@ -18,30 +18,6 @@ export default function ProductList() {
     product.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  //format image
-  const regx = /:\[\d{3},\d{3}]/g;
-  const regxQuotes = /(\"{|\\|}")/g;
-  const regxCurlyBraces = /(\{)/g;
-  const regxCurlyBraces2 = /(\})/g;
-
-  const newPro = Products_Cage.map(product => {
-    console.log(product.images);
-
-    // Replace ':[' and ']' with an empty string
-    product.images = product.images.replace(regx, '');
-
-    // Replace '\"{' and '}' with '[' and ']'
-    product.images = product.images.replace(regxQuotes, '[').replace(regxCurlyBraces2, ']');
-
-    // Replace '{' with '[' and '}' with ']'
-    product.images = product.images.replace(regxCurlyBraces, '[').replace(regxCurlyBraces2, ']');
-
-    console.log("product.images:" + product.images);
-
-    return product;
-  });
-
-  console.log(newPro);
 
 
   const handleAddToCart = (index) => {
@@ -75,20 +51,20 @@ export default function ProductList() {
                 className="grid -m-1 grid-cols-1 2xl:grid-cols-4 md:grid-cols-2 gap-5">
                 {filteredProducts.map((pro, index) => (
                   <div className='product-wrapper'>
-                    <Link to={`/detail/${pro.id}`}>
-                      {JSON.parse(pro.images).map((img, index) => index == 0 && <img
+                    <Link to={`/detail/${pro._id}`}>
+                      <img 
                         className='image-product'
-                        src={img} />)}
+                        src={pro.imagePath} />
                       <div className='overlay-product'></div>
                     </Link>
                     <div className='show-block'>
-                      <Link to={`/detail/${pro.id}`} style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                      <Link to={`/detail/${pro._id}`} style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
                         <h4 className="h4_product_list_cards name-product">{pro.name.slice(0, 30) + "..."}</h4>
                         <p className='name-product'>{pro.price}</p>
                       </Link>
                       <button
                         className='button-cart'
-                        onClick={() => handleAddToCart(pro.id)}
+                        onClick={() => handleAddToCart(pro._id)}
                       >
                         <ShoppingBasketIcon /> Add to Cart
                       </button>
