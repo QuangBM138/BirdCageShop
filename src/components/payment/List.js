@@ -2,9 +2,13 @@ import React from "react";
 import "./Payment.css";
 import { useState } from "react";
 import { useEffect } from "react";
-
+import { useStore } from '../cart/store/hooks'
 function List() {
-  const [list, setList] = useState(JSON.parse(localStorage.getItem("cart")));
+  // const [list, setList] = useState(JSON.parse(localStorage.getItem("cart")));
+
+  const [state, dispatch] = useStore()
+  const cart = state
+  console.log(cart);
   const [subTotal, setSubTotal] = useState(0);
   const [shipping, setShipping] = useState(20);
 
@@ -13,31 +17,31 @@ function List() {
   }, []);
   const computeSubTotal = () => {
     let tmp = 0;
-    list.map((i) => {
+    cart.map((i) => {
       tmp = tmp + Number.parseInt(i.price);
     });
     setSubTotal(tmp);
   };
 
-  const getFirstImgUrl = (data) => {
-    try {
-      const imagesArray = JSON.parse(data);
-      if (Array.isArray(imagesArray) && imagesArray.length > 0) {
-        return imagesArray[0];
-      }
-    } catch (error) {
-      console.error("Error parsing or accessing the image array:", error);
-    }
-    return null;
-  };
+  // const getFirstImgUrl = (data) => {
+  //   try {
+  //     const imagesArray = JSON.parse(data);
+  //     if (Array.isArray(imagesArray) && imagesArray.length > 0) {
+  //       return imagesArray[0];
+  //     }
+  //   } catch (error) {
+  //     console.error("Error parsing or accessing the image array:", error);
+  //   }
+  //   return null;
+  // };
 
   return (
     <div className="w-full lg:absolute lg:right-[75px]">
       <div className="w-full mx-auto md:w-[60%] flex flex-col items-center">
         {/* item */}
-        {list.map((i) => (
+        {cart.map((i) => (
           <div
-            key={i.id}
+            key={i._id}
             className="w-full flex justify-between items-center rounded-lg mb-5"
           >
             <div className="flex items-center w-[80%]">
@@ -48,7 +52,7 @@ function List() {
                 <div className="absolute top-0 left-0 overflow-hidden w-[64px] h-[64px] border-i rounded-lg">
                   <img
                     className="w-full h-full object-contain"
-                    src={getFirstImgUrl(i?.images)}
+                    src={(i?.imagePath)}
                     alt=""
                   />
                 </div>
@@ -68,7 +72,7 @@ function List() {
                 </p>
               </div>
             </div>
-            <div className="text-[14px] w-[15%] text-right">${i.price}</div>
+            <div className="text-[14px] w-[15%] text-right">${i.price * i.cartQuantity}</div>
           </div>
         ))}
       </div>
