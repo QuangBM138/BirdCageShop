@@ -23,28 +23,25 @@ function Payment() {
 
             <input
               className="w-[80%] block px-2 py-3 my-4 rounded-md mx-auto border-input"
-              placeholder="Email or mobile phone number"
+              placeholder="Phone number"
+              disabled
+              value="0392103381"
             />
             <div className="w-[80%] mx-auto flex items-center justify-between">
               <input
-                className="w-[48%] block px-2 py-3 rounded-md border-input"
-                placeholder="First name (optional)"
+                className="w-[100%] block px-2 py-3 rounded-md border-input"
+                placeholder="Full name"
+                disabled
+                value="Tài phiệt No Name"
               />
-              <input
-                className="w-[48%] block px-2 py-3 rounded-md border-input"
-                placeholder="Last name"
-              />
-            </div>
-            {/* <input
-              className="w-[80%] block px-2 py-3 my-4 rounded-md mx-auto border-input"
-              placeholder="123/hồng bàng/quận 9"
-            /> */}
 
+            </div>
             <div className="w-[80%] my-4 mx-auto flex items-center justify-between">
               <input
                 className="w-[78%] block px-2 py-3 rounded-md border-input"
                 placeholder="Address"
                 value={"144/4 Ấp 4 xã 4 huyện 4 TP.4"}
+                disabled
               />
               <div className="w-[18%] px-2 py-3 rounded-md bg-white flex justify-end">
                 <span className="hover:bg-[#ff3333] block w-full text-center rounded-md bg-[#1773B0] px-2 py-3 text-white cursor-pointer buttonEdit ">
