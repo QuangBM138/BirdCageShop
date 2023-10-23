@@ -38,6 +38,7 @@ export default function Slides() {
                 "delay": 2500,
                 "disableOnInteraction": false
             }}
+            className='slide-item'
         >
             {
                 slides.map((slide, index) =>

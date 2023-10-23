@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Header.css";
 import { FaBars } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
-import { Routes, Route, Link, useNavigate } from "react-router-dom"
+import { Routes, Route, Link, useNavigate, NavLink } from "react-router-dom"
 import { Container } from '@mui/material'
 import { useStore } from "../cart/store/hooks";
+import SearchResults from "../search/searchResult/SearchResult";
+import { Products_Cage } from "../../data/CagesNewest";
 
 
 const Header = () => {
@@ -15,6 +17,8 @@ const Header = () => {
   // handle search input
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+
 
   const handleSearch = () => {
     const trimmedQuery = searchQuery.trim();
@@ -22,6 +26,30 @@ const Header = () => {
     navigate(url);
   };
 
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleSearch();
+      clearSearch();
+    }
+  };
+
+
+
+  useEffect(() => {
+    if (searchQuery) {
+      const filteredResults = Products_Cage.filter((product) =>
+        product.name.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setSearchResults(filteredResults);
+    } else {
+      setSearchResults([]);
+    }
+  }, [searchQuery]);
+
+  const clearSearch = () => {
+    setSearchQuery("");
+    setSearchResults([]);
+  };
 
   return (
     <div className="navbar">
@@ -37,13 +65,19 @@ const Header = () => {
             placeholder="Search"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
+            onKeyDown={handleKeyPress}
           />
+          <SearchResults results={searchResults}
+            input={searchQuery}
+            clearSearch={clearSearch} />
+
           <button onClick={handleSearch}>
             <i className="fa fa-search"></i>
           </button>
-
         </Container>
+
       </div>
+
       <header className="header">
 
         {/* <h3 className="logo">Bird Cage Shop</h3> */}
@@ -51,7 +85,10 @@ const Header = () => {
         <div className="info">
           <ul className={Mobile ? "nav-links-mobile" : "nav-links"}>
             <li>
-              <Link to="/">Home</Link>
+              <NavLink className={({ isActive }) => isActive ? "nav-link active" : 'nav-link'} to="/">Home</NavLink>
+            </li>
+            <li>
+              <NavLink className={({ isActive }) => isActive ? "nav-link active" : 'nav-link'} to="/customcage">Create your own cage</NavLink>
             </li>
           </ul>
         </div>
@@ -60,10 +97,10 @@ const Header = () => {
           <a onClick={() => setShowSearchInput(!showSearchInput)}>
             <i className="fa fa-search"></i>
           </a>
-          <Link to="/user">
+          <NavLink className={({ isActive }) => isActive ? "nav-link active" : 'nav-link'} to="/user">
             <i className="fa fa-user"></i>
-          </Link>
-          <Link to="/cart" className="cart-icon">
+          </NavLink>
+          <NavLink className={({ isActive }) => isActive ? "nav-link active" : 'nav-link'} to="/cart">
             <i className="fa-solid fa-cart-shopping"></i>
             <span
               id="cartCount"
@@ -75,7 +112,8 @@ const Header = () => {
                 )
               }
             </span>
-          </Link>
+          </NavLink>
+
 
         </div>
         <div className="nav-bar">

@@ -9,9 +9,10 @@ import 'swiper/css/scrollbar';
 import 'swiper/css/autoplay';
 import SwiperButton from './SwiperButton';
 import ShoppingBasket from '@mui/icons-material/ShoppingBasket';
-import { Products_Cage } from '../../../data/Cages';
+import { Products_Cage } from '../../../data/CagesNewest';
 import { useStore } from '../../cart/store/hooks';
 import { actions } from '../../cart/store';
+import { Link } from 'react-router-dom';
 export default function Products() {
     const swiper = useSwiper()
     const [typeProduct, setTypeProduct] = useState('new')
@@ -24,8 +25,8 @@ export default function Products() {
 
     const [state, dispatch] = useStore()
 
-    const handleAddToCart = index => {
-        dispatch(actions.addToCart(index))
+    const handleAddToCart = (index) => {
+        dispatch(actions.addToCart({ index, quantity: 1 }))
     }
     console.log("asdasdadssd", state)
     return (
@@ -63,7 +64,7 @@ export default function Products() {
                 <Swiper
                     className={typeProduct === 'new' ? 'animate' : ""}
                     modules={[Navigation, Pagination, Scrollbar]}
-                    slidesPerView={4}
+
                     loop={false}
                     spaceBetween={50}
                     onBeforeInit={(swiper) => {
@@ -75,23 +76,43 @@ export default function Products() {
                         setSlideNewProductEnd(swiper.isEnd)
                     }}
                     style={typeProduct === 'new' ? { display: 'block', paddingBottom: '100px', position: 'relative' } : { display: 'none' }}
+                    breakpoints={{
+                        100: {
+                            slidesPerView: 1
+                        },
+                        550: {
+                            slidesPerView: 2
+                        },
+                        825: {
+                            slidesPerView: 3,
+
+                        },
+                        1500: {
+                            slidesPerView: 4,
+                        }
+                    }}
                 >
                     {
                         Products_Cage.map((product, index) =>
-                            <SwiperSlide className="animate product-slide" key={index}>
+                            <SwiperSlide className="animate product-slide" key={product._id}>
                                 <div className='product-wrapper'>
-                                    {JSON.parse(product.images).map((img, index) => index == 0 && <img
-                                        className='image-product'
-                                        src={img} />)}
-
+                                    <Link to={`/detail/${product._id}`}>
+                                        <img
+                                            className='image-product'
+                                            src={product.imagePath} />
+                                        <div className='overlay-product'></div>
+                                    </Link>
                                     <div className='show-block'>
-                                        <p className='name-product'>{product.name}</p>
+                                        <Link to={`/detail/${product._id}`}>
+                                            <p className='name-product'>{product.name}</p>
+                                        </Link>
                                         <button
                                             className='button-cart'
-                                            onClick={() => handleAddToCart(index)}
+                                            onClick={() => handleAddToCart(product._id)}
                                         >
                                             <ShoppingBasket /> Add to Cart
                                         </button>
+
                                     </div>
 
                                 </div>
@@ -117,26 +138,30 @@ export default function Products() {
                 >
                     {
                         Products_Cage.map((product, index) =>
-                            <SwiperSlide
-                                className="animate product-slide"
-                                key={index}
-                            >
+                            <SwiperSlide className="animate product-slide" key={product._id}>
                                 <div className='product-wrapper'>
-                                    {JSON.parse(product.images).map((img, index) => index == 0 && <img
-                                        className='image-product'
-                                        src={img} />)}
-
+                                    <Link to={`/detail/${product._id}`}>
+                                        {/* {JSON.parse(product.imagePath).map((img, index) => index == 0 &&  */}
+                                        <img
+                                            className='image-product'
+                                            src={product.imagePath} />
+                                        {/* )} */}
+                                        <div className='overlay-product'></div>
+                                    </Link>
                                     <div className='show-block'>
-                                        <p className='name-product'>{product.name}</p>
+                                        <Link to={`/detail/${product._id}`}>
+                                            <p className='name-product'>{product.name}</p>
+                                        </Link>
                                         <button
                                             className='button-cart'
-
+                                            onClick={() => handleAddToCart(product._id)}
                                         >
                                             <ShoppingBasket /> Add to Cart
                                         </button>
-                                    </div>
-                                </div>
 
+                                    </div>
+
+                                </div>
                             </SwiperSlide>)
                     }
                     <SwiperButton

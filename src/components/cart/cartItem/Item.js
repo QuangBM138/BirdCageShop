@@ -4,36 +4,60 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import "./Item.css"
 import { useStore } from '../store/hooks';
 import { actions } from '../store';
+import Swal from 'sweetalert2'
+import { Link } from 'react-router-dom';
 export default function Item({ cart, dispatch }) {
     // const [state, dispatch] = useStore()
     // const [quantity, setQuantity] = useState(1)
-    const handleIncreaseQuantity = (id) => {
-        dispatch(actions.addToCart(id))
+    const handleIncreaseQuantity = (index) => {
+        dispatch(actions.addToCart({ index, quantity: 1 }))
     };
 
     const handleDecreaseQuantity = (id) => {
         dispatch(actions.decreaseQuantity(id))
     };
-    const handleOnChangeQuantity = (id, value) => {
-        dispatch(actions.onChangeQuantity({ id: id, value: value }))
+    const handleOnChangeQuantity = (id) => {
+        dispatch(actions.onChangeQuantity(id))
     }
     const handleDeleteItem = id => {
         dispatch(actions.onDeleteItem(id))
     }
+
     return (
         <> {
             <div className='cart-row'>
                 <span
-                    onClick={() => handleDeleteItem(cart.id)}
+                    onClick={() => {
+                        Swal.fire({
+                            title: 'Delete product',
+                            text: "Do you want to delete the currently selected product?",
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Yes'
+                        })
+                            .then(
+                                result => {
+                                    if (result.isConfirmed) {
+                                        handleDeleteItem(cart._id)
+                                    }
+                                })
+
+                    }}
                     className='remove-item'>X</span>
                 <div className='cart-items'>
-                    <a className='cart-image'>
-                        {JSON.parse(cart.images).map((img, index) => index == 0 && <img src={img} />)}
-                    </a>
+                    <Link to={`/detail/${cart._id}`} className='cart-image'>
+                        {/* { */}
+                        {/* JSON.parse(cart.imp).map((img, index) => index == 0 && */}
+                        <img src={cart.imagePath} />
+                        {/* // ) */}
+                        {/* // } */}
+                    </Link>
                 </div>
                 <div className='product-info'>
                     <div className='cart-title'>
-                        <h5><a className='product-title'>{cart.name}</a></h5>
+                        <h5><Link to={`/detail/${cart._id}`} className='product-title'>{cart.name}</Link></h5>
                         <p>Gold, Diamond, Gem</p>
                     </div>
                     <div className='price'>
@@ -53,7 +77,23 @@ export default function Item({ cart, dispatch }) {
                                 borderBottomLeftRadius: "5px",
 
                             }}
-                            onClick={() => handleDecreaseQuantity(cart.id)}
+                            onClick={() => cart.cartQuantity == 1 ?
+                                Swal.fire({
+                                    title: 'Delete product',
+                                    text: "Do you want to delete the currently selected product?",
+                                    icon: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#3085d6',
+                                    cancelButtonColor: '#d33',
+                                    confirmButtonText: 'Yes'
+                                })
+                                    .then(
+                                        result => {
+                                            if (result.isConfirmed) {
+                                                handleDecreaseQuantity(cart._id)
+                                            }
+                                        })
+                                : handleDecreaseQuantity(cart._id)}
                             type="button"
                         >
                             <RemoveIcon />
@@ -88,7 +128,7 @@ export default function Item({ cart, dispatch }) {
                                 borderTopRightRadius: "5px",
                                 borderBottomRightRadius: "5px",
                             }}
-                            onClick={() => handleIncreaseQuantity(cart.id)}
+                            onClick={() => handleIncreaseQuantity(cart._id)}
                             type="button"
                         >
                             <AddIcon />
@@ -98,7 +138,7 @@ export default function Item({ cart, dispatch }) {
 
                     <div className='price'>
                         <span className='cart-total'>Total: </span>
-                        <span className='money'>50000</span>
+                        <span className='money'>{cart.price * cart.cartQuantity}</span>
                     </div>
                 </div>
             </div>

@@ -1,13 +1,12 @@
 import React from 'react';
 import './ProductDescription.css';
-import { Products_Cage } from '../../../data/Cages';
+import { Products_Cage } from '../../../data/CagesNewest';
 import { useParams } from 'react-router-dom';
 
 export default function ProductDescription() {
-    const { index } = useParams();
+    const { id } = useParams();
 
-    const productIndex = parseInt(index, 10); // Parse the index as an integer
-    const product = Products_Cage[productIndex]; // Access the product using the index
+    const product = Products_Cage.find((product) => product._id === parseInt(id, 10));
 
     return (
         <section className="text-gray-600 body-font overflow-hidden" >

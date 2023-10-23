@@ -231,3 +231,15 @@ button:hover {
     background: #8d522c;
     color: #fff;
 }
+
+.nav-link {
+    position: relative;
+}
+
+.nav-link.active {
+    color: #8d522c;
+}
+
+.nav-link.active i {
+    color: #8d522c;
+}

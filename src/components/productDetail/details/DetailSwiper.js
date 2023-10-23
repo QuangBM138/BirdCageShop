@@ -6,44 +6,38 @@ import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
 import './DetailSwiper.css';
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
-import { Products_Cage } from '../../../data/Cages';
+import { Products_Cage } from '../../../data/CagesNewest';
 import { useParams } from 'react-router-dom';
 
 export default function DetailSwiper() {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
-  const { index } = useParams();
+  const { id } = useParams();
 
-  const productIndex = parseInt(index, 10);
-  const product = Products_Cage[productIndex];
+  const product = Products_Cage.find((product) => product._id === parseInt(id, 10));
 
-  const [img, setImg] = useState([]);
+  const [img, setImg] = useState('');
 
-  useEffect(() => {
-    if (product) {
-      const regx = /:\[\d{3},\d{3}]/g;
-      const regxQuotes = /(\"{|\\|}")/g;
-      const regxCurlyBraces = /(\{)/g;
-      const regxCurlyBraces2 = /(\})/g;
+  // useEffect(() => {
+  //   if (product) {
+  //     const regx = /:\[\d{3},\d{3}]/g;
+  //     const regxQuotes = /(\"{|\\|}")/g;
+  //     const regxCurlyBraces = /(\{)/g;
+  //     const regxCurlyBraces2 = /(\})/g;
 
-      const formattedImages = product.images
-        .replace(regx, '')
-        .replace(regxQuotes, '[')
-        .replace(regxCurlyBraces2, ']')
-        .replace(regxCurlyBraces, '[');
+  //     const formattedImages = product.images
+  //       .replace(regx, '')
+  //       .replace(regxQuotes, '[')
+  //       .replace(regxCurlyBraces2, ']')
+  //       .replace(regxCurlyBraces, '[');
 
-      setImg(JSON.parse(formattedImages));
-    }
-  }, [product]);
+  //     setImg(JSON.parse(formattedImages));
+  //   }
+  // }, [product]);
 
   if (!product) {
     return <div>Product not found</div>;
   }
 
-  const imgArray = img.map((imgSrc, imgIndex) => ({
-    original: imgSrc,
-    thumbnail: imgSrc,
-    description: `Image ${imgIndex + 1}`,
-  }));
 
   return (
     <div>
@@ -59,16 +53,15 @@ export default function DetailSwiper() {
         modules={[FreeMode, Navigation, Thumbs]}
         className="mySwiper2"
       >
-        {img.map((imag, index) => (
-          <SwiperSlide key={index}>
+        {/* {img.map((image, index) => ( */}
+          <SwiperSlide >
             <img
-             
-              src={imag}
-              alt={`Image ${index + 1}`}
-              style={{ maxWidth: '300px', maxHeight: '500px' }} // Set your desired maxWidth and maxHeight
+              src={product.imagePath}
+              alt={product.name}
+              style={{ maxWidth: '300px', maxHeight: '500px', objectFit: 'contain' }} 
             />
           </SwiperSlide>
-        ))}
+        {/* ))} */}
       </Swiper>
       <Swiper
         onSwiper={setThumbsSwiper}
@@ -80,15 +73,15 @@ export default function DetailSwiper() {
         modules={[FreeMode, Navigation, Thumbs]}
         className="mySwiper3"
       >
-        {img.map((imag, index) => (
-          <SwiperSlide key={index}>
+        {/* {img.map((image, index) => ( */}
+          <SwiperSlide>
             <img
-              src={imag}
-              alt={`Image ${index + 1}`}
-              style={{ maxWidth: '100px', maxHeight: '500px' }} // Set your desired maxWidth and maxHeight
+              src={product.imagePath}
+              alt={product.name}
+              style={{ maxWidth: '100px', maxHeight: '500px' }}
             />
           </SwiperSlide>
-        ))}
+        {/* ))} */}
       </Swiper>
     </div>
   );
