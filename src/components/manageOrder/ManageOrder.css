@@ -12,8 +12,15 @@
 }
 
 .oh_h4 {
+    background-position: 0 0;
+    font-family: 'Pacifico';
+    font-size: 40px;
+    line-height: 60px;
+    margin: 30px 0px 15px;
     padding-left: 30px;
 }
+
+
 
 .myorder_successful {
     background: rgb(255, 255, 255);
@@ -111,6 +118,11 @@
 .uk-navbar-nav .active {
     color: #8d522c;
     border-bottom: 1px solid #8d522c;
+}
+
+.uk-navbar-nav {
+    align-items: center;
+    margin-left: 30px;
 }
 
 .totalmoney {

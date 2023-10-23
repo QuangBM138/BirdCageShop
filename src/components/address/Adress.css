@@ -1,144 +1,187 @@
-.adress_container {
-    padding: 0px 332px;
-    margin: 80px 0px;
-}
-
-.user_adress {
-    background-color: #f7f7f7;
-    background-position: 0 0;
-    border-radius: 5px;
-    color: #1a1a1a;
+.Hvae38 {
     display: flex;
-    line-height: 28.8px;
-    padding: 30px;
+    flex-direction: column;
+    position: relative;
+    min-height: 100%;
 }
 
-.adress_section_small {
-    background-position: 0 0;
+.UWIOO4 {
+    overflow: visible;
+}
+
+.UWIOO4 {
+    flex-direction: column;
+}
+
+.d2XTTX,
+.UWIOO4 {
+    display: flex;
+}
+
+.d2XTTX {
+    border-bottom: 1px solid #efefef;
+    padding: 22px 30px;
+    height: 80px;
+    box-sizing: border-box;
+}
+
+.d2XTTX,
+.UWIOO4 {
+    display: flex;
+}
+
+.d2XTTX {
+    align-items: center;
+}
+
+.KxkIgA {
+    flex: 1;
+}
+
+.Df4Vny {
+    font-size: 1.125rem;
+    font-weight: 500;
+    line-height: 1.5rem;
     color: #1a1a1a;
-    line-height: 28.8px;
-    margin: 0px 20px 30px 0px;
 }
 
-.add_new_address {
-    text-decoration: none;
-    background-position: 0 0;
-    color: #332c1a;
-    display: inline;
+.VwAsdf {
+    font-size: .875rem;
+    line-height: 1.0625rem;
+    color: #555;
+    margin-top: 3px;
+}
+
+._6r5J8Y {
+    margin-left: 10px;
+}
+
+.ErE1Vh {
+    height: 40px;
+    padding: 0 20px;
+
+    font-size: .875rem;
+    font-weight: 400;
+    position: relative;
+    overflow: visible;
+    color: white;
+    outline: 0;
+    background: #BF4619;
+}
+
+.t9RWKn {
     font-family: 'Poppins', sans-serif;
-    line-height: 28.8px;
+    align-items: center;
+    display: flex;
 }
 
-.return_accD {
-    text-decoration: none;
-    background-position: 0 0;
-    color: #332c1a;
-    display: inline;
+.EHan\+5 {
+    padding: 12px 30px 0;
+    background: #fff;
+}
+
+.GsuIol {
+    margin-bottom: 8px;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+}
+
+.OIBd-J {
+    padding: 18px 0 20px;
+    margin-bottom: 15px;
+}
+
+.RnMqRZ {
+    border-bottom: 1px solid rgba(0, 0, 0, .09);
+    background: #fff;
+}
+
+.RnMqRZ {
+    display: flex;
+}
+
+._70j3aj {
+    min-width: 0;
+    width: 100%;
+}
+
+._7lC5y1 {
+    margin-bottom: 4px;
+}
+
+.fVHv1Z {
+    justify-content: space-between;
+    display: flex;
+}
+
+.XBSydm {
+    margin-right: 8px;
+}
+
+.DikMLj {
+    flex-grow: 1;
+    overflow-x: hidden;
+}
+
+.DikMLj {
+    display: flex;
+}
+
+.Tv2wKj {
+    color: rgba(0, 0, 0, .87);
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+
+.YD3W3V {
+    overflow-x: hidden;
     font-family: 'Poppins', sans-serif;
-    line-height: 28.8px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
-.add_new_address:hover {
-    background-position: 0 0;
-    color: #ffc519;
-    display: inline;
-    font-family: 'Poppins', sans-serif;
-    line-height: 28.8px;
+.uBRQwt {
+    font-weight: 500;
+    min-width: 0;
 }
 
-.return_accD:hover {
-    background-position: 0 0;
-    color: #ffc519;
-    display: inline;
-    font-family: 'Poppins', sans-serif;
-    line-height: 28.8px;
+.uBRQwt {
+    display: inline-flex;
 }
 
-.adress_section_big {
-    background-position: 0 0;
-    color: #1a1a1a;
-    line-height: 28.8px;
+.uBRQwt {
+    align-items: center;
 }
 
-.your_address {
-    background-position: 0 0;
-    color: #1a1a1a;
-    font-family: 'Poppins', sans-serif;
-    font-size: 30px;
-    line-height: 45px;
-    margin: 30px 0px 15px;
+.xbIya3 {
+    border-left: 0.5px solid rgba(0, 0, 0, .26);
+    margin: 0 8px;
 }
 
-.user_name_adress {
-    background-position: 0 0;
-    color: #1a1a1a;
-    font-family: 'Poppins', sans-serif;
-    font-size: 40px;
-    line-height: 60px;
-    margin: 30px 0px 30px;
+.L8KYK3 {
+    font-size: .875rem;
+    line-height: 1.25rem;
 }
 
-.address_detail_p {
-    background-position: 0 0;
-    color: #332c1a;
-    display: inline;
-    font-family: 'Poppins', sans-serif;
-    line-height: 28.8px;
+.L8KYK3 {
+    color: rgba(0, 0, 0, .54);
 }
 
-.edit_delete_address {
+.Ayh0hN {
+    white-space: nowrap;
+}
+
+.IsnjAd {
+    display: flex;
+}
+
+.IsnjAd {
+    align-items: center;
     font-family: 'Poppins', sans-serif;
 }
 
-.edit_delete_address a {
-    color: #1a1a1a;
-    text-decoration: none;
-}
-
-.edit_delete_address a:hover {
-    color: #ffc519;
-}
-
-@media (min-width: 768px) {
-    .adress_container {
-        padding: 0px 250px;
-        margin: 60px 0px;
-    }
-}
-
-@media (max-width: 500px) {
-    .adress_container {
-        padding: 0px 60px;
-        margin: 10px 0px;
-    }
-
-    .add_new_address {
-        font-size: 12px;
-    }
-
-    .return_accD {
-        font-size: 12px;
-    }
-
-    .add_new_address:hover {
-        font-size: 12px;
-    }
-
-    .return_accD:hover {
-        font-size: 12px;
-    }
-
-
-    .your_address {
-        font-size: 22px;
-    }
-
-    .user_name_adress {
-        font-size: 12p;
-    }
-
-    .address_detail_p {
-        font-size: 12px;
-    }
-
+.tiDOor {
+    font-size: .875rem;
+    line-height: 1.25rem;
+    color: rgba(0, 0, 0, .54);
 }

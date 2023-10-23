@@ -27,6 +27,7 @@ import Login from "./components/login/Login";
 import Address from "./components/address/Address";
 import EditAddress from "./components/editAddress/EditAddress";
 import AddNewAddress from "./components/addNewAddress/AddNewAddress";
+import EditProfile from "./components/userProfile/editProfile/EditProfile";
 function App() {
   // const regx = /:\[\d{3},\d{3}]/g
   // const [item, setItem] = useState('')
@@ -64,6 +65,8 @@ function App() {
         <Route path="/user">
           <Route index={true} element={<UserProfile />}></Route>
           <Route index={false} path="manageorder" element={<ManageOrder />}></Route>
+          <Route index={false} path="editprofile" element={<EditProfile />}></Route>
+
 
           <Route index={false} path="address">
             <Route index={true} element={<Address />}></Route>

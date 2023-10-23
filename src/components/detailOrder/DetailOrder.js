@@ -119,9 +119,7 @@ export default function DetailOrder() {
                                 <p>Prevue Hendryx SP850G/W Clean Life Cockatiel Cage, Green and White</p>
 
 
-                                <Button variant="outlined" href="#outlined-buttons" style={{ color: "#1a1a1a", borderColor: "#1a1a1a", fontSize: "10px", marginRight: "5px" }}>
-                                    Repurchase
-                                </Button>
+
                                 <Button
 
                                     onClick={handleClickOpen}
@@ -207,9 +205,7 @@ export default function DetailOrder() {
                             <td><img class="uk-preserve-width uk-border-circle" src="https://m.media-amazon.com/images/I/81gYKAMky+L._AC_SY879_.jpg" width="80" height="80" alt="" /></td>
                             <td class="uk-text">
                                 <p>Prevue Hendryx SP850G/W Clean Life Cockatiel Cage, Green and White</p>
-                                <Button variant="outlined" href="#outlined-buttons" style={{ color: "#1a1a1a", borderColor: "#1a1a1a", fontSize: "10px", marginRight: "5px" }}>
-                                    Repurchase
-                                </Button>
+
                                 <Button variant="outlined" href="#outlined-buttons" style={{ color: "#1a1a1a", borderColor: "#1a1a1a", fontSize: "10px" }}>
                                     Write a review
                                 </Button>

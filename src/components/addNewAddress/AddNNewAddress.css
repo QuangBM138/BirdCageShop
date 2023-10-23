@@ -64,6 +64,14 @@
     outline: none;
 }
 
+.input_ds {
+    overflow: auto;
+    font-family: 'Poppins', sans-serif;
+    font-size: 100%;
+    line-height: 1.15;
+    margin: 0px;
+}
+
 .ada_body .form-control textarea {
     border: 1px solid rgb(204, 204, 204);
     border-radius: 4px;

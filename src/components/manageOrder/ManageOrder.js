@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Products_Cage } from '../../data/Cages';
 import './ManageOrder.css'
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import { Link } from 'react-router-dom';
 
 export default function ManageOrder() {
@@ -128,7 +129,9 @@ export default function ManageOrder() {
                     </div>
 
                 </div>
+                <Link to={`/user`} className='myorder_link'><div><KeyboardBackspaceIcon /> My Profile</div></Link>
             </div>
+
         </div>
     )
 }
