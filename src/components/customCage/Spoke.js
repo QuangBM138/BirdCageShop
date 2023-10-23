@@ -6,7 +6,7 @@ import { spokesData } from "./DataCage";
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
-export default function Spoke({ isDisabled, min, max, parentCallback, setValidSpoke }) {
+export default function Spoke({ isDisabled, min, max, parentCallback, setValidSpoke, total }) {
   const [selected, setSelected] = useState("");
   const [inputValue, setInputValue] = useState("");
   const [isInvalid, setIsInvalid] = useState(false);
@@ -16,11 +16,13 @@ export default function Spoke({ isDisabled, min, max, parentCallback, setValidSp
     const removeZero = /^0|[\.]/
     if (number.test(e.target.value)) {
       setInputValue(e.target.value.replace(removeSpecialChar, "").replace(removeZero, ""))
-      parentCallback({ item: selected, type: "spoke", quantity: e.target.value })
+      parentCallback({ item: selected, type: "spoke", quantity: e.target.value, total: selected.price * e.target.value })
+
       // setInputValue(e.target.value);
       if (e.target.value < min || e.target.value > max) {
         setIsInvalid(true);
         setValidSpoke(false)
+
       }
       else {
         setValidSpoke(true)
@@ -33,7 +35,7 @@ export default function Spoke({ isDisabled, min, max, parentCallback, setValidSp
 
   const onTrigger = (e) => {
     setSelected(e)
-    parentCallback({ item: e, type: "spoke", quantity: inputValue })
+    parentCallback({ item: e, type: "spoke", quantity: inputValue, total: e.price * inputValue })
   }
 
   return (
@@ -47,7 +49,7 @@ export default function Spoke({ isDisabled, min, max, parentCallback, setValidSp
                   Spoke:{" "}
                 </Listbox.Label>
                 <div className="relative ml-5">
-                  <Listbox.Button className="relative w-[200px] cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6">
+                  <Listbox.Button className="relative w-[300px] cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6">
                     <span className="flex items-center">
                       <img
                         src={selected.image}
@@ -56,6 +58,9 @@ export default function Spoke({ isDisabled, min, max, parentCallback, setValidSp
                       />
                       <span className="ml-3 block truncate">
                         {selected.name}
+                      </span>
+                      <span className="ml-3 block truncate">
+                        {!selected.price ? "" : selected.price + "$"}
                       </span>
                     </span>
                     <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
@@ -76,7 +81,7 @@ export default function Spoke({ isDisabled, min, max, parentCallback, setValidSp
                     <Listbox.Options className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                       {spokesData.map((spoke) => (
                         <Listbox.Option
-                          key={spoke.id}
+                          key={spoke._id}
                           className={({ active }) =>
                             classNames(
                               active
@@ -102,6 +107,14 @@ export default function Spoke({ isDisabled, min, max, parentCallback, setValidSp
                                   )}
                                 >
                                   {spoke.name}
+                                </span>
+                                <span
+                                  className={classNames(
+                                    selected ? "font-semibold" : "font-normal",
+                                    "ml-3 block truncate"
+                                  )}
+                                >
+                                  {spoke.price + "$"}
                                 </span>
                               </div>
 
@@ -143,6 +156,6 @@ export default function Spoke({ isDisabled, min, max, parentCallback, setValidSp
 
         </div>
       </div>
-    </div>
+    </div >
   );
 }

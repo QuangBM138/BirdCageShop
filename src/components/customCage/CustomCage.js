@@ -10,6 +10,7 @@ export default function CustomCage() {
   const [min, setMin] = useState(0)
   const warningOrderSubmit = useRef()
   const [component, setComponent] = useState([])
+  const [total, setTotal] = useState(0)
   const [max, setMax] = useState(0)
   const [validDoor, setValidDoor] = useState(false)
   const [validSpoke, setValidSpoke] = useState(false)
@@ -112,6 +113,9 @@ export default function CustomCage() {
         ...newComponent, childData
       ]
 
+      console.log("COMPO: ", compo.map(total => total.total))
+
+      setTotal(compo.reduce((pre, curr) => pre + curr.total, 0))
       return compo.sort((a, b) => {
         const nameA = a.type.toUpperCase(); // ignore upper and lowercase
         const nameB = b.type.toUpperCase(); // ignore upper and lowercase
@@ -205,7 +209,7 @@ export default function CustomCage() {
             <div className="howToOrder-item">Width must be smaller than Length</div>
             <div className="howToOrder-item">Spoke: min <p className="condition-spoke">{isInputValid ? min : 0}</p> max  <p className="condition-spoke">{isInputValid ? max : 0}</p></div>
             <div className="howToOrder-item">Door must be smaller than 4</div>
-            <div className="howToOrder-item">Total: 899</div>
+            <div className="howToOrder-item total-component-item">Total: {total}</div>
           </div>
           <div className="order-submit" style={{ position: "absolute", right: 0, height: "100px", width: "30%" }}>
             <button onClick={handleSubmitOrder} className="order-button">Order</button>
@@ -221,24 +225,30 @@ export default function CustomCage() {
       <div className="component-container">
         <div>
           <Roof
+            total={total}
 
             parentCallback={handleCallback}
             isDisabled={!isInputValid}
           />
           <Spoke
+            total={total}
             setValidSpoke={setValidSpoke}
             parentCallback={handleCallback}
+
             min={min}
             max={max}
             isDisabled={!isInputValid}
           />
           <Door
+            total={total}
+
             setValidDoor={setValidDoor}
             parentCallback={handleCallback}
             isDisabled={!isInputValid}
           />
           <Base
 
+            total={total}
             parentCallback={handleCallback}
             isDisabled={!isInputValid}
           />

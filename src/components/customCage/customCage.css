@@ -12,9 +12,9 @@
   position: absolute;
   right: 0;
   border: 1px solid #ddd;
-  padding: 20px;
+  padding: 10px;
   width: 30%;
-  top: 0;
+  bottom: 0;
 }
 
 .component-images {
@@ -97,6 +97,10 @@
   color: #8d522c;
 }
 
+.howToOrder-container {
+  position: relative;
+}
+
 .howToOrder-item {
   font-family: "Roboto";
   font-size: 14px;
@@ -130,4 +134,10 @@
   /* Điều chỉnh độ mờ tùy ý */
   pointer-events: none;
   /* Để không cho phép tương tác */
+}
+
+.total-component-item {
+  font-weight: 600;
+  color: red;
+  font-size: 18px;
 }
