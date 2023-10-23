@@ -30,21 +30,21 @@ export default function UserProfile() {
     // Format the image data once when the component mounts or when product.images changes
     useEffect(() => {
         if (Products_Cage && Products_Cage.images) {
-          const regx = /:\[\d{3},\d{3}]/g;
-          const regxQuotes = /(\"{|\\|}")/g;
-          const regxCurlyBraces = /(\{)/g;
-          const regxCurlyBraces2 = /(\})/g;
-      
-          const formattedImages = Products_Cage.images
-            .replace(regx, '')
-            .replace(regxQuotes, '[')
-            .replace(regxCurlyBraces2, ']')
-            .replace(regxCurlyBraces, '[');
-      
-          setImg(JSON.parse(formattedImages));
+            const regx = /:\[\d{3},\d{3}]/g;
+            const regxQuotes = /(\"{|\\|}")/g;
+            const regxCurlyBraces = /(\{)/g;
+            const regxCurlyBraces2 = /(\})/g;
+
+            const formattedImages = Products_Cage.images
+                .replace(regx, '')
+                .replace(regxQuotes, '[')
+                .replace(regxCurlyBraces2, ']')
+                .replace(regxCurlyBraces, '[');
+
+            setImg(JSON.parse(formattedImages));
         }
-        
-      }, [Products_Cage]);
+
+    }, [Products_Cage]);
 
 
 
@@ -53,19 +53,19 @@ export default function UserProfile() {
     return (
         <div className='userprofile_container'>
             <h4 className='oh_h4'>Order History</h4>
-            <nav class="uk-navbar-container" uk-navbar>
-                <div class="uk-navbar uk-align-center">
-                    <ul class="uk-navbar-nav ">
-                        <li class="uk-parent"><a href="">All Orders</a></li>
-                        <li class="uk-parent"><a href="">Waiting for pay</a></li>
-                        <li class="uk-parent"><a href="">Processing</a></li>
-                        <li class="uk-parent"><a href="">Delivering</a></li>
-                        <li class="uk-parent"><a href="">Delivered</a></li>
-                        <li class="uk-parent"><a href="">Cancelled</a></li>
-                        <div class="uk-margin">
-                            <form class="uk-search uk-search-default">
+            <nav className="uk-navbar-container" uk-navbar>
+                <div className="uk-navbar uk-align-center">
+                    <ul className="uk-navbar-nav ">
+                        <li className="uk-parent"><a href="">All Orders</a></li>
+                        <li className="uk-parent"><a href="">Waiting for pay</a></li>
+                        <li className="uk-parent"><a href="">Processing</a></li>
+                        <li className="uk-parent"><a href="">Delivering</a></li>
+                        <li className="uk-parent"><a href="">Delivered</a></li>
+                        <li className="uk-parent"><a href="">Cancelled</a></li>
+                        <div className="uk-margin">
+                            <form className="uk-search uk-search-default">
                                 <span uk-search-icon></span>
-                                <input class="uk-search-input" type="search" placeholder="Search" aria-label="Search" />
+                                <input className="uk-search-input" type="search" placeholder="Search" aria-label="Search" />
                             </form>
                         </div>
                     </ul>
@@ -78,28 +78,28 @@ export default function UserProfile() {
                         <p>Successful delivery</p>
                     </div>
                     <div className='product_design'>
-                    {Products_Cage.slice(0,2).map((product, index) => (
-                        <Link to={`/detail/${product.id}`}>
-                        <div className='product_myorder' key={product.id}>
-                            
-                            <div className='product_detail'>
-                                <div className='img_product'>
-                                {JSON.parse(product.images).slice(0,1).map(img =>
-                            <img className='img_product_image' src={img} alt={`Image ${index}`} />
-                          )}
+                        {Products_Cage.slice(0, 2).map((product, index) => (
+                            <Link to={`/detail/${product.id}`}>
+                                <div className='product_myorder' key={product.id}>
+
+                                    <div className='product_detail'>
+                                        <div className='img_product'>
+                                            {JSON.parse(product.images).slice(0, 1).map(img =>
+                                                <img className='img_product_image' src={img} alt={`Image ${index}`} />
+                                            )}
+                                        </div>
+                                        <div className='infor_product'>
+                                            <p className='product_name'>{product.name}</p>
+                                        </div>
+                                    </div>
+                                    <div className='product_price'>
+                                        <span>
+                                            $ {product.price}
+                                        </span>
+                                    </div>
+
                                 </div>
-                                <div className='infor_product'>
-                                    <p className='product_name'>{product.name}</p>
-                                </div>
-                            </div>
-                            <div className='product_price'>
-                                <span>
-                                $ {product.price}
-                                </span>
-                            </div>
-                           
-                        </div>
-                        </Link>
+                            </Link>
                         ))}
 
                     </div>
@@ -126,26 +126,26 @@ export default function UserProfile() {
                         <p>Successful delivery</p>
                     </div>
                     <div className='product_design'>
-                    {Products_Cage.slice(7,10).map((product, index) => (
-                         <Link to={`/detail/${product.id}`}>
-                        <div className='product_myorder' key={product.id}>
-                            <div className='product_detail'>
-                                <div className='img_product'>
-                                {JSON.parse(product.images).slice(0,1).map(img =>
-                            <img className='img_product_image' src={img} alt={`Image ${index}`} />
-                          )}
+                        {Products_Cage.slice(7, 10).map((product, index) => (
+                            <Link to={`/detail/${product.id}`}>
+                                <div className='product_myorder' key={product.id}>
+                                    <div className='product_detail'>
+                                        <div className='img_product'>
+                                            {JSON.parse(product.images).slice(0, 1).map(img =>
+                                                <img className='img_product_image' src={img} alt={`Image ${index}`} />
+                                            )}
+                                        </div>
+                                        <div className='infor_product'>
+                                            <p className='product_name'>{product.name}</p>
+                                        </div>
+                                    </div>
+                                    <div className='product_price'>
+                                        <span>
+                                            $ {product.price}
+                                        </span>
+                                    </div>
                                 </div>
-                                <div className='infor_product'>
-                                    <p className='product_name'>{product.name}</p>
-                                </div>
-                            </div>
-                            <div className='product_price'>
-                                <span>
-                                $ {product.price}
-                                </span>
-                            </div>
-                        </div>
-                        </Link>
+                            </Link>
                         ))}
 
                     </div>
