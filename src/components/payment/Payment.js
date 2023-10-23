@@ -2,8 +2,16 @@ import React from "react";
 import "./Payment.css";
 import List from "./List";
 import { useState } from "react";
+import { useStore } from "../cart/store/hooks";
+import { Navigate } from "react-router";
 function Payment() {
   const [isShow, setIsShow] = useState(false);
+  const [state, dispatch] = useStore()
+  const cart = state
+  console.log(cart.length)
+  if (cart.length < 1)
+    return <Navigate to="/cart" replace />;
+
   return (
     <div className="w-full min-h-screen">
       <div className="w-full relative">
