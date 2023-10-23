@@ -94,7 +94,7 @@ export default function Products() {
                 >
                     {
                         Products_Cage.map((product, index) =>
-                            <SwiperSlide className="animate product-slide" key={product.id}>
+                            <SwiperSlide className="animate product-slide" key={product._id}>
                                 <div className='product-wrapper'>
                                     <Link to={`/detail/${product._id}`}>
                                         <img
