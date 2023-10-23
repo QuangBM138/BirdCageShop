@@ -4,10 +4,14 @@ import { Container } from '@mui/material'
 import Item from './cartItem/Item.js'
 import { useStore } from './store/hooks'
 import ShoppingBasket from '@mui/icons-material/ShoppingBasket'
-import { Link } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 
 export default function Cart() {
     const [state, dispatch] = useStore()
+    const navigate = useNavigate()
+    const handleCheckout = () => {
+        navigate("/payment")
+    }
     const cart = state
     console.log(state)
     return (
@@ -77,6 +81,7 @@ export default function Cart() {
 
                                 <button
                                     id='checkout'
+                                    onClick={handleCheckout}
                                     style={{
                                         width: "100%",
                                         background: "#ffc519",
