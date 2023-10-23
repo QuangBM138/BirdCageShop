@@ -9,7 +9,7 @@ import 'swiper/css/scrollbar';
 import 'swiper/css/autoplay';
 import SwiperButton from './SwiperButton';
 import ShoppingBasket from '@mui/icons-material/ShoppingBasket';
-import { Products_Cage } from '../../../data/Cages';
+import { Products_Cage } from '../../../data/CagesNewest';
 import { useStore } from '../../cart/store/hooks';
 import { actions } from '../../cart/store';
 import { Link } from 'react-router-dom';
@@ -96,19 +96,19 @@ export default function Products() {
                         Products_Cage.map((product, index) =>
                             <SwiperSlide className="animate product-slide" key={product.id}>
                                 <div className='product-wrapper'>
-                                    <Link to={`/detail/${product.id}`}>
-                                        {JSON.parse(product.images).map((img, index) => index == 0 && <img
+                                    <Link to={`/detail/${product._id}`}>
+                                        <img
                                             className='image-product'
-                                            src={img} />)}
+                                            src={product.imagePath} />
                                         <div className='overlay-product'></div>
                                     </Link>
                                     <div className='show-block'>
-                                        <Link to={`/detail/${product.id}`}>
+                                        <Link to={`/detail/${product._id}`}>
                                             <p className='name-product'>{product.name}</p>
                                         </Link>
                                         <button
                                             className='button-cart'
-                                            onClick={() => handleAddToCart(product.id)}
+                                            onClick={() => handleAddToCart(product._id)}
                                         >
                                             <ShoppingBasket /> Add to Cart
                                         </button>
@@ -138,12 +138,14 @@ export default function Products() {
                 >
                     {
                         Products_Cage.map((product, index) =>
-                            <SwiperSlide className="animate product-slide" key={product.id}>
+                            <SwiperSlide className="animate product-slide" key={product._id}>
                                 <div className='product-wrapper'>
-                                    <Link to={`/detail/${product.id}`}>
-                                        {JSON.parse(product.images).map((img, index) => index == 0 && <img
+                                    <Link to={`/detail/${product._id}`}>
+                                        {/* {JSON.parse(product.imagePath).map((img, index) => index == 0 &&  */}
+                                        <img
                                             className='image-product'
-                                            src={img} />)}
+                                            src={product._imagePath} />
+                                        {/* )} */}
                                         <div className='overlay-product'></div>
                                     </Link>
                                     <div className='show-block'>
@@ -152,7 +154,7 @@ export default function Products() {
                                         </Link>
                                         <button
                                             className='button-cart'
-                                            onClick={() => handleAddToCart(product.id)}
+                                            onClick={() => handleAddToCart(product._id)}
                                         >
                                             <ShoppingBasket /> Add to Cart
                                         </button>
