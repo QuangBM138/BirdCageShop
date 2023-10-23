@@ -144,12 +144,12 @@ export default function Products() {
                                         {/* {JSON.parse(product.imagePath).map((img, index) => index == 0 &&  */}
                                         <img
                                             className='image-product'
-                                            src={product._imagePath} />
+                                            src={product.imagePath} />
                                         {/* )} */}
                                         <div className='overlay-product'></div>
                                     </Link>
                                     <div className='show-block'>
-                                        <Link to={`/detail/${product.id}`}>
+                                        <Link to={`/detail/${product._id}`}>
                                             <p className='name-product'>{product.name}</p>
                                         </Link>
                                         <button

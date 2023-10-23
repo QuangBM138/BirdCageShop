@@ -113,7 +113,7 @@ export const Products_Cage =
             "_id": 8
         },
         {
-            "name": "YML A5924 3/8\" Bar Spacing Flat Top Small Bird Cage, Black, 18\" x 18\"",
+            "name": "YML A5924 3/8 Bar Spacing Flat Top Small Bird Cage, Black, 18 x 18",
             "price": "92",
             "description": "About this item 2 feeder doors, 2 plastic cups, 2 perches Easy to clean removable metal grate and slide out bottom plastic tray It has a large swing out door with a door pin and small lift up doors Country Of Origin: China",
             "imagePath": "https://m.media-amazon.com/images/I/81uCUN0acTL._AC_SY355_.jpg",
@@ -155,7 +155,7 @@ export const Products_Cage =
             "_id": 11
         },
         {
-            "name": "Prevue Hendryx SP1804TR-2 Triple Roof Bird Cage, Teal and White, 1/2\"",
+            "name": "Prevue Hendryx SP1804TR-2 Triple Roof Bird Cage, Teal and White, 1/2",
             "price": "75",
             "description": "About this item Designed for Parakeets, Cockatiels and other small to medium sized birds Features a unique triple roof design Includes 2 plastic cups and 2 wood perches Removable bottom grille and pull out tray for easy cleaning 26-Inch Long, 14-inch Wide, 22-1/2-inch High with 1/2-inch wire spacing",
             "imagePath": "https://m.media-amazon.com/images/I/91zhedB5rAL._AC_SX425_.jpg",
@@ -183,7 +183,7 @@ export const Products_Cage =
             "_id": 13
         },
         {
-            "name": "Prevue Pet Products SP1804-3 Flight Cage, Lilac/White,26\" L x 14\" W x 22 1/4\" H",
+            "name": "Prevue Pet Products SP1804-3 Flight Cage, Lilac/White,26 L x 14 W x 22 1/4 H",
             "price": "69",
             "description": "About this item Designed for Parakeets, Cockatiels and other small birds Includes 2 plastic hooded cups and 2 wood perches Removable bottom grille and pull out tray for convenient cleaning Large, front opening door 26-inch long, 14-inch wide, 20-inch high with 1/2-inch wire spacing",
             "imagePath": "https://m.media-amazon.com/images/I/91otnK2ujFL._SX342_.jpg",
