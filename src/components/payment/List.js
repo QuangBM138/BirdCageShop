@@ -18,7 +18,7 @@ function List() {
   const computeSubTotal = () => {
     let tmp = 0;
     cart.map((i) => {
-      tmp = tmp + Number.parseInt(i.price);
+      tmp = tmp + Number.parseInt(i.price * i.cartQuantity);
     });
     setSubTotal(tmp);
   };
