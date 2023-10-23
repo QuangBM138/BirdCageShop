@@ -7,6 +7,11 @@
     padding: 1.125rem 0;
 }
 
+
+.user_profile {
+    height: 50vh;
+}
+
 .user_heading {
     margin: 0;
     font-size: 1.125rem;
@@ -139,7 +144,7 @@
     outline: 0;
     background: #BF4619;
     height: 40px;
-    padding: 0 10px;
+    padding: 8px 14px;
     margin-right: 20px;
     border-radius: 30px;
 }
