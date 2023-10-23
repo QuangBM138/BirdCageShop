@@ -92,3 +92,12 @@
     font-size: 14px;
 
 }
+
+.name-compare-product {
+    width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    padding: 0 0 3px 15px;
+    text-wrap: nowrap;
+}

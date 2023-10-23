@@ -1,18 +1,18 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Products_Cage } from '../../../data/Cages'
+import { Products_Cage } from '../../../data/CagesNewest'
 import ClearIcon from '@mui/icons-material/Clear';
 import "./Compare.css"
 export default function Compare({ listProductCompare, compareParentCallback }) {
-
+    console.log(listProductCompare)
     return (
         <div className='compare-container'>
             <ul className='list-compare'>
                 {listProductCompare.map(item =>
-                    <li>
+                    <li key={item}>
                         <Link to={`/detail/${item}`}>
-                            <img src="https://cdn.tgdd.vn/Products/Images/42/305660/iphone-15-pro-max-blue-thumbnew-600x600.jpg" />
-                            <h3>{item}</h3>
+                            <img src={Products_Cage.find(cage => cage._id === item).imagePath} />
+                            <h3 className='name-compare-product'>{Products_Cage.find(cage => cage._id === item).name}</h3>
                         </Link>
                         <span
                             onClick={() => compareParentCallback(item)}
