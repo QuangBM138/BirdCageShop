@@ -159,14 +159,14 @@ export default function Details({ compareParentCallback, listProductCompare }) {
                             </div>
                             <div class="flex mt-12">
                                 <button
-                                    onClick={() => handleAddToCart(product.id, quantity)}
+                                    onClick={() => handleAddToCart(product._id, quantity)}
                                     class='button_design'>
                                     <h3>Add to Cart</h3>
                                 </button>
 
                                 <button
-                                    onClick={() => compareParentCallback(product.id)}
-                                    className={listProductCompare.filter(p => p == product.id).length == 0 ? "button-compare" : "active" + " " + "button-compare"}
+                                    onClick={() => compareParentCallback(product._id)}
+                                    className={listProductCompare.filter(p => p == product._id).length == 0 ? "button-compare" : "active" + " " + "button-compare"}
                                 // className='button_design'>
                                 >
                                     {listProductCompare.filter(p => p == product.id).length == 0 ? "Compare" : "Remove"}
