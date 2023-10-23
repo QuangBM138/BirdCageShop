@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Products_Cage } from '../../data/Cages';
+import { Products_Cage } from '../../data/CagesNewest';
 import './ManageOrder.css'
 import { Link } from 'react-router-dom';
 
@@ -7,23 +7,23 @@ export default function ManageOrder() {
     const [img, setImg] = useState([]);
 
     // Format the image data once when the component mounts or when product.images changes
-    useEffect(() => {
-        if (Products_Cage && Products_Cage.images) {
-            const regx = /:\[\d{3},\d{3}]/g;
-            const regxQuotes = /(\"{|\\|}")/g;
-            const regxCurlyBraces = /(\{)/g;
-            const regxCurlyBraces2 = /(\})/g;
+    // useEffect(() => {
+    //     if (Products_Cage && Products_Cage.images) {
+    //         const regx = /:\[\d{3},\d{3}]/g;
+    //         const regxQuotes = /(\"{|\\|}")/g;
+    //         const regxCurlyBraces = /(\{)/g;
+    //         const regxCurlyBraces2 = /(\})/g;
 
-            const formattedImages = Products_Cage.images
-                .replace(regx, '')
-                .replace(regxQuotes, '[')
-                .replace(regxCurlyBraces2, ']')
-                .replace(regxCurlyBraces, '[');
+    //         const formattedImages = Products_Cage.images
+    //             .replace(regx, '')
+    //             .replace(regxQuotes, '[')
+    //             .replace(regxCurlyBraces2, ']')
+    //             .replace(regxCurlyBraces, '[');
 
-            setImg(JSON.parse(formattedImages));
-        }
+    //         setImg(JSON.parse(formattedImages));
+    //     }
 
-    }, [Products_Cage]);
+    // }, [Products_Cage]);
     return (
         <div>
             <h4 className='oh_h4'>Order History</h4>
@@ -46,14 +46,14 @@ export default function ManageOrder() {
                     </div>
                     <div className='product_design'>
                         {Products_Cage.slice(0, 2).map((product, index) => (
-                            <Link to={`/detail/${product.id}`}>
-                                <div className='product_myorder' key={product.id}>
+                            <Link to={`/detail/${product._id}`}>
+                                <div className='product_myorder' key={product._id}>
 
                                     <div className='product_detail'>
                                         <div className='img_product'>
-                                            {JSON.parse(product.images).slice(0, 1).map(img =>
-                                                <img className='img_product_image' src={img} alt={`Image ${index}`} />
-                                            )}
+                                            {/* {JSON.parse(product.imagePath).slice(0, 1).map(img => */}
+                                            <img className='img_product_image' src={product.imagePath} alt={`Image ${index}`} />
+                                            {/* )} */}
                                         </div>
                                         <div className='infor_product'>
                                             <p className='product_name'>{product.name}</p>
@@ -91,13 +91,13 @@ export default function ManageOrder() {
                     </div>
                     <div className='product_design'>
                         {Products_Cage.slice(7, 10).map((product, index) => (
-                            <Link to={`/detail/${product.id}`}>
-                                <div className='product_myorder' key={product.id}>
+                            <Link to={`/detail/${product._id}`}>
+                                <div className='product_myorder' key={product._id}>
                                     <div className='product_detail'>
                                         <div className='img_product'>
-                                            {JSON.parse(product.images).slice(0, 1).map(img =>
-                                                <img className='img_product_image' src={img} alt={`Image ${index}`} />
-                                            )}
+                                            {/* {JSON.parse(product.images).slice(0, 1).map(img => */}
+                                            <img className='img_product_image' src={product.imagePath} alt={`Image ${index}`} />
+                                            {/* )} */}
                                         </div>
                                         <div className='infor_product'>
                                             <p className='product_name'>{product.name}</p>
