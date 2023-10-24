@@ -234,6 +234,7 @@ button:hover {
 
 .nav-link {
     position: relative;
+    color: #fff;
 }
 
 .nav-link.active {

@@ -47,7 +47,7 @@
 .signin_bt {
     cursor: pointer;
     transition: 0.7s;
-    border-radius: 70px !important;
+    border-radius: 30px !important;
     border-top: 0;
     border-right: 0;
     border-left: 0;
@@ -55,27 +55,24 @@
     background-color: #ffc519;
     justify-content: center;
     align-items: center;
-    padding: 5px 25px 5px 25px;
+    padding: 10px 20px;
     vertical-align: middle;
-    line-height: 1.8em;
     font-family: 'Poppins', sans-serif;
     color: white;
     font-weight: 500;
 }
 
 .signin_bt:hover {
-    margin: 5px !important;
-    border-radius: 70px !important;
+
     border-top: 0;
     border-right: 0;
     border-left: 0;
-    border-bottom: 6px solid #9F6000;
+    border-bottom: 6px solid #8d522c;
     background-color: #8d522c;
     justify-content: center;
     align-items: center;
-    padding: 5px 25px 5px 25px;
     vertical-align: middle;
-    line-height: 1.8em;
+    /* line-height: 1.8em; */
     font-family: 'Poppins', sans-serif;
     color: white;
     font-size: 15px;

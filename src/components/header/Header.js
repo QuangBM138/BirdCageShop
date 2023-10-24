@@ -7,18 +7,21 @@ import { Container } from '@mui/material'
 import { useStore } from "../cart/store/hooks";
 import SearchResults from "../search/searchResult/SearchResult";
 import { Products_Cage } from "../../data/CagesNewest";
-
-
+import UseToken from "../handleToken/UseToken";
+import LoginIcon from '@mui/icons-material/Login';
+import SearchIcon from '@mui/icons-material/Search';
+import PersonIcon from '@mui/icons-material/Person';
+import LogoutIcon from '@mui/icons-material/Logout';
 const Header = () => {
   const [Mobile, setMobile] = useState(false);
   const [showSearchInput, setShowSearchInput] = useState(false)
   const [state, dispatch] = useStore();
-
+  const { getToken, setToken } = UseToken()
   // handle search input
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
-
+  const { removeToken } = UseToken()
 
   const handleSearch = () => {
     const trimmedQuery = searchQuery.trim();
@@ -32,7 +35,9 @@ const Header = () => {
       clearSearch();
     }
   };
-
+  const handleLogout = () => {
+    removeToken()
+  }
 
 
   useEffect(() => {
@@ -94,12 +99,24 @@ const Header = () => {
         </div>
         <div className="right-icons">
 
-          <a onClick={() => setShowSearchInput(!showSearchInput)}>
-            <i className="fa fa-search"></i>
+          <a className="nav-link" onClick={() => setShowSearchInput(!showSearchInput)}>
+            <SearchIcon />
           </a>
-          <NavLink className={({ isActive }) => isActive ? "nav-link active" : 'nav-link'} to="/user">
-            <i className="fa fa-user"></i>
-          </NavLink>
+          {
+            getToken() == null ?
+              <Link className="nav-link" to="/login">
+                <LoginIcon />
+              </Link>
+              : <>
+                <NavLink className={({ isActive }) => isActive ? "nav-link active" : 'nav-link'} to="/user">
+                  <PersonIcon />
+                </NavLink>
+                <NavLink className="nav-link" onClick={handleLogout}>
+                  <LogoutIcon />
+                </NavLink>
+              </>
+          }
+
           <NavLink className={({ isActive }) => isActive ? "nav-link active" : 'nav-link'} to="/cart">
             <i className="fa-solid fa-cart-shopping"></i>
             <span
