@@ -29,6 +29,8 @@ import Address from "./components/address/Address";
 import EditAddress from "./components/editAddress/EditAddress";
 import AddNewAddress from "./components/addNewAddress/AddNewAddress";
 import EditProfile from "./components/userProfile/editProfile/EditProfile";
+import ProtectedRoute from "./components/ProtectedRoute";
+import UseToken from "./components/handleToken/UseToken";
 function App() {
   // const regx = /:\[\d{3},\d{3}]/g
   // const [item, setItem] = useState('')
@@ -43,18 +45,13 @@ function App() {
   //   return product.images
   // })
   // console.log(Products.length)
-
+  const { getToken } = UseToken()
   const { pathname } = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
   return (
     <div className="App" style={{ background: "#fff" }}>
-      {/* render image of each cage */}
-      {/* 
-      {Products_Cage.map(pro =>
-        <div>{JSON.parse(pro.images).map((img, index) => index == 0 && <img src={img} />)}</div>
-      )} */}
       <Header></Header>
       <Routes>
         <Route path="/detail/:id" element={<ProductDetailPage />}></Route>
@@ -76,7 +73,13 @@ function App() {
           </Route>
         </Route>
         <Route path="/payment" element={<Payment />}></Route>
-        <Route path="/login" exact element={<Login />}></Route>
+        <Route path="/login" exact
+          element={
+            <ProtectedRoute user={getToken}>
+              <Login />
+            </ProtectedRoute>
+          }>
+        </Route>
         <Route path="/forgotpassword" element={<ForgotPassword />}></Route>
         <Route path="/createaccount" element={<CreateAccount />}></Route>
         <Route path="compare/:cageId1/:cageId2" element={<CompareProductsPage />} />

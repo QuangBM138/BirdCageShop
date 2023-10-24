@@ -15,9 +15,9 @@ export default function Login() {
     const { getToken, setToken } = UseToken()
     console.log(getToken() == null)
 
-    if (getToken() != null) {
-        return <Navigate to="/" replace />
-    }
+    // if (getToken() != null) {
+    //     return <Navigate to="/" replace />
+    // }
 
     const handleLogin = (e) => {
         e.preventDefault()
