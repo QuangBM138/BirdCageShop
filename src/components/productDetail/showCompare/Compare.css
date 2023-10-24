@@ -58,6 +58,8 @@
 
 .list-compare a img {
     width: 60px;
+    object-fit: contain;
+    height: 60px
 }
 
 .close-compare {

@@ -49,11 +49,11 @@ export default function RelatedPro({ compareParentCallback, listProductCompare }
                 <SwiperSlide className="animate product-slide" key={product._id}>
                   <div className='product-wrapper'>
                     <button
-                      className={listProductCompare.filter(p => p == product._id).length == 0 ? "button-c" : "active" + " " + "button-c"}
-                      onClick={() => compareParentCallback(product._id)}
+                      className={listProductCompare.filter(p => p._id == product._id).length == 0 ? "button-c" : "active" + " " + "button-c"}
+                      onClick={() => compareParentCallback(product)}
 
                     >
-                      {listProductCompare.filter(p => p == product._id).length == 0 ? "Compare" : "Remove"}
+                      {listProductCompare.filter(p => p._id == product._id).length == 0 ? "Compare" : "Remove"}
                     </button>
                     <Link to={`/detail/${product._id}`}>
 

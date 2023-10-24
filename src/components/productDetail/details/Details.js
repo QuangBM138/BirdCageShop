@@ -170,12 +170,11 @@ export default function Details({ compareParentCallback, listProductCompare }) {
                                 </button>
 
                                 <button
-                                    onClick={() => compareParentCallback(product._id)}
-                                    className={listProductCompare.filter(p => p == product._id).length == 0 ? "button-compare" : "active" + " " + "button-compare"}
+                                    onClick={() => compareParentCallback(product)}
+                                    className={listProductCompare.filter(p => p._id == product._id).length == 0 ? "button-compare" : "active" + " " + "button-compare"}
                                 // className='button_design'>
                                 >
-                                    {listProductCompare.filter(p => p == product._id).length == 0 ? "Compare" : "Remove"}
-                                    {console.log(listProductCompare.filter(p => p == product.id))}
+                                    {listProductCompare.filter(p => p._id == product._id).length == 0 ? "Compare" : "Remove"}
                                 </button>
                             </div>
                         </div>
