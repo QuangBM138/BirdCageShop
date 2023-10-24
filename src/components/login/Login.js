@@ -1,30 +1,45 @@
 import React, { useEffect, useState } from 'react'
 import './Login.css'
-import { Link, Navigate, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import UseToken from '../handleToken/UseToken'
-import axios from 'axios'
-import { useCookies, Cookies } from 'react-cookie'
-import jwtDecode from 'jwt-decode'
+import CircularProgress from '@mui/material/CircularProgress';
 
 
 export default function Login() {
-    const navigate = useNavigate()
     const [phoneNumber, setPhoneNumber] = useState("")
     const [password, setPassword] = useState("")
     const [message, setMessage] = useState("")
-    const { getToken, setToken } = UseToken()
-    console.log(getToken() == null)
+    const { setToken } = UseToken()
+    const [isLoading, setLoading] = useState(false)
+    const [checkValidPhoneNum, setValidPhoneNum] = useState(true)
+    // on change phone number
 
-    // if (getToken() != null) {
-    //     return <Navigate to="/" replace />
-    // }
+    const regexPhoneNumber = phone => {
+        const regexPhoneNumber = /(84|0[3|5|7|8|9])+([0-9]{8})\b/g;
+        return phone.match(regexPhoneNumber) ? true : false
+    }
+    const handleChangePhone = e => {
+        setPhoneNumber(e.target.value)
+        regexPhoneNumber(e.target.value) ? setValidPhoneNum(true) : setValidPhoneNum(false)
+    }
 
+    // on change password
+    const handleChangePassword = e => {
+        setPassword(e.target.value)
+    }
+
+    // login
     const handleLogin = (e) => {
         e.preventDefault()
+        if (!phoneNumber || !password) {
+            setMessage("We need your phone number and password")
+            return
+        }
         const data = {
             phoneNumber: phoneNumber,
             password: password
         }
+        setLoading(true)
         fetch(
             "http://localhost:5000/api/v1/account/login", {
             method: "POST",
@@ -35,6 +50,7 @@ export default function Login() {
         })
             .then(response => response.json())
             .then(res => {
+                setLoading(false)
                 if (res.status == "success") {
                     console.log((res.token))
                     setToken(res.token)
@@ -45,7 +61,6 @@ export default function Login() {
             })
 
             .catch(error => console.log(error))
-        // console.log(Cookies.get("user"))
     }
     return (
         <div className='login_container'>
@@ -56,29 +71,39 @@ export default function Login() {
                     <div className='input_text'>
                         <input
                             value={phoneNumber}
-                            onChange={(e) => setPhoneNumber(e.target.value)}
+                            onChange={handleChangePhone}
                             type='text' placeholder='Phone' className='email_input' />
+                        <div className='invalid-phone'>
+                            {checkValidPhoneNum ? "" : "Invalid phone number format"}
+                        </div>
+
                     </div>
                     <div className='input_text'>
-
                         <input
                             value={password}
-                            onChange={(e) => setPassword(e.target.value)}
+                            onChange={handleChangePassword}
                             type='password'
                             placeholder='Password'
                             className='password_input' />
                     </div>
                     <div className='btn_design'>
                         <button
+                            style={{ display: "flex", justifyContent: "center", width: "100px" }}
                             onClick={handleLogin}
                             className='signin_bt'>
-                            Sign in
+                            {
+                                isLoading
+                                    ?
+                                    <CircularProgress style={{ width: "20px", height: "20px", color: "#fff" }} />
+                                    :
+                                    "Sign in"
+                            }
                         </button>
-                        {message}
+                        <div style={{ color: "red", marginTop: "10px" }}>{message}</div>
                     </div >
                     <div className='link_a'>
                         <Link to="/createaccount" className='a_link'>Create Account</Link>
-                        <a className='a_link'>Return store</a>
+                        <Link to="/" className='a_link'>Return store</Link>
                     </div>
                 </div>
             </div>

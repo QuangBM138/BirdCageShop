@@ -56,26 +56,98 @@ function App() {
       <Routes>
         <Route path="/detail/:id" element={<ProductDetailPage />}></Route>
         <Route path="/" element={<HomePage />}></Route>
-        <Route path="/manageorder" element={<ManageOrder />}></Route>
-        <Route path="/detailorder" element={<DetailOrder />}></Route>
+        <Route
+          path="/manageorder"
+          element={
+            <ProtectedRoute page="profile" user={getToken} >
+              <ManageOrder />
+            </ProtectedRoute>
+          } />
+
+
+        <Route path="/detailorder"
+          element={
+            <ProtectedRoute page="profile" user={getToken} >
+              <DetailOrder />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/cart" element={<CartPage />}></Route>
         <Route path="/search" element={<SearchPage />}></Route>
         <Route path="/user">
-          <Route index={true} element={<UserProfile />}></Route>
-          <Route index={false} path="manageorder" element={<ManageOrder />}></Route>
-          <Route index={false} path="editprofile" element={<EditProfile />}></Route>
-
+          <Route
+            index={true}
+            element={
+              <ProtectedRoute page="profile" user={getToken}>
+                <UserProfile />
+              </ProtectedRoute>
+            }
+          >
+          </Route>
+          <Route
+            index={false}
+            path="manageorder"
+            element={
+              <ProtectedRoute page="profile" user={getToken} >
+                <ManageOrder />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            index={false}
+            path="editprofile"
+            element={
+              <ProtectedRoute page="profile" user={getToken} >
+                <EditProfile />
+              </ProtectedRoute>
+            }>
+          </Route>
 
           <Route index={false} path="address">
-            <Route index={true} element={<Address />}></Route>
-            <Route index={false} path="editaddress" element={<EditAddress />}></Route>
-            <Route index={false} path="addnewaddress" element={<AddNewAddress />}></Route>
+            <Route
+              index={true}
+              element={
+                <ProtectedRoute page="profile" user={getToken} >
+                  <Address />
+                </ProtectedRoute>
+              }
+            >
+
+            </Route>
+            <Route
+              index={false}
+              path="editaddress"
+              element={
+                <ProtectedRoute page="profile" user={getToken} >
+                  <EditAddress />
+                </ProtectedRoute>
+              }
+            >
+            </Route>
+            <Route
+              path="addnewaddress"
+              index={false}
+              element={
+                <ProtectedRoute page="profile" user={getToken} >
+                  <AddNewAddress />
+                </ProtectedRoute>
+              }
+            />
           </Route>
         </Route>
-        <Route path="/payment" element={<Payment />}></Route>
-        <Route path="/login" exact
+        <Route
+          path="/payment"
           element={
-            <ProtectedRoute user={getToken}>
+            <ProtectedRoute page="payment" user={getToken}>
+              <Payment />
+            </ProtectedRoute>
+          }>
+
+        </Route>
+        <Route
+          path="/login" exact
+          element={
+            <ProtectedRoute page="login" user={getToken}>
               <Login />
             </ProtectedRoute>
           }>

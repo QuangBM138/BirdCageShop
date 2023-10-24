@@ -1,6 +1,11 @@
+* {
+    box-sizing: border-box;
+}
+
 .login_container {
     margin: 82px;
     padding: 0 15px;
+    height: 50vh;
 }
 
 .user_acount {
@@ -13,6 +18,10 @@
     padding: 30px;
 }
 
+.user_signin .input_text input:focus-visible {
+    border: 0;
+}
+
 .user_signin {
     background-position: 0 0;
     color: #1a1a1a;
@@ -22,6 +31,13 @@
 
 .input_text {
     width: 100%;
+    /* margin-bottom: 20px; */
+    padding: 10px 20px;
+}
+
+.invalid-phone {
+    padding: 10px 20px;
+    color: red;
 }
 
 .email_input {
@@ -30,8 +46,8 @@
     border-radius: 30px;
     font-family: 'Poppins', sans-serif;
     line-height: 28.8px;
-    margin: 0px 0px 30px;
-    padding: 10px 20px;
+    border: none;
+
 }
 
 .password_input {
@@ -60,6 +76,7 @@
     font-family: 'Poppins', sans-serif;
     color: white;
     font-weight: 500;
+    text-wrap: nowrap;
 }
 
 .signin_bt:hover {

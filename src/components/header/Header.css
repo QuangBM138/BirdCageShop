@@ -237,6 +237,10 @@ button:hover {
     color: #fff;
 }
 
+.nav-link:hover {
+    color: #8d522c;
+}
+
 .nav-link.active {
     color: #8d522c;
 }
