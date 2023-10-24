@@ -1,12 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './ProductDescriptAll.css'
 import { useState } from 'react';
 import ProductDescription from '../productDescription/ProductDescription';
 import Reviews from '../reviews/Reviews';
+import { useParams } from 'react-router-dom';
 
 export default function ProductDescriptAll() {
   const [activeButton, setActiveButton] = useState('description');
-
+  const [product, setProduct] = useState({})
+  const { id } = useParams()
+  useEffect(() => {
+    fetch(`http://localhost:5000/api/v1/cage/${id}`)
+      .then(res => res.json())
+      .then(cage => {
+        setProduct(cage.data.component)
+      })
+  }, [id])
   const showDescription = () => {
     setActiveButton('description');
   };
@@ -33,7 +42,7 @@ export default function ProductDescriptAll() {
             <h3>Reviews</h3>
           </button>
         </div>
-        {activeButton === 'description' ? <ProductDescription /> : <Reviews />}
+        {activeButton === 'description' ? <ProductDescription product={product} /> : <Reviews />}
       </div>
 
     </section>

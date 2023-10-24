@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
@@ -19,6 +19,15 @@ import { actions } from '../../cart/store';
 
 export default function RelatedPro({ compareParentCallback, listProductCompare }) {
   const [state, dispatch] = useStore()
+  const [cageList, setCageList] = useState([])
+  useEffect(() => {
+    fetch("http://localhost:5000/api/v1/cage")
+      .then(res => res.json())
+      .then(cage => {
+        setCageList(cage.data.cages)
+        // console.log(cage);
+      })
+  }, [])
   const handleAddToCart = (index) => {
     dispatch(actions.addToCart({ index, quantity: 1 }))
   }
@@ -36,7 +45,7 @@ export default function RelatedPro({ compareParentCallback, listProductCompare }
             spaceBetween={50}
           >
             {
-              Products_Cage.map((product, index) =>
+              cageList.map((product, index) =>
                 <SwiperSlide className="animate product-slide" key={product._id}>
                   <div className='product-wrapper'>
                     <button
@@ -47,12 +56,12 @@ export default function RelatedPro({ compareParentCallback, listProductCompare }
                       {listProductCompare.filter(p => p == product._id).length == 0 ? "Compare" : "Remove"}
                     </button>
                     <Link to={`/detail/${product._id}`}>
-                      {/* {JSON.parse(product.images).map((img, index) => index == 0 &&  */}
+
                       <img
                         className='image-product'
                         src={product.imagePath}
-                         />
-                         
+                      />
+
                       <div className='overlay-product'></div>
                     </Link>
                     <div className='show-block'>

@@ -3,10 +3,10 @@ import './ProductDescription.css';
 import { Products_Cage } from '../../../data/CagesNewest';
 import { useParams } from 'react-router-dom';
 
-export default function ProductDescription() {
+export default function ProductDescription({ product }) {
     const { id } = useParams();
 
-    const product = Products_Cage.find((product) => product._id === parseInt(id, 10));
+    // const product = Products_Cage.find((product) => product._id === parseInt(id, 10));
 
     return (
         <section className="text-gray-600 body-font overflow-hidden" >

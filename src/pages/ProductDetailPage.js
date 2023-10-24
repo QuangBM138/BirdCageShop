@@ -6,11 +6,18 @@ import RecentlyPro from '../components/productDetail/recentlyViewed/RecentlyPro'
 import Compare from '../components/productDetail/showCompare/Compare';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+import { useParams } from 'react-router-dom';
 
 export default function ProductDetailPage() {
     const [storageListProductCompare, setStorageListProductCompare] = useState(() => JSON.parse(localStorage.getItem('listProductCompare')) ?? [])
     const [fullCompare, setFullCompare] = useState("")
+
     const MySwal = withReactContent(Swal)
+
+
+    const [productList, setProductList] = useState("")
+
+
     // console.log("storageListProductCompare: ", JSON.parse(localStorage.getItem('listProductCompare')).length)
     useEffect(() => {
         setFullCompare(storageListProductCompare.length >= 2 ? true : false)

@@ -15,18 +15,26 @@ import DetailSwiper from './DetailSwiper';
 export default function Details({ compareParentCallback, listProductCompare }) {
 
     const [quantity, setQuantity] = useState(1);
-    const { id } = useParams();
-    const product = Products_Cage.find((product) => product._id === parseInt(id, 10));
+    // const { id } = useParams();
+    // const product = Products_Cage.find((product) => product._id === parseInt(id, 10));
     const [state, dispatch] = useStore()
-
+    const { id } = useParams()
+    const [product, setProduct] = useState({})
+    useEffect(() => {
+        fetch(`http://localhost:5000/api/v1/cage/${id}`)
+            .then(res => res.json())
+            .then(cage => {
+                setProduct(cage.data.component)
+            })
+    }, [id])
     const handleAddToCart = (index, quantity) => {
         dispatch(actions.addToCart({ index, quantity }))
     }
 
 
-    if (!product) {
-        return <div>Product not found</div>;
-    }
+    // if (!product) {
+    //     return <div>Product not found</div>;
+    // }
 
 
 
@@ -56,9 +64,9 @@ export default function Details({ compareParentCallback, listProductCompare }) {
         }
     };
 
-    if (!product) {
-        return <div>Product not found</div>;
-    }
+    // if (!product) {
+    //     return <div>Product not found</div>;
+    // }
 
 
 
@@ -68,7 +76,7 @@ export default function Details({ compareParentCallback, listProductCompare }) {
                 <div className="lg:w-1/1 mx-auto flex flex-wrap border border-grey px-6 py-12 md:mx-10 sm:mx-auto mr-8 ml-8">
                     <div className="lg:w-1/2 w-full lg:pr-5 lg:py-3 mt-3 lg:mt-0 object-cover">
                         <DetailSwiper />
-                        {/* <img src={product.imagePath}/> */}
+                        <img src={product.imagePath} />
                     </div>
                     <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-4 lg:mt-0 ">
                         <h1 className="text-gray-900 text-3xl title-font font-medium mb-3"
@@ -95,9 +103,6 @@ export default function Details({ compareParentCallback, listProductCompare }) {
                                 </svg>
                             </span>
                         </div>
-                        <p className="leading-relaxed">
-                            {product.description}
-                        </p>
                         <div className="mt-8 items-center">
                             <div className="flex mt-6">
                                 <h2 className="mr-16" style={{ fontSize: "20px", lineHeight: "30px", color: "black" }}>Price</h2>

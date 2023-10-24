@@ -54,13 +54,13 @@ export default function DetailSwiper() {
         className="mySwiper2"
       >
         {/* {img.map((image, index) => ( */}
-          <SwiperSlide >
-            <img
-              src={product.imagePath}
-              alt={product.name}
-              style={{ maxWidth: '300px', maxHeight: '500px', objectFit: 'contain' }} 
-            />
-          </SwiperSlide>
+        <SwiperSlide >
+          <img
+            src={product.imagePath}
+            alt={product.name}
+            style={{ maxWidth: '300px', maxHeight: '500px', objectFit: 'contain' }}
+          />
+        </SwiperSlide>
         {/* ))} */}
       </Swiper>
       <Swiper
@@ -74,13 +74,13 @@ export default function DetailSwiper() {
         className="mySwiper3"
       >
         {/* {img.map((image, index) => ( */}
-          <SwiperSlide>
-            <img
-              src={product.imagePath}
-              alt={product.name}
-              style={{ maxWidth: '100px', maxHeight: '500px' }}
-            />
-          </SwiperSlide>
+        <SwiperSlide>
+          <img
+            src={product.imagePath}
+            alt={product.name}
+            style={{ maxWidth: '100px', maxHeight: '500px' }}
+          />
+        </SwiperSlide>
         {/* ))} */}
       </Swiper>
     </div>

@@ -18,11 +18,18 @@ export default function Products() {
     const [typeProduct, setTypeProduct] = useState('new')
     const [slideBestProductEnd, setSlideBestProductEnd] = useState(false)
     const [slideBestProductStart, setSlideBestProductStart] = useState(false)
-
+    const [cagesList, setCageList] = useState([])
     const [slideNewProductEnd, setSlideNewProductEnd] = useState(false)
     const [slideNewProductStart, setSlideNewProductStart] = useState(false)
-
-
+    console.log(cagesList)
+    useEffect(() => {
+        fetch("http://localhost:5000/api/v1/cage")
+            .then(res => res.json())
+            .then(res => {
+                const cages = res.data.cages
+                setCageList(cages)
+            })
+    }, [])
     const [state, dispatch] = useStore()
 
     const handleAddToCart = (index) => {
@@ -93,7 +100,7 @@ export default function Products() {
                     }}
                 >
                     {
-                        Products_Cage.map((product, index) =>
+                        cagesList.map((product, index) =>
                             <SwiperSlide className="animate product-slide" key={product._id}>
                                 <div className='product-wrapper'>
                                     <Link to={`/detail/${product._id}`}>
@@ -137,7 +144,7 @@ export default function Products() {
                     }}
                 >
                     {
-                        Products_Cage.map((product, index) =>
+                        cagesList.map((product, index) =>
                             <SwiperSlide className="animate product-slide" key={product._id}>
                                 <div className='product-wrapper'>
                                     <Link to={`/detail/${product._id}`}>
