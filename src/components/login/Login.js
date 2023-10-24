@@ -19,8 +19,8 @@ export default function Login() {
         return phone.match(regexPhoneNumber) ? true : false
     }
     const handleChangePhone = e => {
-        setPhoneNumber(e.target.value)
-        regexPhoneNumber(e.target.value) ? setValidPhoneNum(true) : setValidPhoneNum(false)
+        setPhoneNumber(e.target.value.trim())
+        regexPhoneNumber(e.target.value.trim()) ? setValidPhoneNum(true) : setValidPhoneNum(false)
     }
 
     // on change password
@@ -60,14 +60,15 @@ export default function Login() {
 
             })
 
-            .catch(error => console.log(error))
+            .catch(error => {
+                throw error
+            })
     }
     return (
         <div className='login_container'>
             <div className='user_acount'>
-
-
                 <div className='user_signin'>
+                    <h1 style={{ textAlign: "center" }}>Sign In</h1>
                     <div className='input_text'>
                         <input
                             value={phoneNumber}

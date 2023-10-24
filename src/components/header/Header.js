@@ -16,12 +16,11 @@ const Header = () => {
   const [Mobile, setMobile] = useState(false);
   const [showSearchInput, setShowSearchInput] = useState(false)
   const [state, dispatch] = useStore();
-  const { getToken, setToken } = UseToken()
+  const { getToken, setToken, removeToken } = UseToken()
   // handle search input
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
-  const { removeToken } = UseToken()
 
   const handleSearch = () => {
     const trimmedQuery = searchQuery.trim();
@@ -111,9 +110,9 @@ const Header = () => {
                 <NavLink className={({ isActive }) => isActive ? "nav-link active" : 'nav-link'} to="/user">
                   <PersonIcon />
                 </NavLink>
-                <NavLink className="nav-link" onClick={handleLogout}>
+                <div className="nav-link" onClick={handleLogout}>
                   <LogoutIcon />
-                </NavLink>
+                </div>
               </>
           }
 

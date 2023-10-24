@@ -35,7 +35,8 @@
     padding: 10px 20px;
 }
 
-.invalid-phone {
+.invalid-phone,
+.invalid-create {
     padding: 10px 20px;
     color: red;
 }
