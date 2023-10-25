@@ -1,30 +1,28 @@
-
+import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Products_Cage } from '../../../data/CagesNewest';
 import ImageGallery from 'react-image-gallery';
 import "react-image-gallery/styles/css/image-gallery.css";
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { actions } from '../../cart/store';
 import { useStore } from '../../cart/store';
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/navigation';
+import 'swiper/css/thumbs';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import './Details.css';
 import DetailSwiper from './DetailSwiper';
+import './DetailSwiper.css';
 
-
-export default function Details({ compareParentCallback, listProductCompare }) {
-
+export default function Details({ compareParentCallback, listProductCompare, product }) {
+    const [thumbsSwiper, setThumbsSwiper] = useState(null);
     const [quantity, setQuantity] = useState(1);
     const [state, dispatch] = useStore()
     const { id } = useParams()
-    const [product, setProduct] = useState({})
-    useEffect(() => {
-        fetch(`http://localhost:5000/api/v1/cage/${id}`)
-            .then(res => res.json())
-            .then(cage => {
-                setProduct(cage.data.component)
-            })
-    }, [id])
+    // const [product, setProduct] = useState({})
+
     const handleAddToCart = (index, quantity) => {
         dispatch(actions.addToCart({ index, quantity }))
     }
@@ -38,7 +36,7 @@ export default function Details({ compareParentCallback, listProductCompare }) {
             setQuantity(quantity - 1);
         }
     };
-
+    console.log("product", product);
     const handleInputChange = (e) => {
         const inputValue = e.target.value;
         if (inputValue === "") {
@@ -52,10 +50,6 @@ export default function Details({ compareParentCallback, listProductCompare }) {
         }
     };
 
-    // if (!product) {
-    //     return <div>Product not found</div>;
-    // }
-
 
 
     return (
@@ -63,8 +57,11 @@ export default function Details({ compareParentCallback, listProductCompare }) {
             <div className="container px-0 py-24 mx-auto my-16">
                 <div className="lg:w-1/1 mx-auto flex flex-wrap border border-grey px-6 py-12 md:mx-10 sm:mx-auto mr-8 ml-8">
                     <div className="lg:w-1/2 w-full lg:pr-5 lg:py-3 mt-3 lg:mt-0 object-cover">
-                        <DetailSwiper />
+                        {/* <DetailSwiper product={product} /> */}
+
+
                         <img src={product.imagePath} />
+
                     </div>
                     <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-4 lg:mt-0 ">
                         <h1 className="text-gray-900 text-3xl title-font font-medium mb-3"

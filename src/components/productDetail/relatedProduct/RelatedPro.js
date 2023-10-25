@@ -28,6 +28,7 @@ export default function RelatedPro({ compareParentCallback, listProductCompare }
         // console.log(cage);
       })
   }, [])
+  console.log(cageList);
   const handleAddToCart = (index) => {
     dispatch(actions.addToCart({ index, quantity: 1 }))
   }
@@ -70,7 +71,14 @@ export default function RelatedPro({ compareParentCallback, listProductCompare }
                       </Link>
                       <button
                         className='button-cart'
-                        onClick={() => handleAddToCart(product._id)}
+                        onClick={() => handleAddToCart(
+                          {
+                            name: product.name,
+                            _id: product._id,
+                            imagePath: product.imagePath,
+                            price: product.price
+                          }
+                        )}
                       >
                         <ShoppingBasketIcon /> Add to Cart
                       </button>

@@ -11,6 +11,16 @@ export default function ProductDetailPage() {
     const [storageListProductCompare, setStorageListProductCompare] = useState(() => JSON.parse(localStorage.getItem('listProductCompare')) ?? [])
     const [fullCompare, setFullCompare] = useState("")
     const MySwal = withReactContent(Swal)
+    const [product, setProduct] = useState({})
+    const { id } = useParams()
+    useEffect(() => {
+        fetch(`http://localhost:5000/api/v1/cage/${id}`)
+            .then(res => res.json())
+            .then(cage => {
+                console.log("cage", cage);
+                setProduct(cage.data.component)
+            })
+    }, [id])
     useEffect(() => {
         setFullCompare(storageListProductCompare.length >= 2 ? true : false)
     }, [storageListProductCompare])
@@ -44,6 +54,7 @@ export default function ProductDetailPage() {
     return (
         <div style={{ backgroundColor: "white" }}>
             <Details
+                product={product}
                 fullCompare={fullCompare}
                 listProductCompare={storageListProductCompare}
                 compareParentCallback={handleAddToCompare} />
