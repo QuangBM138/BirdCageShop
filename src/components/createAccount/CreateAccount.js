@@ -11,7 +11,19 @@ export default function () {
     const [checkValidPassword, setValidPassword] = useState(true)
     const [message, setMessage] = useState("")
     const [isLoading, setLoading] = useState(false)
+    const [firstName, setFirstName] = useState("")
+    const [lastName, setLastName] = useState("")
     const navigate = useNavigate()
+    // on change first name
+    const handleChangeFirstName = e => {
+        setFirstName(e.target.value)
+    }
+
+    // on change last name 
+    const handleChangeLastName = e => {
+        setLastName(e.target.value)
+    }
+
     // check valid phone format
     const regexPhoneNumber = phone => {
         const regexPhoneNumber = /(84|0[3|5|7|8|9])+([0-9]{8})\b/g;
@@ -51,7 +63,9 @@ export default function () {
             method: "POST",
             body: JSON.stringify({
                 phoneNumber,
-                password
+                password,
+                firstName,
+                lastName
             }),
             headers: {
                 "Content-Type": "application/json"
@@ -87,6 +101,20 @@ export default function () {
                 <div className='user_acount'>
                     <form className='user_signin'>
                         <h1 style={{ textAlign: "center" }}>Create Account</h1>
+                        <div className='input_text'>
+                            <input
+                                value={firstName}
+                                onChange={handleChangeFirstName}
+                                type='text' placeholder='First Name (Optional)'
+                                className='email_input' />
+                        </div>
+                        <div className='input_text'>
+                            <input
+                                value={lastName}
+                                onChange={handleChangeLastName}
+                                type='text' placeholder='Last Name (Optional)'
+                                className='email_input' />
+                        </div>
                         <div className='input_text'>
                             <input
                                 value={phoneNumber}
