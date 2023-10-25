@@ -4,46 +4,47 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useStore } from '../cart/store/hooks'
 function List() {
-  // const [list, setList] = useState(JSON.parse(localStorage.getItem("cart")));
-
   const [state, dispatch] = useStore()
   const cart = state
   console.log(cart);
   const [subTotal, setSubTotal] = useState(0);
   const [shipping, setShipping] = useState(20);
+  const [list, setList] = useState([])
+  console.log(list);
+  useEffect(() => {
+    setList([])
+    cart.forEach(element => {
+      fetch("http://localhost:5000/api/v1/cage/" + element.cage._id)
+        .then(res => res.json())
+        .then(res => setList(prev => [...prev, { cage: res.data.component, cartQuantity: element.cartQuantity }]))
+    });
+
+  }, []);
 
   useEffect(() => {
-    computeSubTotal();
-  }, []);
+    computeSubTotal()
+  }, [list])
+
   const computeSubTotal = () => {
     let tmp = 0;
-    cart.map((i) => {
-      tmp = tmp + Number.parseInt(i.price * i.cartQuantity);
+    list.map((i) => {
+      tmp = tmp + Number.parseInt(i.cage.price * i.cartQuantity);
     });
     setSubTotal(tmp);
   };
 
-  // const getFirstImgUrl = (data) => {
-  //   try {
-  //     const imagesArray = JSON.parse(data);
-  //     if (Array.isArray(imagesArray) && imagesArray.length > 0) {
-  //       return imagesArray[0];
-  //     }
-  //   } catch (error) {
-  //     console.error("Error parsing or accessing the image array:", error);
-  //   }
-  //   return null;
-  // };
 
   return (
     <div className="w-full lg:absolute lg:right-[75px]">
       <div className="w-full mx-auto md:w-[60%] flex flex-col items-center">
         {/* item */}
-        {cart.map((i) => (
+        {list.map((i) => (
+
           <div
-            key={i._id}
+            key={i.cage?._id}
             className="w-full flex justify-between items-center rounded-lg mb-5"
           >
+            {console.log(i)}
             <div className="flex items-center w-[80%]">
               <div className="w-[64px] rounded-lg  h-[64px] relative">
                 <span className="absolute rounded-full text-center text-white top-[-10px] right-[-10px] w-[20px] bg-[#666] h-[20px] z-10">
@@ -52,7 +53,7 @@ function List() {
                 <div className="absolute top-0 left-0 overflow-hidden w-[64px] h-[64px] border-i rounded-lg">
                   <img
                     className="w-full h-full object-contain"
-                    src={(i?.imagePath)}
+                    src={(i.cage?.imagePath)}
                     alt=""
                   />
                 </div>
@@ -60,19 +61,13 @@ function List() {
               <div className="ml-3 w-[70%]">
                 <p
                   className="leading-5 text-[14px] truncate-cus"
-                  title={i?.name}
+                  title={i.cage?.name}
                 >
-                  {i?.name}
-                </p>
-                <p
-                  className="leading-5 text-[#666] text-[12px] truncate-cus"
-                  title={i?.size}
-                >
-                  {i?.size}
+                  {i.cage?.name}
                 </p>
               </div>
             </div>
-            <div className="text-[14px] w-[15%] text-right">${i.price * i.cartQuantity}</div>
+            <div className="text-[14px] w-[15%] text-right">${i.cage?.price * i.cartQuantity}</div>
           </div>
         ))}
       </div>

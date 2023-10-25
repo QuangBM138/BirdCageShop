@@ -12,12 +12,12 @@ export default function ProtectedRoute({ page, user, children }) {
 
         case "payment":
             if (user() == null) {
-                return <Navigate to="/" replace />
+                return <Navigate to="/login" replace />
             }
             break;
         case "profile":
             if (user() == null) {
-                return <Navigate to="/" replace />
+                return <Navigate to="/login" replace />
             }
             break;
         // default:

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Payment.css";
 import List from "./List";
 import { useState } from "react";
@@ -7,8 +7,8 @@ import { Navigate } from "react-router";
 function Payment() {
   const [isShow, setIsShow] = useState(false);
   const [state, dispatch] = useStore()
+
   const cart = state
-  console.log(cart.length)
   if (cart.length < 1)
     return <Navigate to="/cart" replace />;
 
@@ -69,46 +69,7 @@ function Payment() {
             </div>
             <div className="w-[80%] mx-auto mt-10">
               <p className="font-bold text-[24px]">Payment</p>
-              <p className="text-[#707070] text-[14px]">
-                All transactions are secure and encrypted.
-              </p>
-              {/* <div className="w-full border-solid border-[1px] border-[#dedede] rounded-md bg-[#f4f4f4] pb-3">
-                <div className="w-full h-[50px] flex items-center justify-between px-4 rounded-md bg-[#f0f5ff] border-[1px] border-solid border-[#1773B0]">
-                  <span>Credit card</span>
-                  <span className="w-[38px] h-[24px] bg-[#eda024] font-bold text-white text-center leading-[24px] rounded-sm">
-                    B
-                  </span>
-                </div>
-                <input
-                  className="w-[90%] block px-2 py-3 my-4 rounded-md mx-auto border-input"
-                  placeholder="Card number"
-                />
-                <div className="w-[90%] mx-auto flex items-center justify-between">
-                  <input
-                    className="w-[48%] block px-2 py-3 rounded-md border-input"
-                    placeholder="Expiration date (MM / YY)"
-                  />
-                  <input
-                    className="w-[48%] block px-2 py-3 rounded-md border-input"
-                    placeholder="Security code"
-                  />
-                </div>
-                <input
-                  className="w-[90%] block px-2 py-3 my-4 rounded-md mx-auto border-input"
-                  placeholder="Name on card"
-                />
 
-                <div className="w-[90%] mx-auto flex items-center">
-                  <input
-                    type="checkbox"
-                    checked
-                    className="checkbox-cus w-[20px] h-[20px]"
-                  />
-                  <p className="ml-2">
-                    Use shipping address as billing address
-                  </p>
-                </div>
-              </div> */}
 
               <div className="hidden lg:block w-full hover:bg-[#ff3333] text-center rounded-md bg-[#1773B0] text-white mt-4 py-4 cursor-pointer button">
                 Pay now
