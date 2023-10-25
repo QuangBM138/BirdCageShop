@@ -15,8 +15,6 @@ import DetailSwiper from './DetailSwiper';
 export default function Details({ compareParentCallback, listProductCompare }) {
 
     const [quantity, setQuantity] = useState(1);
-    // const { id } = useParams();
-    // const product = Products_Cage.find((product) => product._id === parseInt(id, 10));
     const [state, dispatch] = useStore()
     const { id } = useParams()
     const [product, setProduct] = useState({})
@@ -30,16 +28,6 @@ export default function Details({ compareParentCallback, listProductCompare }) {
     const handleAddToCart = (index, quantity) => {
         dispatch(actions.addToCart({ index, quantity }))
     }
-
-
-    // if (!product) {
-    //     return <div>Product not found</div>;
-    // }
-
-
-
-    //quantity
-
 
     const increaseQuantity = () => {
         setQuantity(quantity + 1);

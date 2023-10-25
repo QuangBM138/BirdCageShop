@@ -13,7 +13,6 @@ export default function ProductList() {
   //handle search
   const location = useLocation();
   const searchQuery = new URLSearchParams(location.search).get('query');
-
   const filteredProducts = Products_Cage.filter((product) =>
     product.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -52,7 +51,7 @@ export default function ProductList() {
                 {filteredProducts.map((pro, index) => (
                   <div className='product-wrapper'>
                     <Link to={`/detail/${pro._id}`}>
-                      <img 
+                      <img
                         className='image-product'
                         src={pro.imagePath} />
                       <div className='overlay-product'></div>

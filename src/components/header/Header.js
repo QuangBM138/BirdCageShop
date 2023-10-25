@@ -41,14 +41,24 @@ const Header = () => {
 
 
   useEffect(() => {
-    if (searchQuery) {
-      const filteredResults = Products_Cage.filter((product) =>
-        product.name.toLowerCase().includes(searchQuery.toLowerCase())
-      );
-      setSearchResults(filteredResults);
-    } else {
-      setSearchResults([]);
-    }
+    fetch("http://localhost:5000/api/v1/cage/searchTopCageCheap", {
+      method: "POST",
+      body: JSON.stringify({
+        name: searchQuery.toLowerCase()
+      }),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(res => res.json())
+      .then(res => {
+        if (res.data.component.lenght == 0) {
+          setSearchResults([]);
+        } else {
+          setSearchResults(res.data.component);
+        }
+
+      })
   }, [searchQuery]);
 
   const clearSearch = () => {
