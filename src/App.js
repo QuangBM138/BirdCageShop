@@ -31,6 +31,7 @@ import AddNewAddress from "./components/addNewAddress/AddNewAddress";
 import EditProfile from "./components/userProfile/editProfile/EditProfile";
 import ProtectedRoute from "./components/ProtectedRoute";
 import UseToken from "./components/handleToken/UseToken";
+import NotFound from "./pages/NotFound";
 function App() {
   // const regx = /:\[\d{3},\d{3}]/g
   // const [item, setItem] = useState('')
@@ -156,6 +157,7 @@ function App() {
         <Route path="/createaccount" element={<CreateAccount />}></Route>
         <Route path="compare/:cageId1/:cageId2" element={<CompareProductsPage />} />
         <Route path="/customcage" element={<CustomCage />} />
+        <Route path="*" element={<NotFound />}></Route>
       </Routes>
 
 
