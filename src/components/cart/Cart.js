@@ -74,8 +74,8 @@ export default function Cart() {
                                         }}
                                     >
                                         {cart.reduce((acc, curr) =>
-                                            acc + curr.price * curr.cartQuantity
-                                            , 0)}
+                                            acc + curr.cage.price * curr.cartQuantity
+                                            , 0)}$
                                     </span>
                                 </p>
 
