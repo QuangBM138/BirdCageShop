@@ -1,4 +1,4 @@
-import { ADD_TO_CART, DECREASE_QUANTITY, ONCHANGE_QUANTITY, ONDELETE_ITEM } from "./constants";
+import { ADD_TO_CART, DECREASE_QUANTITY, INCREASE_QUANTITY, ONCHANGE_QUANTITY, ONDELETE_ITEM } from "./constants";
 
 export const addToCart = payload => ({
     type: ADD_TO_CART,
@@ -8,6 +8,10 @@ export const addToCart = payload => ({
 
 export const decreaseQuantity = payload => ({
     type: DECREASE_QUANTITY,
+    payload
+})
+export const increaseQuantity = payload => ({
+    type: INCREASE_QUANTITY,
     payload
 })
 

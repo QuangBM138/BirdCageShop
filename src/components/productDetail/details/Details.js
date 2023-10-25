@@ -164,7 +164,14 @@ export default function Details({ compareParentCallback, listProductCompare }) {
                             </div>
                             <div className="flex mt-12">
                                 <button
-                                    onClick={() => handleAddToCart(product._id, quantity)}
+                                    onClick={() => handleAddToCart(
+                                        {
+                                            name: product.name,
+                                            _id: product._id,
+                                            imagePath: product.imagePath,
+                                            price: product.price
+                                        }, quantity
+                                    )}
                                     className='button_design'>
                                     <h3>Add to Cart</h3>
                                 </button>

@@ -115,7 +115,14 @@ export default function Products() {
                                         </Link>
                                         <button
                                             className='button-cart'
-                                            onClick={() => handleAddToCart(product._id)}
+                                            onClick={() => handleAddToCart(
+                                                {
+                                                    name: product.name,
+                                                    _id: product._id,
+                                                    imagePath: product.imagePath,
+                                                    price: product.price
+                                                }
+                                            )}
                                         >
                                             <ShoppingBasket /> Add to Cart
                                         </button>
@@ -161,7 +168,14 @@ export default function Products() {
                                         </Link>
                                         <button
                                             className='button-cart'
-                                            onClick={() => handleAddToCart(product._id)}
+                                            onClick={() => handleAddToCart(
+                                                {
+                                                    name: product.name,
+                                                    _id: product._id,
+                                                    imagePath: product.imagePath,
+                                                    price: product.price
+                                                }
+                                            )}
                                         >
                                             <ShoppingBasket /> Add to Cart
                                         </button>

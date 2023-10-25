@@ -15,7 +15,7 @@ export default function Cart() {
     const cart = state
     console.log(state)
     return (
-        <Container>
+        <Container style={{ minHeight: "700px" }}>
 
 
             {
@@ -40,13 +40,13 @@ export default function Cart() {
                                     <h2>Products</h2>
                                 </div>
 
-                                {
-                                    cart.map(item =>
-                                        <Item
-                                            dispatch={dispatch}
-                                            cart={item} />
-                                    )
-                                }
+                                {/* {
+                                    cart.map(item => */}
+                                <Item />
+                                {/* dispatch={dispatch} */}
+
+                                {/* )
+                                } */}
 
                             </div>
                             <div className='cart-section'>

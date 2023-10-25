@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import "./Item.css"
@@ -6,78 +6,35 @@ import { useStore } from '../store/hooks';
 import { actions } from '../store';
 import Swal from 'sweetalert2'
 import { Link } from 'react-router-dom';
-export default function Item({ cart, dispatch }) {
-    // const [state, dispatch] = useStore()
-    // const [quantity, setQuantity] = useState(1)
+
+import CircularProgress from '@mui/material/CircularProgress';
+export default function Item() {
+    const [state, dispatch] = useStore()
+    const cart = state
+
+    const [loading, setLoading] = useState(false)
     const handleIncreaseQuantity = (index) => {
-        dispatch(actions.addToCart({ index, quantity: 1 }))
+        dispatch(actions.increaseQuantity({ index: index, quantity: 1 }))
     };
 
     const handleDecreaseQuantity = (id) => {
         dispatch(actions.decreaseQuantity(id))
     };
-    const handleOnChangeQuantity = (id) => {
-        dispatch(actions.onChangeQuantity(id))
+    const handleOnChangeQuantity = (id, value) => {
+        dispatch(actions.onChangeQuantity({ id, value }))
     }
     const handleDeleteItem = id => {
         dispatch(actions.onDeleteItem(id))
     }
 
     return (
-        <> {
-            <div className='cart-row'>
-                <span
-                    onClick={() => {
-                        Swal.fire({
-                            title: 'Delete product',
-                            text: "Do you want to delete the currently selected product?",
-                            icon: 'warning',
-                            showCancelButton: true,
-                            confirmButtonColor: '#3085d6',
-                            cancelButtonColor: '#d33',
-                            confirmButtonText: 'Yes'
-                        })
-                            .then(
-                                result => {
-                                    if (result.isConfirmed) {
-                                        handleDeleteItem(cart._id)
-                                    }
-                                })
+        <>
 
-                    }}
-                    className='remove-item'>X</span>
-                <div className='cart-items'>
-                    <Link to={`/detail/${cart._id}`} className='cart-image'>
-                        {/* { */}
-                        {/* JSON.parse(cart.imp).map((img, index) => index == 0 && */}
-                        <img src={cart.imagePath} />
-                        {/* // ) */}
-                        {/* // } */}
-                    </Link>
-                </div>
-                <div className='product-info'>
-                    <div className='cart-title'>
-                        <h5><Link to={`/detail/${cart._id}`} className='product-title'>{cart.name}</Link></h5>
-                        <p>Gold, Diamond, Gem</p>
-                    </div>
-                    <div className='price'>
-                        <span className='money'>{cart.price}</span>
-                    </div>
-                    <div className='quantity-box'>
-                        <button
-                            style={{
-                                height: '30px',
-                                width: '30px !important',
-                                color: '1ffc519',
-                                background: '#fff',
-                                transition: '0.7s',
-                                outline: 'none',
-                                border: '1px solid #e9e9e9',
-                                borderTopLeftRadius: "5px",
-                                borderBottomLeftRadius: "5px",
-
-                            }}
-                            onClick={() => cart.cartQuantity == 1 ?
+            {
+                cart.map(cart =>
+                    <div className='cart-row'>
+                        <span
+                            onClick={() => {
                                 Swal.fire({
                                     title: 'Delete product',
                                     text: "Do you want to delete the currently selected product?",
@@ -90,59 +47,114 @@ export default function Item({ cart, dispatch }) {
                                     .then(
                                         result => {
                                             if (result.isConfirmed) {
-                                                handleDecreaseQuantity(cart._id)
+                                                handleDeleteItem(cart.cage._id)
                                             }
                                         })
-                                : handleDecreaseQuantity(cart._id)}
-                            type="button"
-                        >
-                            <RemoveIcon />
-                        </button>
-                        <input
-                            min="1"
-                            name="quantity"
-                            value={cart.cartQuantity}
-                            onChange={(e) => handleOnChangeQuantity(cart.id, e.target.value)}
-                            // type="text"
-                            inputMode="numeric"
-                            className="form-control form-control-sm quantity-input"
-                            style={{
-                                width: '40px',
-                                height: '30px',
-                                backgroundColor: 'white',
-                                border: '1px solid #e9e9e9',
-                                textAlign: "center",
 
                             }}
+                            className='remove-item'>X</span>
+                        <div className='cart-items'>
+                            <Link to={`/detail/${cart.cage._id}`} className='cart-image'>
+                                {/* { */}
+                                {/* JSON.parse(cart.imp).map((img, index) => index == 0 && */}
+                                <img src={cart.cage.imagePath} />
+                                {/* // ) */}
+                                {/* // } */}
+                            </Link>
+                        </div>
+                        <div className='product-info'>
+                            <div className='cart-title'>
+                                <h5><Link to={`/detail/${cart.cage._id}`} className='product-title'>{cart.cage.name}</Link></h5>
+                                <p>Gold, Diamond, Gem</p>
+                            </div>
+                            <div className='price'>
+                                <span className='money'>{cart.cage.price + "$"}</span>
+                            </div>
+                            <div className='quantity-box'>
+                                <button
+                                    style={{
+                                        height: '30px',
+                                        width: '30px !important',
+                                        color: '1ffc519',
+                                        background: '#fff',
+                                        transition: '0.7s',
+                                        outline: 'none',
+                                        border: '1px solid #e9e9e9',
+                                        borderTopLeftRadius: "5px",
+                                        borderBottomLeftRadius: "5px",
 
-                        />
-                        <button
-                            style={{
-                                height: '30px',
-                                width: '10px !important',
-                                color: '1ffc519',
-                                background: '#fff',
-                                transition: '0.7s',
-                                outline: 'none',
-                                border: '1px solid #e9e9e9',
-                                borderTopRightRadius: "5px",
-                                borderBottomRightRadius: "5px",
-                            }}
-                            onClick={() => handleIncreaseQuantity(cart._id)}
-                            type="button"
-                        >
-                            <AddIcon />
-                        </button>
+                                    }}
+                                    onClick={() => cart.cartQuantity == 1 ?
+                                        Swal.fire({
+                                            title: 'Delete product',
+                                            text: "Do you want to delete the currently selected product?",
+                                            icon: 'warning',
+                                            showCancelButton: true,
+                                            confirmButtonColor: '#3085d6',
+                                            cancelButtonColor: '#d33',
+                                            confirmButtonText: 'Yes'
+                                        })
+                                            .then(
+                                                result => {
+                                                    if (result.isConfirmed) {
+                                                        handleDecreaseQuantity(cart.cage._id)
+                                                    }
+                                                })
+                                        : handleDecreaseQuantity(cart.cage._id)}
+                                    type="button"
+                                >
+                                    <RemoveIcon />
+                                </button>
+                                <input
+                                    min="1"
+                                    name="quantity"
+                                    value={cart.cartQuantity}
+                                    onChange={(e) => handleOnChangeQuantity(cart.cage._id, e.target.value)}
+                                    // type="text"
+                                    inputMode="numeric"
+                                    className="form-control form-control-sm quantity-input"
+                                    style={{
+                                        width: '40px',
+                                        height: '30px',
+                                        backgroundColor: 'white',
+                                        border: '1px solid #e9e9e9',
+                                        textAlign: "center",
 
+                                    }}
+
+                                />
+                                <button
+                                    style={{
+                                        height: '30px',
+                                        width: '10px !important',
+                                        color: '1ffc519',
+                                        background: '#fff',
+                                        transition: '0.7s',
+                                        outline: 'none',
+                                        border: '1px solid #e9e9e9',
+                                        borderTopRightRadius: "5px",
+                                        borderBottomRightRadius: "5px",
+                                    }}
+                                    onClick={() => handleIncreaseQuantity(cart.cage._id)}
+                                    type="button"
+                                >
+                                    <AddIcon />
+                                </button>
+
+                            </div>
+
+                            <div className='price'>
+                                <span className='cart-total'>Total: </span>
+                                <span className='money'>{cart.cage.price * cart.cartQuantity + "$"}</span>
+                            </div>
+                        </div>
                     </div>
 
-                    <div className='price'>
-                        <span className='cart-total'>Total: </span>
-                        <span className='money'>{cart.price * cart.cartQuantity}</span>
-                    </div>
-                </div>
-            </div>
-        }</>
+                )
+
+            }
+
+        </>
 
     )
 }
