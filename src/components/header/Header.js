@@ -30,6 +30,7 @@ const Header = () => {
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
+      setShowSearchInput(false)
       handleSearch();
       clearSearch();
     }
