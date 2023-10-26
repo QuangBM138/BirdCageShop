@@ -6,7 +6,6 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Pacifico', cursive;
 
 }
 
@@ -52,7 +51,7 @@
 .header {
     /* line-height: 10vh;
     height: 10vh; */
-    font-family: 'Pacifico', cursive;
+    font-family: 'Roboto';
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -95,8 +94,7 @@ a {
 .nav-links li a {
     color: white;
     transition: all 0.3s;
-    font-family: 'Pacifico', cursive;
-    font-size: 25px;
+    font-size: 20px;
 }
 
 .nav-links li a:hover {

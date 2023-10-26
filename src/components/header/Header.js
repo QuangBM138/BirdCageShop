@@ -6,7 +6,7 @@ import { Routes, Route, Link, useNavigate, NavLink } from "react-router-dom"
 import { Container } from '@mui/material'
 import { useStore } from "../cart/store/hooks";
 import SearchResults from "../search/searchResult/SearchResult";
-import { Products_Cage } from "../../data/CagesNewest";
+import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import UseToken from "../handleToken/UseToken";
 import LoginIcon from '@mui/icons-material/Login';
 import SearchIcon from '@mui/icons-material/Search';
@@ -29,7 +29,7 @@ const Header = () => {
   };
 
   const handleKeyPress = (e) => {
-    if (e.key === "Enter" ) {
+    if (e.key === "Enter") {
       setShowSearchInput(false)
       handleSearch();
       clearSearch();
@@ -64,6 +64,7 @@ const Header = () => {
   const clearSearch = () => {
     setSearchQuery("");
     setSearchResults([]);
+    setShowSearchInput(false)
   };
 
   return (
@@ -84,8 +85,8 @@ const Header = () => {
           />
           {searchQuery && (
             <SearchResults results={searchResults}
-            input={searchQuery}
-            clearSearch={clearSearch} />
+              input={searchQuery}
+              clearSearch={clearSearch} />
           )}
           <button onClick={handleSearch}>
             <i className="fa fa-search"></i>
@@ -101,10 +102,12 @@ const Header = () => {
         <div className="info">
           <ul className={Mobile ? "nav-links-mobile" : "nav-links"}>
             <li>
-              <NavLink className={({ isActive }) => isActive ? "nav-link active" : 'nav-link'} to="/">Home</NavLink>
+              <NavLink className={({ isActive }) => isActive ? "nav-link active" : 'nav-link'} to="/">
+                Home
+              </NavLink>
             </li>
             <li>
-              <NavLink className={({ isActive }) => isActive ? "nav-link active" : 'nav-link'} to="/customcage">Create your own cage</NavLink>
+              <NavLink className={({ isActive }) => isActive ? "nav-link active" : 'nav-link'} to="/customcage">Custom Cage</NavLink>
             </li>
           </ul>
         </div>
