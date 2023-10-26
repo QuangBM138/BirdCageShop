@@ -30,7 +30,7 @@ export default function SearchResults({ results, input, clearSearch }) {
                           {/* )} */}
                           <div class='search_result_box_info'>
                             <div class='search_result_box_name'>{result.name.slice(0, 29)}...</div>
-                            <div class='search_result_box_price'>{result.price}</div>
+                            <div class='search_result_box_price'>{result.price}$</div>
                           </div>
                         </div>
                         <br></br>
