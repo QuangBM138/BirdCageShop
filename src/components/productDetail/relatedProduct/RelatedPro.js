@@ -69,6 +69,7 @@ export default function RelatedPro({ compareParentCallback, listProductCompare }
                       <Link to={`/detail/${product._id}`}>
                         <p className='name-product'>{product.name}</p>
                       </Link>
+                      <p className='name-product'>{product.price}$</p>
                       <button
                         className='button-cart'
                         onClick={() => handleAddToCart(
