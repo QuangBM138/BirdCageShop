@@ -9,7 +9,12 @@
 
 }
 
-
+h3,
+span,
+p,
+a {
+    font-family: 'Roboto' !important;
+}
 
 .input-search-container {
     justify-content: center;

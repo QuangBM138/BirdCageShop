@@ -16,12 +16,8 @@ import { useEffect } from "react";
 import ForgotPassword from "./components/forgotPassword/ForgotPassword";
 import CreateAccount from "./components/createAccount/CreateAccount";
 import LoginPage from "./pages/LoginPage";
-
 import DetailOrder from "./components/detailOrder/DetailOrder";
 import ManageOrder from "./components/manageOrder/ManageOrder";
-
-
-
 import Payment from "./components/payment/Payment";
 import Login from "./components/login/Login";
 import CompareProductsPage from "./pages/CompareProductsPage";
@@ -33,19 +29,6 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import UseToken from "./components/handleToken/UseToken";
 import NotFound from "./pages/NotFound";
 function App() {
-  // const regx = /:\[\d{3},\d{3}]/g
-  // const [item, setItem] = useState('')
-  // const regx = /(\"{|\\|}")/g
-  // const regx = /(\{)/g
-  // const regx2 = /(\})/g
-  // const newPro = Products.map(product => {
-  //   console.log(product.images)
-  //   product.images = product.images.replace(regx, '[')
-  //   product.images = product.images.replace(regx2, ']')
-  //   console.log(product.images)
-  //   return product.images
-  // })
-  // console.log(Products.length)
   const { getToken } = UseToken()
   const { pathname } = useLocation();
   useEffect(() => {
