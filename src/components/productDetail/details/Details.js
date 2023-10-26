@@ -16,12 +16,11 @@ import './Details.css';
 import DetailSwiper from './DetailSwiper';
 import './DetailSwiper.css';
 
-export default function Details({ compareParentCallback, listProductCompare, product }) {
+export default function Details({ listImages, compareParentCallback, listProductCompare, product }) {
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
     const [quantity, setQuantity] = useState(1);
     const [state, dispatch] = useStore()
     const { id } = useParams()
-    // const [product, setProduct] = useState({})
 
     const handleAddToCart = (index, quantity) => {
         dispatch(actions.addToCart({ index, quantity }))
@@ -50,17 +49,12 @@ export default function Details({ compareParentCallback, listProductCompare, pro
         }
     };
 
-
-
     return (
         <section className="text-gray-600 body-font overflow-hidden" style={{ marginBottom: "-55px" }}>
             <div className="container px-0 py-24 mx-auto my-16">
                 <div className="lg:w-1/1 mx-auto flex flex-wrap border border-grey px-6 py-12 md:mx-10 sm:mx-auto mr-8 ml-8">
                     <div className="lg:w-1/2 w-full lg:pr-5 lg:py-3 mt-3 lg:mt-0 object-cover">
-                        {/* <DetailSwiper product={product} /> */}
-
-
-                        <img src={product.imagePath} />
+                        <DetailSwiper listImages={listImages} />
 
                     </div>
                     <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-4 lg:mt-0 ">
