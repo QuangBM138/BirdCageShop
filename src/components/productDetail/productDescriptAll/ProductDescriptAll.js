@@ -33,13 +33,13 @@ export default function ProductDescriptAll() {
             className={`button_design ${activeButton === 'description' ? 'active-button' : ''}`}
             onClick={showDescription}
           >
-            <h3>Show Description</h3>
+            Show Description
           </button>
           <button
             className={`button_design ${activeButton === 'review' ? 'active-button' : ''}`}
             onClick={showReview}
           >
-            <h3>Reviews</h3>
+            Reviews
           </button>
         </div>
         {activeButton === 'description' ? <ProductDescription product={product} /> : <Reviews />}

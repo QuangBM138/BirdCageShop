@@ -6,7 +6,7 @@ export default function Slogan({ slogan, title, color }) {
         <div className='slogan-category'>
             <h4>{slogan}</h4>
             <img className='logo' src={image} />
-            <h3 style={{ color: color }}>{title}</h3>
+            <h3 className='bird-image' style={{ color: color }}>{title}</h3>
         </div>
     )
 }

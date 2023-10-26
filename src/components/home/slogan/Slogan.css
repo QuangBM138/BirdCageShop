@@ -17,7 +17,7 @@
     padding: 30px 30px 0 30px;
 }
 
-h3::before {
+.bird-image::before {
     background-image: url("./birds.png");
     background-repeat: no-repeat;
     color: #8d522c;

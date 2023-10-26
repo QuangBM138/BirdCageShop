@@ -51,8 +51,8 @@ export default function Login() {
             .then(response => response.json())
             .then(res => {
                 setLoading(false)
-                console.log(res.data.account.role);
                 if (res.status == "success") {
+                    console.log(res);
                     res.data.account.role == "user" ? setToken(res.data.token) : setMessage("This is not user account")
 
                 } else {

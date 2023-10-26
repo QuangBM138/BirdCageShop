@@ -158,7 +158,7 @@ export default function Details({ compareParentCallback, listProductCompare, pro
                                         }, quantity
                                     )}
                                     className='button_design'>
-                                    <h3>Add to Cart</h3>
+                                    Add to Cart
                                 </button>
 
                                 <button

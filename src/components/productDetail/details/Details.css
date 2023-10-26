@@ -16,6 +16,12 @@
         font-family: 'Poppins', sans-serif;
     }
 
+    .button_design:hover {
+        background-color: #8d522c;
+        color: #fff;
+
+    }
+
     .button_design,
     .button-compare {
         margin: 5px !important;
@@ -31,9 +37,10 @@
         vertical-align: middle;
         line-height: 1.8em;
         font-family: 'Poppins', sans-serif;
-        color: white;
+        color: #fff;
         font-size: 15px;
         font-weight: 500;
+        transition: 0.8s;
     }
 
     .button_option {
