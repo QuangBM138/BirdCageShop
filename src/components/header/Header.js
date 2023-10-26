@@ -29,7 +29,7 @@ const Header = () => {
   };
 
   const handleKeyPress = (e) => {
-    if (e.key === "Enter") {
+    if (e.key === "Enter" ) {
       setShowSearchInput(false)
       handleSearch();
       clearSearch();
@@ -82,10 +82,11 @@ const Header = () => {
             onChange={(e) => setSearchQuery(e.target.value)}
             onKeyDown={handleKeyPress}
           />
-          <SearchResults results={searchResults}
+          {searchQuery && (
+            <SearchResults results={searchResults}
             input={searchQuery}
             clearSearch={clearSearch} />
-
+          )}
           <button onClick={handleSearch}>
             <i className="fa fa-search"></i>
           </button>
