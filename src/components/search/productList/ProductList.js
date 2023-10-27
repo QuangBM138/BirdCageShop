@@ -28,7 +28,7 @@ export default function ProductList() {
       .then(res => res.json())
       .then(res => {
         setListSearch(res.data.component)
-        setTimeout(() => setLoading(false), 500)
+        setTimeout(() => setLoading(false), 1000)
 
       })
   }, [pageQuery])
@@ -84,14 +84,14 @@ export default function ProductList() {
                 className="grid -m-1 grid-cols-1 2xl:grid-cols-4 md:grid-cols-2 gap-5">
                 {loading ?
                   <>
-                    <Skeleton className='product-wrapper' style={{ background: '#efefef', transform: "scale(0.9)" }} variant="rectangular" width={"100%"} height={350} />
-                    <Skeleton className='product-wrapper' style={{ background: '#efefef', transform: "scale(0.9)" }} variant="rectangular" width={"100%"} height={350} />
-                    <Skeleton className='product-wrapper' style={{ background: '#efefef', transform: "scale(0.9)" }} variant="rectangular" width={"100%"} height={350} />
-                    <Skeleton className='product-wrapper' style={{ background: '#efefef', transform: "scale(0.9)" }} variant="rectangular" width={"100%"} height={350} />
-                    <Skeleton className='product-wrapper' style={{ background: '#efefef', transform: "scale(0.9)" }} variant="rectangular" width={"100%"} height={350} />
-                    <Skeleton className='product-wrapper' style={{ background: '#efefef', transform: "scale(0.9)" }} variant="rectangular" width={"100%"} height={350} />
-                    <Skeleton className='product-wrapper' style={{ background: '#efefef', transform: "scale(0.9)" }} variant="rectangular" width={"100%"} height={350} />
-                    <Skeleton className='product-wrapper' style={{ background: '#efefef', transform: "scale(0.9)" }} variant="rectangular" width={"100%"} height={350} />
+                    <Skeleton animation="wave" className='product-wrapper' style={{ background: '#e9e9e9', transform: "scale(0.9)" }} variant="rectangular" width={"100%"} height={350} />
+                    <Skeleton animation="wave" className='product-wrapper' style={{ background: '#e9e9e9', transform: "scale(0.9)" }} variant="rectangular" width={"100%"} height={350} />
+                    <Skeleton animation="wave" className='product-wrapper' style={{ background: '#e9e9e9', transform: "scale(0.9)" }} variant="rectangular" width={"100%"} height={350} />
+                    <Skeleton animation="wave" className='product-wrapper' style={{ background: '#e9e9e9', transform: "scale(0.9)" }} variant="rectangular" width={"100%"} height={350} />
+                    <Skeleton animation="wave" className='product-wrapper' style={{ background: '#e9e9e9', transform: "scale(0.9)" }} variant="rectangular" width={"100%"} height={350} />
+                    <Skeleton animation="wave" className='product-wrapper' style={{ background: '#e9e9e9', transform: "scale(0.9)" }} variant="rectangular" width={"100%"} height={350} />
+                    <Skeleton animation="wave" className='product-wrapper' style={{ background: '#e9e9e9', transform: "scale(0.9)" }} variant="rectangular" width={"100%"} height={350} />
+                    <Skeleton animation="wave" className='product-wrapper' style={{ background: '#e9e9e9', transform: "scale(0.9)" }} variant="rectangular" width={"100%"} height={350} />
                   </>
                   : <>
                     {listSearch.map((pro, index) => (
