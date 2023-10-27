@@ -25,6 +25,8 @@ const Header = () => {
   const handleSearch = () => {
     if (searchQuery.length === 0) return
     const trimmedQuery = searchQuery.trim();
+    clearSearch();
+    setShowSearchInput(false)
     const url = `/search?query=${encodeURIComponent(trimmedQuery)}`;
     navigate(url);
   };
