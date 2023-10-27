@@ -145,7 +145,7 @@ export default function CustomCage() {
         length: inputValues.length,
         components: component
       }
-      socket.emit('send_request_custom_cage', { status: "request" })
+      socket.emit('send_request_custom_cage', { userId: "AAA", status: "request" })
       console.log(customCage)
     } else {
       warningOrderSubmit.current.innerText = "The order cannot be created."
