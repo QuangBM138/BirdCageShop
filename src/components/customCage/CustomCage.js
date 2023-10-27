@@ -7,7 +7,7 @@ import Door from "./Door";
 import Base from "./Base";
 import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
 
-const socket = io.connect("http://localhost:3002")
+const socket = io.connect("http://localhost:5000")
 export default function CustomCage() {
   const [min, setMin] = useState(0)
   const warningOrderSubmit = useRef()
@@ -133,14 +133,9 @@ export default function CustomCage() {
       })
     })
   }
-  useEffect(() => {
-    socket.on("receive-order", (d) => {
-      alert(d)
-    })
-  },
-    [socket])
+
   const handleSubmitOrder = () => {
-    socket.emit('send-order', { order: "order" })
+
     if (component && validDoor && validSpoke && isInputValid) {
       console.log(true)
 
@@ -150,7 +145,7 @@ export default function CustomCage() {
         length: inputValues.length,
         components: component
       }
-
+      socket.emit('send_request_custom_cage', { status: "request" })
       console.log(customCage)
     } else {
       warningOrderSubmit.current.innerText = "The order cannot be created."

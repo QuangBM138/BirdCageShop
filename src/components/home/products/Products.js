@@ -188,6 +188,7 @@ export default function Products() {
                                                 <Link to={`/detail/${product._id}`}>
                                                     <p className='name-product'>{product.name}</p>
                                                 </Link>
+                                                <p className='price-product'>{product.price}$</p>
                                                 <button
                                                     className='button-cart'
                                                     onClick={() => handleAddToCart(
