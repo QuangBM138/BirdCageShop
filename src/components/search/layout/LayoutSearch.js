@@ -81,24 +81,14 @@ const App = () => {
             style={{
               marginRight: '20px',
               height: siderHeight + 'px', // Set the height dynamically
+              background: "#fff"
             }}
             className="shorter-sider"
           >
-            {/* Category */}
-            <div className='search_category_title'>Category</div>
-            <Menu
-              className='search_menu'
-              mode="inline"
-              defaultSelectedKeys={['1']}
-              defaultOpenKeys={['sub1']}
-            >
-              {array.map((item, index) => (
-                <Menu.Item key={index}>{item}</Menu.Item>
-              ))}
-            </Menu>
+
 
             {/* Best seller */}
-            <div style={{ marginTop: "25px" }}>
+            <div >
               <div className='search_category_title'>Best seller</div>
 
               <BestSeller />

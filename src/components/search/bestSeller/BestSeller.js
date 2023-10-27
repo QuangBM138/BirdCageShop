@@ -39,40 +39,41 @@ export default function BestSeller() {
                 pagination={{
                     clickable: true,
                 }}
+
                 navigation={true}
                 modules={[Keyboard, Pagination, Navigation]}
                 className="mySwiper"
             >
                 {Products_Cage.map((pro, index) =>
                     <SwiperSlide key={index}>
-                       
-                            <div className='best_seller'>
+
+                        <div className='best_seller'>
                             <Link to={`/detail/${pro._id}`}>
                                 <div>
-                                        <img className='best_seller_img' src={pro.imagePath} alt={`Image ${pro.name}`} />
+                                    <img className='best_seller_img' src={pro.imagePath} alt={`Image ${pro.name}`} />
                                 </div>
-                                </Link>
-                                <div className='best_seller_overlay'>
-                                    <div className="best_seller_overlay_frame">
-                                        <div className='best_seller_title'>
-                                            <h4 className="h4_best_seller">{pro.name.slice(0, 20) + "..."}</h4>
-                                        </div>
+                            </Link>
+                            <div className='best_seller_overlay'>
+                                <div className="best_seller_overlay_frame">
+                                    <div className='best_seller_title'>
+                                        <h4 className="h4_best_seller">{pro.name.slice(0, 20) + "..."}</h4>
                                     </div>
-                                    <div className="best_seller_overlay_frame">
-                                        <div className='best_seller_prices'>
-                                            <p className='price-product'>{pro.price}</p>
-                                        </div>
+                                </div>
+                                <div className="best_seller_overlay_frame">
+                                    <div className='best_seller_prices'>
+                                        <p className='price-product'>{pro.price}</p>
                                     </div>
-                                    <div className="best_seller_overlay_frame">
-                                        <button 
+                                </div>
+                                <div className="best_seller_overlay_frame">
+                                    <button
                                         className='button_best_design'
                                         onClick={() => handleAddToCart(pro._id, quantity)}>
-                                            <ShoppingBasketIcon /> Add to Cart
-                                        </button>
-                                    </div>
+                                        <ShoppingBasketIcon /> Add to Cart
+                                    </button>
                                 </div>
                             </div>
-                        
+                        </div>
+
                     </SwiperSlide>
                 )}
 

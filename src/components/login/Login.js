@@ -3,8 +3,6 @@ import './Login.css'
 import { Link } from 'react-router-dom'
 import UseToken from '../handleToken/UseToken'
 import CircularProgress from '@mui/material/CircularProgress';
-
-
 export default function Login() {
     const [phoneNumber, setPhoneNumber] = useState("")
     const [password, setPassword] = useState("")
@@ -88,7 +86,7 @@ export default function Login() {
                             placeholder='Password'
                             className='password_input' />
                     </div>
-                    <div className='btn_design'>
+                    <div className='btn_design' style={{ padding: "10px 20px" }}>
                         <button
                             style={{ display: "flex", justifyContent: "center", width: "100px" }}
                             onClick={handleLogin}

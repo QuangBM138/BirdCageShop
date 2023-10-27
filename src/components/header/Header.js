@@ -125,7 +125,7 @@ const Header = () => {
                 <NavLink className={({ isActive }) => isActive ? "nav-link active" : 'nav-link'} to="/user">
                   <PersonIcon />
                 </NavLink>
-                <div className="nav-link" onClick={handleLogout}>
+                <div className="nav-link" style={{ fontSize: "26px", marginLeft: "20px" }} onClick={handleLogout}>
                   <LogoutIcon />
                 </div>
               </>
