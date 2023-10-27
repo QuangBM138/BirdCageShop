@@ -1,10 +1,13 @@
-import React, { Fragment, useRef, useState } from "react";
+import React, { Fragment, useEffect, useRef, useState } from "react";
 import Roof from "./Roof";
 import "./customCage.css";
 import Spoke from "./Spoke";
+import io from "socket.io-client"
 import Door from "./Door";
 import Base from "./Base";
 import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
+
+const socket = io.connect("http://localhost:3002")
 export default function CustomCage() {
   const [min, setMin] = useState(0)
   const warningOrderSubmit = useRef()
@@ -130,9 +133,14 @@ export default function CustomCage() {
       })
     })
   }
-
+  useEffect(() => {
+    socket.on("receive-order", (d) => {
+      alert(d)
+    })
+  },
+    [socket])
   const handleSubmitOrder = () => {
-    console.log("full component", component)
+    socket.emit('send-order', { order: "order" })
     if (component && validDoor && validSpoke && isInputValid) {
       console.log(true)
 
