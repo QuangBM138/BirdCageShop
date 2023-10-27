@@ -6,10 +6,20 @@ import { useNavigate } from 'react-router-dom';
 
 export default function UseToken() {
     const [cookies, setCookie, removeCookie] = useCookies(['user']);
-    console.log(cookies)
+    console.log(cookies.user)
+
     const getToken = () => {
-        const userToken = cookies.user ?? null
-        return userToken
+        try {
+            const userToken = cookies.user
+            if (userToken) {
+                if (jwtDecode(userToken).id) return userToken
+            }
+            return null
+        } catch (error) {
+            console.log(error);
+            removeCookie("user")
+        }
+
     }
 
     const setToken = (token) => {
