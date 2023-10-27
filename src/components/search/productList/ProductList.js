@@ -76,7 +76,7 @@ export default function ProductList() {
         ) : (
           <ul>
             <div
-              style={{ background: "#fff", minHeight: "100vh" }}
+              style={{ background: "#fff", minHeight: "500px" }}
               className="container-pl py-8 mx-auto"
 
             >
@@ -84,18 +84,18 @@ export default function ProductList() {
                 className="grid -m-1 grid-cols-1 2xl:grid-cols-4 md:grid-cols-2 gap-5">
                 {loading ?
                   <>
-                    <Skeleton style={{ background: '#efefef', transform: "scale(0.9)" }} variant="rounded" width={"100%"} height={360} />
-                    <Skeleton style={{ background: '#efefef', transform: "scale(0.9)" }} variant="rounded" width={"100%"} height={360} />
-                    <Skeleton style={{ background: '#efefef', transform: "scale(0.9)" }} variant="rounded" width={"100%"} height={360} />
-                    <Skeleton style={{ background: '#efefef', transform: "scale(0.9)" }} variant="rounded" width={"100%"} height={360} />
-                    <Skeleton style={{ background: '#efefef', transform: "scale(0.9)" }} variant="rounded" width={"100%"} height={360} />
-                    <Skeleton style={{ background: '#efefef', transform: "scale(0.9)" }} variant="rounded" width={"100%"} height={360} />
-                    <Skeleton style={{ background: '#efefef', transform: "scale(0.9)" }} variant="rounded" width={"100%"} height={360} />
-                    <Skeleton style={{ background: '#efefef', transform: "scale(0.9)" }} variant="rounded" width={"100%"} height={360} />
+                    <Skeleton className='product-wrapper' style={{ background: '#efefef', transform: "scale(0.9)" }} variant="rectangular" width={"100%"} height={350} />
+                    <Skeleton className='product-wrapper' style={{ background: '#efefef', transform: "scale(0.9)" }} variant="rectangular" width={"100%"} height={350} />
+                    <Skeleton className='product-wrapper' style={{ background: '#efefef', transform: "scale(0.9)" }} variant="rectangular" width={"100%"} height={350} />
+                    <Skeleton className='product-wrapper' style={{ background: '#efefef', transform: "scale(0.9)" }} variant="rectangular" width={"100%"} height={350} />
+                    <Skeleton className='product-wrapper' style={{ background: '#efefef', transform: "scale(0.9)" }} variant="rectangular" width={"100%"} height={350} />
+                    <Skeleton className='product-wrapper' style={{ background: '#efefef', transform: "scale(0.9)" }} variant="rectangular" width={"100%"} height={350} />
+                    <Skeleton className='product-wrapper' style={{ background: '#efefef', transform: "scale(0.9)" }} variant="rectangular" width={"100%"} height={350} />
+                    <Skeleton className='product-wrapper' style={{ background: '#efefef', transform: "scale(0.9)" }} variant="rectangular" width={"100%"} height={350} />
                   </>
                   : <>
                     {listSearch.map((pro, index) => (
-                      <div className='product-wrapper' key={pro._id}>
+                      <div className='product-wrapper' style={{ height: "350px" }} key={pro._id}>
                         <Link to={`/detail/${pro._id}`}>
                           <img
                             className='image-product'
