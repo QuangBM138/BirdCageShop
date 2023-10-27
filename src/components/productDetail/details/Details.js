@@ -85,7 +85,7 @@ export default function Details({ listImages, compareParentCallback, listProduct
                         <div className="mt-8 items-center">
                             <div className="flex mt-6">
                                 <h2 className="mr-16" style={{ fontSize: "20px", lineHeight: "30px", color: "black" }}>Price</h2>
-                                <h2 style={{ fontSize: "20px", color: "#ffc519" }}>${product.price}</h2>
+                                <h2 style={{ fontSize: "20px", color: "#ffc519" }}>{product.price}$</h2>
                             </div>
                             <div className="flex mt-6">
                                 <h2 className="mr-16" style={{ fontSize: "20px", lineHeight: "30px", color: "black" }}>Width</h2>
