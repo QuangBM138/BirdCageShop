@@ -15,7 +15,7 @@ export default function Cart() {
     const cart = state
     console.log(state)
     return (
-        <Container style={{ minHeight: "700px" }}>
+        <Container style={{ minHeight: "50vh" }}>
 
 
             {
