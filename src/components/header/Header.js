@@ -23,13 +23,14 @@ const Header = () => {
   const [searchResults, setSearchResults] = useState([]);
 
   const handleSearch = () => {
+    if (searchQuery.length === 0) return
     const trimmedQuery = searchQuery.trim();
     const url = `/search?query=${encodeURIComponent(trimmedQuery)}`;
     navigate(url);
   };
 
   const handleKeyPress = (e) => {
-    if (e.key === "Enter") {
+    if (e.key === "Enter" && searchQuery.length != 0) {
       setShowSearchInput(false)
       handleSearch();
       clearSearch();
