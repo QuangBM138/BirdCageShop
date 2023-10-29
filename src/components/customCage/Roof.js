@@ -1,13 +1,12 @@
 import React, { Fragment, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronDownIcon } from "@heroicons/react/20/solid";
-import { roofs } from "./DataCage";
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import './customCage.css'
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
-export default function Roof({ isDisabled, parentCallback, setValidRoof }) {
+export default function Roof({ isDisabled, parentCallback, setValidRoof, roofs }) {
   const [selected, setSelected] = useState("");
   const [inputValue, setInputValue] = useState(1);
   const [isInvalid, setIsInvalid] = useState(false);
@@ -41,7 +40,7 @@ export default function Roof({ isDisabled, parentCallback, setValidRoof }) {
                 <Listbox.Button className="relative w-[300px] cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6">
                   <span className="flex items-center">
                     <img
-                      src={selected.image}
+                      src={selected.imagePath}
                       alt=""
                       className="h-5 w-5 flex-shrink-0"
                     />
@@ -81,7 +80,7 @@ export default function Roof({ isDisabled, parentCallback, setValidRoof }) {
                           <>
                             <div className="flex items-center">
                               <img
-                                src={roof.image}
+                                src={roof.imagePath}
                                 alt=""
                                 className="h-5 w-5 flex-shrink-0"
                               />
@@ -131,7 +130,7 @@ export default function Roof({ isDisabled, parentCallback, setValidRoof }) {
         </Listbox>
 
         <span
-          className="ml-5 text-[20px] h-9 rounded-md"
+          className="pl-2 border ml-5 text-[20px] h-9 rounded-md w-[100px]"
         >{inputValue}</span>
       </div>
     </div>
