@@ -4,13 +4,22 @@ import List from "./List";
 import { useState } from "react";
 import { useStore } from "../cart/store/hooks";
 import { Navigate } from "react-router";
-function Payment() {
-  const [isShow, setIsShow] = useState(false);
-  const [state, dispatch] = useStore()
+import Paypal from "./Paypal";
+import { useNavigate } from "react-router-dom";
 
-  const cart = state
-  if (cart.length < 1)
-    return <Navigate to="/cart" replace />;
+function Payment() {
+  const navigate = useNavigate();
+
+  const [checkout, setCheckout] = useState(false);
+  const product = {
+    description: "Design+Code React Hooks Course",
+    price: 19,
+  };
+  const [isShow, setIsShow] = useState(false);
+  const [state, dispatch] = useStore();
+
+  const cart = state;
+  if (cart.length < 1) return <Navigate to="/cart" replace />;
 
   return (
     <div className="w-full min-h-screen">
@@ -42,7 +51,6 @@ function Payment() {
                 disabled
                 value="Tài phiệt No Name"
               />
-
             </div>
             <div className="w-[80%] my-4 mx-auto flex items-center justify-between">
               <input
@@ -67,12 +75,21 @@ function Payment() {
                 <span>$20.00</span>
               </div>
             </div>
-            <div className="w-[80%] mx-auto mt-10">
+            <div className="w-[80%] mx-auto mt-10 btnPayment">
               <p className="font-bold text-[24px]">Payment</p>
-
-
-              <div className="hidden lg:block w-full hover:bg-[#ff3333] text-center rounded-md bg-[#1773B0] text-white mt-4 py-4 cursor-pointer button">
-                Pay now
+              <div  id="pay">
+                {checkout ? (
+                  <Paypal  />
+                ) : (
+                  <div
+                    onClick={() => {
+                      setCheckout(true);
+                    }}
+                    className="  mt-8 block w-full hover:bg-[#ff3333] text-center rounded-md bg-[#1773B0] text-white mt-4 py-4 cursor-pointer button"
+                  >
+                    Pay now
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -100,22 +117,30 @@ function Payment() {
             <div className="w-full md:w-[60%] mx-auto">
               <div className="w-full flex items-center justify-between mb-2">
                 <span className="text-[14px]">Subtotal</span>
-                <span className="text-[14px] font-bold">$899.00</span>
+                <span className="text-[14px] font-bold">$</span>
               </div>
               <div className="w-full flex items-center justify-between mb-2">
                 <span className="text-[14px]">Shipping</span>
-                <span className="text-[14px]">$899.00</span>
+                <span className="text-[14px]">$</span>
               </div>
               <div className="w-full flex items-center justify-between mb-2">
                 <span className="text-[17px] font-bold">Total</span>
-                <span className="text-[17px] font-bold">$899.00</span>
+                <span className="text-[17px] font-bold">$</span>
               </div>
             </div>
           )}
-
-          <div className="lg:hidden mt-8 block w-full hover:bg-[#ff3333] text-center rounded-md bg-[#1773B0] text-white mt-4 py-4 cursor-pointer button">
-            Pay now
-          </div>
+          {checkout ? (
+            <Paypal />
+          ) : (
+            <div
+              onClick={() => {
+                setCheckout(true);
+              }}
+              className=" mt-8 block w-full hover:bg-[#ff3333] text-center rounded-md bg-[#1773B0] text-white mt-4 py-4 cursor-pointer button"
+            >
+              Pay now
+            </div>
+          )}
         </div>
       </div>
     </div>

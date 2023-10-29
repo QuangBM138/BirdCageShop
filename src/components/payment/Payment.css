@@ -59,3 +59,19 @@
 .buttonEdit:hover{
     background-color: #ff3333;
 }
+
+.btnPayment{
+    margin-bottom: 10px;
+}
+
+
+.btnpay{
+    margin-top: 20px;
+}
+
+@media (max-width: 1024px) {
+    #pay {
+      display: none;
+    }
+  }
+  

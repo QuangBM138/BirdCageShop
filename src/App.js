@@ -28,6 +28,8 @@ import EditProfile from "./components/userProfile/editProfile/EditProfile";
 import ProtectedRoute from "./components/ProtectedRoute";
 import UseToken from "./components/handleToken/UseToken";
 import NotFound from "./pages/NotFound";
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+
 function App() {
   const { getToken } = UseToken()
   const { pathname } = useLocation();
@@ -35,6 +37,7 @@ function App() {
     window.scrollTo(0, 0);
   }, [pathname]);
   return (
+    <PayPalScriptProvider  options={{ "client-id": process.env.REACT_APP_PAYPAL_CLIENT_ID }}>
     <div className="App" style={{ background: "#fff" }}>
       <Header></Header>
       <Routes>
@@ -147,6 +150,7 @@ function App() {
 
       <Footer></Footer>
     </div>
+    </PayPalScriptProvider>
   );
 }
 
