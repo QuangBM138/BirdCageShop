@@ -34,6 +34,7 @@ function App() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
+  console.log("pathname: ", pathname);
   return (
     <div className="App" style={{ background: "#fff" }}>
       <Header></Header>

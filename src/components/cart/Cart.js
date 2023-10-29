@@ -1,22 +1,60 @@
-import React from 'react'
-import Header from './header/Header'
+import React, { useState } from 'react'
 import { Container } from '@mui/material'
 import Item from './cartItem/Item.js'
 import { useStore } from './store/hooks'
-import ShoppingBasket from '@mui/icons-material/ShoppingBasket'
-import { Link, Navigate, useNavigate } from 'react-router-dom'
-
+import { Link, Navigate, useNavigate, useLocation } from 'react-router-dom'
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+import Button from '@mui/material/Button';
+import UseToken from "../handleToken/UseToken.js";
 export default function Cart() {
     const [state, dispatch] = useStore()
+    const [open, setOpen] = useState(false);
     const navigate = useNavigate()
+    const { pathname } = useLocation();
+    const { getToken } = UseToken()
+    const [overStockCages, setOverStockCages] = useState([])
     const handleCheckout = () => {
-        navigate("/payment")
+        if (getToken() == null) { navigate('/login', { state: { previousPath: pathname } }) }
+        else {
+            setOpen(true)
+            Promise.all(
+                state.map(item =>
+                    new Promise(res =>
+                        res(fetch("http://localhost:5000/api/v1/cage/" + item.cage._id))
+                    )
+                        .then(res => res.json())
+                        .then(data => ({ data: data, cartQuantity: item.cartQuantity }))
+                )
+            )
+                .then(res => {
+                    const overStockList = res.filter(item => item.cartQuantity > item.data.data.component.inStock)
+                    setTimeout(() => {
+                        setOverStockCages(overStockList)
+                        setOpen(false)
+                        if (overStockList.length === 0) navigate('/payment')
+                    }, 3000)
+
+                })
+        }
     }
     const cart = state
-    console.log(state)
     return (
         <Container style={{ minHeight: "50vh" }}>
+            {open ? <div>
 
+                <Backdrop
+                    sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                    open={open}
+                >
+                    <div className='box-loading-check'>
+                        <Button>Checking Stock</Button>
+                        <CircularProgress color="inherit" />
+
+                    </div>
+
+                </Backdrop>
+            </div> : ""}
 
             {
                 cart.length == 0 ?
@@ -34,20 +72,13 @@ export default function Cart() {
                     )
                     :
                     (
+
                         <div className='cart-table'>
                             <div className='cart-items'>
                                 <div className='cart-row-header'>
                                     <h2>Products</h2>
                                 </div>
-
-                                {/* {
-                                    cart.map(item => */}
-                                <Item />
-                                {/* dispatch={dispatch} */}
-
-                                {/* )
-                                } */}
-
+                                <Item overStockCages={overStockCages} />
                             </div>
                             <div className='cart-section'>
                                 <h2

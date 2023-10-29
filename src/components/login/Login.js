@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './Login.css'
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import UseToken from '../handleToken/UseToken'
 import CircularProgress from '@mui/material/CircularProgress';
 export default function Login() {
@@ -8,10 +8,12 @@ export default function Login() {
     const [password, setPassword] = useState("")
     const [message, setMessage] = useState("")
     const { setToken } = UseToken()
+
     const [isLoading, setLoading] = useState(false)
     const [checkValidPhoneNum, setValidPhoneNum] = useState(true)
-    // on change phone number
 
+
+    // on change phone number
     const regexPhoneNumber = phone => {
         const regexPhoneNumber = /(84|0[3|5|7|8|9])+([0-9]{8})\b/g;
         return phone.match(regexPhoneNumber) ? true : false

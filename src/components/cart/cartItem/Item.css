@@ -137,3 +137,31 @@
     background: #8d522c;
     color: #fff;
 }
+
+.box-loading-check {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid #ddd;
+    background: #696969;
+    padding: 20px;
+    border-radius: 10px;
+    width: 50%;
+}
+
+.box-loading-check h1 {
+    color: #fff
+}
+
+.box-loading-check button {
+    color: #ddd;
+    font-size: 20px;
+    background: #696969;
+}
+
+.warning-overstock {
+    color: red;
+    margin-left: 20px;
+    font-weight: 500;
+}

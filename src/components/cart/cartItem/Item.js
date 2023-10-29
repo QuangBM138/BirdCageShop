@@ -8,7 +8,7 @@ import Swal from 'sweetalert2'
 import { Link } from 'react-router-dom';
 
 import CircularProgress from '@mui/material/CircularProgress';
-export default function Item() {
+export default function Item({ overStockCages }) {
     const [state, dispatch] = useStore()
     const cart = state
 
@@ -32,7 +32,7 @@ export default function Item() {
 
             {
                 cart.map(cart =>
-                    <div className='cart-row'>
+                    <div className='cart-row' key={cart.cage._id}>
                         <span
                             onClick={() => {
                                 Swal.fire({
@@ -55,17 +55,12 @@ export default function Item() {
                             className='remove-item'>X</span>
                         <div className='cart-items'>
                             <Link to={`/detail/${cart.cage._id}`} className='cart-image'>
-                                {/* { */}
-                                {/* JSON.parse(cart.imp).map((img, index) => index == 0 && */}
                                 <img src={cart.cage.imagePath} />
-                                {/* // ) */}
-                                {/* // } */}
                             </Link>
                         </div>
                         <div className='product-info'>
                             <div className='cart-title'>
                                 <h5><Link to={`/detail/${cart.cage._id}`} className='product-title'>{cart.cage.name}</Link></h5>
-                                <p>Gold, Diamond, Gem</p>
                             </div>
                             <div className='price'>
                                 <span className='money'>{cart.cage.price + "$"}</span>
@@ -140,7 +135,17 @@ export default function Item() {
                                 >
                                     <AddIcon />
                                 </button>
-
+                                <div>{
+                                    overStockCages.map(overStockCage =>
+                                        <div key={overStockCage.data.data.component._id}>{
+                                            overStockCage.data.data.component._id === cart.cage._id
+                                                ?
+                                                <span className='warning-overstock'>In Stock Now: {overStockCage.data.data.component.inStock}</span>
+                                                :
+                                                ""
+                                        }
+                                        </div>)
+                                }</div>
                             </div>
 
                             <div className='price'>

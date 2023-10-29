@@ -7,11 +7,9 @@ import { Navigate } from "react-router";
 function Payment() {
   const [isShow, setIsShow] = useState(false);
   const [state, dispatch] = useStore()
-
   const cart = state
   if (cart.length < 1)
     return <Navigate to="/cart" replace />;
-
   return (
     <div className="w-full min-h-screen">
       <div className="w-full relative">
@@ -20,13 +18,6 @@ function Payment() {
           <div className="w-full lg:w-[82%] lg:ml-[40px]">
             <div className="w-[80%] mx-auto flex items-center justify-between">
               <span className="font-bold text-[24px]">Contact</span>
-
-              {/* <p className="text-[#707070] text-[14px] flex items-center">
-              <span className="hidden lg:block">Have an account?</span>&nbsp;
-              <span className="text-[#1773B0] underline cursor-pointer">
-                Login
-              </span>
-            </p> */}
             </div>
 
             <input
