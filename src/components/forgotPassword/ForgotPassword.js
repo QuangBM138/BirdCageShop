@@ -11,11 +11,11 @@ export default function ForgotPassword() {
                         </div>
                         <div className='h4_design'>
                             <h4>
-                                We will send you an email to reset your password.
+                                We will send you a phone to reset your password.
                             </h4>
                         </div>
                         <div className='input_text'>
-                            <input type='email' name='email' placeholder='Email' className='email_input' />
+                            <input type='email' name='email' placeholder='Phone Number' className='email_input' />
                         </div>
                         <div className='btn_design_1'>
                             <button className='signin_bt'>

@@ -15,7 +15,7 @@ export default function () {
                             <input type='firstname' name='lastname' placeholder='Last Name' className='email_input' />
                         </div>
                         <div className='input_text'>
-                            <input type='email' name='email' placeholder='Email' className='email_input' />
+                            <input type='email' name='email' placeholder='Phone Number' className='email_input' />
                         </div>
                         <div className='input_text'>
                             <input type='password' name='email' placeholder='Password' className='password_input' />
