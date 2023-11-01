@@ -54,7 +54,6 @@ export default function Login() {
                 if (res.status == "success") {
                     console.log(res);
                     res.data.account.role == "user" ? setToken(res.data.token) : setMessage("This is not user account")
-
                 } else {
                     setMessage(res.message)
                 }
