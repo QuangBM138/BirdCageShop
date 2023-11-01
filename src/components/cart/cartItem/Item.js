@@ -8,10 +8,10 @@ import Swal from 'sweetalert2'
 import { Link } from 'react-router-dom';
 
 import CircularProgress from '@mui/material/CircularProgress';
-export default function Item({ overStockCages }) {
+export default function Item({ overStockCages, deletedCages }) {
     const [state, dispatch] = useStore()
     const cart = state
-
+    console.log(deletedCages)
     const [loading, setLoading] = useState(false)
     const handleIncreaseQuantity = (index) => {
         dispatch(actions.increaseQuantity({ index: index, quantity: 1 }))
@@ -146,6 +146,22 @@ export default function Item({ overStockCages }) {
                                         }
                                         </div>)
                                 }</div>
+                                <div>
+                                    {deletedCages.length > 0 ?
+                                        deletedCages.map(deletedCage =>
+                                            <div>
+                                                {deletedCage.data.data.component._id === cart.cage._id
+                                                    ?
+                                                    <span className='warning-overstock'>This cage deleted
+
+                                                    </span>
+                                                    :
+                                                    ""
+                                                }
+                                            </div>
+                                        )
+                                        : ""}
+                                </div>
                             </div>
 
                             <div className='price'>

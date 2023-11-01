@@ -24,7 +24,7 @@ export default function CustomCage() {
   const [baseList, setBaseList] = useState([])
   const [spokeList, setSpokeList] = useState([])
   const [roofList, setRoofList] = useState([])
-  const [validSpoke, setValidSpoke] = useState(false)
+  const [validSpoke, setValidSpoke] = useState(true)
   const navigate = useNavigate()
   const [open, setOpen] = useState(false);
   const { getToken } = UseToken()
@@ -69,14 +69,13 @@ export default function CustomCage() {
     inputValues.length <= 100 &&
     inputValues.width < inputValues.length;
 
-  const handleInputChange = (fieldName, value, object) => {
+  const handleInputChange = (fieldName, value) => {
     const newInputValues = {
       ...inputValues,
       [fieldName]: value,
     };
     setInputValues(prev => {
       if (newInputValues.height && newInputValues.width && newInputValues.length) {
-        console.log(newInputValues.width, newInputValues.length, newInputValues.height)
         setMax(Math.floor(((newInputValues.width + newInputValues.length) * 2) / 1))
         setMin(Math.floor(((newInputValues.width + newInputValues.length) * 2) / 2))
       }
@@ -183,23 +182,46 @@ export default function CustomCage() {
           length: inputValues.length,
           userId: jwtDecode(getToken()).id,
           component: componentList,
-          createDate: new Date().toLocaleDateString('en-ZA')
+          createDate: new Date().toLocaleDateString('en-ZA'),
+          status: "Pending"
         }
-        socket.emit('send_request_custom_cage', { userId: "AAA", status: "request" })
-        fetch("http://localhost:5000/api/v1/cage", {
-          method: "POST",
-          body: JSON.stringify(customCage),
+        fetch("http://localhost:5000/api/v1/cage/customCages/pending/" + jwtDecode(getToken()).id, {
+          method: "GET",
+          contentType: 'application/json',
           headers: {
-            "Content-Type": "application/json"
+            'Authorization': `Bearer ${getToken()}`
           }
         })
           .then(res => res.json())
-          .then(res => {
-            setTimeout(() => {
+          .then(data => {
+            console.log(data);
+            if (data != "Pending") {
+              return new Promise(res =>
+                res(fetch("http://localhost:5000/api/v1/cage", {
+                  method: "POST",
+                  body: JSON.stringify(customCage),
+                  headers: {
+                    "Content-Type": "application/json"
+                  }
+                }))
+              ).then(res => res.json())
+                .then(res => {
+                  console.log("zozo");
+                  setTimeout(() => {
+                    setOpen(false)
+                    navigate('/cart')
+                  }, 3000)
+                })
+            }
+            else {
               setOpen(false)
-              navigate('/cart')
-            }, 3000)
+              warningOrderSubmit.current.innerText = "You have a custom cage pending"
+            }
           })
+
+        socket.emit('send_request_custom_cage', { userId: "AAA", status: "request" })
+
+
       }
 
       else {

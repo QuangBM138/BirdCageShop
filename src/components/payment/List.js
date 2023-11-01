@@ -15,14 +15,10 @@ function List() {
   const [open, setOpen] = useState(true);
   const [list, setList] = useState([])
   const [overStockCages, setOverStockCages] = useState([])
+  const [deletedCages, setDeletedCages] = useState([])
   const navigate = useNavigate()
   useEffect(() => {
     setList([])
-    // cart.forEach(element => {
-    //   fetch("http://localhost:5000/api/v1/cage/" + element.cage._id)
-    //     .then(res => res.json())
-    //     .then(res => setList(prev => [...prev, { cage: res.data.component, cartQuantity: element.cartQuantity }]))
-    // });
     Promise.all(
       state.map(item =>
         new Promise(res =>
@@ -38,10 +34,13 @@ function List() {
     )
       .then(res => {
         const overStockList = res.filter(item => item.cartQuantity > item.data.data.component.inStock)
+        const deletedCagesList = res.filter(item => item.data.data.component.delFlg === true)
+
         setTimeout(() => {
           setOverStockCages(overStockList)
+          setDeletedCages(deletedCagesList)
           setOpen(false)
-          if (overStockList.length !== 0) navigate('/cart')
+          if (overStockList.length !== 0 || deletedCagesList.length !== 0) navigate('/cart')
         }, 3000)
 
       })

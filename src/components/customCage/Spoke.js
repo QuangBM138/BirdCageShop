@@ -13,6 +13,7 @@ export default function Spoke({ isDisabled, min, max, parentCallback, setValidSp
   useEffect(() => {
     console.log('change')
     setInputValue(min)
+    setIsInvalid(false)
   }, [min])
   const handleInputChange = (e) => {
     const removeSpecialChar = /[e\+\-]/g
