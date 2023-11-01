@@ -19,6 +19,7 @@ export default function Cart() {
     const [deletedCages, setDeletedCages] = useState([])
     const [customCageList, setCustomCageList] = useState([])
     const [component, setComponent] = useState([])
+    const [price, setPriceCageCustom] = useState(0)
     useEffect(() => {
         if (getToken() != null) {
             fetch("http://localhost:5000/api/v1/cage/customCages/" + jwtDecode(getToken()).id, {
@@ -30,16 +31,32 @@ export default function Cart() {
             })
                 .then(res => res.json())
                 .then(cageComponents => {
-                    const cageComponentsList = cageComponents.map(i => i[0])
-                    setCustomCageList(cageComponents)
+                    console.log(cageComponents);
+                    const cageComponentsList = cageComponents.map(i => i[0].cage[0])
+
+                    if (cageComponentsList.find(i => i.status == "CUS")) {
+                        setPriceCageCustom(cageComponentsList.find(i => i.status == "CUS").price)
+                    }
+
+                    console.log(cageComponents[0][0].component);
+                    if (cageComponentsList.find(i => i.status == "Done")) {
+                        setCustomCageList([])
+                    }
+                    console.log(cageComponentsList.find(i => i.status == "Pending"))
+                    if (cageComponentsList.find(i => i.status == "Pending")) {
+
+                        setCustomCageList(cageComponentsList.find(i => i.status == "Pending"))
+                    }
+
                     Promise.all(
-                        cageComponentsList[0].component.map(c =>
+                        cageComponents[0][0].component.map(c =>
                             new Promise(res => res(fetch("http://localhost:5000/api/v1/component/" + c._id))
                             ).then(res => res.json())
                         )
 
                     )
                         .then(data => {
+                            console.log(data)
                             setComponent(data)
                         })
 
@@ -49,7 +66,6 @@ export default function Cart() {
 
 
     }, [])
-
     const handleCheckout = () => {
         if (getToken() == null) { navigate('/login', { state: { previousPath: pathname } }) }
         else {
@@ -67,6 +83,8 @@ export default function Cart() {
                     const overStockList = res.filter(item => item.cartQuantity > item.data.data.component.inStock)
                     const deletedCageList = res.filter(item => item.data.data.component.delFlg === true)
                     console.log("resposne cart: ", res)
+
+
                     setTimeout(() => {
                         setOverStockCages(overStockList)
                         setDeletedCages(deletedCageList)
@@ -77,6 +95,7 @@ export default function Cart() {
                 })
         }
     }
+
     const cart = state
     return (
         <Container style={{ minHeight: "50vh" }}>
@@ -96,7 +115,7 @@ export default function Cart() {
             </div> : ""}
 
             {
-                cart.length == 0 && customCageList.length == 0 ?
+                cart.length == 0 ?
                     (
                         <div className='cart-empty'>
                             <img src="https://dt-pet-care.myshopify.com/cdn/shop/t/4/assets/empty-cart.png?v=124674504766911058681621590307" />
@@ -115,19 +134,22 @@ export default function Cart() {
                         <div className='cart-table'>
                             <div className='cart-items'>
                                 <div className='cart-row-header'>
-                                    <h2>Products</h2>
+                                    {cart.length != 0 && <>
+                                        <h2>Products</h2>
+                                        <Item
+                                            deletedCages={deletedCages}
+                                            overStockCages={overStockCages} />
+                                    </>}
                                 </div>
-                                <Item
-                                    deletedCages={deletedCages}
-                                    overStockCages={overStockCages} />
-                                {getToken() != null ? <>
-                                    <div className='cart-row-header'>
-                                        <h2>Custom Cage</h2>
-                                    </div>
-                                    <CustomItem
-                                        component={component}
-                                        customCageList={customCageList}
-                                    /></> : ""}
+
+
+                                <div className='cart-row-header'>
+                                    <h2>Custom Cage</h2>
+                                </div>
+                                <CustomItem
+                                    component={component}
+                                    customCageList={customCageList}
+                                />
 
 
                             </div>
@@ -155,9 +177,13 @@ export default function Cart() {
                                             marginBottom: "15px"
                                         }}
                                     >
-                                        {cart.reduce((acc, curr) =>
-                                            acc + curr.cage.price * curr.cartQuantity
-                                            , 0)}$
+                                        {price == 0 ?
+                                            cart.reduce((acc, curr) =>
+                                                acc + curr.cage.price * curr.cartQuantity
+                                                , 0) : cart.reduce((acc, curr) =>
+                                                    acc + curr.cage.price * curr.cartQuantity
+                                                    , price)}
+
                                     </span>
                                 </p>
 

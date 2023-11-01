@@ -185,7 +185,7 @@ export default function CustomCage() {
           createDate: new Date().toLocaleDateString('en-ZA'),
           status: "Pending"
         }
-        fetch("http://localhost:5000/api/v1/cage/customCages/pending/" + jwtDecode(getToken()).id, {
+        fetch("http://localhost:5000/api/v1/cage/customCages/" + jwtDecode(getToken()).id, {
           method: "GET",
           contentType: 'application/json',
           headers: {
@@ -194,8 +194,9 @@ export default function CustomCage() {
         })
           .then(res => res.json())
           .then(data => {
-            console.log(data);
-            if (data != "Pending") {
+            const cageComponentsList = data.map(i => i[0])
+            console.log(cageComponentsList[0].cage[0].status)
+            if (cageComponentsList[0].cage[0].status !== "CUS" && cageComponentsList[0].cage[0].status !== "Pending") {
               return new Promise(res =>
                 res(fetch("http://localhost:5000/api/v1/cage", {
                   method: "POST",
@@ -215,7 +216,7 @@ export default function CustomCage() {
             }
             else {
               setOpen(false)
-              warningOrderSubmit.current.innerText = "You have a custom cage pending"
+              warningOrderSubmit.current.innerText = "You are having a custom cage in cart"
             }
           })
 

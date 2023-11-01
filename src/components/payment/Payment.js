@@ -6,21 +6,47 @@ import { useStore } from "../cart/store/hooks";
 import { Navigate } from "react-router";
 import Paypal from "./Paypal";
 import { useNavigate } from "react-router-dom";
+import UseToken from "../handleToken/UseToken";
+import jwtDecode from "jwt-decode";
 
 function Payment() {
   const navigate = useNavigate();
-
-  const [checkout, setCheckout] = useState(false);
-  const product = {
-    description: "Design+Code React Hooks Course",
-    price: 19,
-  };
   const [isShow, setIsShow] = useState(false);
   const [state, dispatch] = useStore();
-
+  const { getToken } = UseToken()
+  const [customCage, setCustomCage] = useState([])
+  const [customer, setCustomer] = useState([])
   const cart = state;
-  if (cart.length < 1) return <Navigate to="/cart" replace />;
+  useEffect(() => {
+    fetch("http://localhost:5000/api/v1/cage/customCages/" + jwtDecode(getToken()).id, {
+      method: "GET",
+      contentType: 'application/json',
+      headers: {
+        'Authorization': `Bearer ${getToken()}`
+      }
+    })
+      .then(res => res.json())
+      .then(cage => {
+        const cageCustom = cage.map(i => i[0])
+        if (cageCustom[0].cage[0].status === "CUS") {
+          setCustomCage(cageCustom[0].cage[0])
+        } else {
+          setCustomCage([])
+        }
 
+      }
+      )
+    // get user profile
+    fetch("http://localhost:5000/api/v1/account/" + jwtDecode(getToken()).id)
+      .then(res => res.json())
+      .then(customer => {
+        setCustomer(customer.data)
+      })
+  }, [])
+
+
+  if (cart.length < 1 && customCage) return <Navigate to="/cart" replace />;
+  console.log("payment.js", customCage)
   return (
     <div className="w-full min-h-screen">
       <div className="w-full relative">
@@ -68,35 +94,20 @@ function Payment() {
                 <span>$20.00</span>
               </div>
             </div>
-            <div className="w-[80%] mx-auto mt-10 btnPayment">
-              <p className="font-bold text-[24px]">Payment</p>
-              <div id="pay">
-                {checkout ? (
-                  <Paypal />
-                ) : (
-                  <div
-                    onClick={() => {
-                      setCheckout(true);
-                    }}
-                    className="  mt-8 block w-full hover:bg-[#ff3333] text-center rounded-md bg-[#1773B0] text-white mt-4 py-4 cursor-pointer button"
-                  >
-                    Pay now
-                  </div>
-                )}
-              </div>
-            </div>
           </div>
         </div>
 
         {/* right side */}
         <div className="hidden lg:block absolute right-0 top-0 bg-[#f5f5f5] h-[100vh] hide-scroll overflow-y-scroll w-full lg:w-[50%] pt-[30px] border-cus">
           <div className="w-full">
-            <List />
+            <List
+              customer={customer}
+              customCageObject={customCage ? customCage : []} />
           </div>
         </div>
         <div className="block lg:hidden overflow-y-scroll w-[80%] mx-auto mt-8 lg:w-[50%] pt-[30px]">
           <div className="flex w-full items-center justify-between mb-10">
-            <span>Order summary (2)</span>
+            <span>Order summary</span>
             <span
               onClick={() => setIsShow(!isShow)}
               className="text-[#1773B0] showhide"
@@ -105,7 +116,7 @@ function Payment() {
             </span>
           </div>
           {isShow ? (
-            <List />
+            <List customCageObject={customCage} />
           ) : (
             <div className="w-full md:w-[60%] mx-auto">
               <div className="w-full flex items-center justify-between mb-2">
@@ -122,18 +133,7 @@ function Payment() {
               </div>
             </div>
           )}
-          {checkout ? (
-            <Paypal />
-          ) : (
-            <div
-              onClick={() => {
-                setCheckout(true);
-              }}
-              className=" mt-8 block w-full hover:bg-[#ff3333] text-center rounded-md bg-[#1773B0] text-white mt-4 py-4 cursor-pointer button"
-            >
-              Pay now
-            </div>
-          )}
+
         </div>
       </div>
     </div>

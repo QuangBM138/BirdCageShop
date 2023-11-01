@@ -28,50 +28,64 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.button{
+
+.button {
     background-color: #1773B0;
     transition: all 0.4s;
 }
 
-.button:hover{
+.button:hover {
     background-color: #ff3333;
 }
 
-.showhide{
+.showhide {
     cursor: pointer;
 }
 
 .hide-scroll {
-    -ms-overflow-style: none; /* khai báo sử dụng Internet Explorer, Edge */
-    scrollbar-width: none; /* sử dụng Firefox */
-    overflow-y: scroll; 
+    -ms-overflow-style: none;
+    /* khai báo sử dụng Internet Explorer, Edge */
+    scrollbar-width: none;
+    /* sử dụng Firefox */
+    overflow-y: scroll;
 }
 
 .hide-scroll::-webkit-scrollbar {
-    display: none; /* cho Chrome, Safari, and Opera */
+    display: none;
+    /* cho Chrome, Safari, and Opera */
 }
 
-.buttonEdit{
+.buttonEdit {
     background-color: #1773B0;
     transition: all 0.4s;
 }
 
-.buttonEdit:hover{
+.buttonEdit:hover {
     background-color: #ff3333;
 }
 
-.btnPayment{
+.btnPayment {
     margin-bottom: 10px;
 }
 
 
-.btnpay{
+.btnpay {
     margin-top: 20px;
 }
 
 @media (max-width: 1024px) {
     #pay {
-      display: none;
+        display: none;
     }
-  }
-  
+}
+
+.image-component-payment {
+    width: 100px;
+}
+
+.custom-box-payment {
+    width: 100%;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 20px;
+}

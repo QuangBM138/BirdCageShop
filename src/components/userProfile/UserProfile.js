@@ -12,6 +12,7 @@ export default function UserProfile() {
     const [firstName, setFirstName] = useState('');
     const [point, setPoint] = useState('');
     const { getToken } = UseToken()
+    console.log("token", jwtDecode(getToken()).id)
     useEffect(() => {
         const userData = {
             userId: jwtDecode(getToken()).id,
