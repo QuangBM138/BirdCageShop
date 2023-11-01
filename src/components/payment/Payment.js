@@ -29,13 +29,6 @@ function Payment() {
           <div className="w-full lg:w-[82%] lg:ml-[40px]">
             <div className="w-[80%] mx-auto flex items-center justify-between">
               <span className="font-bold text-[24px]">Contact</span>
-
-              {/* <p className="text-[#707070] text-[14px] flex items-center">
-              <span className="hidden lg:block">Have an account?</span>&nbsp;
-              <span className="text-[#1773B0] underline cursor-pointer">
-                Login
-              </span>
-            </p> */}
             </div>
 
             <input
@@ -77,9 +70,9 @@ function Payment() {
             </div>
             <div className="w-[80%] mx-auto mt-10 btnPayment">
               <p className="font-bold text-[24px]">Payment</p>
-              <div  id="pay">
+              <div id="pay">
                 {checkout ? (
-                  <Paypal  />
+                  <Paypal />
                 ) : (
                   <div
                     onClick={() => {

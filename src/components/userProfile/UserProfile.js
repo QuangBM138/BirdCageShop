@@ -2,10 +2,41 @@ import React, { useEffect, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import './UserProfile.css'
 import StarIcon from '@mui/icons-material/Star';
+import jwtDecode from 'jwt-decode';
+import UseToken from '../handleToken/UseToken';
 
 
 
 export default function UserProfile() {
+    const [lastName, setLastName] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [point, setPoint] = useState('');
+    const { getToken } = UseToken()
+    useEffect(() => {
+        const userData = {
+            userId: jwtDecode(getToken()).id,
+            lastName,
+            firstName,
+            point
+        }
+        fetch("http://localhost:5000/api/v1/customer/:id", {
+            method: "GEt",
+            body: JSON.stringify(userData),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then((response) => {
+                const data = response.data;
+                setFirstName(data.firstName);
+                setLastName(data.lastName);
+                setPoint(data.point)
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+
+    })
     return (
         <div className='user_container'>
             <div className='user_profile'>
@@ -14,6 +45,7 @@ export default function UserProfile() {
                 </div>
                 <div className='user_body'>
                     <div className='user_infor'>
+
                         <form className='form_infor'>
                             <table className='imformation'>
                                 <tr className='table_tr'>
@@ -22,8 +54,8 @@ export default function UserProfile() {
                                     </td>
                                     <td className='table_td_2'>
                                         <div className='td_div_1'>
-                                            <div className='td_div_name'>Nguyen Le Hong Nhi</div>
-                                            <div className='td_div_score'>50.000</div>
+                                            <div className='td_div_name'>{firstName} {lastName}</div>
+                                            <div className='td_div_score'>{point}</div>
                                         </div>
                                     </td>
                                 </tr>

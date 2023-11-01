@@ -36,6 +36,7 @@ function App() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
+  console.log("pathname: ", pathname);
   return (
     <PayPalScriptProvider  options={{ "client-id": process.env.REACT_APP_PAYPAL_CLIENT_ID }}>
     <div className="App" style={{ background: "#fff" }}>

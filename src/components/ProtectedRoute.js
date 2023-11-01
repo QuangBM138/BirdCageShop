@@ -1,11 +1,15 @@
 import React from 'react'
-import { Navigate } from 'react-router-dom'
+import { Navigate, useLocation } from 'react-router-dom'
 
 export default function ProtectedRoute({ page, user, children }) {
+    const { state } = useLocation()
+    console.log(state?.previousPath);
     switch (page) {
         case "login":
             if (user() != null) {
-                return <Navigate to="/" replace />
+                if (state?.previousPath) { return <Navigate to={state.previousPath} /> }
+                else { return <Navigate to="/" replace /> }
+
             }
             break;
 
@@ -13,7 +17,6 @@ export default function ProtectedRoute({ page, user, children }) {
             if (user() == null) {
                 return <Navigate to="/login" replace />
             }
-            break;
         case "profile":
             if (user() == null) {
                 return <Navigate to="/login" replace />
