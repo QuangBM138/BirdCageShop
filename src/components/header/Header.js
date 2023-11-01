@@ -12,6 +12,8 @@ import LoginIcon from '@mui/icons-material/Login';
 import SearchIcon from '@mui/icons-material/Search';
 import PersonIcon from '@mui/icons-material/Person';
 import LogoutIcon from '@mui/icons-material/Logout';
+import logo from '../../images/logo.png';
+
 const Header = () => {
   const [Mobile, setMobile] = useState(false);
   const [showSearchInput, setShowSearchInput] = useState(false)
@@ -101,7 +103,8 @@ const Header = () => {
       <header className="header">
 
         {/* <h3 className="logo">Bird Cage Shop</h3> */}
-        <img src="//dt-pet-care.myshopify.com/cdn/shop/files/logo_300x300.png?v=1625137186" />
+        {/* <img src="//dt-pet-care.myshopify.com/cdn/shop/files/logo_300x300.png?v=1625137186" /> */}
+        <img src={logo} style={{width: '130px', height: '90px', marginTop: '-10px', marginBottom: '-10px'}}/>
         <div className="info">
           <ul className={Mobile ? "nav-links-mobile" : "nav-links"}>
             <li>
