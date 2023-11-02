@@ -28,7 +28,7 @@ export default function Paypal({ total, customCageObject, customer }) {
                   description: "Cool looking table",
                   amount: {
                     currency_code: "USD",
-                    value: 1,
+                    value: total,
                   },
                 },
               ],
@@ -56,8 +56,8 @@ export default function Paypal({ total, customCageObject, customer }) {
             })
               .then(res => console.log("create order"))
             // console.log(order);
-            // localStorage.clear();
-            // navigate("/"); // Chuyển hướng về trang chủ sau khi thanh toán hoàn tất
+            localStorage.clear();
+            navigate("/"); // Chuyển hướng về trang chủ sau khi thanh toán hoàn tất
             // window.location.reload();
           },
           onError: (err) => {
