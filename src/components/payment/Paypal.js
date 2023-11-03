@@ -4,13 +4,22 @@ import "./Payment.css";
 import { useStore } from "../cart/store/hooks";
 import Alert from '@mui/material/Alert';
 export default function Paypal({ total, customCageObject, customer }) {
-  console.log("Paypal.js", customCageObject)
-  console.log("Paypal.js", customer.customer[0])
   const paypal = useRef();
   const navigate = useNavigate(); // Import navigate
   const [state, dispatch] = useStore()
   const [noAddress, setNoaddress] = useState(false)
+  const [postCages, setPostCages] = useState([])
   const cageArray = state.map(cart => ({ cageId: cart.cage._id, quantity: cart.cartQuantity, price: cart.cage.price, isCustom: false }))
+  console.log(customCageObject.map(c => ({ cageId: c[0].cage[0]._id, quantity: 1, price: c[0].cage[0].price, isCustom: true })))
+  const temp = []
+  if (customCageObject.length > 0) {
+    const a = customCageObject.map(c => ({ cageId: c[0].cage[0]._id, quantity: 1, price: c[0].cage[0].price, isCustom: true }))
+    console.log([...cageArray, ...a])
+    temp.push([...cageArray, ...a])
+  } else {
+    temp.push([...cageArray])
+  }
+  console.log(temp)
   useEffect(() => {
 
 
@@ -34,6 +43,7 @@ export default function Paypal({ total, customCageObject, customer }) {
               ],
             });
           },
+
           onApprove: async (data, actions) => {
             const order = await actions.order.capture();
             fetch("http://localhost:5000/api/v1/order", {
@@ -50,14 +60,14 @@ export default function Paypal({ total, customCageObject, customer }) {
                     address: customer.customer[0].address,
                     total: total,
                     shipFee: 20,
-                    cageArray: customCageObject.length === 0 ? cageArray : [...cageArray, { cageId: customCageObject._id, quantity: 1, price: customCageObject.price, isCustom: true }]
+                    cageArray: temp
                   }
                 )
             })
               .then(res => console.log("create order"))
             // console.log(order);
-            localStorage.clear();
-            navigate("/"); // Chuyển hướng về trang chủ sau khi thanh toán hoàn tất
+            // localStorage.clear();
+            // navigate("/"); // Chuyển hướng về trang chủ sau khi thanh toán hoàn tất
             // window.location.reload();
           },
           onError: (err) => {

@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import UseToken from "../handleToken/UseToken";
 import Paypal from "./Paypal";
-function List({ customCageObject, customer }) {
+function List({ customCageObject, customer, componentApprovedCage }) {
   console.log("List.js", customCageObject)
   const { getToken } = UseToken()
   const [state, dispatch] = useStore()
@@ -24,6 +24,9 @@ function List({ customCageObject, customer }) {
   const [customCage, setCustomCage] = useState([])
   const [component, setComponent] = useState([])
   const navigate = useNavigate()
+
+  console.log("COMPONENT IN PAYMENT: ", componentApprovedCage)
+  console.log("CUS OBJ ", customCageObject)
   useEffect(() => {
     setList([])
     Promise.all(
@@ -40,6 +43,7 @@ function List({ customCageObject, customer }) {
       )
     )
       .then(res => {
+        console.log("46 res", res);
         const overStockList = res.filter(item => item.cartQuantity > item.data.data.component.inStock)
         const deletedCagesList = res.filter(item => item.data.data.component.delFlg === true)
 
@@ -52,6 +56,8 @@ function List({ customCageObject, customer }) {
 
       })
   }, []);
+
+
   useEffect(() => {
     fetch("http://localhost:5000/api/v1/cage/customCages/" + jwtDecode(getToken()).id, {
       method: "GET",
@@ -97,7 +103,7 @@ function List({ customCageObject, customer }) {
     setSubTotal(tmp);
   };
 
-
+  console.log(overStockCages)
   return (
     <div className="w-full lg:absolute lg:right-[75px]">
       {open ? <div>
@@ -150,52 +156,67 @@ function List({ customCageObject, customer }) {
                 <div className="text-[14px] w-[15%] text-right">${i.cage?.price * i.cartQuantity}</div>
               </div>
             ))}
-            {customCage.length === 0 ? "" :
-              <>
-                <div className="custom-box-payment">
-                  <h2>Custom Cage</h2>
-                  {component.map(com =>
-                    <div className="w-full flex justify-between items-center rounded-lg mb-5">
-                      <img className="image-component-payment" src={com.data.component.imagePath} />
-                      {com.data.component.name}
-                    </div>)}
-                  <div
-                    className="w-full flex justify-between items-center rounded-lg mb-5"
-                  >
-                    <div className="flex items-center w-[80%]">
-                      <div className="ml-3 w-[70%]">
-                        <p
-                          className="leading-5 text-[14px] truncate-cus"
-                        >
-                          <div>
-                            <span style={{ width: "50px", fontSize: "14px" }}>Length:</span>
-                            {customCage.length}
-                          </div>
-                          <div>
-                            <span style={{ width: "50px", fontSize: "14px" }}>Width:</span>
-                            {customCage.width}
-                          </div>
-                          <div>
-                            <span style={{ width: "50px", fontSize: "14px" }}>Height:</span>
-                            {customCage.height}
-                          </div>
 
+            <>
+              <div className="custom-box-payment">
+                <h2 style={{ padding: "10px" }}>Custom Cage</h2>
+                <div className='cart-row-custom'>
 
-                        </p>
+                  {
+                    componentApprovedCage.map((com, index) =>
+                      <div className='component-names' style={{ background: "#fff" }}>
+                        <div className='component-name'>
+                          {com.map(item =>
+                            <div className='component-name-image'>
+                              <span>{item.data.component.name}</span>
+                              <img className='image-component-custom' src={item.data.component.imagePath} />
+                            </div>
+                          )}
+                        </div>
+                        <div className='content-custom-cage'>
+                          <div className='product-info custom-product-infor'>
+                            <div className='price'>
+                              <span>Price:</span>
+                              <span className='money'>
+                                {customCageObject[index][0].cage[0].price + "$"}
+
+                              </span>
+                            </div>
+                            <div className='custom-cage-create-date'>
+                              <span>Create:</span>
+                              {customCageObject[index][0].cage[0].createDate}
+                            </div>
+                            <div className='size-cage'>
+                              <div className='size'>
+                                <span>Width:</span>
+                                <span>{customCageObject[index][0].cage[0].width}</span>
+                              </div>
+                              <div className='size'>
+                                <span>Height:</span>
+                                <span>{customCageObject[index][0].cage[0].height}</span>
+                              </div>
+                              <div className='size'>
+                                <span>Length:</span>
+                                <span>{customCageObject[index][0].cage[0].length}</span>
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                    <div className="text-[14px] w-[15%] text-right">${customCage.price}</div>
-                  </div>
+                    )
+                  }
                 </div>
+              </div>
 
 
-              </>
+            </>
 
-            }
+
             <div className="w-full md:w-[60%] mx-auto">
               <div className="w-full flex items-center justify-between mb-2">
                 <span className="text-[14px]">Subtotal</span>
-                <span className="text-[14px] font-bold">${subTotal + (customCage.length !== 0 ? customCage.price : 0)}</span>
+                <span className="text-[14px] font-bold">${subTotal + customCageObject.map(c => c[0].cage[0].price).reduce((acc, curr) => acc + curr, 0)}</span>
               </div>
               <div className="w-full flex items-center justify-between mb-2">
                 <span className="text-[14px]">Shipping</span>
@@ -203,14 +224,14 @@ function List({ customCageObject, customer }) {
               </div>
               <div className="w-full flex items-center justify-between mb-2">
                 <span className="text-[17px] font-bold">Total</span>
-                <span className="text-[17px] font-bold" >${subTotal + shipping + (customCage.length !== 0 ? customCage.price : 0)}</span>
+                <span className="text-[17px] font-bold" >${subTotal + shipping + customCageObject.map(c => c[0].cage[0].price).reduce((acc, curr) => acc + curr, 0)}</span>
               </div>
             </div>
             <Paypal
               style={{ width: "100%" }}
               customer={customer}
               customCageObject={customCageObject ? customCageObject : null}
-              total={subTotal + shipping + (customCage.length !== 0 ? customCage.price : "")} />
+              total={subTotal + shipping + customCageObject.map(c => c[0].cage[0].price).reduce((acc, curr) => acc + curr, 0)} />
           </div>
 
         </>

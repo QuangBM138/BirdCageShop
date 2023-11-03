@@ -14,28 +14,42 @@ function Payment() {
   const [isShow, setIsShow] = useState(false);
   const [state, dispatch] = useStore();
   const { getToken } = UseToken()
-  const [customCage, setCustomCage] = useState([])
   const [customer, setCustomer] = useState([])
+  const [customCageList, setCustomCageList] = useState([])
+  const [component, setComponent] = useState([])
+  const [listCageCustomStatusCus, setListCageCustomStatusCus] = useState([])
   const cart = state;
   useEffect(() => {
-    fetch("http://localhost:5000/api/v1/cage/customCages/" + jwtDecode(getToken()).id, {
-      method: "GET",
-      contentType: 'application/json',
-      headers: {
-        'Authorization': `Bearer ${getToken()}`
-      }
-    })
-      .then(res => res.json())
-      .then(cage => {
-        const cageCustom = cage.map(i => i[0])
-        if (cageCustom[0].cage[0].status === "CUS") {
-          setCustomCage(cageCustom[0].cage[0])
-        } else {
-          setCustomCage([])
+    if (getToken() != null) {
+      fetch("http://localhost:5000/api/v1/cage/customCages/" + jwtDecode(getToken()).id, {
+        method: "GET",
+        contentType: 'application/json',
+        headers: {
+          'Authorization': `Bearer ${getToken()}`
         }
+      })
+        .then(res => res.json())
+        .then(cageComponents => {
+          const cageCustomList = cageComponents.filter(i =>
+            i[0].cage[0].status === "Pending" || i[0].cage[0].status === "CUS"
+          )
+          setListCageCustomStatusCus(cageCustomList.filter(i => i[0].cage[0].status === "CUS"))
+          setCustomCageList(cageCustomList.map(i => i[0]))
 
-      }
-      )
+          cageCustomList.filter(i => i[0].cage[0].status === "CUS")
+            .map(cage =>
+              Promise.all(cage[0].component.map(c =>
+                new Promise(res => res(fetch("http://localhost:5000/api/v1/component/" + c._id))
+                )
+                  .then(res => res.json())
+              )
+              )
+                .then(data => setComponent(prev => [...prev, data]))
+            )
+        })
+        .catch(err => console.log(err))
+    }
+
     // get user profile
     fetch("http://localhost:5000/api/v1/account/" + jwtDecode(getToken()).id)
       .then(res => res.json())
@@ -44,9 +58,11 @@ function Payment() {
       })
   }, [])
 
+  console.log("payment.js", listCageCustomStatusCus.length)
 
-  if (cart.length < 1 && customCage) return <Navigate to="/cart" replace />;
-  console.log("payment.js", customCage)
+  console.log("payment.js", cart.length)
+  if (!cart && !listCageCustomStatusCus) return <Navigate to="/cart" replace />;
+
   return (
     <div className="w-full min-h-screen">
       <div className="w-full relative">
@@ -101,8 +117,9 @@ function Payment() {
         <div className="hidden lg:block absolute right-0 top-0 bg-[#f5f5f5] h-[100vh] hide-scroll overflow-y-scroll w-full lg:w-[50%] pt-[30px] border-cus">
           <div className="w-full">
             <List
+              componentApprovedCage={component ? component : []}
               customer={customer}
-              customCageObject={customCage ? customCage : []} />
+              customCageObject={listCageCustomStatusCus ? listCageCustomStatusCus : []} />
           </div>
         </div>
         <div className="block lg:hidden overflow-y-scroll w-[80%] mx-auto mt-8 lg:w-[50%] pt-[30px]">
@@ -116,7 +133,7 @@ function Payment() {
             </span>
           </div>
           {isShow ? (
-            <List customCageObject={customCage} />
+            <List customCageObject={listCageCustomStatusCus} />
           ) : (
             <div className="w-full md:w-[60%] mx-auto">
               <div className="w-full flex items-center justify-between mb-2">

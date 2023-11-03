@@ -20,6 +20,7 @@ export default function Cart() {
     const [customCageList, setCustomCageList] = useState([])
     const [component, setComponent] = useState([])
     const [listCageCustomStatusCus, setListCageCustomStatusCus] = useState([])
+    const [isHavingCus, setIsHavingCus] = useState(false)
     const token = getToken()
     console.log(getToken())
     useEffect(() => {
@@ -59,36 +60,44 @@ export default function Cart() {
         setCustomCageList([])
         setListCageCustomStatusCus([])
     }, [getToken()])
+
+    // check before go to payment
     const handleCheckout = () => {
         if (getToken() == null) { navigate('/login', { state: { previousPath: pathname } }) }
         else {
-            setOpen(true)
-            Promise.all(
-                state.map(item =>
-                    new Promise(res =>
-                        res(fetch("http://localhost:5000/api/v1/cage/" + item.cage._id))
+            if (listCageCustomStatusCus.length > 0 && state.length == 0) {
+                navigate('/payment')
+            } else {
+                setOpen(true)
+                Promise.all(
+                    state.map(item =>
+                        new Promise(res =>
+                            res(fetch("http://localhost:5000/api/v1/cage/" + item.cage._id))
+                        )
+                            .then(res => res.json())
+                            .then(data => ({ data: data, cartQuantity: item.cartQuantity }))
                     )
-                        .then(res => res.json())
-                        .then(data => ({ data: data, cartQuantity: item.cartQuantity }))
                 )
-            )
-                .then(res => {
-                    const overStockList = res.filter(item => item.cartQuantity > item.data.data.component.inStock)
-                    const deletedCageList = res.filter(item => item.data.data.component.delFlg === true)
-                    console.log("resposne cart: ", res)
+                    .then(res => {
+                        console.log("Có ch")
+                        const overStockList = res.filter(item => item.cartQuantity > item.data.data.component.inStock)
+                        const deletedCageList = res.filter(item => item.data.data.component.delFlg === true)
+                        console.log("resposne cart: ", res)
 
 
-                    setTimeout(() => {
-                        setOverStockCages(overStockList)
-                        setDeletedCages(deletedCageList)
-                        setOpen(false)
-                        if (overStockList.length === 0) navigate('/payment')
-                    }, 3000)
+                        setTimeout(() => {
+                            setOverStockCages(overStockList)
+                            setDeletedCages(deletedCageList)
+                            setOpen(false)
+                            if (overStockList.length === 0) navigate('/payment')
+                        }, 3000)
 
-                })
+                    })
+            }
+
         }
     }
-    console.log("182 customCageList: ", listCageCustomStatusCus.map(c => c[0].cage[0].price))
+
     const cart = state
     return (
         <Container style={{ minHeight: "50vh" }}>
