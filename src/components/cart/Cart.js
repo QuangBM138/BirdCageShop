@@ -19,7 +19,7 @@ export default function Cart() {
     const [deletedCages, setDeletedCages] = useState([])
     const [customCageList, setCustomCageList] = useState([])
     const [component, setComponent] = useState([])
-    const [price, setPriceCageCustom] = useState(0)
+    const [listCageCustomStatusCus, setListCageCustomStatusCus] = useState([])
     useEffect(() => {
         if (getToken() != null) {
             fetch("http://localhost:5000/api/v1/cage/customCages/" + jwtDecode(getToken()).id, {
@@ -31,35 +31,32 @@ export default function Cart() {
             })
                 .then(res => res.json())
                 .then(cageComponents => {
-                    console.log(cageComponents);
-                    const cageComponentsList = cageComponents.map(i => i[0].cage[0])
-
-                    if (cageComponentsList.find(i => i.status == "CUS")) {
-                        setPriceCageCustom(cageComponentsList.find(i => i.status == "CUS").price)
-                    }
-
-                    console.log(cageComponents[0][0].component);
-                    if (cageComponentsList.find(i => i.status == "Done")) {
-                        setCustomCageList([])
-                    }
-                    console.log(cageComponentsList.find(i => i.status == "Pending"))
-                    if (cageComponentsList.find(i => i.status == "Pending")) {
-
-                        setCustomCageList(cageComponentsList.find(i => i.status == "Pending"))
-                    }
-
-                    Promise.all(
-                        cageComponents[0][0].component.map(c =>
-                            new Promise(res => res(fetch("http://localhost:5000/api/v1/component/" + c._id))
-                            ).then(res => res.json())
-                        )
-
+                    const cageCustomList = cageComponents.filter(i =>
+                        i[0].cage[0].status === "Pending" || i[0].cage[0].status === "CUS"
                     )
-                        .then(data => {
-                            console.log(data)
-                            setComponent(data)
-                        })
+                    const componentsCage = cageComponents.map(i => Object.assign({}, i[0]))
+                    console.log("componentsCage ", cageCustomList)
 
+                    // cageCustomList.forEach(element => {
+                    //     console.log("cageComponentsList: ", element[0].status)
+                    // })
+
+                    // console.log(cageCustomList.filter(i => i[0].status === "Pending"))
+                    // if (cageCustomList.find(i => i.status == "CUS")) {
+                    setListCageCustomStatusCus(cageCustomList.filter(i => i[0].status === "CUS"))
+                    setCustomCageList(cageCustomList.map(i => i[0]))
+
+                    let i = 0
+                    cageCustomList
+                        .map(cage =>
+                            Promise.all(cage[0].component.map(c =>
+                                new Promise(res => res(fetch("http://localhost:5000/api/v1/component/" + c._id))
+                                )
+                                    .then(res => res.json())
+                            )
+                            )
+                                .then(data => setComponent(prev => [...prev, data]))
+                        )
                 })
                 .catch(err => console.log(err))
         }
@@ -115,7 +112,8 @@ export default function Cart() {
             </div> : ""}
 
             {
-                cart.length == 0 ?
+                // no cage có sẵn và list cage custom không có
+                cart.length == 0 && !customCageList ?
                     (
                         <div className='cart-empty'>
                             <img src="https://dt-pet-care.myshopify.com/cdn/shop/t/4/assets/empty-cart.png?v=124674504766911058681621590307" />
@@ -141,15 +139,22 @@ export default function Cart() {
                                             overStockCages={overStockCages} />
                                     </>}
                                 </div>
+                                {/* ko có list custom thì ẩn đi */}
+                                {
+                                    customCageList.length > 0 ?
+                                        <>
+                                            <div className='cart-row-header'>
+                                                <h2>Custom Cage</h2>
+                                            </div>
+                                            <CustomItem
+                                                component={component}
+                                                customCageList={customCageList}
+                                            />
+                                        </>
+                                        :
+                                        ""
+                                }
 
-
-                                <div className='cart-row-header'>
-                                    <h2>Custom Cage</h2>
-                                </div>
-                                <CustomItem
-                                    component={component}
-                                    customCageList={customCageList}
-                                />
 
 
                             </div>
@@ -177,12 +182,12 @@ export default function Cart() {
                                             marginBottom: "15px"
                                         }}
                                     >
-                                        {price == 0 ?
+                                        {/* {price == 0 ?
                                             cart.reduce((acc, curr) =>
                                                 acc + curr.cage.price * curr.cartQuantity
                                                 , 0) : cart.reduce((acc, curr) =>
                                                     acc + curr.cage.price * curr.cartQuantity
-                                                    , price)}
+                                                    , price)}$ */}
 
                                     </span>
                                 </p>

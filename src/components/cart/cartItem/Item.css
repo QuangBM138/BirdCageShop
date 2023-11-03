@@ -169,7 +169,10 @@
 .custom-product-infor {
     display: flex;
     flex-flow: column;
+    width: 50%;
     border: 1px solid #ddd;
+    padding: 10px;
+
 }
 
 .custom-product-infor .price {
@@ -186,14 +189,15 @@
 
 .custom-cage-create-date {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 
 .size-cage .size {
     display: flex;
     flex-flow: row;
-    justify-content: space-around;
+    justify-content: space-between;
+
 }
 
 .image-component-custom {
@@ -204,18 +208,20 @@
 }
 
 .cart-row-custom {
-    border: 1px solid #ddd;
     padding: 10px;
 }
 
 .component-names {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
 }
 
 .component-name {
     display: flex;
-    flex-flow: column;
+    justify-content: space-between;
 }
 
 .image-status {
@@ -223,6 +229,14 @@
 }
 
 .content-custom-cage {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.component-name-image {
+    display: flex;
+    padding: 10px;
+    flex-flow: column;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    text-align: center;
 }

@@ -195,29 +195,29 @@ export default function CustomCage() {
           .then(res => res.json())
           .then(data => {
             const cageComponentsList = data.map(i => i[0])
-            console.log(cageComponentsList[0].cage[0].status)
-            if (cageComponentsList[0].cage[0].status !== "CUS" && cageComponentsList[0].cage[0].status !== "Pending") {
-              return new Promise(res =>
-                res(fetch("http://localhost:5000/api/v1/cage", {
-                  method: "POST",
-                  body: JSON.stringify(customCage),
-                  headers: {
-                    "Content-Type": "application/json"
-                  }
-                }))
-              ).then(res => res.json())
-                .then(res => {
-                  console.log("zozo");
-                  setTimeout(() => {
-                    setOpen(false)
-                    navigate('/cart')
-                  }, 3000)
-                })
-            }
-            else {
-              setOpen(false)
-              warningOrderSubmit.current.innerText = "You are having a custom cage in cart"
-            }
+            console.log(cageComponentsList)
+            // if (cageComponentsList[0].cage[0].status !== "CUS" && cageComponentsList[0].cage[0].status !== "Pending") {
+            return new Promise(res =>
+              res(fetch("http://localhost:5000/api/v1/cage", {
+                method: "POST",
+                body: JSON.stringify(customCage),
+                headers: {
+                  "Content-Type": "application/json"
+                }
+              }))
+            ).then(res => res.json())
+              .then(res => {
+                console.log("zozo");
+                setTimeout(() => {
+                  setOpen(false)
+                  navigate('/cart')
+                }, 3000)
+              })
+            // }
+            // else {
+            //   setOpen(false)
+            //   warningOrderSubmit.current.innerText = "You are having a custom cage in cart"
+            // }
           })
 
         socket.emit('send_request_custom_cage', { userId: "AAA", status: "request" })
