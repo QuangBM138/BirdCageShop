@@ -20,6 +20,8 @@ export default function Cart() {
     const [customCageList, setCustomCageList] = useState([])
     const [component, setComponent] = useState([])
     const [listCageCustomStatusCus, setListCageCustomStatusCus] = useState([])
+    const token = getToken()
+    console.log(getToken())
     useEffect(() => {
         if (getToken() != null) {
             fetch("http://localhost:5000/api/v1/cage/customCages/" + jwtDecode(getToken()).id, {
@@ -34,19 +36,9 @@ export default function Cart() {
                     const cageCustomList = cageComponents.filter(i =>
                         i[0].cage[0].status === "Pending" || i[0].cage[0].status === "CUS"
                     )
-                    const componentsCage = cageComponents.map(i => Object.assign({}, i[0]))
-                    console.log("componentsCage ", cageCustomList)
-
-                    // cageCustomList.forEach(element => {
-                    //     console.log("cageComponentsList: ", element[0].status)
-                    // })
-
-                    // console.log(cageCustomList.filter(i => i[0].status === "Pending"))
-                    // if (cageCustomList.find(i => i.status == "CUS")) {
-                    setListCageCustomStatusCus(cageCustomList.filter(i => i[0].status === "CUS"))
+                    setListCageCustomStatusCus(cageCustomList.filter(i => i[0].cage[0].status === "CUS"))
                     setCustomCageList(cageCustomList.map(i => i[0]))
 
-                    let i = 0
                     cageCustomList
                         .map(cage =>
                             Promise.all(cage[0].component.map(c =>
@@ -63,6 +55,10 @@ export default function Cart() {
 
 
     }, [])
+    useEffect(() => {
+        setCustomCageList([])
+        setListCageCustomStatusCus([])
+    }, [getToken()])
     const handleCheckout = () => {
         if (getToken() == null) { navigate('/login', { state: { previousPath: pathname } }) }
         else {
@@ -92,7 +88,7 @@ export default function Cart() {
                 })
         }
     }
-
+    console.log("182 customCageList: ", listCageCustomStatusCus.map(c => c[0].cage[0].price))
     const cart = state
     return (
         <Container style={{ minHeight: "50vh" }}>
@@ -113,7 +109,7 @@ export default function Cart() {
 
             {
                 // no cage có sẵn và list cage custom không có
-                cart.length == 0 && !customCageList ?
+                cart.length == 0 && customCageList.length == 0 ?
                     (
                         <div className='cart-empty'>
                             <img src="https://dt-pet-care.myshopify.com/cdn/shop/t/4/assets/empty-cart.png?v=124674504766911058681621590307" />
@@ -141,7 +137,7 @@ export default function Cart() {
                                 </div>
                                 {/* ko có list custom thì ẩn đi */}
                                 {
-                                    customCageList.length > 0 ?
+                                    (customCageList.length > 0) ?
                                         <>
                                             <div className='cart-row-header'>
                                                 <h2>Custom Cage</h2>
@@ -182,13 +178,12 @@ export default function Cart() {
                                             marginBottom: "15px"
                                         }}
                                     >
-                                        {/* {price == 0 ?
+                                        {
                                             cart.reduce((acc, curr) =>
                                                 acc + curr.cage.price * curr.cartQuantity
-                                                , 0) : cart.reduce((acc, curr) =>
-                                                    acc + curr.cage.price * curr.cartQuantity
-                                                    , price)}$ */}
-
+                                                , 0) + listCageCustomStatusCus.map(c => c[0].cage[0].price).reduce((acc, curr) => acc + curr, 0)
+                                        }
+                                        $
                                     </span>
                                 </p>
 

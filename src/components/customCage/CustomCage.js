@@ -220,7 +220,7 @@ export default function CustomCage() {
             // }
           })
 
-        socket.emit('send_request_custom_cage', { userId: "AAA", status: "request" })
+        socket.emit('send_request_custom_cage', { userId: jwtDecode(getToken()).id, status: "request" })
 
 
       }
