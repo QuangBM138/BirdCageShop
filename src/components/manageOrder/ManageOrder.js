@@ -3,13 +3,55 @@ import { Products_Cage } from '../../data/CagesNewest';
 import './ManageOrder.css'
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import { Link } from 'react-router-dom';
+import jwtDecode from 'jwt-decode';
+import UseToken from '../handleToken/UseToken';
 
 export default function ManageOrder() {
-    // const [status, setStatus] = useState("");
+    const [status, setStatus] = useState("");
     // const [cageImage, setCageImage] = useState("");
     // const [cageName, setCageName] = useState("");
     // const [cagePrice, setCagePrice] = useState("");
-    // const []
+    // const [total, setTotal] = useState("");
+    // const { getToken } = UseToken();
+    // const [orderId, setOrderId] = useState("");
+    // const userId = jwtDecode(getToken()).id;
+    // useEffect(() => {
+    //     // Fetch the user's existing information and populate the form fields
+    //     fetch(`http://localhost:5000/api/v1/order/getOrderByUser/${userId}`, {
+    //         method: 'GET',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },
+    //     })
+    //         .then((response) => response.json())
+    //         .then((data) => {
+    //             // console.log(data)
+    //             setOrderId(data.orderByStatus.Canceled[indexedDB].id);
+    //             console.log(orderId)
+    //         })
+
+    //         .catch((error) => {
+    //             console.log(error);
+
+    //         });
+    //     fetch(`http://localhost:5000/api/v1/order/${orderId}`, {
+    //         method: 'GET',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },
+    //     })
+    //         .then((response) => response.json())
+    //         .then((data) => {
+    //             console.log(data)
+    //             setStatus(data.data.order.status)
+    //             console.log(status)
+    //         })
+
+    //         .catch((error) => {
+    //             console.log(error);
+
+    //         });
+    // }, []);
     return (
         <div>
             <h4 className='oh_h4'>Order History</h4>
@@ -29,7 +71,7 @@ export default function ManageOrder() {
             <div className='history_order_design'>
                 <div className='myorder_successful'>
                     <div className='success_p'>
-                        <p>Successful delivery</p>
+                        <p></p>
                     </div>
                     <div className='product_design'>
                         {Products_Cage.slice(0, 2).map((product, index) => (
