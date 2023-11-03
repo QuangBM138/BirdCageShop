@@ -33,8 +33,8 @@ export default function CustomItem({ customCageList, component }) {
                             }
                             <div className='product-info custom-product-infor'>
                                 <div className='price'>
-                                    <span>Price:</span>
-                                    <span className='money'>
+                                    <span style={{ fontSize: "20px", fontWeight: 700 }}>Price:</span>
+                                    <span className='money' style={{ color: 'rgb(255, 197, 25)' }}>
                                         {pendingList[index].cage[0].price === undefined ? "Waiting" : pendingList[index].cage[0].price + "$"}
                                     </span>
                                 </div>
@@ -55,6 +55,15 @@ export default function CustomItem({ customCageList, component }) {
                                         <span>Length:</span>
                                         <span>{pendingList[index].cage[0].length}</span>
                                     </div>
+                                    {pendingList[index].cage[0].description ?
+                                        <div className='size'>
+
+                                            <span>Description:</span>
+                                            <span>{pendingList[index].cage[0].description}</span>
+                                        </div>
+                                        : ""
+                                    }
+
                                 </div>
 
                             </div>
