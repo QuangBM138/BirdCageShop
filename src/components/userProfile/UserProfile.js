@@ -11,6 +11,7 @@ export default function UserProfile() {
     const [lastName, setLastName] = useState('');
     const [firstName, setFirstName] = useState('');
     const [point, setPoint] = useState('');
+    const [phone, setPhone] = useState('');
     const { getToken } = UseToken()
     console.log("token", jwtDecode(getToken()).id)
     useEffect(() => {
@@ -18,26 +19,27 @@ export default function UserProfile() {
             userId: jwtDecode(getToken()).id,
             lastName,
             firstName,
-            point
+            point,
+            phone
         }
-        fetch("http://localhost:5000/api/v1/customer/:id", {
-            method: "GEt",
-            body: JSON.stringify(userData),
+        fetch(`http://localhost:5000/api/v1/account/${userData.userId}`, {
+            method: "GET",
             headers: {
                 "Content-Type": "application/json"
             }
         })
-            .then((response) => {
-                const data = response.data;
-                setFirstName(data.firstName);
-                setLastName(data.lastName);
-                setPoint(data.point)
+            .then((response) => response.json()) // Parse the response as JSON
+            .then((data) => {
+                console.log(data);
+                setFirstName(data.data.customer[0].firstName);
+                setLastName(data.data.customer[0].lastName);
+                setPoint(data.data.customer[0].point);
+                setPhone(data.data.customer[0].account[0].phoneNumber)
             })
             .catch((error) => {
                 console.log(error);
             });
-
-    })
+    }, [getToken]);
     return (
         <div className='user_container'>
             <div className='user_profile'>
@@ -56,7 +58,7 @@ export default function UserProfile() {
                                     <td className='table_td_2'>
                                         <div className='td_div_1'>
                                             <div className='td_div_name'>{firstName} {lastName}</div>
-                                            <div className='td_div_score'>{point}</div>
+                                            {/* <div className='td_div_score'>{point}</div> */}
                                         </div>
                                     </td>
                                 </tr>
@@ -66,12 +68,12 @@ export default function UserProfile() {
                                     </td>
                                     <td className='table_td_2'>
                                         <div className='td_div_2'>
-                                            <div className='td_div_phone'>*********40</div>
+                                            <div className='td_div_phone'>{phone}</div>
                                         </div>
 
                                     </td>
                                 </tr>
-                                <tr className='table_tr'>
+                                {/* <tr className='table_tr'>
                                     <td className='table_td_1'>
                                         <label>Birthday:</label>
                                     </td>
@@ -83,7 +85,7 @@ export default function UserProfile() {
                                         </div>
 
                                     </td>
-                                </tr>
+                                </tr> */}
 
                                 <tr className='table_tr'>
                                     <td className='table_td_1'>
@@ -93,9 +95,9 @@ export default function UserProfile() {
                                         <div className='td_div_4'>
 
 
-                                            <Link to={'editprofile'} className='td_link'>Edit Information</Link>
+                                            <Link to={`editprofile/${jwtDecode(getToken()).id}`} className='td_link'>Edit Information</Link>
                                             <Link to={'/manageorder'} className='td_link'>Manage Order</Link>
-                                            <Link to={'address'} className='td_link'>View Address</Link>
+                                            <Link to={`address`} className='td_link'>View Address</Link>
                                         </div>
                                     </td>
                                 </tr>

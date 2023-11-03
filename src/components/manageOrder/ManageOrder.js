@@ -5,33 +5,19 @@ import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import { Link } from 'react-router-dom';
 
 export default function ManageOrder() {
-    const [img, setImg] = useState([]);
-
-    // Format the image data once when the component mounts or when product.images changes
-    // useEffect(() => {
-    //     if (Products_Cage && Products_Cage.images) {
-    //         const regx = /:\[\d{3},\d{3}]/g;
-    //         const regxQuotes = /(\"{|\\|}")/g;
-    //         const regxCurlyBraces = /(\{)/g;
-    //         const regxCurlyBraces2 = /(\})/g;
-
-    //         const formattedImages = Products_Cage.images
-    //             .replace(regx, '')
-    //             .replace(regxQuotes, '[')
-    //             .replace(regxCurlyBraces2, ']')
-    //             .replace(regxCurlyBraces, '[');
-
-    //         setImg(JSON.parse(formattedImages));
-    //     }
-
-    // }, [Products_Cage]);
+    // const [status, setStatus] = useState("");
+    // const [cageImage, setCageImage] = useState("");
+    // const [cageName, setCageName] = useState("");
+    // const [cagePrice, setCagePrice] = useState("");
+    // const []
     return (
         <div>
             <h4 className='oh_h4'>Order History</h4>
             <nav class="uk-navbar-container" uk-navbar>
                 <div class="uk-navbar uk-align-center">
                     <ul class="uk-navbar-nav ">
-                        <li class="uk-parent"><a href="" className='active'>Completed</a></li>
+                        <li class="uk-parent"><a href="" className='active'>All Order</a></li>
+                        <li class="uk-parent"><a href="">Completed</a></li>
                         <li class="uk-parent"><a href="">Pending</a></li>
                         <li class="uk-parent"><a href="">Making Products</a></li>
                         <li class="uk-parent"><a href="">Delivering</a></li>

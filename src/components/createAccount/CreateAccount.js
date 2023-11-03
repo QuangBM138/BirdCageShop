@@ -13,10 +13,15 @@ export default function () {
     const [isLoading, setLoading] = useState(false)
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
+    const [address, setAddress] = useState("")
     const navigate = useNavigate()
     // on change first name
     const handleChangeFirstName = e => {
         setFirstName(e.target.value)
+    }
+
+    const handleChangeAddress = e => {
+        setAddress(e.target.value)
     }
 
     // on change last name 
@@ -137,6 +142,8 @@ export default function () {
                                 {checkValidPassword ? "" : "Password must be 6-20 characters"}
                             </div>
                         </div>
+
+
                         <div
                             style={{ display: "flex", justifyContent: "space-between", padding: "0px 20px" }}
                             className='btn_design'>
