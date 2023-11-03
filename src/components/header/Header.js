@@ -104,7 +104,7 @@ const Header = () => {
 
         {/* <h3 className="logo">Bird Cage Shop</h3> */}
         {/* <img src="//dt-pet-care.myshopify.com/cdn/shop/files/logo_300x300.png?v=1625137186" /> */}
-        <img src={logo} style={{width: '130px', height: '90px', marginTop: '-10px', marginBottom: '-10px'}}/>
+        <img src={logo} style={{ width: '130px', height: '90px', marginTop: '-10px', marginBottom: '-10px' }} />
         <div className="info">
           <ul className={Mobile ? "nav-links-mobile" : "nav-links"}>
             <li>
