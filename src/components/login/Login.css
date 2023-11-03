@@ -37,7 +37,7 @@
 
 .invalid-phone,
 .invalid-create {
-    padding: 10px 20px;
+    padding: 5px 20px;
     color: red;
 }
 
@@ -307,7 +307,7 @@
     }
 
     .password_input {
-        padding: 10px 20px;
+        padding: 5px 20px;
     }
 
     .h1_design h1 {
@@ -351,6 +351,6 @@
 
     .user_acount {
         margin: 0px 250px;
-        padding: 30px;
+        padding: 15px;
     }
 }

@@ -38,119 +38,119 @@ function App() {
   }, [pathname]);
   console.log("pathname: ", pathname);
   return (
-    <PayPalScriptProvider  options={{ "client-id": process.env.REACT_APP_PAYPAL_CLIENT_ID }}>
-    <div className="App" style={{ background: "#fff" }}>
-      <Header></Header>
-      <Routes>
-        <Route path="/detail/:id" element={<ProductDetailPage />}></Route>
-        <Route path="/" element={<HomePage />}></Route>
-        <Route
-          path="/manageorder"
-          element={
-            <ProtectedRoute page="profile" user={getToken} >
-              <ManageOrder />
-            </ProtectedRoute>
-          } />
-
-
-        <Route path="/detailorder"
-          element={
-            <ProtectedRoute page="profile" user={getToken} >
-              <DetailOrder />
-            </ProtectedRoute>
-          }
-        />
-        <Route path="/cart" element={<CartPage />}></Route>
-        <Route path="/search" element={<SearchPage />}></Route>
-        <Route path="/user">
+    <PayPalScriptProvider options={{ "client-id": process.env.REACT_APP_PAYPAL_CLIENT_ID }}>
+      <div className="App" style={{ background: "#fff" }}>
+        <Header></Header>
+        <Routes>
+          <Route path="/detail/:id" element={<ProductDetailPage />}></Route>
+          <Route path="/" element={<HomePage />}></Route>
           <Route
-            index={true}
-            element={
-              <ProtectedRoute page="profile" user={getToken}>
-                <UserProfile />
-              </ProtectedRoute>
-            }
-          >
-          </Route>
-          <Route
-            index={false}
-            path="manageorder"
+            path="/manageorder"
             element={
               <ProtectedRoute page="profile" user={getToken} >
                 <ManageOrder />
               </ProtectedRoute>
-            }
-          />
-          <Route
-            index={false}
-            path="editprofile"
+            } />
+
+
+          <Route path="/detailorder"
             element={
               <ProtectedRoute page="profile" user={getToken} >
-                <EditProfile />
+                <DetailOrder />
               </ProtectedRoute>
-            }>
-          </Route>
-
-          <Route index={false} path="address">
+            }
+          />
+          <Route path="/cart" element={<CartPage />}></Route>
+          <Route path="/search" element={<SearchPage />}></Route>
+          <Route path="/user">
             <Route
               index={true}
               element={
-                <ProtectedRoute page="profile" user={getToken} >
-                  <Address />
-                </ProtectedRoute>
-              }
-            >
-
-            </Route>
-            <Route
-              index={false}
-              path="editaddress"
-              element={
-                <ProtectedRoute page="profile" user={getToken} >
-                  <EditAddress />
+                <ProtectedRoute page="profile" user={getToken}>
+                  <UserProfile />
                 </ProtectedRoute>
               }
             >
             </Route>
             <Route
-              path="addnewaddress"
               index={false}
+              path="manageorder"
               element={
                 <ProtectedRoute page="profile" user={getToken} >
-                  <AddNewAddress />
+                  <ManageOrder />
                 </ProtectedRoute>
               }
             />
+            <Route
+              index={false}
+              path="editprofile/:id"
+              element={
+                <ProtectedRoute page="profile" user={getToken} >
+                  <EditProfile />
+                </ProtectedRoute>
+              }>
+            </Route>
+
+            <Route index={false} path="address">
+              <Route
+                index={true}
+                element={
+                  <ProtectedRoute page="profile" user={getToken} >
+                    <Address />
+                  </ProtectedRoute>
+                }
+              >
+
+              </Route>
+              <Route
+                index={false}
+                path="editaddress"
+                element={
+                  <ProtectedRoute page="profile" user={getToken} >
+                    <EditAddress />
+                  </ProtectedRoute>
+                }
+              >
+              </Route>
+              <Route
+                path="addnewaddress"
+                index={false}
+                element={
+                  <ProtectedRoute page="profile" user={getToken} >
+                    <AddNewAddress />
+                  </ProtectedRoute>
+                }
+              />
+            </Route>
           </Route>
-        </Route>
-        <Route
-          path="/payment"
-          element={
-            <ProtectedRoute page="payment" user={getToken}>
-              <Payment />
-            </ProtectedRoute>
-          }>
+          <Route
+            path="/payment"
+            element={
+              <ProtectedRoute page="payment" user={getToken}>
+                <Payment />
+              </ProtectedRoute>
+            }>
 
-        </Route>
-        <Route
-          path="/login" exact
-          element={
-            <ProtectedRoute page="login" user={getToken}>
-              <Login />
-            </ProtectedRoute>
-          }>
-        </Route>
-        <Route path="/forgotpassword" element={<ForgotPassword />}></Route>
-        <Route path="/createaccount" element={<CreateAccount />}></Route>
-        <Route path="compare/:cageId1/:cageId2" element={<CompareProductsPage />} />
-        <Route path="/customcage" element={<CustomCage />} />
-        <Route path="*" element={<NotFound />}></Route>
-      </Routes>
-
+          </Route>
+          <Route
+            path="/login" exact
+            element={
+              <ProtectedRoute page="login" user={getToken}>
+                <Login />
+              </ProtectedRoute>
+            }>
+          </Route>
+          <Route path="/forgotpassword" element={<ForgotPassword />}></Route>
+          <Route path="/createaccount" element={<CreateAccount />}></Route>
+          <Route path="compare/:cageId1/:cageId2" element={<CompareProductsPage />} />
+          <Route path="/customcage" element={<CustomCage />} />
+          <Route path="*" element={<NotFound />}></Route>
+        </Routes>
 
 
-      <Footer></Footer>
-    </div>
+
+        <Footer></Footer>
+      </div>
     </PayPalScriptProvider>
   );
 }

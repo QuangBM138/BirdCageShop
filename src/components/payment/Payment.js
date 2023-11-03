@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useStore } from "../cart/store/hooks";
 import { Navigate } from "react-router";
 import Paypal from "./Paypal";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import UseToken from "../handleToken/UseToken";
 import jwtDecode from "jwt-decode";
 
@@ -15,12 +15,40 @@ function Payment() {
   const [state, dispatch] = useStore();
   const { getToken } = UseToken()
   const [customer, setCustomer] = useState([])
+  const [lastName, setLastName] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [address, setAddress] = useState('');
+  const [phone, setPhone] = useState('');
   const [customCageList, setCustomCageList] = useState([])
   const [component, setComponent] = useState([])
   const [listCageCustomStatusCus, setListCageCustomStatusCus] = useState([])
   const cart = state;
   useEffect(() => {
     if (getToken() != null) {
+      const userData = {
+        userId: jwtDecode(getToken()).id,
+        lastName,
+        firstName,
+        address,
+        phone
+      }
+      fetch(`http://localhost:5000/api/v1/account/${userData.userId}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+        .then((response) => response.json()) // Parse the response as JSON
+        .then((data) => {
+          console.log(data);
+          setFirstName(data.data.customer[0].firstName);
+          setLastName(data.data.customer[0].lastName);
+          setAddress(data.data.customer[0].address);
+          setPhone(data.data.customer[0].account[0].phoneNumber)
+        })
+        .catch((error) => {
+          console.log(error);
+        });
       fetch("http://localhost:5000/api/v1/cage/customCages/" + jwtDecode(getToken()).id, {
         method: "GET",
         contentType: 'application/json',
@@ -77,28 +105,32 @@ function Payment() {
               className="w-[80%] block px-2 py-3 my-4 rounded-md mx-auto border-input"
               placeholder="Phone number"
               disabled
-              value="0392103381"
+              value={phone}
             />
             <div className="w-[80%] mx-auto flex items-center justify-between">
               <input
                 className="w-[100%] block px-2 py-3 rounded-md border-input"
                 placeholder="Full name"
                 disabled
-                value="Tài phiệt No Name"
+                value={firstName + " " + lastName}
               />
             </div>
             <div className="w-[80%] my-4 mx-auto flex items-center justify-between">
               <input
                 className="w-[78%] block px-2 py-3 rounded-md border-input"
                 placeholder="Address"
-                value={"144/4 Ấp 4 xã 4 huyện 4 TP.4"}
+                value={address}
                 disabled
               />
+
               <div className="w-[18%] px-2 py-3 rounded-md bg-white flex justify-end">
-                <span className="hover:bg-[#ff3333] block w-full text-center rounded-md bg-[#1773B0] px-2 py-3 text-white cursor-pointer buttonEdit ">
-                  Edit
-                </span>
+                <Link to={'/user'}>
+                  <span className="hover:bg-[#ff3333] block w-full text-center rounded-md bg-[#1773B0] px-2 py-3 text-white cursor-pointer buttonEdit ">
+                    Edit
+                  </span>
+                </Link>
               </div>
+
             </div>
 
             <div className=" w-[80%] h-[60px] mx-auto mt-5 mb-4">
