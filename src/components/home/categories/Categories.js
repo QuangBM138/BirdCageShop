@@ -44,7 +44,7 @@ export default function Categories() {
                         (category, index) => (
                             <div className='category-item' key={index}>
                                 <div className='category-box'>
-                                    <img className='category-img' src={category.categoryImage} />
+                                    <img className='category-img' src="https://down-vn.img.susercontent.com/file/498d1134141d3e19a1e7014eca915f8f" />
                                     <p className='category-name' style={{ background: `${backgroundColor[index]}` }}>{category.categoryName}</p>
 
                                 </div>

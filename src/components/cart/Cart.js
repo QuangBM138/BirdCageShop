@@ -9,6 +9,8 @@ import Button from '@mui/material/Button';
 import UseToken from "../handleToken/UseToken.js";
 import jwtDecode from 'jwt-decode'
 import CustomItem from './cartItem/CustomItem.js'
+import io from "socket.io-client"
+const socket = io.connect("http://localhost:5000")
 export default function Cart() {
     const [state, dispatch] = useStore()
     const [open, setOpen] = useState(false);
@@ -21,9 +23,17 @@ export default function Cart() {
     const [component, setComponent] = useState([])
     const [listCageCustomStatusCus, setListCageCustomStatusCus] = useState([])
     const [isHavingCus, setIsHavingCus] = useState(false)
-
+    const [sockio, setIo] = useState(true)
     const token = getToken()
     console.log(getToken())
+
+    useEffect(() => {
+        socket.on("receive_accept_custom", d => {
+            console.log("on io");
+            window.location.reload();
+        })
+    }, [socket])
+
     useEffect(() => {
         setIsHavingCus(false)
         if (getToken() != null) {
@@ -59,7 +69,8 @@ export default function Cart() {
         }
 
         setIsHavingCus(true)
-    }, [])
+    }, [sockio])
+
     useEffect(() => {
         setCustomCageList([])
         setListCageCustomStatusCus([])
