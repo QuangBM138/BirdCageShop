@@ -3,8 +3,11 @@ import { useNavigate } from "react-router-dom";
 import "./Payment.css";
 import { useStore } from "../cart/store/hooks";
 import Alert from '@mui/material/Alert';
+import Swal from 'sweetalert2'
+import { actions } from "../cart/store";
 export default function Paypal({ total, customCageObject, customer }) {
   const paypal = useRef();
+
   const navigate = useNavigate(); // Import navigate
   const [state, dispatch] = useStore()
   const [noAddress, setNoaddress] = useState(false)
@@ -44,8 +47,8 @@ export default function Paypal({ total, customCageObject, customer }) {
             });
           },
 
-          onApprove: async (data, actions) => {
-            const order = await actions.order.capture();
+          onApprove: async (data, action) => {
+            const order = await action.order.capture();
             fetch("http://localhost:5000/api/v1/order", {
               method: "POST",
               headers: {
@@ -64,7 +67,24 @@ export default function Paypal({ total, customCageObject, customer }) {
                   }
                 )
             })
-              .then(res => console.log("create order"))
+              .then(res => {
+
+                Swal.fire({
+                  title: 'Thank You',
+                  text: "Check out successfully",
+                  icon: 'success',
+                  confirmButtonColor: '#3085d6',
+                  confirmButtonText: 'Yes'
+                })
+                  .then(
+
+                    result => {
+                      if (result.isConfirmed) {
+                        dispatch(actions.deleteCart([]))
+                        navigate('/manageorder')
+                      }
+                    })
+              })
             // console.log(order);
             // localStorage.clear();
             // navigate("/"); // Chuyển hướng về trang chủ sau khi thanh toán hoàn tất

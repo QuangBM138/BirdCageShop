@@ -21,9 +21,11 @@ export default function Cart() {
     const [component, setComponent] = useState([])
     const [listCageCustomStatusCus, setListCageCustomStatusCus] = useState([])
     const [isHavingCus, setIsHavingCus] = useState(false)
+
     const token = getToken()
     console.log(getToken())
     useEffect(() => {
+        setIsHavingCus(false)
         if (getToken() != null) {
             fetch("http://localhost:5000/api/v1/cage/customCages/" + jwtDecode(getToken()).id, {
                 method: "GET",
@@ -50,11 +52,13 @@ export default function Cart() {
                             )
                                 .then(data => setComponent(prev => [...prev, data]))
                         )
+                    setTimeout(() => setIsHavingCus(true), 3000)
+
                 })
                 .catch(err => console.log(err))
         }
 
-
+        setIsHavingCus(true)
     }, [])
     useEffect(() => {
         setCustomCageList([])
@@ -67,7 +71,7 @@ export default function Cart() {
         else {
             if (listCageCustomStatusCus.length > 0 && state.length == 0) {
                 navigate('/payment')
-            } else {
+            } else if (state.length > 0) {
                 setOpen(true)
                 Promise.all(
                     state.map(item =>
@@ -90,6 +94,7 @@ export default function Cart() {
                             setDeletedCages(deletedCageList)
                             setOpen(false)
                             if (overStockList.length === 0) navigate('/payment')
+
                         }, 3000)
 
                     })
@@ -108,7 +113,7 @@ export default function Cart() {
                     open={open}
                 >
                     <div className='box-loading-check'>
-                        <Button>Checking Stock</Button>
+                        <Button>Processing</Button>
                         <CircularProgress color="inherit" />
 
                     </div>

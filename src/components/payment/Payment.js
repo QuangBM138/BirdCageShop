@@ -63,7 +63,7 @@ function Payment() {
           )
           setListCageCustomStatusCus(cageCustomList.filter(i => i[0].cage[0].status === "CUS"))
           setCustomCageList(cageCustomList.map(i => i[0]))
-
+          if (cart.length === 0 && cageCustomList.filter(i => i[0].cage[0].status === "CUS").length === 0) (navigate("/cart"))
           cageCustomList.filter(i => i[0].cage[0].status === "CUS")
             .map(cage =>
               Promise.all(cage[0].component.map(c =>
@@ -84,12 +84,13 @@ function Payment() {
       .then(customer => {
         setCustomer(customer.data)
       })
+
   }, [])
 
   console.log("payment.js", listCageCustomStatusCus.length)
 
   console.log("payment.js", cart.length)
-  if (!cart && !listCageCustomStatusCus) return <Navigate to="/cart" replace />;
+
 
   return (
     <div className="w-full min-h-screen">

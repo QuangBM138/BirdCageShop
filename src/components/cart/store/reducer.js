@@ -1,4 +1,4 @@
-import { ADD_TO_CART, DECREASE_QUANTITY, INCREASE_QUANTITY, ONCHANGE_QUANTITY, ONDELETE_ITEM } from './constants'
+import { ADD_TO_CART, DECREASE_QUANTITY, INCREASE_QUANTITY, ONCHANGE_QUANTITY, ONDELETE_ITEM, DELETE_CART } from './constants'
 const initState = []
 const initial = () => JSON.parse(localStorage.getItem('cart')) || initState
 const reducer = (state, action) => {
@@ -6,7 +6,10 @@ const reducer = (state, action) => {
     console.log("State: ", state);
     console.log("Payload: ", action.payload);
     switch (action.type) {
-
+        case DELETE_CART: {
+            localStorage.removeItem("cart");
+            return []
+        }
         case ADD_TO_CART: {
             const cageIndex = state.findIndex(item => item.cage._id === action.payload.index._id)
             if (cageIndex >= 0) {
